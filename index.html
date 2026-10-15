@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Macro Sentinel · דוח יומי</title>
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: var(--tg-theme-bg-color, #f4f5f7);
+  --card: var(--tg-theme-section-bg-color, #ffffff);
+  --text: var(--tg-theme-text-color, #14161a);
+  --muted: var(--tg-theme-hint-color, #6b7280);
+  --link: var(--tg-theme-link-color, #2563eb);
+  --accent: var(--tg-theme-button-color, #2563eb);
+  --accent-text: var(--tg-theme-button-text-color, #ffffff);
+  --line: rgba(127,127,127,.18);
+  --soft: rgba(127,127,127,.08);
+  --red: #dc2626; --red-bg: rgba(220,38,38,.12);
+  --amber: #d97706; --amber-bg: rgba(217,119,6,.13);
+  --blue: #2563eb; --blue-bg: rgba(37,99,235,.11);
+  --green: #059669; --green-bg: rgba(5,150,105,.12);
+  --radius: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not(.tg) {
+    --bg: #0f1115; --card: #181b21; --text: #eef0f3; --muted: #9aa3af;
+    --link: #60a5fa; --accent: #3b82f6;
+  }
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; background: var(--bg); color: var(--text); }
+body {
+  font-family: "Heebo", -apple-system, "Segoe UI", Arial, sans-serif;
+  font-size: 15px; line-height: 1.55;
+  padding: 12px 14px calc(28px + env(safe-area-inset-bottom));
+  max-width: 680px; margin: 0 auto;
+}
+code, .num { font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; font-size: .92em;
+  font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; }
+code { background: var(--soft); padding: 1px 5px; border-radius: 6px; }
+h1 { font-size: 20px; font-weight: 800; margin: 0; letter-spacing: -.2px; }
+h2 { font-size: 17px; font-weight: 700; margin: 0 0 10px; }
+h3 { font-size: 15px; font-weight: 700; margin: 0 0 6px; }
+p { margin: 0 0 8px; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.card { background: var(--card); border-radius: var(--radius); padding: 14px 16px; margin: 0 0 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+.tap { cursor: pointer; transition: transform .08s ease; }
+.tap:active { transform: scale(.985); }
+.row { display: flex; align-items: center; gap: 10px; }
+.between { justify-content: space-between; }
+.wrap { flex-wrap: wrap; }
+.chev::after { content: "‹"; font-size: 22px; color: var(--muted); line-height: 1; }
+
+/* header */
+.top { display: flex; justify-content: space-between; align-items: flex-start; margin: 4px 2px 14px; }
+.top .sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 500;
+  padding: 4px 10px; border-radius: 999px; background: var(--soft); white-space: nowrap; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+.dot.live { background: var(--green); box-shadow: 0 0 0 3px var(--green-bg); }
+
+/* regime hero */
+.hero { position: relative; overflow: hidden; }
+.badge { font-weight: 800; font-size: 13px; padding: 3px 9px; border-radius: 8px; color: #fff; background: var(--accent); }
+.badge.R1 { background: #0891b2; } .badge.R2 { background: #b45309; } .badge.R3 { background: #059669; } .badge.R4 { background: #dc2626; }
+.hero .title { font-size: 19px; font-weight: 800; margin: 8px 0 4px; }
+.meter { margin-top: 12px; }
+.meter .bar { height: 8px; background: var(--soft); border-radius: 99px; overflow: hidden; }
+.meter .fill { height: 100%; border-radius: 99px; background: var(--amber); }
+.meter .lbl { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--muted); margin-top: 5px; }
+
+/* chips */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 13px; padding: 4px 10px; border-radius: 999px; background: var(--soft); }
+.chip.ow { background: var(--green-bg); color: var(--green); font-weight: 500; }
+.chip.uw { background: var(--red-bg); color: var(--red); font-weight: 500; }
+.chip.sel { background: var(--amber-bg); color: var(--amber); font-weight: 500; }
+.chip.critical { background: var(--red-bg); color: var(--red); font-weight: 700; }
+.chip.warning { background: var(--amber-bg); color: var(--amber); font-weight: 700; }
+.chip.info { background: var(--blue-bg); color: var(--blue); font-weight: 700; }
+.chip.state { background: var(--soft); color: var(--text); }
+
+/* kpis */
+.kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.kpi { background: var(--card); border-radius: 14px; padding: 10px 10px 9px; min-width: 0; }
+.kpi .k { font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kpi .v { font-size: 18px; font-weight: 700; margin-top: 2px; }
+.kpi .c { font-size: 12px; color: var(--muted); }
+.up { color: var(--green); } .down { color: var(--red); }
+
+/* nav */
+.nav .item { display: flex; align-items: center; gap: 12px; padding: 12px 2px; border-bottom: 1px solid var(--line); }
+.nav .item:last-child { border-bottom: 0; }
+.nav .ic { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--soft); font-size: 17px; flex: none; }
+.nav .t { font-weight: 700; }
+.nav .d { font-size: 13px; color: var(--muted); }
+.nav .grow { flex: 1; min-width: 0; }
+
+/* detail */
+.back { display: inline-flex; align-items: center; gap: 4px; color: var(--link); font-weight: 500; margin: 2px 0 12px; cursor: pointer; }
+.back::before { content: "›"; font-size: 22px; line-height: 1; }
+.tg .back { display: none; }
+.note { padding: 9px 12px; border-radius: 12px; background: var(--soft); margin-bottom: 8px; font-size: 14px; }
+table { width: 100%; border-collapse: collapse; }
+td { padding: 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; font-size: 14px; }
+tr:last-child td { border-bottom: 0; }
+td.v { text-align: left; white-space: nowrap; font-weight: 600; padding-right: 10px; }
+.src { display: block; font-size: 11.5px; color: var(--muted); }
+.est { color: var(--amber); font-weight: 700; margin-inline-start: 2px; }
+
+.alert { border-inline-start: 4px solid var(--muted); }
+.alert.critical { border-color: var(--red); } .alert.warning { border-color: var(--amber); } .alert.info { border-color: var(--blue); }
+.ev { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.ev span { font-size: 12.5px; background: var(--soft); padding: 3px 8px; border-radius: 8px; }
+
+.tabs { display: flex; gap: 6px; margin-bottom: 12px; overflow-x: auto; scrollbar-width: none; }
+.tab { padding: 6px 12px; border-radius: 999px; background: var(--card); font-size: 13.5px; font-weight: 500; white-space: nowrap; cursor: pointer; }
+.tab.on { background: var(--accent); color: var(--accent-text); }
+.alloc .head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.stance { font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 7px; }
+.stance.OW { background: var(--green-bg); color: var(--green); }
+.stance.UW { background: var(--red-bg); color: var(--red); }
+.stance.Nplus, .stance.Nminus { background: var(--amber-bg); color: var(--amber); }
+.tickers { display: flex; flex-wrap: wrap; gap: 5px; margin: 7px 0; }
+.tickers code { font-size: 12.5px; }
+.hist { font-size: 13px; display: flex; align-items: center; gap: 6px; color: var(--muted); }
+.hist .ok { color: var(--green); font-weight: 700; } .hist .bad { color: var(--red); font-weight: 700; }
+.adj { padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.adj:last-child { border-bottom: 0; }
+.mv { font-weight: 700; margin-inline-end: 4px; }
+.list { margin: 0; padding-inline-start: 18px; } .list li { margin-bottom: 6px; }
+.foot { text-align: center; font-size: 12px; color: var(--muted); margin-top: 18px; }
+.err { text-align: center; padding: 40px 10px; }
+.sk { height: 120px; border-radius: var(--radius); background: linear-gradient(90deg, var(--card), var(--soft), var(--card)); background-size: 200% 100%; animation: sk 1.2s infinite; margin-bottom: 12px; }
+@keyframes sk { to { background-position: -200% 0; } }
+</style>
+</head>
+<body>
+<div id="app"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+
+<script>
+"use strict";
+const tg = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData !== undefined
+  ? window.Telegram.WebApp : null;
+if (tg && tg.platform && tg.platform !== "unknown") {
+  document.documentElement.classList.add("tg");
+  tg.ready(); tg.expand();
+  try { tg.setHeaderColor("bg_color"); tg.setBackgroundColor("bg_color"); } catch (e) {}
+}
+
+let R = null;          // report data
+let allocFilter = "all";
+
+/* ---------- helpers ---------- */
+const $ = (sel) => document.querySelector(sel);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+// Texts from rules.yaml may carry <b>, <i>, <code>; allow exactly those.
+function html(s) {
+  const decoded = String(s ?? "").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&");
+  return esc(decoded).replace(/&lt;(\/?)(b|i|code)&gt;/g, "<$1$2>");
+}
+function fmt(v, unit, signed) {
+  if (v === null || v === undefined) return "—";
+  const a = Math.abs(v);
+  let s = a >= 1000 ? Math.round(a).toLocaleString("en-US") : a.toFixed(2);
+  const sign = v < 0 ? "-" : (signed && v > 0 ? "+" : "");
+  if (unit === "$") return `${sign}$${s}`;
+  return `${sign}${s}${unit === "%" ? "%" : unit === "bp" ? "bp" : unit === "pp" ? "pp" : unit === "K" ? "K" : ""}`;
+}
+const num = (v, unit, signed) => `<span class="num">${esc(fmt(v, unit, signed))}</span>`;
+const OPS = { ">": "&gt;", "<": "&lt;", ">=": "≥", "<=": "≤", "==": "=" };
+const SEV = { critical: "קריטי", warning: "אזהרה", info: "מעקב" };
+const STANCE = { OW: "משקל יתר", "N+": "סלקטיבי", "N-": "ניטרלי-שלילי", UW: "משקל חסר" };
+const stanceCls = (s) => s === "N+" ? "Nplus" : s === "N-" ? "Nminus" : s;
+function haptic() { try { tg && tg.HapticFeedback.impactOccurred("light"); } catch (e) {} }
+function sig(name) { return (R.signals || {})[name] || {}; }
+
+/* ---------- routing ---------- */
+const ROUTES = { "": home, market, regime, alloc, exec, news, data };
+function go(route) { haptic(); location.hash = route ? "#/" + route : "#/"; }
+function render() {
+  const route = (location.hash.replace(/^#\/?/, "") || "").split("?")[0];
+  const view = ROUTES[route] || home;
+  $("#app").innerHTML = view();
+  window.scrollTo(0, 0);
+  if (tg) { route ? tg.BackButton.show() : tg.BackButton.hide(); }
+  bind();
+}
+function bind() {
+  document.querySelectorAll("[data-go]").forEach((el) => el.addEventListener("click", () => go(el.dataset.go)));
+  document.querySelectorAll("[data-tab]").forEach((el) => el.addEventListener("click", () => { allocFilter = el.dataset.tab; haptic(); render(); }));
+  const b = $(".back"); if (b) b.addEventListener("click", () => history.back());
+}
+if (tg) tg.BackButton.onClick(() => history.back());
+window.addEventListener("hashchange", render);
+
+/* ---------- views ---------- */
+function header(title) {
+  const m = R.meta;
+  const status = m.market_open
+    ? `<span class="pill"><span class="dot live"></span>מסחר פתוח · <span class="num">${esc(m.ny_time.split(" ")[1])} ET</span></span>`
+    : `<span class="pill"><span class="dot"></span>שוק סגור · מחירי סגירה</span>`;
+  return `<div class="top"><div><h1>${title}</h1><div class="sub">נתוני שוק: <span class="num">${esc(m.market_date)}</span> · עודכן <span class="num">${esc(new Date(m.generated_at).toLocaleTimeString("he-IL", { hour: "2-digit", minute: "2-digit" }))}</span></div></div>${status}</div>`;
+}
+const back = () => `<div class="back">חזרה לסיכום</div>`;
+
+function home() {
+  const g = R.regime, s = R.summary;
+  const kpis = R.kpis.map((k) => {
+    let c = "";
+    if (k.change_value !== null && k.change_value !== undefined) {
+      const dir = k.change_value > 0 ? "up" : k.change_value < 0 ? "down" : "";
+      c = `<div class="c"><span class="${dir}">${k.change_value > 0 ? "▲" : k.change_value < 0 ? "▼" : "•"}</span> ${num(k.change_value, k.change_unit, true)} ${esc(k.change_label || "")}</div>`;
+    } else if (k.note_he) c = `<div class="c">${esc(k.note_he)}</div>`;
+    return `<div class="kpi"><div class="k">${esc(k.label_he)}${k.estimate ? '<span class="est">≈</span>' : ""}</div><div class="v">${num(k.value, k.unit, k.signed)}</div>${c}</div>`;
+  }).join("");
+
+  let hero = `<div class="card"><h2>מצב הכלכלה</h2><p class="muted">לא נקבע — חסרים נתונים: ${esc((R.regime_missing || []).join(", "))}</p></div>`;
+  if (g) {
+    const close = g.inputs.reduce((a, b) => Math.abs(a.value - a.threshold) <= Math.abs(b.value - b.threshold) ? a : b);
+    const pct = Math.max(6, Math.min(100, (g.margin / 1.0) * 100));
+    const sahm = sig("sahm_level").value;
+    hero = `<div class="card hero tap" data-go="regime">
+      <div class="row between"><span class="badge ${esc(g.code)}">${esc(g.code)}</span><span class="chev"></span></div>
+      <div class="title">${esc(g.short_he)}</div>
+      <p>${esc(g.summary_he)}</p>
+      <div class="meter"><div class="bar"><div class="fill" style="width:${pct}%"></div></div>
+        <div class="lbl"><span>מרחק מהיפוך רג'ים: ${num(g.margin, "", false)}</span><span>${esc(close.label.replace(/\s*\(.*?\)/g, "").replace(/^פרוקסי\s+/, ""))}${close.signal === "output_gap_proxy" ? " ≈" : ""}</span></div></div>
+      ${sahm !== undefined ? `<p class="small muted" style="margin-top:8px">🔬 בדיקה נמדדת: כלל סאם ${num(sahm, "", false)} (סף מיתון <span class="num">0.50</span>)</p>` : ""}
+    </div>`;
+  }
+
+  const alertChips = R.alerts.length
+    ? R.alerts.map((a) => `<span class="chip ${a.severity}">${esc(a.short_he)}${a.edge ? " · על הסף" : ""}</span>`).join("")
+    : `<span class="chip">אין התראות פעילות</span>`;
+  const stateChips = R.states.map((a) => `<span class="chip state">🔁 ${esc(a.short_he)}</span>`).join("");
+
+  const ow = R.allocation.items.filter((i) => i.stance === "OW");
+  const uw = R.allocation.items.filter((i) => i.stance === "UW");
+  // Same lists as the Telegram summary: split categories marked "(חלקית)" on their majority side.
+  const split = (txt) => (txt && txt !== "—" ? txt.split(", ") : []);
+
+  const navItems = [
+    ["market", "📊", "1 · שוק", `${R.market_notes.length} תצפיות · ${R.market_groups.reduce((n, g) => n + g.items.length, 0)} נתונים`],
+    ["regime", "🧭", "2 · רג'ים ואנומליות", `${g ? g.code : "—"} · ${R.alerts.length} התראות · ${R.states.length} מצבים`],
+    ["alloc", "🧩", "3 · הקצאה ונימוקים", `${ow.length} להגדיל · ${uw.length} להקטין · ${R.allocation.adjustments.length} התאמות`],
+    ["exec", "🎯", "4 · ביצוע וסיכון", `${R.execution.actions.length} פעולות · סגנון וסינון מניות`],
+    ["news", "📰", "כותרות", R.news.items.length ? `${R.news.items.length} כותרות` : "אין כותרות עדכניות"],
+    ["data", "🔍", "איכות ומקורות נתונים", `${R.data_quality.validation.filter((v) => v.ok).length} אומתו מול מקור רשמי`],
+  ].map(([r, ic, t, d]) => `<div class="item tap" data-go="${r}"><div class="ic">${ic}</div><div class="grow"><div class="t">${t}</div><div class="d">${esc(d)}</div></div><span class="chev"></span></div>`).join("");
+
+  return header("דוח מאקרו יומי") + hero +
+    `<div class="card tap" data-go="regime"><div class="row between"><h2 style="margin:0">התראות</h2><span class="chev"></span></div>
+      <div class="chips" style="margin-top:10px">${alertChips}</div>
+      ${stateChips ? `<div class="small muted" style="margin:10px 0 6px">מצבים מתמשכים</div><div class="chips">${stateChips}</div>` : ""}</div>
+    <div class="kpis" style="margin-bottom:12px">${kpis}</div>
+    <div class="card tap" data-go="alloc"><div class="row between"><h2 style="margin:0">מה עושים</h2><span class="chev"></span></div>
+      <div class="small muted" style="margin:10px 0 6px">להגדיל</div><div class="chips">${split(s.overweight).map((l) => `<span class="chip ow">${esc(l)}</span>`).join("") || "—"}</div>
+      <div class="small muted" style="margin:10px 0 6px">להקטין</div><div class="chips">${split(s.underweight).map((l) => `<span class="chip uw">${esc(l)}</span>`).join("") || "—"}</div></div>
+    <div class="card nav">${navItems}</div>
+    <div class="foot"><bdi dir="ltr">Macro Sentinel v${esc(R.meta.version)}</bdi><br>≈ = הערכה או מודל · פלט של מסגרת ניתוח, לא ייעוץ השקעות</div>`;
+}
+
+function market() {
+  const notes = R.market_notes.map((n) => `<div class="note">${html(n)}</div>`).join("") || `<p class="muted">אין תנועה חריגה בשוק.</p>`;
+  const groups = R.market_groups.map((g) => `<div class="card"><h2>${esc(g.title_he)}</h2><table>${g.items.map((it) => {
+    const s = sig(it.signal);
+    return `<tr><td>${esc(it.label)}${it.estimate ? '<span class="est">≈</span>' : ""}<span class="src">${esc(s.source || "")}${s.date ? " · " + esc(s.date) : ""}</span></td><td class="v">${num(it.value, it.unit, it.signed)}</td></tr>`;
+  }).join("")}</table></div>`).join("");
+  return back() + header("1 · שוק") + `<div class="card"><h2>מה בולט היום</h2>${notes}</div>` + groups;
+}
+
+function evidence(list) {
+  return `<div class="ev">${list.map((e) => `<span>${esc(e.label.replace(/\s*\(.*?\)/g, ""))}: <span class="num">${esc(fmt(e.value, "", false))} ${OPS[e.op] || esc(e.op)} ${esc(e.threshold)}</span></span>`).join("")}</div>`;
+}
+function ruleCard(a) {
+  return `<div class="card alert ${a.kind === "state" ? "" : a.severity}">
+    <div class="row between wrap"><h3 style="margin:0">${esc(a.short_he)}</h3><span class="chip ${a.kind === "state" ? "state" : a.severity}">${a.kind === "state" ? "מצב מתמשך" : SEV[a.severity]}${a.edge ? " · על הסף" : ""}</span></div>
+    ${evidence(a.evidence)}<p>${html(a.synthesis_he)}</p>
+    ${a.risk_he ? `<p class="small"><b>מה לעשות:</b> ${html(a.risk_he)}</p>` : ""}</div>`;
+}
+function regime() {
+  const g = R.regime;
+  let top = `<div class="card"><p>רג'ים לא נקבע.</p></div>`;
+  if (g) {
+    top = `<div class="card"><div class="row"><span class="badge ${esc(g.code)}">${esc(g.code)}</span><h2 style="margin:0">${esc(g.short_he)}</h2></div>
+      <p style="margin-top:10px">${html(g.synthesis_he)}</p>
+      <table>${g.inputs.map((i) => `<tr><td>${esc(i.label)}${i.signal === "output_gap_proxy" ? '<span class="est">≈</span>' : ""}<span class="src">סף: <span class="num">${OPS[i.op]} ${esc(i.threshold)}</span></span></td><td class="v">${num(i.value, "", true)}</td></tr>`).join("")}</table>
+      <p class="small muted" style="margin-top:8px">${html(R.summary.fragility)}</p></div>`;
+  }
+  const alerts = R.alerts.length ? R.alerts.map(ruleCard).join("") : `<div class="card"><p>✅ אין התראות פעילות.</p></div>`;
+  const states = R.states.map(ruleCard).join("");
+  return back() + header("2 · רג'ים ואנומליות") + top +
+    `<h2 style="margin:16px 4px 10px">התראות</h2>${alerts}` +
+    (states ? `<h2 style="margin:16px 4px 10px">מצבים מתמשכים</h2><p class="small muted" style="margin:0 4px 10px">תנאים שנמשכים שבועות-חודשים. מוצגים, אבל לא נשלחים כהתראה.</p>${states}` : "");
+}
+
+function alloc() {
+  const code = R.regime ? R.regime.code : "";
+  const tabs = [["all", "הכל"], ["OW", "להגדיל"], ["N+", "סלקטיבי"], ["UW", "להקטין"]]
+    .map(([k, l]) => `<div class="tab ${allocFilter === k ? "on" : ""}" data-tab="${k}">${l}</div>`).join("");
+  const items = R.allocation.items.filter((i) => allocFilter === "all" || i.stance === allocFilter).map((i) => {
+    const hist = i.history === null ? "" :
+      `<div class="hist"><span>היסטוריה:</span> <b>${num(i.history, "%", true)}</b> <span class="${i.agrees ? "ok" : "bad"}">${i.agrees ? "✓ תמכה בהמלצה" : "✗ לא תמכה בהמלצה"}</span></div>
+       <div class="src">תשואה עודפת לחודש מול <bdi dir="ltr">S&amp;P 500</bdi> בימי ${esc(code)}, לפי <bdi dir="ltr">${esc(i.history_ticker)}</bdi></div>`;
+    return `<div class="card alloc"><div class="head"><h3 style="margin:0">${esc(i.label)}</h3><span class="stance ${stanceCls(i.stance)}">${STANCE[i.stance]}</span></div>
+      <div class="tickers">${i.all_tickers.map((t) => `<code>${esc(t)}</code>`).join("")}</div>
+      <p>${esc(i.why)}</p>${hist}</div>`;
+  }).join("");
+  const neutral = R.allocation.neutral.length ? `<div class="card"><h3>ניטרלי</h3><div class="chips">${R.allocation.neutral.map((n) => `<span class="chip">${esc(n.label)}</span>`).join("")}</div></div>` : "";
+  const adj = R.allocation.adjustments.map((a) => `<div class="adj">${a.overweight.length ? `<span class="mv up">↑ <code>${esc(a.overweight.join("/"))}</code></span>` : ""}${a.underweight.length ? `<span class="mv down">↓ <code>${esc(a.underweight.join("/"))}</code></span>` : ""}<div>${html(a.text_he)}</div></div>`).join("");
+  return back() + header("3 · הקצאה ונימוקים") +
+    `<p class="small muted" style="margin:0 4px 10px">היסטוריה = תשואה עודפת ממוצעת לחודש מול <code>SPX</code> בימי הרג'ים הנוכחי, <span class="num">2016-2026</span>, לפי ETF מייצג.</p>
+    <div class="tabs">${tabs}</div>${items || '<div class="card"><p class="muted">אין פריטים בסינון הזה.</p></div>'}${allocFilter === "all" ? neutral : ""}
+    ${adj && allocFilter === "all" ? `<div class="card"><h2>התאמות פעילות (${R.allocation.adjustments.length})</h2><p class="small muted">חוקי "אם-אז" שמגיבים לרמות השוק עכשיו, מעל ההקצאה הבסיסית.</p>${adj}</div>` : ""}`;
+}
+
+function exec() {
+  const e = R.execution;
+  const actions = e.actions.length ? `<ol class="list">${e.actions.map((a) => `<li>${html(a)}</li>`).join("")}</ol>` : `<p>אין התראות — לפעול לפי ההקצאה הבסיסית של הרג'ים.</p>`;
+  return back() + header("4 · ביצוע וסיכון") +
+    `<div class="card"><h2>פעולות</h2>${actions}</div>
+     ${e.conclusions.length ? `<div class="card"><h2>הרקע</h2>${e.conclusions.map((c) => `<p>${html(c)}</p>`).join("")}</div>` : ""}
+     <div class="card"><h2>🎯 סגנון השקעה</h2><p>${html(e.factors_he)}</p></div>
+     <div class="card"><h2>🔎 סינון מניות</h2><p>${html(e.screening_he).replace(/\s\|\s/g, "<br>")}</p>
+     <p class="small muted">רשימת בדיקה לפי הרג'ים. המערכת עדיין לא מסננת מניות בפועל.</p></div>
+     <p class="foot">פלט של מסגרת ניתוח ולא ייעוץ השקעות אישי.</p>`;
+}
+
+function news() {
+  const n = R.news;
+  return back() + header("כותרות") + (n.items.length
+    ? `<div class="card"><p class="small muted">מקור: ${esc(n.source)}</p>${n.items.map((h) => `<div class="note" dir="ltr" style="text-align:left">${esc(h)}</div>`).join("")}</div>`
+    : `<div class="card"><p class="muted">אין כותרות מה-36 שעות האחרונות.</p></div>`);
+}
+
+function data() {
+  const q = R.data_quality;
+  const val = q.validation.map((v) => `<tr><td>${v.ok ? "✅" : "❌"} ${esc(v.label)}<span class="src">${esc(v.detail)}</span></td></tr>`).join("");
+  const fails = Object.entries(q.failures || {}).map(([k, v]) => `<li><code>${esc(k)}</code>: ${esc(v)}</li>`).join("");
+  const rows = Object.entries(R.signals).sort((a, b) => a[1].label.localeCompare(b[1].label, "he"))
+    .map(([k, s]) => `<tr><td>${esc(s.label)}${s.estimate ? '<span class="est">≈</span>' : ""}<span class="src">${esc(s.source)}${s.id ? " · " + esc(s.id) : ""}${s.date ? " · " + esc(s.date) : ""}</span></td><td class="v">${num(s.value, "", s.signed)}</td></tr>`).join("");
+  return back() + header("איכות ומקורות") +
+    `<div class="card"><h2>אימות מול מקור רשמי</h2><p class="small muted">מחירים בזמן אמת מושווים בכל הרצה למפרסם הרשמי ביום המסחר המלא האחרון. סטייה פוסלת את הנתון.</p><table>${val}</table></div>
+     <div class="card"><h2>ללא מקור רשמי חינמי</h2><div class="chips">${q.unverified.map((t) => `<code>${esc(t)}</code>`).join(" ")}</div></div>
+     ${fails ? `<div class="card"><h2>נתונים שלא נטענו</h2><ul class="list">${fails}</ul><p class="small muted">חוקים שתלויים בהם דולגו — שום ערך לא נוחש.</p></div>` : ""}
+     <div class="card"><h2>כל הנתונים (${Object.keys(R.signals).length})</h2><table>${rows}</table></div>`;
+}
+
+/* ---------- boot ---------- */
+fetch("data/report.json?ts=" + Date.now(), { cache: "no-store" })
+  .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then((d) => { R = d; render(); })
+  .catch((e) => { $("#app").innerHTML = `<div class="err card"><h2>הדוח לא נטען</h2><p class="muted">נסו שוב בעוד רגע. (${esc(e.message)})</p></div>`; });
+</script>
+</body>
+</html>
