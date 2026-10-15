@@ -186,29 +186,41 @@ function sig(name) { return (R.signals || {})[name] || {}; }
 /* ---------- routing ---------- */
 const ROUTES = { "": home, market, regime, alloc, exec, news, data };
 function go(route) { haptic(); location.hash = route ? "#/" + route : "#/"; }
-function render() {
+function render(keepScroll) {
   const route = (location.hash.replace(/^#\/?/, "") || "").split("?")[0];
   const view = ROUTES[route] || home;
+  const y = window.scrollY;
   $("#app").innerHTML = view();
-  window.scrollTo(0, 0);
+  window.scrollTo(0, keepScroll ? y : 0);
   if (tg) { route ? tg.BackButton.show() : tg.BackButton.hide(); }
   bind();
 }
 function bind() {
   document.querySelectorAll("[data-go]").forEach((el) => el.addEventListener("click", () => go(el.dataset.go)));
-  document.querySelectorAll("[data-tab]").forEach((el) => el.addEventListener("click", () => { allocFilter = el.dataset.tab; haptic(); render(); }));
+  document.querySelectorAll("[data-tab]").forEach((el) => el.addEventListener("click", () => { allocFilter = el.dataset.tab; haptic(); render(true); }));
   const b = $(".back"); if (b) b.addEventListener("click", () => history.back());
 }
 if (tg) tg.BackButton.onClick(() => history.back());
-window.addEventListener("hashchange", render);
+window.addEventListener("hashchange", () => render(false));
 
 /* ---------- views ---------- */
+const PHASE = {
+  pre: ["טרום מסחר", "live"], open: ["מסחר פתוח", "live"], post: ["אחרי סגירה", ""], closed: ["שוק סגור", ""],
+};
+const SLOT = { morning: "דוח בוקר", premarket: "עדכון טרום מסחר", postclose: "עדכון אחרי סגירה", manual: "עדכון" };
+function ago(iso) {
+  const min = Math.max(0, Math.round((Date.now() - new Date(iso).getTime()) / 60000));
+  if (min < 1) return "עכשיו";
+  if (min < 60) return `לפני ${min} דק׳`;
+  const h = Math.round(min / 60);
+  return h < 24 ? `לפני ${h} שע׳` : `לפני ${Math.round(h / 24)} ימים`;
+}
 function header(title) {
   const m = R.meta;
-  const status = m.market_open
-    ? `<span class="pill"><span class="dot live"></span>מסחר פתוח · <span class="num">${esc(m.ny_time.split(" ")[1])} ET</span></span>`
-    : `<span class="pill"><span class="dot"></span>שוק סגור · מחירי סגירה</span>`;
-  return `<div class="top"><div><h1>${title}</h1><div class="sub">נתוני שוק: <span class="num">${esc(m.market_date)}</span> · עודכן <span class="num">${esc(new Date(m.generated_at).toLocaleTimeString("he-IL", { hour: "2-digit", minute: "2-digit" }))}</span></div></div>${status}</div>`;
+  const [phaseHe, cls] = PHASE[m.market_phase] || (m.market_open ? PHASE.open : PHASE.closed);
+  const status = `<span class="pill"><span class="dot ${cls}"></span>${phaseHe} · <span class="num">${esc(m.ny_time.split(" ")[1])} ET</span></span>`;
+  const when = new Date(m.generated_at).toLocaleTimeString("he-IL", { hour: "2-digit", minute: "2-digit" });
+  return `<div class="top"><div><h1>${title}</h1><div class="sub">${esc(SLOT[m.slot] || "עדכון")} · <span class="num">${esc(when)}</span> (<span class="ago">${esc(ago(m.generated_at))}</span>) · נתוני שוק <span class="num">${esc(m.market_date)}</span></div></div>${status}</div>`;
 }
 const back = () => `<div class="back">חזרה לסיכום</div>`;
 
@@ -355,11 +367,25 @@ function data() {
      <div class="card"><h2>כל הנתונים (${Object.keys(R.signals).length})</h2><table>${rows}</table></div>`;
 }
 
-/* ---------- boot ---------- */
-fetch("data/report.json?ts=" + Date.now(), { cache: "no-store" })
-  .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
-  .then((d) => { R = d; render(); })
-  .catch((e) => { $("#app").innerHTML = `<div class="err card"><h2>הדוח לא נטען</h2><p class="muted">נסו שוב בעוד רגע. (${esc(e.message)})</p></div>`; });
+/* ---------- boot + auto-refresh ---------- */
+function load(first) {
+  return fetch("data/report.json?ts=" + Date.now(), { cache: "no-store" })
+    .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then((d) => {
+      const changed = !R || d.meta.generated_at !== R.meta.generated_at;
+      R = d;
+      if (first) render(false);
+      else if (changed) { render(true); haptic(); }        // new report: redraw, keep scroll
+      else { const a = $(".ago"); if (a) a.textContent = ago(R.meta.generated_at); }  // only the label
+    })
+    .catch((e) => {
+      if (first) $("#app").innerHTML = `<div class="err card"><h2>הדוח לא נטען</h2><p class="muted">נסו שוב בעוד רגע. (${esc(e.message)})</p></div>`;
+    });
+}
+load(true);
+// While the app stays open: check for a newer report every 5 minutes and when it regains focus.
+setInterval(() => load(false), 5 * 60 * 1000);
+document.addEventListener("visibilitychange", () => { if (!document.hidden) load(false); });
 </script>
 </body>
 </html>
