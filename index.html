@@ -9,155 +9,250 @@
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* ---------- tokens ---------- */
 :root {
-  --bg: var(--tg-theme-bg-color, #f4f5f7);
-  --card: var(--tg-theme-section-bg-color, #ffffff);
-  --text: var(--tg-theme-text-color, #14161a);
-  --muted: var(--tg-theme-hint-color, #6b7280);
-  --link: var(--tg-theme-link-color, #2563eb);
-  --accent: var(--tg-theme-button-color, #2563eb);
+  --bg: var(--tg-theme-secondary-bg-color, #f2f3f5);
+  --surface: var(--tg-theme-section-bg-color, #ffffff);
+  --text: var(--tg-theme-text-color, #121418);
+  --muted: var(--tg-theme-hint-color, #667085);
+  --link: var(--tg-theme-link-color, #2b62d9);
+  --accent: var(--tg-theme-button-color, #2b62d9);
   --accent-text: var(--tg-theme-button-text-color, #ffffff);
-  --line: rgba(127,127,127,.18);
-  --soft: rgba(127,127,127,.08);
-  --red: #dc2626; --red-bg: rgba(220,38,38,.12);
-  --amber: #d97706; --amber-bg: rgba(217,119,6,.13);
-  --blue: #2563eb; --blue-bg: rgba(37,99,235,.11);
-  --green: #059669; --green-bg: rgba(5,150,105,.12);
-  --radius: 16px;
+  --hair: color-mix(in srgb, var(--text) 9%, transparent);
+  --wash: color-mix(in srgb, var(--text) 5%, transparent);
+  --wash-2: color-mix(in srgb, var(--text) 8%, transparent);
+
+  --up: #0f8a5f;   --up-wash: color-mix(in srgb, var(--up) 13%, transparent);
+  --down: #c8372d; --down-wash: color-mix(in srgb, var(--down) 12%, transparent);
+  --warn: #b86e00; --warn-wash: color-mix(in srgb, var(--warn) 15%, transparent);
+  --info: #2b62d9; --info-wash: color-mix(in srgb, var(--info) 12%, transparent);
+  --r1: #0e8aa6; --r2: #c07a0a; --r3: #129466; --r4: #cf3b2f;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --radius: 18px;
+  --sans: "IBM Plex Sans Hebrew", -apple-system, "Segoe UI", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
 }
+/* Outside Telegram: follow the OS. Inside Telegram: follow Telegram's theme (classes below). */
 @media (prefers-color-scheme: dark) {
   :root:not(.tg) {
-    --bg: #0f1115; --card: #181b21; --text: #eef0f3; --muted: #9aa3af;
-    --link: #60a5fa; --accent: #3b82f6;
+    --bg: #0d0f13; --surface: #161a20; --text: #e9ecf1; --muted: #8d97a6; --link: #79a6ff; --accent: #4c82f5;
+    --up: #3ccf91; --down: #ff7a6b; --warn: #f2b14a; --info: #79a6ff;
+    --r1: #3fc1dd; --r2: #f0a93a; --r3: #3ccf91; --r4: #ff6b5c; --badge-ink: #10131a;
   }
 }
+:root.tg-dark {
+  --up: #3ccf91; --down: #ff7a6b; --warn: #f2b14a; --info: #79a6ff;
+  --r1: #3fc1dd; --r2: #f0a93a; --r3: #3ccf91; --r4: #ff6b5c; --badge-ink: #10131a;
+}
+
+/* ---------- base ---------- */
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html, body { margin: 0; background: var(--bg); color: var(--text); }
 body {
-  font-family: "Heebo", -apple-system, "Segoe UI", Arial, sans-serif;
-  font-size: 15px; line-height: 1.55;
-  padding: 12px 14px calc(28px + env(safe-area-inset-bottom));
+  font: 400 15.5px/1.6 var(--sans);
+  font-feature-settings: "tnum" 1;
+  padding: 14px 14px calc(32px + env(safe-area-inset-bottom));
   max-width: 680px; margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
 }
-code, .num { font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; font-size: .92em;
-  font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; }
-code { background: var(--soft); padding: 1px 5px; border-radius: 6px; }
-h1 { font-size: 20px; font-weight: 800; margin: 0; letter-spacing: -.2px; }
-h2 { font-size: 17px; font-weight: 700; margin: 0 0 10px; }
-h3 { font-size: 15px; font-weight: 700; margin: 0 0 6px; }
-p { margin: 0 0 8px; }
+::selection { background: color-mix(in srgb, var(--accent) 28%, transparent); color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 10px; }
+h1 { font-size: 23px; font-weight: 700; line-height: 1.25; margin: 0; letter-spacing: -0.01em; }
+h2 { font-size: 18px; font-weight: 700; line-height: 1.3; margin: 0; }
+h3 { font-size: 16px; font-weight: 600; line-height: 1.35; margin: 0; }
+p { margin: 0; }
 .muted { color: var(--muted); }
-.small { font-size: 13px; }
-.card { background: var(--card); border-radius: var(--radius); padding: 14px 16px; margin: 0 0 12px;
-  box-shadow: 0 1px 2px rgba(0,0,0,.04); }
-.tap { cursor: pointer; transition: transform .08s ease; }
-.tap:active { transform: scale(.985); }
+.meta { font-size: 13px; color: var(--muted); font-weight: 400; }
+.num { font-feature-settings: "tnum" 1, "lnum" 1; direction: ltr; unicode-bidi: isolate; white-space: nowrap; }
+code, .tk { font: 500 12.5px/1 var(--mono); direction: ltr; unicode-bidi: isolate;
+  background: var(--wash); padding: 3px 6px; border-radius: 6px; letter-spacing: 0.01em; white-space: nowrap; }
+b { font-weight: 600; }
+.icon { width: 18px; height: 18px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.75;
+  stroke-linecap: round; stroke-linejoin: round; }
+.icon.sm { width: 15px; height: 15px; }
+
+/* ---------- surfaces ---------- */
+.panel { background: var(--surface); border-radius: var(--radius); padding: 16px; margin: 0 0 12px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 1px 1px rgba(16, 24, 40, .02); }
+.panel > h2 { margin-bottom: 12px; }
+.section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin: 22px 4px 10px; }
+.tap { cursor: pointer; transition: transform 160ms var(--ease-out); }
+.tap:active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) { .tap:hover { filter: brightness(1.02); } }
 .row { display: flex; align-items: center; gap: 10px; }
 .between { justify-content: space-between; }
-.wrap { flex-wrap: wrap; }
-.chev::after { content: "‹"; font-size: 22px; color: var(--muted); line-height: 1; }
+.grow { flex: 1; min-width: 0; }
+.chev { color: var(--muted); display: inline-flex; }
 
-/* header */
-.top { display: flex; justify-content: space-between; align-items: flex-start; margin: 4px 2px 14px; }
-.top .sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
-.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 500;
-  padding: 4px 10px; border-radius: 999px; background: var(--soft); white-space: nowrap; }
-.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
-.dot.live { background: var(--green); box-shadow: 0 0 0 3px var(--green-bg); }
-
-/* regime hero */
-.hero { position: relative; overflow: hidden; }
-.badge { font-weight: 800; font-size: 13px; padding: 3px 9px; border-radius: 8px; color: #fff; background: var(--accent); }
-.badge.R1 { background: #0891b2; } .badge.R2 { background: #b45309; } .badge.R3 { background: #059669; } .badge.R4 { background: #dc2626; }
-.hero .title { font-size: 19px; font-weight: 800; margin: 8px 0 4px; }
-.meter { margin-top: 12px; }
-.meter .bar { height: 8px; background: var(--soft); border-radius: 99px; overflow: hidden; }
-.meter .fill { height: 100%; border-radius: 99px; background: var(--amber); }
-.meter .lbl { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--muted); margin-top: 5px; }
-
-/* chips */
-.chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chip { font-size: 13px; padding: 4px 10px; border-radius: 999px; background: var(--soft); }
-.chip.ow { background: var(--green-bg); color: var(--green); font-weight: 500; }
-.chip.uw { background: var(--red-bg); color: var(--red); font-weight: 500; }
-.chip.sel { background: var(--amber-bg); color: var(--amber); font-weight: 500; }
-.chip.critical { background: var(--red-bg); color: var(--red); font-weight: 700; }
-.chip.warning { background: var(--amber-bg); color: var(--amber); font-weight: 700; }
-.chip.info { background: var(--blue-bg); color: var(--blue); font-weight: 700; }
-.chip.state { background: var(--soft); color: var(--text); }
-
-/* kpis */
-.kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.kpi { background: var(--card); border-radius: 14px; padding: 10px 10px 9px; min-width: 0; }
-.kpi .k { font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.kpi .v { font-size: 18px; font-weight: 700; margin-top: 2px; }
-.kpi .c { font-size: 12px; color: var(--muted); }
-.up { color: var(--green); } .down { color: var(--red); }
-
-/* nav */
-.nav .item { display: flex; align-items: center; gap: 12px; padding: 12px 2px; border-bottom: 1px solid var(--line); }
-.nav .item:last-child { border-bottom: 0; }
-.nav .ic { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--soft); font-size: 17px; flex: none; }
-.nav .t { font-weight: 700; }
-.nav .d { font-size: 13px; color: var(--muted); }
-.nav .grow { flex: 1; min-width: 0; }
-
-/* detail */
-.back { display: inline-flex; align-items: center; gap: 4px; color: var(--link); font-weight: 500; margin: 2px 0 12px; cursor: pointer; }
-.back::before { content: "›"; font-size: 22px; line-height: 1; }
+/* ---------- top bar ---------- */
+.top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin: 6px 4px 16px; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.mark { width: 34px; height: 34px; border-radius: 10px; background: var(--text); color: var(--surface);
+  display: grid; place-items: center; flex: none; }
+.mark .icon { width: 20px; height: 20px; }
+.top .sub { font-size: 13px; color: var(--muted); margin-top: 3px; }
+.ago { white-space: nowrap; }
+.status { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 500;
+  padding: 5px 10px; border-radius: 999px; background: var(--surface); white-space: nowrap; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); }
+.dot.live { background: var(--up); box-shadow: 0 0 0 3px var(--up-wash); }
+.back { display: inline-flex; align-items: center; gap: 2px; color: var(--link); font-weight: 500;
+  margin: 2px 2px 6px; cursor: pointer; padding: 4px 0; }
 .tg .back { display: none; }
-.note { padding: 9px 12px; border-radius: 12px; background: var(--soft); margin-bottom: 8px; font-size: 14px; }
+
+/* ---------- regime ---------- */
+.regime-head { display: flex; align-items: center; gap: 10px; }
+.badge { font-weight: 700; font-size: 13px; padding: 3px 9px; border-radius: 8px; color: var(--badge-ink, #fff); background: var(--accent); }
+.badge.R1 { background: var(--r1); } .badge.R2 { background: var(--r2); }
+.badge.R3 { background: var(--r3); } .badge.R4 { background: var(--r4); }
+.regime-title { font-size: 21px; font-weight: 700; line-height: 1.3; margin: 10px 0 6px; }
+.map { width: 100%; height: auto; display: block; margin: 14px 0 6px; overflow: visible; color: var(--text); direction: ltr; }
+.map text { font-family: var(--sans); }
+.facts { display: grid; gap: 8px; margin-top: 10px; }
+.fact { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; }
+.fact .icon { margin-top: 3px; color: var(--muted); }
+
+/* ---------- alerts ---------- */
+.alert-row { display: flex; align-items: center; gap: 10px; padding: 11px 0; border-top: 1px solid var(--hair); }
+.alert-row:first-of-type { border-top: 0; padding-top: 2px; }
+.sev { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; flex: none; }
+.sev.critical { background: var(--down-wash); color: var(--down); }
+.sev.warning { background: var(--warn-wash); color: var(--warn); }
+.sev.info { background: var(--info-wash); color: var(--info); }
+.sev.state { background: var(--wash); color: var(--muted); }
+.pill { font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 7px; white-space: nowrap; }
+.pill.critical { background: var(--down-wash); color: var(--down); }
+.pill.warning { background: var(--warn-wash); color: var(--warn); }
+.pill.info { background: var(--info-wash); color: var(--info); }
+.pill.state { background: var(--wash); color: var(--muted); }
+.pill.edge { background: var(--wash-2); color: var(--text); font-weight: 500; }
+.pill.OW { background: var(--up-wash); color: var(--up); }
+.pill.UW { background: var(--down-wash); color: var(--down); }
+.pill.Nplus, .pill.Nminus { background: var(--warn-wash); color: var(--warn); }
+
+/* ---------- market tape: one surface, hairline grid ---------- */
+.tape { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--surface); border-radius: var(--radius);
+  overflow: hidden; margin-bottom: 12px; box-shadow: 0 1px 2px rgba(16, 24, 40, .04); }
+.cell { padding: 12px 12px 11px; min-width: 0; border-top: 1px solid var(--hair); border-inline-start: 1px solid var(--hair);
+  transition: background-color 1200ms var(--ease-out); }
+.cell:nth-child(-n+3) { border-top: 0; }
+.cell:nth-child(3n+1) { border-inline-start: 0; }
+.cell .k { font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cell .v { font-size: 19px; font-weight: 600; margin-top: 2px; letter-spacing: -0.01em; }
+.cell .c { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 3px; margin-top: 1px; white-space: nowrap; }
+.up { color: var(--up); } .down { color: var(--down); }
+.flash { background-color: color-mix(in srgb, var(--accent) 14%, transparent); }
+.est { color: var(--warn); font-weight: 700; margin-inline-start: 3px; }
+
+/* ---------- chips ---------- */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 13px; padding: 5px 10px; border-radius: 999px; background: var(--wash); font-weight: 500; }
+.chip.ow { background: var(--up-wash); color: var(--up); }
+.chip.uw { background: var(--down-wash); color: var(--down); }
+.group-label { display: flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 600; margin: 14px 0 8px; }
+
+/* ---------- navigation ---------- */
+.nav-item { display: flex; align-items: center; gap: 12px; padding: 13px 0; border-top: 1px solid var(--hair); }
+.nav-item:first-child { border-top: 0; padding-top: 2px; }
+.nav-item:last-child { padding-bottom: 2px; }
+.nav-ic { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; background: var(--wash); flex: none; }
+.nav-item .t { font-weight: 600; display: flex; align-items: baseline; gap: 6px; }
+.step { font-size: 12px; color: var(--muted); font-weight: 500; }
+.nav-item .d { font-size: 13px; color: var(--muted); margin-top: 1px; }
+
+/* ---------- detail ---------- */
+.note { display: flex; gap: 9px; align-items: flex-start; padding: 10px 0; border-top: 1px solid var(--hair); font-size: 14.5px; }
+.note:first-of-type { border-top: 0; padding-top: 0; }
+.note .icon { color: var(--muted); margin-top: 4px; }
 table { width: 100%; border-collapse: collapse; }
-td { padding: 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; font-size: 14px; }
-tr:last-child td { border-bottom: 0; }
-td.v { text-align: left; white-space: nowrap; font-weight: 600; padding-right: 10px; }
-.src { display: block; font-size: 11.5px; color: var(--muted); }
-.est { color: var(--amber); font-weight: 700; margin-inline-start: 2px; }
+td { padding: 9px 0; border-top: 1px solid var(--hair); vertical-align: top; font-size: 14.5px; transition: background-color 1200ms var(--ease-out); }
+tr:first-child td { border-top: 0; padding-top: 0; }
+td.v { text-align: left; white-space: nowrap; font-weight: 600; padding-inline-start: 12px; }
+.src { display: block; font-size: 12px; color: var(--muted); margin-top: 1px; }
+.ev { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.ev span { font-size: 12.5px; background: var(--wash); padding: 4px 8px; border-radius: 8px; }
+.ev span span { background: none; padding: 0; }
+.rule .todo { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--hair); font-size: 14px; }
 
-.alert { border-inline-start: 4px solid var(--muted); }
-.alert.critical { border-color: var(--red); } .alert.warning { border-color: var(--amber); } .alert.info { border-color: var(--blue); }
-.ev { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
-.ev span { font-size: 12.5px; background: var(--soft); padding: 3px 8px; border-radius: 8px; }
+.tabs { display: flex; gap: 4px; padding: 4px; background: var(--wash-2); border-radius: 12px; margin: 4px 0 12px; }
+.tab { flex: 1; text-align: center; padding: 7px 4px; border-radius: 9px; font-size: 13.5px; font-weight: 500; cursor: pointer;
+  color: var(--muted); transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out); }
+.tab.on { background: var(--surface); color: var(--text); box-shadow: 0 1px 2px rgba(16, 24, 40, .08); }
 
-.tabs { display: flex; gap: 6px; margin-bottom: 12px; overflow-x: auto; scrollbar-width: none; }
-.tab { padding: 6px 12px; border-radius: 999px; background: var(--card); font-size: 13.5px; font-weight: 500; white-space: nowrap; cursor: pointer; }
-.tab.on { background: var(--accent); color: var(--accent-text); }
-.alloc .head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-.stance { font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 7px; }
-.stance.OW { background: var(--green-bg); color: var(--green); }
-.stance.UW { background: var(--red-bg); color: var(--red); }
-.stance.Nplus, .stance.Nminus { background: var(--amber-bg); color: var(--amber); }
-.tickers { display: flex; flex-wrap: wrap; gap: 5px; margin: 7px 0; }
-.tickers code { font-size: 12.5px; }
-.hist { font-size: 13px; display: flex; align-items: center; gap: 6px; color: var(--muted); }
-.hist .ok { color: var(--green); font-weight: 700; } .hist .bad { color: var(--red); font-weight: 700; }
-.adj { padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
-.adj:last-child { border-bottom: 0; }
-.mv { font-weight: 700; margin-inline-end: 4px; }
-.list { margin: 0; padding-inline-start: 18px; } .list li { margin-bottom: 6px; }
-.foot { text-align: center; font-size: 12px; color: var(--muted); margin-top: 18px; }
-.err { text-align: center; padding: 40px 10px; }
-.sk { height: 120px; border-radius: var(--radius); background: linear-gradient(90deg, var(--card), var(--soft), var(--card)); background-size: 200% 100%; animation: sk 1.2s infinite; margin-bottom: 12px; }
-@keyframes sk { to { background-position: -200% 0; } }
+.alloc-group { padding: 6px 16px; }
+.alloc-group > .group-label { margin: 10px 0 2px; }
+.item { padding: 13px 0; border-top: 1px solid var(--hair); }
+.group-label + .item { border-top: 0; }
+.item .head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.tickers { display: flex; flex-wrap: wrap; gap: 5px; margin: 8px 0; }
+.why { font-size: 14.5px; }
+.hist { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; font-size: 13px; margin-top: 8px; }
+.verdict { display: inline-flex; align-items: center; gap: 3px; font-weight: 600; }
+.verdict.ok { color: var(--up); } .verdict.bad { color: var(--down); }
+.adj { display: flex; gap: 10px; align-items: flex-start; padding: 11px 0; border-top: 1px solid var(--hair); font-size: 14.5px; }
+.adj:first-of-type { border-top: 0; padding-top: 0; }
+.moves { display: flex; flex-direction: column; gap: 4px; flex: none; }
+.mv { display: inline-flex; align-items: center; gap: 2px; font-weight: 600; font-size: 13px; }
+.list { margin: 0; padding-inline-start: 20px; } .list li { margin-bottom: 8px; } .list li::marker { color: var(--muted); }
+.foot { text-align: center; font-size: 12px; color: var(--muted); margin-top: 20px; line-height: 1.7; }
+.err { text-align: center; padding: 36px 16px; }
+.sk { height: 120px; border-radius: var(--radius); background: var(--surface); margin-bottom: 12px; opacity: .6; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tap, .cell, .tab, td { transition: none; }
+  .tap:active { transform: none; }
+}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-market" viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M7 16v-5"/><path d="M12 16V6"/><path d="M17 16v-8"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-news" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 9h8M8 12.5h8M8 16h5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 18V6M7 11l5-5 5 5"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 6v12M7 13l5 5 5-5"/></symbol>
+  <symbol id="i-flat" viewBox="0 0 24 24"><path d="M6 12h12"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17h.01"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+  <symbol id="i-repeat" viewBox="0 0 24 24"><path d="M5 10a6 6 0 0 1 10.5-3.5L18 9"/><path d="M18 5v4h-4"/><path d="M19 14a6 6 0 0 1-10.5 3.5L6 15"/><path d="M6 19v-4h4"/></symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24"><path d="M10 3h4M10.5 3v6L5 19a1.5 1.5 0 0 0 1.3 2h11.4a1.5 1.5 0 0 0 1.3-2L13.5 9V3"/><path d="M7.5 15h9"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l4-5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-dot" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5"/></symbol>
+  <symbol id="i-mark" viewBox="0 0 24 24"><path d="M3 17l5-6 4 3 4-7 5 6"/><path d="M3 21h18"/></symbol>
+</svg>
 <div id="app"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
 
 <script>
 "use strict";
 const tg = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData !== undefined
   ? window.Telegram.WebApp : null;
+function applyTgTheme() {
+  document.documentElement.classList.remove("tg-dark", "tg-light");
+  document.documentElement.classList.add(tg.colorScheme === "dark" ? "tg-dark" : "tg-light");
+}
 if (tg && tg.platform && tg.platform !== "unknown") {
   document.documentElement.classList.add("tg");
+  applyTgTheme();
   tg.ready(); tg.expand();
-  try { tg.setHeaderColor("bg_color"); tg.setBackgroundColor("bg_color"); } catch (e) {}
+  try { tg.setHeaderColor("secondary_bg_color"); tg.setBackgroundColor("secondary_bg_color"); } catch (e) {}
+  tg.onEvent("themeChanged", applyTgTheme);
 }
+const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-let R = null;          // report data
+let R = null;           // current report
+let PREV = null;        // previous report, kept for one render to highlight changed values
 let allocFilter = "all";
+let lastRoute = null;
 
 /* ---------- helpers ---------- */
 const $ = (sel) => document.querySelector(sel);
@@ -167,46 +262,77 @@ function html(s) {
   const decoded = String(s ?? "").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&");
   return esc(decoded).replace(/&lt;(\/?)(b|i|code)&gt;/g, "<$1$2>");
 }
+const icon = (name, cls = "") => `<svg class="icon ${cls}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 function fmt(v, unit, signed) {
   if (v === null || v === undefined) return "—";
   const a = Math.abs(v);
-  let s = a >= 1000 ? Math.round(a).toLocaleString("en-US") : a.toFixed(2);
-  const sign = v < 0 ? "-" : (signed && v > 0 ? "+" : "");
+  const s = a >= 1000 ? Math.round(a).toLocaleString("en-US") : a.toFixed(2);
+  const sign = v < 0 ? "−" : (signed && v > 0 ? "+" : "");
   if (unit === "$") return `${sign}$${s}`;
-  return `${sign}${s}${unit === "%" ? "%" : unit === "bp" ? "bp" : unit === "pp" ? "pp" : unit === "K" ? "K" : ""}`;
+  const suf = { "%": "%", bp: "bp", pp: "pp", K: "K" }[unit] || "";
+  return `${sign}${s}${suf}`;
 }
 const num = (v, unit, signed) => `<span class="num">${esc(fmt(v, unit, signed))}</span>`;
-const OPS = { ">": "&gt;", "<": "&lt;", ">=": "≥", "<=": "≤", "==": "=" };
+const OPS_HE = { ">": "מעל ", "<": "מתחת ל-", ">=": "לפחות ", "<=": "עד ", "==": "שווה ל-" };
 const SEV = { critical: "קריטי", warning: "אזהרה", info: "מעקב" };
+const SEV_ICON = { critical: "alert", warning: "alert", info: "info" };
 const STANCE = { OW: "משקל יתר", "N+": "סלקטיבי", "N-": "ניטרלי-שלילי", UW: "משקל חסר" };
-const stanceCls = (s) => s === "N+" ? "Nplus" : s === "N-" ? "Nminus" : s;
+const stanceCls = (s) => (s === "N+" ? "Nplus" : s === "N-" ? "Nminus" : s);
+const cleanLabel = (l) => String(l || "").replace(/\s*\(.*?\)/g, "").replace(/^פרוקסי\s+/, "");
 function haptic() { try { tg && tg.HapticFeedback.impactOccurred("light"); } catch (e) {} }
-function sig(name) { return (R.signals || {})[name] || {}; }
+const sig = (name) => (R.signals || {})[name] || {};
 
 /* ---------- routing ---------- */
+const ORDER = ["", "market", "regime", "alloc", "exec", "news", "data"];
 const ROUTES = { "": home, market, regime, alloc, exec, news, data };
 function go(route) { haptic(); location.hash = route ? "#/" + route : "#/"; }
+const currentRoute = () => (location.hash.replace(/^#\/?/, "") || "").split("?")[0];
 function render(keepScroll) {
-  const route = (location.hash.replace(/^#\/?/, "") || "").split("?")[0];
+  const route = currentRoute();
   const view = ROUTES[route] || home;
   const y = window.scrollY;
-  $("#app").innerHTML = view();
+  const app = $("#app");
+  app.innerHTML = view();
   window.scrollTo(0, keepScroll ? y : 0);
   if (tg) { route ? tg.BackButton.show() : tg.BackButton.hide(); }
   bind();
+  // The one authored motion: screens slide in the reading direction (RTL: deeper comes from the left).
+  if (lastRoute !== null && lastRoute !== route && app.animate) {
+    const forward = ORDER.indexOf(route) > ORDER.indexOf(lastRoute);
+    const dx = REDUCED ? 0 : (forward ? -14 : 14);
+    app.animate(
+      [{ opacity: 0, transform: `translateX(${dx}px)` }, { opacity: 1, transform: "translateX(0)" }],
+      { duration: 220, easing: "cubic-bezier(0.23, 1, 0.32, 1)" });
+  }
+  lastRoute = route;
+  flashChanged();
 }
 function bind() {
   document.querySelectorAll("[data-go]").forEach((el) => el.addEventListener("click", () => go(el.dataset.go)));
-  document.querySelectorAll("[data-tab]").forEach((el) => el.addEventListener("click", () => { allocFilter = el.dataset.tab; haptic(); render(true); }));
+  document.querySelectorAll("[data-tab]").forEach((el) => el.addEventListener("click", () => {
+    allocFilter = el.dataset.tab; haptic(); render(true);
+  }));
   const b = $(".back"); if (b) b.addEventListener("click", () => history.back());
 }
 if (tg) tg.BackButton.onClick(() => history.back());
 window.addEventListener("hashchange", () => render(false));
 
-/* ---------- views ---------- */
-const PHASE = {
-  pre: ["טרום מסחר", "live"], open: ["מסחר פתוח", "live"], post: ["אחרי סגירה", ""], closed: ["שוק סגור", ""],
-};
+// After an auto-refresh, briefly tint the values that actually changed: state, not decoration.
+function flashChanged() {
+  if (!PREV) return;
+  const before = PREV.signals || {}, after = R.signals || {};
+  document.querySelectorAll("[data-sig]").forEach((el) => {
+    const a = before[el.dataset.sig], b = after[el.dataset.sig];
+    if (a && b && a.value !== b.value) {
+      el.classList.add("flash");
+      setTimeout(() => el.classList.remove("flash"), 1400);
+    }
+  });
+  PREV = null;
+}
+
+/* ---------- shared pieces ---------- */
+const PHASE = { pre: ["טרום מסחר", "live"], open: ["מסחר פתוח", "live"], post: ["אחרי סגירה", ""], closed: ["שוק סגור", ""] };
 const SLOT = { morning: "דוח בוקר", premarket: "עדכון טרום מסחר", postclose: "עדכון אחרי סגירה", manual: "עדכון" };
 function ago(iso) {
   const min = Math.max(0, Math.round((Date.now() - new Date(iso).getTime()) / 60000));
@@ -215,156 +341,221 @@ function ago(iso) {
   const h = Math.round(min / 60);
   return h < 24 ? `לפני ${h} שע׳` : `לפני ${Math.round(h / 24)} ימים`;
 }
-function header(title) {
+function header(title, isHome) {
   const m = R.meta;
   const [phaseHe, cls] = PHASE[m.market_phase] || (m.market_open ? PHASE.open : PHASE.closed);
-  const status = `<span class="pill"><span class="dot ${cls}"></span>${phaseHe} · <span class="num">${esc(m.ny_time.split(" ")[1])} ET</span></span>`;
   const when = new Date(m.generated_at).toLocaleTimeString("he-IL", { hour: "2-digit", minute: "2-digit" });
-  return `<div class="top"><div><h1>${title}</h1><div class="sub">${esc(SLOT[m.slot] || "עדכון")} · <span class="num">${esc(when)}</span> (<span class="ago">${esc(ago(m.generated_at))}</span>) · נתוני שוק <span class="num">${esc(m.market_date)}</span></div></div>${status}</div>`;
+  const back = isHome ? "" : `<div class="back" role="button" tabindex="0">${icon("back", "sm")}לסיכום</div>`;
+  return `${back}<div class="top"><div class="brand">${isHome ? `<div class="mark">${icon("mark")}</div>` : ""}<div>
+      <h1>${title}</h1>
+      <div class="sub">${esc(SLOT[m.slot] || "עדכון")} · <span class="num">${esc(when)}</span> · <span class="ago">${esc(ago(m.generated_at))}</span></div></div></div>
+    <span class="status"><span class="dot ${cls}"></span>${phaseHe} · <span class="num">${esc(m.ny_time.split(" ")[1])} ET</span></span></div>`;
 }
-const back = () => `<div class="back">חזרה לסיכום</div>`;
 
+// The ECB threshold matrix, drawn: x = output gap (≈ CBO), y = core PCE. Four regimes, one dot.
+function regimeMap(g, large) {
+  const pce = g.inputs.find((i) => i.signal === "pce_yoy");
+  const gap = g.inputs.find((i) => i.signal === "output_gap_proxy");
+  if (!pce || !gap) return "";
+  const W = 320, H = large ? 200 : 170, L = 46, Rr = 8, T = 8, B = 28;
+  const xMin = -2, xMax = 2, yMin = 0, yMax = 5;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const X = (v) => L + (clamp(v, xMin, xMax) - xMin) / (xMax - xMin) * (W - L - Rr);
+  const Y = (v) => T + (1 - (clamp(v, yMin, yMax) - yMin) / (yMax - yMin)) * (H - T - B);
+  const x0 = X(0), y2 = Y(2), px = X(gap.value), py = Y(pce.value);
+  const col = (c) => `var(--${c.toLowerCase()})`;
+  const quads = [
+    ["R2", L, T, x0 - L, y2 - T, "רפיון אינפלציוני"], ["R4", x0, T, W - Rr - x0, y2 - T, "גאות אינפלציונית"],
+    ["R1", L, y2, x0 - L, H - B - y2, "התאוששות"], ["R3", x0, y2, W - Rr - x0, H - B - y2, "צמיחה בלי אינפלציה"],
+  ].map(([c, x, y, w, h, he]) => {
+    const on = c === g.code;
+    const tx = x + w / 2, ty = y + h / 2;
+    return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${col(c)}" fill-opacity="${on ? 0.15 : 0.035}"/>
+      <text x="${tx}" y="${ty - 2}" text-anchor="middle" font-size="12" font-weight="700" fill="${col(c)}" fill-opacity="${on ? 1 : 0.6}">${c}</text>
+      <text x="${tx}" y="${ty + 13}" text-anchor="middle" font-size="10.5" fill="currentColor" fill-opacity="${on ? 0.8 : 0.45}" direction="rtl" unicode-bidi="embed">${he}</text>`;
+  }).join("");
+  const ticksY = [0, 2, 5].map((v) => `<text x="${L - 6}" y="${Y(v) + 3.5}" text-anchor="end" font-size="10" fill="currentColor" fill-opacity=".5">${v}%</text>`).join("");
+  const ticksX = [-2, 0, 2].map((v) => `<text x="${X(v)}" y="${H - B + 14}" text-anchor="middle" font-size="10" fill="currentColor" fill-opacity=".5">${v > 0 ? "+" : ""}${v}</text>`).join("");
+  return `<svg class="map" viewBox="0 0 ${W} ${H}" role="img" dir="ltr"
+      aria-label="מפת רג'ימים: אינפלציית ליבה ${pce.value.toFixed(2)} אחוז, פער תוצר ${gap.value.toFixed(2)}">
+    ${quads}
+    <rect x="${L}" y="${T}" width="${W - L - Rr}" height="${H - T - B}" rx="2" fill="none" stroke="currentColor" stroke-opacity=".14"/>
+    <line x1="${x0}" y1="${T}" x2="${x0}" y2="${H - B}" stroke="currentColor" stroke-opacity=".35" stroke-dasharray="3 3"/>
+    <line x1="${L}" y1="${y2}" x2="${W - Rr}" y2="${y2}" stroke="currentColor" stroke-opacity=".35" stroke-dasharray="3 3"/>
+    ${ticksY}${ticksX}
+    <text x="${(L + W - Rr) / 2}" y="${H - 1}" text-anchor="middle" font-size="10" fill="currentColor" fill-opacity=".55" direction="rtl" unicode-bidi="embed">פער תוצר (≈ הערכת CBO)</text>
+    <text transform="translate(9 ${(T + H - B) / 2}) rotate(-90)" text-anchor="middle" font-size="10" fill="currentColor" fill-opacity=".55" direction="rtl" unicode-bidi="embed">אינפלציית ליבה</text>
+    <line x1="${px}" y1="${py}" x2="${x0}" y2="${py}" stroke="${col(g.code)}" stroke-width="1.5" stroke-opacity=".6"/>
+    <circle cx="${px}" cy="${py}" r="10" fill="${col(g.code)}" fill-opacity=".18"/>
+    <circle cx="${px}" cy="${py}" r="4.5" fill="${col(g.code)}" stroke="var(--surface)" stroke-width="2"/>
+  </svg>`;
+}
+
+/* ---------- views ---------- */
 function home() {
   const g = R.regime, s = R.summary;
-  const kpis = R.kpis.map((k) => {
-    let c = "";
-    if (k.change_value !== null && k.change_value !== undefined) {
-      const dir = k.change_value > 0 ? "up" : k.change_value < 0 ? "down" : "";
-      c = `<div class="c"><span class="${dir}">${k.change_value > 0 ? "▲" : k.change_value < 0 ? "▼" : "•"}</span> ${num(k.change_value, k.change_unit, true)} ${esc(k.change_label || "")}</div>`;
-    } else if (k.note_he) c = `<div class="c">${esc(k.note_he)}</div>`;
-    return `<div class="kpi"><div class="k">${esc(k.label_he)}${k.estimate ? '<span class="est">≈</span>' : ""}</div><div class="v">${num(k.value, k.unit, k.signed)}</div>${c}</div>`;
-  }).join("");
 
-  let hero = `<div class="card"><h2>מצב הכלכלה</h2><p class="muted">לא נקבע — חסרים נתונים: ${esc((R.regime_missing || []).join(", "))}</p></div>`;
+  let regimePanel = `<div class="panel"><h2>מצב הכלכלה</h2><p class="muted" style="margin-top:6px">לא נקבע — חסרים נתונים: ${esc((R.regime_missing || []).join(", "))}</p></div>`;
   if (g) {
-    const close = g.inputs.reduce((a, b) => Math.abs(a.value - a.threshold) <= Math.abs(b.value - b.threshold) ? a : b);
-    const pct = Math.max(6, Math.min(100, (g.margin / 1.0) * 100));
     const sahm = sig("sahm_level").value;
-    hero = `<div class="card hero tap" data-go="regime">
-      <div class="row between"><span class="badge ${esc(g.code)}">${esc(g.code)}</span><span class="chev"></span></div>
-      <div class="title">${esc(g.short_he)}</div>
+    regimePanel = `<div class="panel tap" data-go="regime" role="button" tabindex="0">
+      <div class="row between"><div class="regime-head"><span class="badge ${esc(g.code)}">${esc(g.code)}</span><span class="meta">מצב הכלכלה</span></div><span class="chev">${icon("chev")}</span></div>
+      <div class="regime-title">${esc(g.short_he)}</div>
       <p>${esc(g.summary_he)}</p>
-      <div class="meter"><div class="bar"><div class="fill" style="width:${pct}%"></div></div>
-        <div class="lbl"><span>מרחק מהיפוך רג'ים: ${num(g.margin, "", false)}</span><span>${esc(close.label.replace(/\s*\(.*?\)/g, "").replace(/^פרוקסי\s+/, ""))}${close.signal === "output_gap_proxy" ? " ≈" : ""}</span></div></div>
-      ${sahm !== undefined ? `<p class="small muted" style="margin-top:8px">🔬 בדיקה נמדדת: כלל סאם ${num(sahm, "", false)} (סף מיתון <span class="num">0.50</span>)</p>` : ""}
-    </div>`;
+      ${regimeMap(g, false)}
+      <div class="facts">
+        <div class="fact">${icon("gauge", "sm")}<span>${html(s.fragility)}</span></div>
+        ${sahm !== undefined ? `<div class="fact">${icon("flask", "sm")}<span>בדיקה נמדדת: כלל סאם ${num(sahm, "", false)}, סף מיתון <span class="num">0.50</span></span></div>` : ""}
+      </div></div>`;
   }
 
-  const alertChips = R.alerts.length
-    ? R.alerts.map((a) => `<span class="chip ${a.severity}">${esc(a.short_he)}${a.edge ? " · על הסף" : ""}</span>`).join("")
-    : `<span class="chip">אין התראות פעילות</span>`;
-  const stateChips = R.states.map((a) => `<span class="chip state">🔁 ${esc(a.short_he)}</span>`).join("");
+  const alertRows = R.alerts.length
+    ? R.alerts.map((a) => `<div class="alert-row"><span class="sev ${a.severity}">${icon(SEV_ICON[a.severity])}</span>
+        <div class="grow"><b>${esc(a.short_he)}</b></div>${a.edge ? `<span class="pill edge">על הסף</span>` : ""}<span class="pill ${a.severity}">${SEV[a.severity]}</span></div>`).join("")
+    : `<div class="alert-row"><span class="sev info">${icon("check")}</span><div class="grow">אין התראות פעילות</div></div>`;
+  const stateRows = R.states.map((a) => `<div class="alert-row"><span class="sev state">${icon("repeat")}</span>
+      <div class="grow">${esc(a.short_he)}</div><span class="pill state">מצב מתמשך</span></div>`).join("");
 
-  const ow = R.allocation.items.filter((i) => i.stance === "OW");
-  const uw = R.allocation.items.filter((i) => i.stance === "UW");
-  // Same lists as the Telegram summary: split categories marked "(חלקית)" on their majority side.
+  const tape = R.kpis.map((k) => {
+    let c = "";
+    if (k.change_value !== null && k.change_value !== undefined) {
+      const dir = k.change_value > 0 ? "up" : k.change_value < 0 ? "down" : "flat";
+      c = `<div class="c"><span class="${dir}">${icon(dir, "sm")}</span>${num(k.change_value, k.change_unit, true)}<span>${esc(k.change_label || "")}</span></div>`;
+    } else if (k.note_he) c = `<div class="c">${esc(k.note_he)}</div>`;
+    return `<div class="cell" data-sig="${esc(k.signal)}"><div class="k">${esc(k.label_he)}${k.estimate ? '<span class="est">≈</span>' : ""}</div><div class="v">${num(k.value, k.unit, k.signed)}</div>${c}</div>`;
+  }).join("");
+
   const split = (txt) => (txt && txt !== "—" ? txt.split(", ") : []);
+  const ow = R.allocation.items.filter((i) => i.stance === "OW").length;
+  const uw = R.allocation.items.filter((i) => i.stance === "UW").length;
+  const okCount = R.data_quality.validation.filter((v) => v.ok).length;
+  const nav = [
+    ["market", "market", "שוק", "1", `${R.market_notes.length} תצפיות · ${R.market_groups.reduce((n, gg) => n + gg.items.length, 0)} נתונים`],
+    ["regime", "compass", "רג'ים ואנומליות", "2", `${g ? g.code : "—"} · ${R.alerts.length} התראות · ${R.states.length} מצבים`],
+    ["alloc", "layers", "הקצאה ונימוקים", "3", `${ow} להגדיל · ${uw} להקטין · ${R.allocation.adjustments.length} התאמות`],
+    ["exec", "target", "ביצוע וסיכון", "4", `${R.execution.actions.length} פעולות · סגנון וסינון מניות`],
+    ["news", "news", "כותרות", "", R.news.items.length ? `${R.news.items.length} כותרות` : "אין כותרות עדכניות"],
+    ["data", "shield", "איכות ומקורות", "", `${okCount} אומתו מול מקור רשמי`],
+  ].map(([r, ic, t, step, d]) => `<div class="nav-item tap" data-go="${r}" role="button" tabindex="0"><span class="nav-ic">${icon(ic)}</span>
+      <div class="grow"><div class="t">${step ? `<span class="step">שלב ${step}</span>` : ""}${t}</div><div class="d">${esc(d)}</div></div><span class="chev">${icon("chev")}</span></div>`).join("");
 
-  const navItems = [
-    ["market", "📊", "1 · שוק", `${R.market_notes.length} תצפיות · ${R.market_groups.reduce((n, g) => n + g.items.length, 0)} נתונים`],
-    ["regime", "🧭", "2 · רג'ים ואנומליות", `${g ? g.code : "—"} · ${R.alerts.length} התראות · ${R.states.length} מצבים`],
-    ["alloc", "🧩", "3 · הקצאה ונימוקים", `${ow.length} להגדיל · ${uw.length} להקטין · ${R.allocation.adjustments.length} התאמות`],
-    ["exec", "🎯", "4 · ביצוע וסיכון", `${R.execution.actions.length} פעולות · סגנון וסינון מניות`],
-    ["news", "📰", "כותרות", R.news.items.length ? `${R.news.items.length} כותרות` : "אין כותרות עדכניות"],
-    ["data", "🔍", "איכות ומקורות נתונים", `${R.data_quality.validation.filter((v) => v.ok).length} אומתו מול מקור רשמי`],
-  ].map(([r, ic, t, d]) => `<div class="item tap" data-go="${r}"><div class="ic">${ic}</div><div class="grow"><div class="t">${t}</div><div class="d">${esc(d)}</div></div><span class="chev"></span></div>`).join("");
-
-  return header("דוח מאקרו יומי") + hero +
-    `<div class="card tap" data-go="regime"><div class="row between"><h2 style="margin:0">התראות</h2><span class="chev"></span></div>
-      <div class="chips" style="margin-top:10px">${alertChips}</div>
-      ${stateChips ? `<div class="small muted" style="margin:10px 0 6px">מצבים מתמשכים</div><div class="chips">${stateChips}</div>` : ""}</div>
-    <div class="kpis" style="margin-bottom:12px">${kpis}</div>
-    <div class="card tap" data-go="alloc"><div class="row between"><h2 style="margin:0">מה עושים</h2><span class="chev"></span></div>
-      <div class="small muted" style="margin:10px 0 6px">להגדיל</div><div class="chips">${split(s.overweight).map((l) => `<span class="chip ow">${esc(l)}</span>`).join("") || "—"}</div>
-      <div class="small muted" style="margin:10px 0 6px">להקטין</div><div class="chips">${split(s.underweight).map((l) => `<span class="chip uw">${esc(l)}</span>`).join("") || "—"}</div></div>
-    <div class="card nav">${navItems}</div>
-    <div class="foot"><bdi dir="ltr">Macro Sentinel v${esc(R.meta.version)}</bdi><br>≈ = הערכה או מודל · פלט של מסגרת ניתוח, לא ייעוץ השקעות</div>`;
+  return header("דוח מאקרו", true) + regimePanel +
+    `<div class="panel tap" data-go="regime" role="button" tabindex="0"><div class="row between" style="margin-bottom:10px"><h2>התראות</h2><span class="chev">${icon("chev")}</span></div>${alertRows}${stateRows}</div>
+     <div class="tape">${tape}</div>
+     <div class="panel tap" data-go="alloc" role="button" tabindex="0"><div class="row between"><h2>מה עושים</h2><span class="chev">${icon("chev")}</span></div>
+       <div class="group-label up" style="margin-top:12px">${icon("up", "sm")}להגדיל</div><div class="chips">${split(s.overweight).map((l) => `<span class="chip ow">${esc(l)}</span>`).join("") || "—"}</div>
+       <div class="group-label down">${icon("down", "sm")}להקטין</div><div class="chips">${split(s.underweight).map((l) => `<span class="chip uw">${esc(l)}</span>`).join("") || "—"}</div></div>
+     <div class="panel">${nav}</div>
+     <div class="foot"><bdi dir="ltr">Macro Sentinel v${esc(R.meta.version)}</bdi><br>≈ הערכה או מודל · פלט של מסגרת ניתוח, לא ייעוץ השקעות</div>`;
 }
 
 function market() {
-  const notes = R.market_notes.map((n) => `<div class="note">${html(n)}</div>`).join("") || `<p class="muted">אין תנועה חריגה בשוק.</p>`;
-  const groups = R.market_groups.map((g) => `<div class="card"><h2>${esc(g.title_he)}</h2><table>${g.items.map((it) => {
+  const notes = R.market_notes.map((n) => `<div class="note">${icon("dot", "sm")}<span>${html(n)}</span></div>`).join("")
+    || `<p class="muted">אין תנועה חריגה בשוק.</p>`;
+  const groups = R.market_groups.map((gg) => `<div class="panel"><h2>${esc(gg.title_he)}</h2><table>${gg.items.map((it) => {
     const s = sig(it.signal);
-    return `<tr><td>${esc(it.label)}${it.estimate ? '<span class="est">≈</span>' : ""}<span class="src">${esc(s.source || "")}${s.date ? " · " + esc(s.date) : ""}</span></td><td class="v">${num(it.value, it.unit, it.signed)}</td></tr>`;
+    return `<tr><td>${esc(it.label)}${it.estimate ? '<span class="est">≈</span>' : ""}<span class="src">${esc(s.source || "")}${s.date ? " · " + esc(s.date) : ""}</span></td><td class="v" data-sig="${esc(it.signal)}">${num(it.value, it.unit, it.signed)}</td></tr>`;
   }).join("")}</table></div>`).join("");
-  return back() + header("1 · שוק") + `<div class="card"><h2>מה בולט היום</h2>${notes}</div>` + groups;
+  return header("שוק") + `<div class="panel"><h2>מה בולט היום</h2>${notes}</div>` + groups;
 }
 
 function evidence(list) {
-  return `<div class="ev">${list.map((e) => `<span>${esc(e.label.replace(/\s*\(.*?\)/g, ""))}: <span class="num">${esc(fmt(e.value, "", false))} ${OPS[e.op] || esc(e.op)} ${esc(e.threshold)}</span></span>`).join("")}</div>`;
+  return `<div class="ev">${list.map((e) => `<span>${esc(cleanLabel(e.label))}: <b class="num">${esc(fmt(e.value, "", false))}</b> · סף: ${OPS_HE[e.op] || ""}<span class="num">${esc(e.threshold)}</span></span>`).join("")}</div>`;
 }
-function ruleCard(a) {
-  return `<div class="card alert ${a.kind === "state" ? "" : a.severity}">
-    <div class="row between wrap"><h3 style="margin:0">${esc(a.short_he)}</h3><span class="chip ${a.kind === "state" ? "state" : a.severity}">${a.kind === "state" ? "מצב מתמשך" : SEV[a.severity]}${a.edge ? " · על הסף" : ""}</span></div>
+function ruleBlock(a) {
+  const isState = a.kind === "state";
+  return `<div class="panel rule">
+    <div class="row"><span class="sev ${isState ? "state" : a.severity}">${icon(isState ? "repeat" : SEV_ICON[a.severity])}</span>
+      <h3 class="grow">${esc(a.short_he)}</h3>${a.edge ? `<span class="pill edge">על הסף</span>` : ""}<span class="pill ${isState ? "state" : a.severity}">${isState ? "מצב מתמשך" : SEV[a.severity]}</span></div>
     ${evidence(a.evidence)}<p>${html(a.synthesis_he)}</p>
-    ${a.risk_he ? `<p class="small"><b>מה לעשות:</b> ${html(a.risk_he)}</p>` : ""}</div>`;
+    ${a.risk_he ? `<div class="todo"><b>מה לעשות:</b> ${html(a.risk_he)}</div>` : ""}</div>`;
 }
 function regime() {
   const g = R.regime;
-  let top = `<div class="card"><p>רג'ים לא נקבע.</p></div>`;
+  let top = `<div class="panel"><p>רג'ים לא נקבע.</p></div>`;
   if (g) {
-    top = `<div class="card"><div class="row"><span class="badge ${esc(g.code)}">${esc(g.code)}</span><h2 style="margin:0">${esc(g.short_he)}</h2></div>
-      <p style="margin-top:10px">${html(g.synthesis_he)}</p>
-      <table>${g.inputs.map((i) => `<tr><td>${esc(i.label)}${i.signal === "output_gap_proxy" ? '<span class="est">≈</span>' : ""}<span class="src">סף: <span class="num">${OPS[i.op]} ${esc(i.threshold)}</span></span></td><td class="v">${num(i.value, "", true)}</td></tr>`).join("")}</table>
-      <p class="small muted" style="margin-top:8px">${html(R.summary.fragility)}</p></div>`;
+    top = `<div class="panel"><div class="regime-head"><span class="badge ${esc(g.code)}">${esc(g.code)}</span><h2>${esc(g.short_he)}</h2></div>
+      ${regimeMap(g, true)}
+      <p>${html(g.synthesis_he)}</p>
+      <table style="margin-top:12px">${g.inputs.map((i) => `<tr><td>${esc(cleanLabel(i.label))}${i.signal === "output_gap_proxy" ? '<span class="est">≈</span>' : ""}<span class="src">סף: ${OPS_HE[i.op] || ""}<span class="num">${esc(i.threshold)}</span></span></td><td class="v" data-sig="${esc(i.signal)}">${num(i.value, "", true)}</td></tr>`).join("")}</table>
+      <div class="facts"><div class="fact">${icon("gauge", "sm")}<span>${html(R.summary.fragility)}</span></div></div></div>`;
   }
-  const alerts = R.alerts.length ? R.alerts.map(ruleCard).join("") : `<div class="card"><p>✅ אין התראות פעילות.</p></div>`;
-  const states = R.states.map(ruleCard).join("");
-  return back() + header("2 · רג'ים ואנומליות") + top +
-    `<h2 style="margin:16px 4px 10px">התראות</h2>${alerts}` +
-    (states ? `<h2 style="margin:16px 4px 10px">מצבים מתמשכים</h2><p class="small muted" style="margin:0 4px 10px">תנאים שנמשכים שבועות-חודשים. מוצגים, אבל לא נשלחים כהתראה.</p>${states}` : "");
+  const alerts = R.alerts.length ? R.alerts.map(ruleBlock).join("")
+    : `<div class="panel"><div class="row"><span class="sev info">${icon("check")}</span><span>אין התראות פעילות.</span></div></div>`;
+  const states = R.states.map(ruleBlock).join("");
+  return header("רג'ים ואנומליות") + top +
+    `<div class="section-title"><h2>התראות</h2><span class="meta">${R.alerts.length}</span></div>${alerts}` +
+    (states ? `<div class="section-title"><h2>מצבים מתמשכים</h2><span class="meta">${R.states.length}</span></div>
+      <p class="meta" style="margin:-4px 4px 10px">תנאים שנמשכים שבועות או חודשים. מוצגים, אבל לא נשלחים כהתראה.</p>${states}` : "");
 }
 
 function alloc() {
   const code = R.regime ? R.regime.code : "";
   const tabs = [["all", "הכל"], ["OW", "להגדיל"], ["N+", "סלקטיבי"], ["UW", "להקטין"]]
-    .map(([k, l]) => `<div class="tab ${allocFilter === k ? "on" : ""}" data-tab="${k}">${l}</div>`).join("");
-  const items = R.allocation.items.filter((i) => allocFilter === "all" || i.stance === allocFilter).map((i) => {
+    .map(([k, l]) => `<div class="tab ${allocFilter === k ? "on" : ""}" data-tab="${k}" role="tab" aria-selected="${allocFilter === k}" tabindex="0">${l}</div>`).join("");
+  const itemHtml = (i) => {
     const hist = i.history === null ? "" :
-      `<div class="hist"><span>היסטוריה:</span> <b>${num(i.history, "%", true)}</b> <span class="${i.agrees ? "ok" : "bad"}">${i.agrees ? "✓ תמכה בהמלצה" : "✗ לא תמכה בהמלצה"}</span></div>
-       <div class="src">תשואה עודפת לחודש מול <bdi dir="ltr">S&amp;P 500</bdi> בימי ${esc(code)}, לפי <bdi dir="ltr">${esc(i.history_ticker)}</bdi></div>`;
-    return `<div class="card alloc"><div class="head"><h3 style="margin:0">${esc(i.label)}</h3><span class="stance ${stanceCls(i.stance)}">${STANCE[i.stance]}</span></div>
-      <div class="tickers">${i.all_tickers.map((t) => `<code>${esc(t)}</code>`).join("")}</div>
-      <p>${esc(i.why)}</p>${hist}</div>`;
-  }).join("");
-  const neutral = R.allocation.neutral.length ? `<div class="card"><h3>ניטרלי</h3><div class="chips">${R.allocation.neutral.map((n) => `<span class="chip">${esc(n.label)}</span>`).join("")}</div></div>` : "";
-  const adj = R.allocation.adjustments.map((a) => `<div class="adj">${a.overweight.length ? `<span class="mv up">↑ <code>${esc(a.overweight.join("/"))}</code></span>` : ""}${a.underweight.length ? `<span class="mv down">↓ <code>${esc(a.underweight.join("/"))}</code></span>` : ""}<div>${html(a.text_he)}</div></div>`).join("");
-  return back() + header("3 · הקצאה ונימוקים") +
-    `<p class="small muted" style="margin:0 4px 10px">היסטוריה = תשואה עודפת ממוצעת לחודש מול <code>SPX</code> בימי הרג'ים הנוכחי, <span class="num">2016-2026</span>, לפי ETF מייצג.</p>
-    <div class="tabs">${tabs}</div>${items || '<div class="card"><p class="muted">אין פריטים בסינון הזה.</p></div>'}${allocFilter === "all" ? neutral : ""}
-    ${adj && allocFilter === "all" ? `<div class="card"><h2>התאמות פעילות (${R.allocation.adjustments.length})</h2><p class="small muted">חוקי "אם-אז" שמגיבים לרמות השוק עכשיו, מעל ההקצאה הבסיסית.</p>${adj}</div>` : ""}`;
+      `<div class="hist"><span class="muted">היסטוריה ב-${esc(code)}:</span><b>${num(i.history, "%", true)}</b><span class="muted">לחודש מול</span><span class="num muted">S&amp;P 500</span>
+        <span class="verdict ${i.agrees ? "ok" : "bad"}">${icon(i.agrees ? "check" : "x", "sm")}${i.agrees ? "תמכה" : "לא תמכה"}</span>
+        <span class="meta">· לפי <span class="num">${esc(i.history_ticker)}</span></span></div>`;
+    return `<div class="item"><div class="head"><h3>${esc(i.label)}</h3><span class="pill ${stanceCls(i.stance)}">${STANCE[i.stance]}</span></div>
+      <div class="tickers">${i.all_tickers.map((t) => `<span class="tk">${esc(t)}</span>`).join("")}</div>
+      <p class="why">${esc(i.why)}</p>${hist}</div>`;
+  };
+  const groups = [["OW", "להגדיל", "up"], ["N+", "סלקטיבי", "dot"], ["N-", "ניטרלי-שלילי", "dot"], ["UW", "להקטין", "down"]]
+    .filter(([st]) => allocFilter === "all" || allocFilter === st)
+    .map(([st, he, ic]) => {
+      const items = R.allocation.items.filter((i) => i.stance === st);
+      if (!items.length) return "";
+      const cls = st === "OW" ? "up" : st === "UW" ? "down" : "";
+      return `<div class="panel alloc-group"><div class="group-label ${cls}">${icon(ic, "sm")}${he}<span class="meta">${items.length}</span></div>${items.map(itemHtml).join("")}</div>`;
+    }).join("");
+  const neutral = R.allocation.neutral.length && allocFilter === "all"
+    ? `<div class="panel"><div class="group-label" style="margin-top:0">${icon("flat", "sm")}ניטרלי</div><div class="chips">${R.allocation.neutral.map((n) => `<span class="chip">${esc(n.label)}</span>`).join("")}</div></div>` : "";
+  const adj = R.allocation.adjustments.map((a) => `<div class="adj"><div class="moves">
+      ${a.overweight.length ? `<span class="mv up">${icon("up", "sm")}<span class="tk">${esc(a.overweight.join("/"))}</span></span>` : ""}
+      ${a.underweight.length ? `<span class="mv down">${icon("down", "sm")}<span class="tk">${esc(a.underweight.join("/"))}</span></span>` : ""}
+    </div><div class="grow">${html(a.text_he)}</div></div>`).join("");
+  return header("הקצאה ונימוקים") +
+    `<p class="meta" style="margin:0 4px 8px">היסטוריה: תשואה עודפת ממוצעת לחודש מול <span class="num">S&amp;P 500</span> בימי הרג'ים הנוכחי, <span class="num">2016–2026</span>, לפי תעודת סל מייצגת.</p>
+     <div class="tabs" role="tablist">${tabs}</div>${groups || `<div class="panel"><p class="muted">אין פריטים בסינון הזה.</p></div>`}${neutral}
+     ${adj && allocFilter === "all" ? `<div class="panel"><h2>התאמות פעילות <span class="meta">${R.allocation.adjustments.length}</span></h2>
+       <p class="meta" style="margin:-6px 0 10px">חוקי "אם-אז" שמגיבים לרמות השוק עכשיו, מעל ההקצאה הבסיסית.</p>${adj}</div>` : ""}`;
 }
 
 function exec() {
   const e = R.execution;
-  const actions = e.actions.length ? `<ol class="list">${e.actions.map((a) => `<li>${html(a)}</li>`).join("")}</ol>` : `<p>אין התראות — לפעול לפי ההקצאה הבסיסית של הרג'ים.</p>`;
-  return back() + header("4 · ביצוע וסיכון") +
-    `<div class="card"><h2>פעולות</h2>${actions}</div>
-     ${e.conclusions.length ? `<div class="card"><h2>הרקע</h2>${e.conclusions.map((c) => `<p>${html(c)}</p>`).join("")}</div>` : ""}
-     <div class="card"><h2>🎯 סגנון השקעה</h2><p>${html(e.factors_he)}</p></div>
-     <div class="card"><h2>🔎 סינון מניות</h2><p>${html(e.screening_he).replace(/\s\|\s/g, "<br>")}</p>
-     <p class="small muted">רשימת בדיקה לפי הרג'ים. המערכת עדיין לא מסננת מניות בפועל.</p></div>
+  const actions = e.actions.length ? `<ol class="list">${e.actions.map((a) => `<li>${html(a)}</li>`).join("")}</ol>`
+    : `<p>אין התראות. לפעול לפי ההקצאה הבסיסית של הרג'ים.</p>`;
+  const screen = String(html(e.screening_he)).split(/\s\|\s/).map((x) => `<div class="note">${icon("check", "sm")}<span>${x}</span></div>`).join("");
+  return header("ביצוע וסיכון") +
+    `<div class="panel"><h2>פעולות</h2>${actions}</div>
+     ${e.conclusions.length ? `<div class="panel"><h2>הרקע</h2>${e.conclusions.map((c) => `<p style="margin-bottom:10px">${html(c)}</p>`).join("")}</div>` : ""}
+     <div class="panel"><h2>סגנון השקעה</h2><p>${html(e.factors_he)}</p></div>
+     <div class="panel"><h2>סינון מניות</h2>${screen}
+       <p class="meta" style="margin-top:10px">רשימת בדיקה לפי הרג'ים. המערכת עדיין לא מסננת מניות בפועל.</p></div>
      <p class="foot">פלט של מסגרת ניתוח ולא ייעוץ השקעות אישי.</p>`;
 }
 
 function news() {
   const n = R.news;
-  return back() + header("כותרות") + (n.items.length
-    ? `<div class="card"><p class="small muted">מקור: ${esc(n.source)}</p>${n.items.map((h) => `<div class="note" dir="ltr" style="text-align:left">${esc(h)}</div>`).join("")}</div>`
-    : `<div class="card"><p class="muted">אין כותרות מה-36 שעות האחרונות.</p></div>`);
+  return header("כותרות") + (n.items.length
+    ? `<div class="panel"><p class="meta" style="margin-bottom:10px">מקור: ${esc(n.source)}</p>${n.items.map((h) => `<div class="note" dir="ltr" style="text-align:left">${icon("news", "sm")}<span>${esc(h)}</span></div>`).join("")}</div>`
+    : `<div class="panel"><div class="row" style="align-items:flex-start"><span class="sev state">${icon("news")}</span><div><b>אין כותרות מה-36 השעות האחרונות</b><p class="meta" style="margin-top:2px">הדוח בענן לא כולל כותרות. הן נוספות כשמרעננים אותן משכבת Claude.</p></div></div></div>`);
 }
 
 function data() {
   const q = R.data_quality;
-  const val = q.validation.map((v) => `<tr><td>${v.ok ? "✅" : "❌"} ${esc(v.label)}<span class="src">${esc(v.detail)}</span></td></tr>`).join("");
-  const fails = Object.entries(q.failures || {}).map(([k, v]) => `<li><code>${esc(k)}</code>: ${esc(v)}</li>`).join("");
+  const val = q.validation.map((v) => `<div class="alert-row"><span class="sev ${v.ok ? "info" : "critical"}">${icon(v.ok ? "check" : "x")}</span>
+      <div class="grow"><b>${esc(v.label)}</b><span class="src">${esc(v.detail)}</span></div></div>`).join("");
+  const fails = Object.entries(q.failures || {}).map(([k, v]) => `<li><span class="tk">${esc(k)}</span> ${esc(v)}</li>`).join("");
   const rows = Object.entries(R.signals).sort((a, b) => a[1].label.localeCompare(b[1].label, "he"))
-    .map(([k, s]) => `<tr><td>${esc(s.label)}${s.estimate ? '<span class="est">≈</span>' : ""}<span class="src">${esc(s.source)}${s.id ? " · " + esc(s.id) : ""}${s.date ? " · " + esc(s.date) : ""}</span></td><td class="v">${num(s.value, "", s.signed)}</td></tr>`).join("");
-  return back() + header("איכות ומקורות") +
-    `<div class="card"><h2>אימות מול מקור רשמי</h2><p class="small muted">מחירים בזמן אמת מושווים בכל הרצה למפרסם הרשמי ביום המסחר המלא האחרון. סטייה פוסלת את הנתון.</p><table>${val}</table></div>
-     <div class="card"><h2>ללא מקור רשמי חינמי</h2><div class="chips">${q.unverified.map((t) => `<code>${esc(t)}</code>`).join(" ")}</div></div>
-     ${fails ? `<div class="card"><h2>נתונים שלא נטענו</h2><ul class="list">${fails}</ul><p class="small muted">חוקים שתלויים בהם דולגו — שום ערך לא נוחש.</p></div>` : ""}
-     <div class="card"><h2>כל הנתונים (${Object.keys(R.signals).length})</h2><table>${rows}</table></div>`;
+    .map(([k, s]) => `<tr><td>${esc(s.label)}${s.estimate ? '<span class="est">≈</span>' : ""}<span class="src">${esc(s.source)}${s.id ? " · " + esc(s.id) : ""}${s.date ? " · " + esc(s.date) : ""}</span></td><td class="v" data-sig="${esc(k)}">${num(s.value, "", s.signed)}</td></tr>`).join("");
+  return header("איכות ומקורות") +
+    `<div class="panel"><h2>אימות מול מקור רשמי</h2><p class="meta" style="margin:-6px 0 8px">מחירים בזמן אמת מושווים בכל הרצה למפרסם הרשמי ביום המסחר המלא האחרון. סטייה פוסלת את הנתון.</p>${val}</div>
+     <div class="panel"><h2>ללא מקור רשמי חינמי</h2><div class="chips">${q.unverified.map((t) => `<span class="tk">${esc(t)}</span>`).join("")}</div></div>
+     ${fails ? `<div class="panel"><h2>נתונים שלא נטענו</h2><ul class="list">${fails}</ul><p class="meta">חוקים שתלויים בהם דולגו. שום ערך לא נוחש.</p></div>` : ""}
+     <div class="panel"><h2>כל הנתונים <span class="meta">${Object.keys(R.signals).length}</span></h2><table>${rows}</table></div>`;
 }
 
 /* ---------- boot + auto-refresh ---------- */
@@ -372,20 +563,20 @@ function load(first) {
   return fetch("data/report.json?ts=" + Date.now(), { cache: "no-store" })
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then((d) => {
-      const changed = !R || d.meta.generated_at !== R.meta.generated_at;
-      R = d;
-      if (first) render(false);
-      else if (changed) { render(true); haptic(); }        // new report: redraw, keep scroll
-      else { const a = $(".ago"); if (a) a.textContent = ago(R.meta.generated_at); }  // only the label
+      if (first) { R = d; render(false); return; }
+      if (d.meta.generated_at !== R.meta.generated_at) { PREV = R; R = d; render(true); haptic(); }
+      else { const a = $(".ago"); if (a) a.textContent = ago(R.meta.generated_at); }   // only the label
     })
     .catch((e) => {
-      if (first) $("#app").innerHTML = `<div class="err card"><h2>הדוח לא נטען</h2><p class="muted">נסו שוב בעוד רגע. (${esc(e.message)})</p></div>`;
+      if (first) $("#app").innerHTML = `<div class="panel err"><h2>הדוח לא נטען</h2><p class="muted" style="margin-top:6px">בדוק את החיבור ונסה שוב בעוד רגע.</p><p class="meta" style="margin-top:4px">${esc(e.message)}</p></div>`;
     });
 }
 load(true);
-// While the app stays open: check for a newer report every 5 minutes and when it regains focus.
 setInterval(() => load(false), 5 * 60 * 1000);
 document.addEventListener("visibilitychange", () => { if (!document.hidden) load(false); });
+document.addEventListener("keydown", (e) => {
+  if ((e.key === "Enter" || e.key === " ") && e.target.matches("[data-go],[data-tab],.back")) { e.preventDefault(); e.target.click(); }
+});
 </script>
 </body>
 </html>
