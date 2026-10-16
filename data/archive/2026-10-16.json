@@ -1,12 +1,12 @@
 {
  "meta": {
   "version": "4.9.0",
-  "generated_at": "2026-10-16T05:28:17+00:00",
+  "generated_at": "2026-10-16T13:39:00+00:00",
   "market_date": "15/10/2026",
-  "market_open": false,
-  "market_phase": "closed",
-  "slot": "morning",
-  "ny_time": "16/10 01:28"
+  "market_open": true,
+  "market_phase": "open",
+  "slot": "premarket",
+  "ny_time": "16/10 09:39"
  },
  "regime": {
   "code": "R4",
@@ -1035,7 +1035,7 @@
    {
     "label": "VIX",
     "ok": true,
-    "detail": "14/10: 16.87 מול 16.87 (סטייה 0.00%)"
+    "detail": "15/10: 16.46 מול 16.46 (סטייה 0.00%)"
    },
    {
     "label": "10Y",
@@ -1201,7 +1201,7 @@
    "signed": false,
    "source": "NY Fed",
    "id": "EFFR",
-   "date": "14/10/2026"
+   "date": "15/10/2026"
   },
   "ppi_yoy": {
    "value": 6.3463,
@@ -1318,7 +1318,7 @@
    "signed": true,
    "source": "NY Fed",
    "id": "EFFR",
-   "date": "14/10/2026"
+   "date": "15/10/2026"
   },
   "nrou_level": {
    "value": 4.3884,
