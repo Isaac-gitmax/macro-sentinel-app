@@ -192,6 +192,21 @@ td.v { text-align: left; white-space: nowrap; font-weight: 600; padding-inline-s
 .hist { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; font-size: 13px; margin-top: 8px; }
 .verdict { display: inline-flex; align-items: center; gap: 3px; font-weight: 600; }
 .verdict.ok { color: var(--up); } .verdict.bad { color: var(--down); }
+/* success-rate screen */
+.score-big { font-size: 44px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin: 6px 0 2px; }
+.score-big.ok { color: var(--up); } .score-big.bad { color: var(--down); }
+.rbar { position: relative; height: 8px; background: var(--wash); border-radius: 4px; overflow: hidden; min-width: 70px; }
+.rbar i { position: absolute; inset-block: 0; inset-inline-start: 0; border-radius: 4px; background: var(--muted); }
+.rbar.ok i { background: var(--up); } .rbar.bad i { background: var(--down); } .rbar.mid i { background: var(--warn); }
+.rbar .mid { position: absolute; inset-block: 0; inset-inline-start: 50%; width: 2px; background: var(--text); opacity: .35; }
+.srow { display: grid; grid-template-columns: minmax(0, 1fr) 84px 76px; gap: 10px; align-items: center; padding: 9px 0; border-top: 1px solid var(--hair); }
+.srow:first-of-type { border-top: 0; }
+.srow .n { text-align: end; font-size: 13px; }
+.srow .n small { display: block; color: var(--muted); font-size: 11px; }
+.srow .lbl { min-width: 0; } .srow .lbl .meta { display: block; }
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+.duo > div { background: var(--wash); border-radius: 12px; padding: 10px 12px; }
+.duo .v { font-size: 22px; font-weight: 700; }
 .adj { display: flex; gap: 10px; align-items: flex-start; padding: 11px 0; border-top: 1px solid var(--hair); font-size: 14.5px; }
 .adj:first-of-type { border-top: 0; padding-top: 0; }
 .moves { display: flex; flex-direction: column; gap: 4px; flex: none; }
@@ -323,8 +338,8 @@ function haptic() { try { tg && tg.HapticFeedback.impactOccurred("light"); } cat
 const sig = (name) => (R.signals || {})[name] || {};
 
 /* ---------- routing ---------- */
-const ORDER = ["", "market", "regime", "alloc", "exec", "news", "data"];
-const ROUTES = { "": home, market, regime, alloc, exec, news, data };
+const ORDER = ["", "market", "regime", "alloc", "score", "exec", "news", "data"];
+const ROUTES = { "": home, market, regime, alloc, score, exec, news, data };
 function go(route) { haptic(); location.hash = route ? "#/" + route : "#/"; }
 const currentRoute = () => (location.hash.replace(/^#\/?/, "") || "").split("?")[0];
 function render(keepScroll) {
@@ -608,6 +623,7 @@ function home() {
     ["market", "market", "שוק", "1", `${R.market_notes.length} תצפיות · ${R.market_groups.reduce((n, gg) => n + gg.items.length, 0)} נתונים`],
     ["regime", "compass", "רג'ים ואנומליות", "2", `${g ? g.code : "—"} · ${R.alerts.length} התראות · ${R.states.length} מצבים`],
     ["alloc", "layers", "הקצאה ונימוקים", "3", `${ow} להגדיל · ${uw} להקטין · ${R.allocation.adjustments.length} התאמות`],
+    ["score", "gauge", "סיכויי הצלחה", "", scoreNavLine()],
     ["exec", "target", "ביצוע וסיכון", "4", `${R.execution.actions.length} פעולות · סגנון וסינון מניות`],
     ["news", "news", "כותרות", "", R.news.items.length ? `${R.news.items.length} כותרות` : "אין כותרות עדכניות"],
     ["data", "shield", "איכות ומקורות", "", (() => { const v = Object.values(R.signals); const n = (st) => v.filter((x) => x.status === st).length;
@@ -680,7 +696,7 @@ function alloc() {
         <span class="meta">· לפי <span class="num">${esc(i.history_ticker)}</span></span></div>`;
     return `<div class="item"><div class="head"><h3>${esc(i.label)}</h3><span class="pill ${stanceCls(i.stance)}" data-x="t:stance">${STANCE[i.stance]}</span></div>
       <div class="tickers">${i.all_tickers.map((t) => `<span class="tk" data-chart="${esc(t)}" data-label="${esc(i.label)}" role="button" tabindex="0">${esc(t)}</span>`).join("")}</div>
-      <p class="why">${esc(i.why)}</p>${hist}</div>`;
+      <p class="why">${esc(i.why)}</p>${hist}${itemScore(i)}</div>`;
   };
   const groups = [["OW", "להגדיל", "up"], ["N+", "סלקטיבי", "dot"], ["N-", "ניטרלי-שלילי", "dot"], ["UW", "להקטין", "down"]]
     .filter(([st]) => allocFilter === "all" || allocFilter === st)
@@ -701,6 +717,87 @@ function alloc() {
      <div class="tabs" role="tablist">${tabs}</div>${groups || `<div class="panel"><p class="muted">אין פריטים בסינון הזה.</p></div>`}${neutral}
      ${adj && allocFilter === "all" ? `<div class="panel"><h2><span class="x" data-x="t:adjustment">התאמות פעילות</span> <span class="meta">${R.allocation.adjustments.length}</span></h2>
        <p class="meta" style="margin:-6px 0 10px">חוקי "אם-אז" שמגיבים לרמות השוק עכשיו, מעל ההקצאה הבסיסית.</p>${adj}</div>` : ""}`;
+}
+
+/* ---------- success rate ---------- */
+const pct1 = (v) => (v === null || v === undefined ? "—" : `${v.toFixed(1)}%`);
+const ym = (s) => (s ? `${s.slice(5, 7)}/${s.slice(0, 4)}` : "");
+const dmy = (s) => (s ? `${s.slice(8, 10)}/${s.slice(5, 7)}/${s.slice(0, 4)}` : "");
+// green only when the whole 95% range is above a coin flip; red when it is all below
+const rateCls = (b) => (!b || !b.n ? "mute" : b.ci95[0] > 50 ? "ok" : b.ci95[1] < 50 ? "bad" : "mid");
+const rbar = (b) => `<div class="rbar ${rateCls(b)}"><i style="width:${Math.max(0, Math.min(100, (b && b.rate) || 0))}%"></i><span class="mid"></span></div>`;
+function scoreNavLine() {
+  const S = R.scorecard;
+  if (!S || !S.history) return "עוד לא חושב";
+  const L = S.live;
+  return `${pct1(S.history.overall.rate)} בעבר · ` + (L && L.overall ? `${pct1(L.overall.rate)} במעקב חי` : `מעקב חי: ${L ? L.pending : 0} ממתינות`);
+}
+function itemScore(i) {
+  const S = R.scorecard;
+  if (!S) return "";
+  const c = (S.current || []).find((x) => x.category === i.category && x.stance === i.stance);
+  if (!c || !c.history || !c.history.n) return "";
+  const h = c.history;
+  return `<div class="hist" data-x="t:hit_rate"><span class="muted x">צדקה בעבר:</span><b class="num">${pct1(h.rate)}</b><span class="muted">מהחודשים ב-${esc(S.regime)}</span><span class="meta">(<span class="num">${h.hits}/${h.n}</span> · לפי <span class="num">${esc(c.ticker)}</span>)</span></div>`;
+}
+function srow(label, sub, b) {
+  return `<div class="srow"><div class="lbl"><span>${label}</span>${sub ? `<span class="meta">${sub}</span>` : ""}</div>${rbar(b)}
+    <div class="n"><b class="num">${pct1(b && b.rate)}</b><small class="num">${b ? `${b.hits}/${b.n}` : ""}</small></div></div>`;
+}
+function score() {
+  const S = R.scorecard;
+  if (!S || !S.history) return header("סיכויי הצלחה") + `<div class="panel"><p class="muted">אין עדיין נתוני הצלחה בדוח הזה.</p></div>`;
+  const H = S.history, o = H.overall, L = S.live || {}, ls = H.long_short || {};
+  const verdict = o.ci95[0] > 50
+    ? "יתרון קטן אבל עקבי: המסגרת צודקת קצת יותר מחצי מהזמן. על פני הרבה החלטות זה מצטבר, אבל כל המלצה בודדת יכולה לטעות."
+    : o.ci95[1] < 50 ? "ההמלצות צדקו פחות מהטלת מטבע. צריך לבדוק את המטריצה." : "עדיין אי אפשר לקבוע שיש יתרון: התוצאה בטווח של מקריות.";
+  const hero = `<div class="panel"><div class="row between"><h2><span class="x" data-x="t:hit_rate">אחוז הצלחה היסטורי</span></h2><span class="meta num">${ym(H.window[0])}–${ym(H.window[1])}</span></div>
+    <div class="score-big num ${rateCls(o)}">${pct1(o.rate)}</div>
+    <p>מתוך <b class="num">${o.n.toLocaleString("en-US")}</b> המלצות חודשיות, <b class="num">${o.hits.toLocaleString("en-US")}</b> צדקו. הטלת מטבע = <span class="num">50%</span> (הקו באמצע).</p>
+    <div style="margin:10px 0 4px">${rbar(o)}</div>
+    <div class="facts">
+      <div class="fact" data-x="t:ci95">${icon("gauge", "sm")}<span class="x">טווח ביטחון: <span class="num">${pct1(o.ci95[0])}–${pct1(o.ci95[1])}</span></span></div>
+      <div class="fact" data-x="t:edge">${icon("up", "sm")}<span class="x">יתרון ממוצע: <span class="num">${o.edge > 0 ? "+" : ""}${o.edge.toFixed(2)}%</span> לחודש מול S&amp;P 500</span></div>
+      ${ls.periods ? `<div class="fact" data-x="t:long_short">${icon("layers", "sm")}<span class="x">תיק "להגדיל מול להקטין": <span class="num">${ls.mean > 0 ? "+" : ""}${ls.mean.toFixed(2)}%</span> בחודש ממוצע, חיובי ב-<span class="num">${pct1(ls.positive)}</span> מהחודשים</span></div>` : ""}
+      ${H.permutation_p !== null && H.permutation_p !== undefined ? `<div class="fact" data-x="t:permutation">${icon("flask", "sm")}<span class="x">בדיקת מקריות: ניחוש אקראי עשה כמו המערכת רק ב-<span class="num">${(H.permutation_p * 100).toFixed(1)}%</span> מהניסיונות</span></div>` : ""}
+    </div>
+    <div class="todo" style="margin-top:12px"><b>בשורה התחתונה:</b> ${verdict}</div></div>`;
+
+  let live;
+  if (L.overall) {
+    live = `<div class="score-big num ${rateCls(L.overall)}">${pct1(L.overall.rate)}</div>
+      <p><b class="num">${L.overall.hits}</b> מתוך <b class="num">${L.overall.n}</b> המלצות שכבר קיבלו ציון צדקו · עוד <span class="num">${L.pending}</span> ממתינות.</p>
+      <div style="margin:10px 0">${rbar(L.overall)}</div>
+      ${(L.recent || []).map((r) => `<div class="srow"><div class="lbl"><span>${esc(r.label)}</span><span class="meta"><span class="num">${dmy(r.date)}</span> · ${STANCE[r.stance]} · <span class="num">${esc(r.ticker)}</span></span></div>
+        <div class="n"><b class="num">${r.excess > 0 ? "+" : ""}${r.excess.toFixed(2)}%</b><small>מול S&amp;P</small></div>
+        <span class="verdict ${r.hit ? "ok" : "bad"}">${icon(r.hit ? "check" : "x", "sm")}${r.hit ? "צדקה" : "טעתה"}</span></div>`).join("")}`;
+  } else {
+    const due = L.next_due ? new Date(new Date(L.next_due).getTime() + 31 * 864e5).toISOString().slice(0, 10) : null;
+    live = `<p>המעקב התחיל ב-<b class="num">${dmy(L.since) || "היום"}</b>. כל יום מסחר נרשמות ההמלצות של היום, וכל אחת מקבלת ציון אחרי <span class="num">21</span> ימי מסחר.</p>
+      <div class="duo"><div><div class="meta">ממתינות לציון</div><div class="v num">${L.pending || 0}</div></div>
+        <div><div class="meta">הציונים הראשונים, בערך</div><div class="v num">${due ? dmy(due) : "—"}</div></div></div>`;
+  }
+  const livePanel = `<div class="panel"><h2><span class="x" data-x="t:live_track">מעקב חי</span></h2>${live}</div>`;
+
+  const cur = (S.current || []).filter((c) => c.history && c.history.n).sort((a, b) => b.history.rate - a.history.rate);
+  const curPanel = cur.length ? `<div class="panel"><h2>ההמלצות של היום: כמה צדקו בעבר</h2>
+    <p class="meta" style="margin:-4px 0 6px">כל המלצה פעילה, ואחוז החודשים שבהם היא צדקה כשהכלכלה הייתה ב-${esc(S.regime)}.</p>
+    ${cur.map((c) => srow(esc(c.label), `${STANCE[c.stance]} · <span class="num">${esc(c.ticker)}</span>`, c.history)).join("")}</div>` : "";
+
+  const sides = H.by_side || {};
+  const sidePanel = `<div class="panel"><h2>לפי סוג המלצה</h2>
+    ${sides.up ? srow("להגדיל", "התחום עשה יותר מהמדד", sides.up) : ""}${sides.down ? srow("להקטין", "התחום עשה פחות מהמדד", sides.down) : ""}</div>`;
+  const regPanel = `<div class="panel"><h2><span class="x" data-x="t:regime">לפי מצב הכלכלה</span></h2>
+    ${Object.entries(H.by_regime || {}).map(([k, b]) => srow(`<span class="badge ${esc(k)}" data-x="t:${esc(k)}">${esc(k)}</span>`, `<span class="num">${(H.regime_months || {})[k] || 0}</span> חודשים`, b)).join("")}</div>`;
+  const catPanel = `<div class="panel"><h2>לפי תחום</h2><p class="meta" style="margin:-4px 0 6px">כל המצבים יחד · לפי תעודת סל מייצגת</p>
+    ${(H.by_category || []).map((c) => srow(esc(c.label), "", c)).join("")}</div>`;
+  const hv = H.halves || {};
+  const halves = hv.first ? `<div class="panel"><h2>יציבות לאורך זמן</h2>
+    ${srow(`<span class="num">${ym(hv.first.from)}–${ym(hv.first.to)}</span>`, "חצי ראשון", hv.first)}${srow(`<span class="num">${ym(hv.second.from)}–${ym(hv.second.to)}</span>`, "חצי שני", hv.second)}</div>` : "";
+  return header("סיכויי הצלחה") + hero + livePanel + curPanel + sidePanel + regPanel + catPanel + halves +
+    `<div class="panel"><h2>איך מודדים</h2><p>${esc(H.method_he)}</p>
+      <p class="meta" style="margin-top:8px">ירוק = כל טווח הביטחון מעל <span class="num">50%</span> · כתום = בטווח המקריות · אדום = מתחת. מחירים: Yahoo (ספק מסחרי). ההתאמות הפעילות (חוקי אם-אז) לא נכללות במדידה.</p></div>
+     <p class="foot">ביצועי עבר אינם מבטיחים תוצאות בעתיד. פלט של מסגרת ניתוח, לא ייעוץ השקעות.</p>`;
 }
 
 function exec() {

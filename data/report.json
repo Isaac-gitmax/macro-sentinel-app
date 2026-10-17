@@ -1,12 +1,12 @@
 {
  "meta": {
-  "version": "4.12.0",
-  "generated_at": "2026-10-17T12:52:46+00:00",
+  "version": "4.13.0",
+  "generated_at": "2026-10-17T14:37:34+00:00",
   "market_date": "16/10/2026",
   "market_open": false,
   "market_phase": "closed",
   "slot": "premarket",
-  "ny_time": "17/10 08:52"
+  "ny_time": "17/10 10:37"
  },
  "regime": {
   "code": "R4",
@@ -3221,6 +3221,36 @@
     "title": "נקודות בסיס (bp)",
     "text": "יחידת מידה לריביות: נקודת בסיס אחת = 0.01%. עלייה של 25bp = עלייה של רבע אחוז.",
     "why": "ככה מודדים שינויים קטנים בריביות."
+   },
+   "hit_rate": {
+    "title": "אחוז הצלחה",
+    "text": "מתוך כל ההמלצות שנבדקו, כמה צדקו. המלצת 'להגדיל' צודקת אם התחום עשה יותר מ-S&P 500 בחודש המסחר הבא (21 ימים). המלצת 'להקטין' צודקת אם הוא עשה פחות.",
+    "why": "50% זה כמו הטלת מטבע. כל אחוז מעל 50 על אלפי המלצות הוא יתרון אמיתי, אבל קטן: גם מסגרת טובה טועה הרבה פעמים."
+   },
+   "ci95": {
+    "title": "טווח ביטחון 95%",
+    "text": "הטווח שבו כנראה נמצא אחוז ההצלחה האמיתי, בהתחשב בכמות הבדיקות. מעט בדיקות = טווח רחב, הרבה בדיקות = טווח צר.",
+    "why": "אם כל הטווח מעל 50%, היתרון כנראה לא מקרי. אם הטווח כולל את 50%, עוד אי אפשר לדעת."
+   },
+   "edge": {
+    "title": "יתרון ממוצע",
+    "text": "בכמה אחוזים בממוצע ההמלצה 'הרוויחה' מול S&P 500 בחודש: בהגדלה זה כמה התחום עשה יותר מהמדד, ובהקטנה כמה פחות.",
+    "why": "אחוז הצלחה לבד לא מספיק: חשוב גם בכמה צודקים כשצודקים ובכמה טועים כשטועים."
+   },
+   "long_short": {
+    "title": "תיק 'להגדיל מול להקטין'",
+    "text": "תיק דמיוני שבכל חודש מחזיק את התחומים שהומלץ להגדיל, ומוכר בחסר את התחומים שהומלץ להקטין. הרווח שלו הוא ההפרש ביניהם.",
+    "why": "זו הדרך הנקייה ביותר למדוד אם ההמלצות מפרידות בין תחומים טובים לחלשים, בלי קשר לכיוון של השוק."
+   },
+   "permutation": {
+    "title": "בדיקת מקריות",
+    "text": "ערבבנו אלפי פעמים את מצבי הכלכלה בין החודשים, כאילו המערכת מנחשת, ובדקנו באיזה אחוז מהפעמים הניחוש הצליח לפחות כמו המערכת האמיתית.",
+    "why": "אם רק בכ-2% מהפעמים ניחוש מקרי עשה כמוה, סביר שזיהוי המצב באמת מוסיף ערך ולא היה מזל."
+   },
+   "live_track": {
+    "title": "מעקב חי",
+    "text": "מהיום כל המלצה נרשמת עם תאריך, וכעבור 21 ימי מסחר מקבלת ציון אוטומטי מול S&P 500. הרשומות נשמרות באתר ואפשר לבדוק אותן.",
+    "why": "זו הבדיקה הכי אמינה: המערכת לא יכולה 'לראות' את העתיד. הבדיקה ההיסטורית נעשתה על עבר שכבר ידוע."
    }
   },
   "signals": {
@@ -3362,5 +3392,640 @@
    "spec": "0.98%",
    "reason_he": "במערכת מודל Kim-Wright של הפד (1.07%). ACM בקובץ של הפד של ניו יורק"
   }
- ]
+ ],
+ "scorecard": {
+  "horizon_days": 21,
+  "regime": "R4",
+  "history": {
+   "generated": "2026-10-17T17:35:26",
+   "window": [
+    "2016-10",
+    "2026-10"
+   ],
+   "horizon_days": 21,
+   "method_he": "בכל תחילת חודש: מצב הכלכלה נקבע רק מנתונים שכבר פורסמו באותו יום, ההמלצה נלקחת מהמטריצה, ונבדק אם תעודת הסל המייצגת עשתה יותר (הגדלה) או פחות (הקטנה) מ-SPY ב-21 ימי המסחר הבאים, כולל דיבידנדים.",
+   "regime_months": {
+    "R4": 58,
+    "R3": 34,
+    "R1": 18,
+    "R2": 11
+   },
+   "overall": {
+    "n": 1968,
+    "hits": 1049,
+    "rate": 53.3,
+    "ci95": [
+     51.1,
+     55.5
+    ],
+    "edge": 0.39
+   },
+   "by_side": {
+    "down": {
+     "n": 639,
+     "hits": 374,
+     "rate": 58.5,
+     "ci95": [
+      54.7,
+      62.3
+     ],
+     "edge": 0.48
+    },
+    "up": {
+     "n": 1329,
+     "hits": 675,
+     "rate": 50.8,
+     "ci95": [
+      48.1,
+      53.5
+     ],
+     "edge": 0.34
+    }
+   },
+   "by_regime": {
+    "R1": {
+     "n": 317,
+     "hits": 175,
+     "rate": 55.2,
+     "ci95": [
+      49.7,
+      60.6
+     ],
+     "edge": 0.6
+    },
+    "R2": {
+     "n": 209,
+     "hits": 109,
+     "rate": 52.2,
+     "ci95": [
+      45.4,
+      58.8
+     ],
+     "edge": 0.41
+    },
+    "R3": {
+     "n": 590,
+     "hits": 299,
+     "rate": 50.7,
+     "ci95": [
+      46.7,
+      54.7
+     ],
+     "edge": -0.05
+    },
+    "R4": {
+     "n": 852,
+     "hits": 466,
+     "rate": 54.7,
+     "ci95": [
+      51.3,
+      58.0
+     ],
+     "edge": 0.6
+    }
+   },
+   "by_category": [
+    {
+     "category": "big_tech",
+     "label": "ענקיות טכנולוגיה",
+     "n": 63,
+     "hits": 40,
+     "rate": 63.5,
+     "ci95": [
+      51.1,
+      74.3
+     ],
+     "edge": 0.66
+    },
+    {
+     "category": "market_indexes",
+     "label": "מדדי מניות רחבים",
+     "n": 86,
+     "hits": 53,
+     "rate": 61.6,
+     "ci95": [
+      51.1,
+      71.2
+     ],
+     "edge": 0.72
+    },
+    {
+     "category": "fintech_crypto",
+     "label": "פינטק וקריפטו",
+     "n": 120,
+     "hits": 73,
+     "rate": 60.8,
+     "ci95": [
+      51.9,
+      69.1
+     ],
+     "edge": 1.1
+    },
+    {
+     "category": "consumer_staples",
+     "label": "צריכה בסיסית",
+     "n": 63,
+     "hits": 37,
+     "rate": 58.7,
+     "ci95": [
+      46.4,
+      70.0
+     ],
+     "edge": 0.69
+    },
+    {
+     "category": "biotech",
+     "label": "ביוטק",
+     "n": 120,
+     "hits": 68,
+     "rate": 56.7,
+     "ci95": [
+      47.7,
+      65.2
+     ],
+     "edge": 0.62
+    },
+    {
+     "category": "power_grid",
+     "label": "רשתות חשמל",
+     "n": 120,
+     "hits": 67,
+     "rate": 55.8,
+     "ci95": [
+      46.9,
+      64.4
+     ],
+     "edge": 0.23
+    },
+    {
+     "category": "consumer_discretionary",
+     "label": "צריכה מחזורית",
+     "n": 120,
+     "hits": 67,
+     "rate": 55.8,
+     "ci95": [
+      46.9,
+      64.4
+     ],
+     "edge": 0.43
+    },
+    {
+     "category": "ai_software",
+     "label": "בינה מלאכותית ותוכנה",
+     "n": 120,
+     "hits": 64,
+     "rate": 53.3,
+     "ci95": [
+      44.4,
+      62.0
+     ],
+     "edge": 0.29
+    },
+    {
+     "category": "semiconductors",
+     "label": "שבבים",
+     "n": 120,
+     "hits": 64,
+     "rate": 53.3,
+     "ci95": [
+      44.4,
+      62.0
+     ],
+     "edge": 0.74
+    },
+    {
+     "category": "metals_clean_energy",
+     "label": "מתכות ואנרגיה נקייה",
+     "n": 109,
+     "hits": 58,
+     "rate": 53.2,
+     "ci95": [
+      43.9,
+      62.3
+     ],
+     "edge": 0.65
+    },
+    {
+     "category": "aerospace_defense",
+     "label": "תעופה וביטחון",
+     "n": 102,
+     "hits": 54,
+     "rate": 52.9,
+     "ci95": [
+      43.3,
+      62.3
+     ],
+     "edge": -0.17
+    },
+    {
+     "category": "industry_infra",
+     "label": "תעשייה ותשתיות",
+     "n": 63,
+     "hits": 33,
+     "rate": 52.4,
+     "ci95": [
+      40.3,
+      64.2
+     ],
+     "edge": 0.06
+    },
+    {
+     "category": "traditional_finance",
+     "label": "בנקים ופיננסים",
+     "n": 63,
+     "hits": 32,
+     "rate": 50.8,
+     "ci95": [
+      38.8,
+      62.7
+     ],
+     "edge": 0.61
+    },
+    {
+     "category": "real_estate_utilities",
+     "label": "נדל\"ן ותשתיות ציבוריות",
+     "n": 120,
+     "hits": 61,
+     "rate": 50.8,
+     "ci95": [
+      42.0,
+      59.6
+     ],
+     "edge": 0.05
+    },
+    {
+     "category": "space",
+     "label": "חלל",
+     "n": 88,
+     "hits": 44,
+     "rate": 50.0,
+     "ci95": [
+      39.8,
+      60.2
+     ],
+     "edge": -0.19
+    },
+    {
+     "category": "cybersecurity",
+     "label": "סייבר",
+     "n": 120,
+     "hits": 59,
+     "rate": 49.2,
+     "ci95": [
+      40.4,
+      58.0
+     ],
+     "edge": 0.37
+    },
+    {
+     "category": "traditional_energy",
+     "label": "אנרגיה",
+     "n": 86,
+     "hits": 42,
+     "rate": 48.8,
+     "ci95": [
+      38.6,
+      59.2
+     ],
+     "edge": 0.77
+    },
+    {
+     "category": "precious_metals",
+     "label": "מכרות זהב",
+     "n": 102,
+     "hits": 49,
+     "rate": 48.0,
+     "ci95": [
+      38.6,
+      57.6
+     ],
+     "edge": 0.29
+    },
+    {
+     "category": "robotics",
+     "label": "רובוטיקה",
+     "n": 63,
+     "hits": 30,
+     "rate": 47.6,
+     "ci95": [
+      35.8,
+      59.7
+     ],
+     "edge": 0.04
+    },
+    {
+     "category": "healthcare",
+     "label": "בריאות ופארמה",
+     "n": 120,
+     "hits": 54,
+     "rate": 45.0,
+     "ci95": [
+      36.4,
+      53.9
+     ],
+     "edge": -0.19
+    }
+   ],
+   "long_short": {
+    "periods": 120,
+    "mean": 0.74,
+    "positive": 56.7
+   },
+   "halves": {
+    "first": {
+     "from": "2016-10",
+     "to": "2021-09",
+     "n": 1044,
+     "hits": 535,
+     "rate": 51.2,
+     "ci95": [
+      48.2,
+      54.3
+     ],
+     "edge": 0.13
+    },
+    "second": {
+     "from": "2021-10",
+     "to": "2026-09",
+     "n": 924,
+     "hits": 514,
+     "rate": 55.6,
+     "ci95": [
+      52.4,
+      58.8
+     ],
+     "edge": 0.68
+    }
+   },
+   "permutation_p": 0.022
+  },
+  "live": {
+   "since": "2026-10-15",
+   "scored": 0,
+   "pending": 30,
+   "next_due": "2026-10-15",
+   "overall": null,
+   "by_regime": {},
+   "by_category": [],
+   "long_short": null,
+   "recent": []
+  },
+  "current": [
+   {
+    "category": "market_indexes",
+    "label": "מדדי מניות רחבים",
+    "ticker": "IWM",
+    "stance": "UW",
+    "direction": -1,
+    "history": {
+     "n": 57,
+     "hits": 36,
+     "rate": 63.2,
+     "ci95": [
+      50.2,
+      74.5
+     ],
+     "edge": 0.54
+    }
+   },
+   {
+    "category": "ai_software",
+    "label": "בינה מלאכותית ותוכנה",
+    "ticker": "IGV",
+    "stance": "UW",
+    "direction": -1,
+    "history": {
+     "n": 57,
+     "hits": 28,
+     "rate": 49.1,
+     "ci95": [
+      36.6,
+      61.7
+     ],
+     "edge": -0.32
+    }
+   },
+   {
+    "category": "semiconductors",
+    "label": "שבבים",
+    "ticker": "SOXX",
+    "stance": "N+",
+    "direction": 1,
+    "history": {
+     "n": 57,
+     "hits": 29,
+     "rate": 50.9,
+     "ci95": [
+      38.3,
+      63.4
+     ],
+     "edge": 1.6
+    }
+   },
+   {
+    "category": "cybersecurity",
+    "label": "סייבר",
+    "ticker": "CIBR",
+    "stance": "N+",
+    "direction": 1,
+    "history": {
+     "n": 57,
+     "hits": 31,
+     "rate": 54.4,
+     "ci95": [
+      41.6,
+      66.6
+     ],
+     "edge": 0.87
+    }
+   },
+   {
+    "category": "aerospace_defense",
+    "label": "תעופה וביטחון",
+    "ticker": "ITA",
+    "stance": "OW",
+    "direction": 1,
+    "history": {
+     "n": 57,
+     "hits": 32,
+     "rate": 56.1,
+     "ci95": [
+      43.3,
+      68.2
+     ],
+     "edge": 0.28
+    }
+   },
+   {
+    "category": "space",
+    "label": "חלל",
+    "ticker": "UFO",
+    "stance": "UW",
+    "direction": -1,
+    "history": {
+     "n": 54,
+     "hits": 30,
+     "rate": 55.6,
+     "ci95": [
+      42.4,
+      68.0
+     ],
+     "edge": 0.04
+    }
+   },
+   {
+    "category": "fintech_crypto",
+    "label": "פינטק וקריפטו",
+    "ticker": "FINX",
+    "stance": "UW",
+    "direction": -1,
+    "history": {
+     "n": 57,
+     "hits": 37,
+     "rate": 64.9,
+     "ci95": [
+      51.9,
+      76.0
+     ],
+     "edge": 1.22
+    }
+   },
+   {
+    "category": "power_grid",
+    "label": "רשתות חשמל",
+    "ticker": "GRID",
+    "stance": "OW",
+    "direction": 1,
+    "history": {
+     "n": 57,
+     "hits": 29,
+     "rate": 50.9,
+     "ci95": [
+      38.3,
+      63.4
+     ],
+     "edge": -0.09
+    }
+   },
+   {
+    "category": "traditional_energy",
+    "label": "אנרגיה",
+    "ticker": "XLE",
+    "stance": "OW",
+    "direction": 1,
+    "history": {
+     "n": 57,
+     "hits": 26,
+     "rate": 45.6,
+     "ci95": [
+      33.4,
+      58.4
+     ],
+     "edge": 0.85
+    }
+   },
+   {
+    "category": "metals_clean_energy",
+    "label": "מתכות ואנרגיה נקייה",
+    "ticker": "XME",
+    "stance": "OW",
+    "direction": 1,
+    "history": {
+     "n": 57,
+     "hits": 33,
+     "rate": 57.9,
+     "ci95": [
+      45.0,
+      69.8
+     ],
+     "edge": 1.18
+    }
+   },
+   {
+    "category": "precious_metals",
+    "label": "מכרות זהב",
+    "ticker": "GDX",
+    "stance": "OW",
+    "direction": 1,
+    "history": {
+     "n": 57,
+     "hits": 26,
+     "rate": 45.6,
+     "ci95": [
+      33.4,
+      58.4
+     ],
+     "edge": 1.27
+    }
+   },
+   {
+    "category": "healthcare",
+    "label": "בריאות ופארמה",
+    "ticker": "XLV",
+    "stance": "OW",
+    "direction": 1,
+    "history": {
+     "n": 57,
+     "hits": 23,
+     "rate": 40.4,
+     "ci95": [
+      28.6,
+      53.3
+     ],
+     "edge": -0.69
+    }
+   },
+   {
+    "category": "biotech",
+    "label": "ביוטק",
+    "ticker": "XBI",
+    "stance": "UW",
+    "direction": -1,
+    "history": {
+     "n": 57,
+     "hits": 34,
+     "rate": 59.6,
+     "ci95": [
+      46.7,
+      71.4
+     ],
+     "edge": 0.48
+    }
+   },
+   {
+    "category": "consumer_discretionary",
+    "label": "צריכה מחזורית",
+    "ticker": "XLY",
+    "stance": "UW",
+    "direction": -1,
+    "history": {
+     "n": 57,
+     "hits": 35,
+     "rate": 61.4,
+     "ci95": [
+      48.4,
+      72.9
+     ],
+     "edge": 0.71
+    }
+   },
+   {
+    "category": "real_estate_utilities",
+    "label": "נדל\"ן ותשתיות ציבוריות",
+    "ticker": "VNQ",
+    "stance": "UW",
+    "direction": -1,
+    "history": {
+     "n": 57,
+     "hits": 37,
+     "rate": 64.9,
+     "ci95": [
+      51.9,
+      76.0
+     ],
+     "edge": 1.06
+    }
+   }
+  ]
+ }
 }
