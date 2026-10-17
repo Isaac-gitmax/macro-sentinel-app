@@ -197,6 +197,17 @@ td.v { text-align: left; white-space: nowrap; font-weight: 600; padding-inline-s
 .moves { display: flex; flex-direction: column; gap: 4px; flex: none; }
 .mv { display: inline-flex; align-items: center; gap: 2px; font-weight: 600; font-size: 13px; }
 .list { margin: 0; padding-inline-start: 20px; } .list li { margin-bottom: 8px; } .list li::marker { color: var(--muted); }
+.drow { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; border-top: 1px solid var(--hair); font-size: 14.5px; }
+.panel > h2 + .drow { border-top: 0; padding-top: 0; }
+.dval { text-align: left; flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.dval .v { font-weight: 600; transition: background-color 1200ms var(--ease-out); }
+.st { display: inline-flex; align-items: center; gap: 3px; font-size: 11.5px; font-weight: 600; padding: 2px 7px; border-radius: 6px; white-space: nowrap; }
+.st.ok { background: var(--up-wash); color: var(--up); }
+.st.info { background: var(--info-wash); color: var(--info); }
+.st.warn { background: var(--warn-wash); color: var(--warn); }
+.st.mute { background: var(--wash); color: var(--muted); }
+.st.bad { background: var(--down-wash); color: var(--down); }
+.bad-txt { color: var(--down); }
 .foot { text-align: center; font-size: 12px; color: var(--muted); margin-top: 20px; line-height: 1.7; }
 .err { text-align: center; padding: 36px 16px; }
 .sk { height: 120px; border-radius: var(--radius); background: var(--surface); margin-bottom: 12px; opacity: .6; }
@@ -435,7 +446,8 @@ function home() {
     ["alloc", "layers", "הקצאה ונימוקים", "3", `${ow} להגדיל · ${uw} להקטין · ${R.allocation.adjustments.length} התאמות`],
     ["exec", "target", "ביצוע וסיכון", "4", `${R.execution.actions.length} פעולות · סגנון וסינון מניות`],
     ["news", "news", "כותרות", "", R.news.items.length ? `${R.news.items.length} כותרות` : "אין כותרות עדכניות"],
-    ["data", "shield", "איכות ומקורות", "", `${okCount} אומתו מול מקור רשמי`],
+    ["data", "shield", "איכות ומקורות", "", (() => { const v = Object.values(R.signals); const n = (st) => v.filter((x) => x.status === st).length;
+        return `${v.length} נתונים · ${n("official")} רשמי · ${n("validated")} אומת · ${n("unverified")} לא אומת` + (n("missing") + n("failed") ? ` · ${n("missing") + n("failed")} נכשלו` : ""); })()],
   ].map(([r, ic, t, step, d]) => `<div class="nav-item tap" data-go="${r}" role="button" tabindex="0"><span class="nav-ic">${icon(ic)}</span>
       <div class="grow"><div class="t">${step ? `<span class="step">שלב ${step}</span>` : ""}${t}</div><div class="d">${esc(d)}</div></div><span class="chev">${icon("chev")}</span></div>`).join("");
 
@@ -544,18 +556,49 @@ function news() {
     : `<div class="panel"><div class="row" style="align-items:flex-start"><span class="sev state">${icon("news")}</span><div><b>אין כותרות מה-36 השעות האחרונות</b><p class="meta" style="margin-top:2px">הדוח בענן לא כולל כותרות. הן נוספות כשמרעננים אותן משכבת Claude.</p></div></div></div>`);
 }
 
+const STATUS = {
+  official:   ["מקור רשמי", "ok",   "check"],
+  validated:  ["אומת מול רשמי", "info", "shield"],
+  commercial: ["ספק מסחרי", "warn", "dot"],
+  unverified: ["לא אומת", "mute", "dot"],
+  estimate:   ["הערכה / מודל", "warn", "gauge"],
+  failed:     ["נפסל באימות", "bad",  "x"],
+  missing:    ["לא נטען", "bad",  "x"],
+};
+const STATUS_ORDER = ["official", "validated", "commercial", "unverified", "estimate", "failed", "missing"];
+function ageHe(d) {
+  if (d === null || d === undefined) return "";
+  return d === 0 ? "היום" : d === 1 ? "אתמול" : `לפני ${d} ימים`;
+}
 function data() {
   const q = R.data_quality;
+  const all = Object.entries(R.signals);
+  const counts = STATUS_ORDER.map((st) => [st, all.filter(([, s]) => s.status === st).length]).filter(([, n]) => n);
+  const summary = counts.map(([st, n]) => `<span class="st ${STATUS[st][1]}">${icon(STATUS[st][2], "sm")}${STATUS[st][0]} <b class="num">${n}</b></span>`).join("");
+  const order = (R.data_groups && R.data_groups.length) ? R.data_groups : [...new Set(all.map(([, s]) => s.group))];
+  const groups = order.map((g) => {
+    const rows = all.filter(([, s]) => s.group === g).sort((a, b) => a[1].label.localeCompare(b[1].label, "he"));
+    if (!rows.length) return "";
+    return `<div class="panel"><h2>${esc(g)} <span class="meta">${rows.length}</span></h2>${rows.map(([k, s]) => {
+      const [stHe, cls, ic] = STATUS[s.status] || STATUS.unverified;
+      const val = s.status === "missing" ? `<span class="muted">—</span>` : num(s.value, "", s.signed);
+      const detail = s.status === "missing" ? `<span class="src bad-txt">${esc(s.reason)}</span>` :
+        `<span class="src">${esc(s.publisher || s.source)}${s.date ? ` · <span class="num">${esc(s.date)}</span> (${ageHe(s.age_days)})` : ""} · <span class="tk">${esc(s.id)}</span></span>`;
+      return `<div class="drow"><div class="grow"><div>${esc(s.label)}</div>${detail}</div>
+        <div class="dval"><div class="v" data-sig="${esc(k)}">${val}</div><span class="st ${cls}">${icon(ic, "sm")}${stHe}</span></div></div>`;
+    }).join("")}</div>`;
+  }).join("");
   const val = q.validation.map((v) => `<div class="alert-row"><span class="sev ${v.ok ? "info" : "critical"}">${icon(v.ok ? "check" : "x")}</span>
       <div class="grow"><b>${esc(v.label)}</b><span class="src">${esc(v.detail)}</span></div></div>`).join("");
-  const fails = Object.entries(q.failures || {}).map(([k, v]) => `<li><span class="tk">${esc(k)}</span> ${esc(v)}</li>`).join("");
-  const rows = Object.entries(R.signals).sort((a, b) => a[1].label.localeCompare(b[1].label, "he"))
-    .map(([k, s]) => `<tr><td>${esc(s.label)}${s.estimate ? '<span class="est">≈</span>' : ""}<span class="src">${esc(s.source)}${s.id ? " · " + esc(s.id) : ""}${s.date ? " · " + esc(s.date) : ""}</span></td><td class="v" data-sig="${esc(k)}">${num(s.value, "", s.signed)}</td></tr>`).join("");
+  const missing = (R.missing_data || []).map((m) => `<div class="drow"><div class="grow"><div>${esc(m.label_he)}</div><span class="src">${esc(m.reason_he)}</span></div>
+      <div class="dval"><div class="meta">בקובץ: ${esc(m.spec)}</div><span class="st bad">${icon("x", "sm")}חסר מקור</span></div></div>`).join("");
   return header("איכות ומקורות") +
-    `<div class="panel"><h2>אימות מול מקור רשמי</h2><p class="meta" style="margin:-6px 0 8px">מחירים בזמן אמת מושווים בכל הרצה למפרסם הרשמי ביום המסחר המלא האחרון. סטייה פוסלת את הנתון.</p>${val}</div>
-     <div class="panel"><h2>ללא מקור רשמי חינמי</h2><div class="chips">${q.unverified.map((t) => `<span class="tk">${esc(t)}</span>`).join("")}</div></div>
-     ${fails ? `<div class="panel"><h2>נתונים שלא נטענו</h2><ul class="list">${fails}</ul><p class="meta">חוקים שתלויים בהם דולגו. שום ערך לא נוחש.</p></div>` : ""}
-     <div class="panel"><h2>כל הנתונים <span class="meta">${Object.keys(R.signals).length}</span></h2><table>${rows}</table></div>`;
+    `<div class="panel"><h2>${all.length} נתונים במערכת</h2><div class="chips" style="margin-top:4px">${summary}</div>
+       <p class="meta" style="margin-top:10px">מקור רשמי: הגוף שמפרסם את הנתון (BLS, BEA, הפד, משרד האוצר). אומת: מחיר בזמן אמת שהושווה למקור הרשמי בהרצה הזו. לא אומת: אין מקור רשמי חינמי להשוואה. תאריך = תאריך התצפית האחרונה.</p></div>
+     <div class="panel"><h2>אימות מול מקור רשמי</h2>${val}</div>
+     ${groups}
+     ${missing ? `<div class="panel"><h2>נתונים מהמפרט שאינם במערכת <span class="meta">${(R.missing_data || []).length}</span></h2>
+       <p class="meta" style="margin:-6px 0 6px">אין להם מקור מאומת, ולכן הם לא נכנסים לחישוב. שום ערך לא מנוחש.</p>${missing}</div>` : ""}`;
 }
 
 /* ---------- boot + auto-refresh ---------- */
