@@ -1,12 +1,12 @@
 {
  "meta": {
   "version": "4.9.0",
-  "generated_at": "2026-10-17T05:23:54+00:00",
+  "generated_at": "2026-10-17T07:21:06+00:00",
   "market_date": "16/10/2026",
   "market_open": false,
   "market_phase": "closed",
-  "slot": "morning",
-  "ny_time": "17/10 01:23"
+  "slot": "premarket",
+  "ny_time": "17/10 03:21"
  },
  "regime": {
   "code": "R4",
