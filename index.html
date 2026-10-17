@@ -566,6 +566,14 @@ const STATUS = {
   missing:    ["לא נטען", "bad",  "x"],
 };
 const STATUS_ORDER = ["official", "validated", "commercial", "unverified", "estimate", "failed", "missing"];
+const RED = {
+  consensus:          ["2 מקורות תואמים", "ok", "check"],
+  backup_active:      ["גיבוי פעיל", "warn", "repeat"],
+  diverged:           ["סטייה בין מקורות", "bad", "alert"],
+  all_failed:         ["כל המקורות נכשלו", "bad", "x"],
+  backup_unavailable: ["הגיבוי לא זמין", "warn", "dot"],
+  not_checked:        ["לא הוצלב בהרצה זו", "mute", "dot"],
+};
 function ageHe(d) {
   if (d === null || d === undefined) return "";
   return d === 0 ? "היום" : d === 1 ? "אתמול" : `לפני ${d} ימים`;
@@ -585,8 +593,17 @@ function data() {
       const detail = s.status === "missing" ? `<span class="src bad-txt">${esc(s.reason)}</span>` :
         `<span class="src">${esc(s.publisher || s.source)}${s.date ? ` · <span class="num">${esc(s.date)}</span> (${ageHe(s.age_days)})` : ""} · <span class="tk">${esc(s.id)}</span></span>`;
       return `<div class="drow"><div class="grow"><div>${esc(s.label)}</div>${detail}</div>
-        <div class="dval"><div class="v" data-sig="${esc(k)}">${val}</div><span class="st ${cls}">${icon(ic, "sm")}${stHe}</span></div></div>`;
+        <div class="dval"><div class="v" data-sig="${esc(k)}">${val}</div><span class="st ${cls}">${icon(ic, "sm")}${stHe}</span>${
+          RED[(s.redundancy || {}).status] ? `<span class="st ${RED[s.redundancy.status][1]}">${icon(RED[s.redundancy.status][2], "sm")}${RED[s.redundancy.status][0]}</span>` : ""}</div></div>`;
     }).join("")}</div>`;
+  }).join("");
+  const red = q.redundancy || [];
+  const redOk = red.filter((e) => e.status === "consensus").length;
+  const redRows = red.map((e) => {
+    const [he, cls, ic] = RED[e.status] || ["", "mute", "dot"];
+    const srcs = e.sources.map((x) => `<span class="tk">${esc(x.split(":")[0].toUpperCase())}</span>`).join(" ↔ ");
+    return `<div class="drow"><div class="grow"><div>${esc(e.label)} <span class="meta">${srcs}</span></div><span class="src">${esc(e.detail)}</span></div>
+      <div class="dval"><span class="st ${cls}">${icon(ic, "sm")}${he}</span>${e.used ? `<span class="meta">בשימוש: ${esc(e.used.split(":")[0].toUpperCase())}</span>` : ""}</div></div>`;
   }).join("");
   const val = q.validation.map((v) => `<div class="alert-row"><span class="sev ${v.ok ? "info" : "critical"}">${icon(v.ok ? "check" : "x")}</span>
       <div class="grow"><b>${esc(v.label)}</b><span class="src">${esc(v.detail)}</span></div></div>`).join("");
@@ -595,7 +612,9 @@ function data() {
   return header("איכות ומקורות") +
     `<div class="panel"><h2>${all.length} נתונים במערכת</h2><div class="chips" style="margin-top:4px">${summary}</div>
        <p class="meta" style="margin-top:10px">מקור רשמי: הגוף שמפרסם את הנתון (BLS, BEA, הפד, משרד האוצר). אומת: מחיר בזמן אמת שהושווה למקור הרשמי בהרצה הזו. לא אומת: אין מקור רשמי חינמי להשוואה. תאריך = תאריך התצפית האחרונה.</p></div>
-     <div class="panel"><h2>אימות מול מקור רשמי</h2>${val}</div>
+     ${red.length ? `<div class="panel"><h2>גיבוי והצלבה בין מקורות <span class="meta">${redOk}/${red.length} תואמים</span></h2>
+       <p class="meta" style="margin:-6px 0 6px">כל נתון כאן נמשך משני מפרסמים ומושווה על אותה תצפית. סטייה פוסלת את הנתון ושולחת התראה. אם המקור הראשי נופל, הגיבוי נכנס ומסומן.</p>${redRows}</div>` : ""}
+     <div class="panel"><h2>אימות מחירי שוק מול מקור רשמי</h2>${val}</div>
      ${groups}
      ${missing ? `<div class="panel"><h2>נתונים מהמפרט שאינם במערכת <span class="meta">${(R.missing_data || []).length}</span></h2>
        <p class="meta" style="margin:-6px 0 6px">אין להם מקור מאומת, ולכן הם לא נכנסים לחישוב. שום ערך לא מנוחש.</p>${missing}</div>` : ""}`;
