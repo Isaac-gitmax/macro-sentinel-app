@@ -207,6 +207,27 @@ td.v { text-align: left; white-space: nowrap; font-weight: 600; padding-inline-s
 .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
 .duo > div { background: var(--wash); border-radius: 12px; padding: 10px 12px; }
 .duo .v { font-size: 22px; font-weight: 700; }
+/* v5 expert engine */
+.shadow-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; padding: 2px 8px;
+  border-radius: 999px; background: var(--warn-wash); color: var(--warn); }
+.zbar { position: relative; height: 8px; background: var(--wash); border-radius: 4px; min-width: 80px; direction: ltr; }
+.zbar i { position: absolute; inset-block: 0; border-radius: 4px; background: var(--muted); }
+.zbar i.pos { background: var(--down); } .zbar i.neg { background: var(--info); }
+.zbar .mid { position: absolute; inset-block: -2px; left: 50%; width: 2px; background: var(--text); opacity: .35; }
+.score-pill { display: inline-flex; min-width: 34px; justify-content: center; font-weight: 700; border-radius: 8px; padding: 2px 6px; font-size: 13px; }
+.score-pill.p2 { background: var(--up); color: #fff; } .score-pill.p1 { background: var(--up-wash); color: var(--up); }
+.score-pill.n1 { background: var(--down-wash); color: var(--down); } .score-pill.n2 { background: var(--down); color: #fff; }
+.score-pill.z0 { background: var(--wash); color: var(--muted); }
+.grade { display: inline-flex; width: 20px; height: 20px; align-items: center; justify-content: center; border-radius: 6px;
+  font-size: 11.5px; font-weight: 700; background: var(--wash); color: var(--muted); }
+.vrow { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 9px 0; border-top: 1px solid var(--hair); }
+.vrow:first-of-type { border-top: 0; }
+.vrow .meta { display: block; }
+.vt { width: 100%; border-collapse: collapse; font-size: 13px; }
+.vt th { font-weight: 600; color: var(--muted); font-size: 11.5px; text-align: start; padding: 6px 4px; }
+.vt td { padding: 7px 4px; border-top: 1px solid var(--hair); }
+.vt td.num, .vt th.num { text-align: end; }
+.vt tr.best td { background: var(--up-wash); }
 .adj { display: flex; gap: 10px; align-items: flex-start; padding: 11px 0; border-top: 1px solid var(--hair); font-size: 14.5px; }
 .adj:first-of-type { border-top: 0; padding-top: 0; }
 .moves { display: flex; flex-direction: column; gap: 4px; flex: none; }
@@ -338,8 +359,8 @@ function haptic() { try { tg && tg.HapticFeedback.impactOccurred("light"); } cat
 const sig = (name) => (R.signals || {})[name] || {};
 
 /* ---------- routing ---------- */
-const ORDER = ["", "market", "regime", "alloc", "score", "exec", "news", "data"];
-const ROUTES = { "": home, market, regime, alloc, score, exec, news, data };
+const ORDER = ["", "market", "regime", "alloc", "score", "v5", "exec", "news", "data"];
+const ROUTES = { "": home, market, regime, alloc, score, v5, exec, news, data };
 function go(route) { haptic(); location.hash = route ? "#/" + route : "#/"; }
 const currentRoute = () => (location.hash.replace(/^#\/?/, "") || "").split("?")[0];
 function render(keepScroll) {
@@ -511,6 +532,10 @@ document.addEventListener("click", (e) => {
   e.stopPropagation(); e.preventDefault();
   if (c) openChart(c.dataset.chart, c.dataset.label); else explain(x.dataset.x);
 }, true);
+document.addEventListener("click", (e) => {
+  const p = e.target.closest("[data-v5p]");
+  if (p && !e.target.closest("[data-x],[data-chart]")) v5Pillar(p.dataset.v5p);
+});
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && sheetOpen) closeSheet(); });
 let lastChart = null;
 function retheme() {
@@ -624,6 +649,7 @@ function home() {
     ["regime", "compass", "רג'ים ואנומליות", "2", `${g ? g.code : "—"} · ${R.alerts.length} התראות · ${R.states.length} מצבים`],
     ["alloc", "layers", "הקצאה ונימוקים", "3", `${ow} להגדיל · ${uw} להקטין · ${R.allocation.adjustments.length} התאמות`],
     ["score", "gauge", "סיכויי הצלחה", "", scoreNavLine()],
+    ["v5", "flask", "מנוע מומחה v5 (בבדיקה)", "", v5NavLine()],
     ["exec", "target", "ביצוע וסיכון", "4", `${R.execution.actions.length} פעולות · סגנון וסינון מניות`],
     ["news", "news", "כותרות", "", R.news.items.length ? `${R.news.items.length} כותרות` : "אין כותרות עדכניות"],
     ["data", "shield", "איכות ומקורות", "", (() => { const v = Object.values(R.signals); const n = (st) => v.filter((x) => x.status === st).length;
@@ -798,6 +824,108 @@ function score() {
     `<div class="panel"><h2>איך מודדים</h2><p>${esc(H.method_he)}</p>
       <p class="meta" style="margin-top:8px">ירוק = כל טווח הביטחון מעל <span class="num">50%</span> · כתום = בטווח המקריות · אדום = מתחת. מחירים: Yahoo (ספק מסחרי). ההתאמות הפעילות (חוקי אם-אז) לא נכללות במדידה.</p></div>
      <p class="foot">ביצועי עבר אינם מבטיחים תוצאות בעתיד. פלט של מסגרת ניתוח, לא ייעוץ השקעות.</p>`;
+}
+
+/* ---------- v5 expert engine (shadow) ---------- */
+const GRADE_HE = { m: "מ", s: "ש", x: "ס", a: "ע", d: "ד", b: "ב" };
+const OV_STATE = { on: ["דלוקה", "bad"], decay: ["דועכת", "warn"], watch: ["במעקב", "warn"], off: ["כבויה", "mute"] };
+const TIER_HE = { full: "פעולה מלאה", half: "חצי גודל", abstain: "הימנעות" };
+const DIR_HE = { up: "עולה", down: "יורד", flat: "יציב", unknown: "לא ידוע" };
+function v5NavLine() {
+  const V = R.v5;
+  if (!V) return "עוד לא חושב";
+  if (V.error) return "לא חושב בריצה הזו";
+  return `${V.regime.code || "—"} · ${V.regime.sub_state || ""} · ביטחון ${V.confidence.total ?? "—"}`;
+}
+function zbar(v) {
+  if (v === null || v === undefined) return `<div class="zbar"><span class="mid"></span></div>`;
+  const w = Math.min(50, Math.abs(v) / 3 * 50);
+  return `<div class="zbar"><i class="${v > 0 ? "pos" : "neg"}" style="left:${v > 0 ? 50 : 50 - w}%;width:${w}%"></i><span class="mid"></span></div>`;
+}
+const spill = (v) => { const c = v >= 2 ? "p2" : v >= 1 ? "p1" : v <= -2 ? "n2" : v <= -1 ? "n1" : "z0";
+  return `<span class="score-pill num ${c}">${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(v)}</span>`; };
+function v5Pillar(code) {
+  const p = R.v5.pillars.find((x) => x.code === code);
+  if (!p) return;
+  openSheet(`<h2 id="sheet-title">${esc(p.label)} <span class="meta num">(${esc(p.code)})</span></h2>
+    <div class="meta">רמה <b class="num">${p.level ?? "—"}</b> · כיוון ${DIR_HE[p.dir]} (<span class="num">${p.direction ?? "—"}</span>) · כיסוי <span class="num">${Math.round(p.coverage * 100)}%</span></div>
+    <p class="why" data-x="t:pillar">ערך חיובי = חם יותר, הדוק יותר או מתוח יותר מהרגיל ב-10 השנים האחרונות. לחיצה כאן מסבירה מה זה עמוד תווך.</p>
+    ${p.inputs.map((i) => `<div class="srow"><div class="lbl"><span>${esc(i.label)}</span><span class="meta"><span class="num">${i.value ?? "—"}</span>${i.date ? ` · ${esc(i.date)}` : " · אין נתון"}</span></div>${zbar(i.z)}<div class="n"><b class="num">${i.z ?? "—"}</b><small>z</small></div></div>`).join("")}`);
+}
+function v5() {
+  const V = R.v5;
+  if (!V || V.error) return header("מנוע מומחה v5") + `<div class="panel"><p class="muted">${V && V.error ? "המנוע לא חושב בריצה הזו: " + esc(V.error) : "המנוע עוד לא רץ בדוח הזה."}</p></div>`;
+  const g = V.regime, c = V.confidence, live = R.regime ? R.regime.code : null, B = V.backtest;
+  const same = live && g.code === live;
+  const intro = `<div class="panel"><div class="row between"><h2><span class="x" data-x="t:v5">מה זה</span></h2><span class="shadow-badge">${icon("flask", "sm")}בבדיקה · לא משנה המלצות</span></div>
+    <p style="margin-top:6px">מנוע לפי המפרט החדש, שרץ במקביל למנוע הקיים. ההמלצות בפועל (מסך ההקצאה וטלגרם) נשארות של המנוע הקיים, עד ששכבה מוכיחה את עצמה בבדיקה ההיסטורית.</p>
+    <p class="meta" style="margin-top:6px">נכון לשבוע של <span class="num">${esc(V.as_of)}</span> · גרסה <bdi dir="ltr">${esc(V.version)}</bdi></p></div>`;
+
+  const bandTxt = (v, b, unit) => `<span class="num">${v ?? "—"}${unit}</span> <span class="meta">(רצועה <span class="num">${b.down}–${b.up}${unit}</span>)</span>`;
+  const reg = `<div class="panel"><div class="regime-head"><span class="badge ${esc(g.code || "")}" data-x="t:${esc(g.code || "regime")}">${esc(g.code || "—")}</span><h2>${esc(g.sub_state || "")}</h2></div>
+    <div class="facts" style="margin-top:8px">
+      <div class="fact" data-x="t:band">${icon("gauge", "sm")}<span class="x">אינפלציית ליבה, ממוצע 3 חודשים: ${bandTxt(g.infl, g.infl_band, "%")}${g.infl_in_band ? " · <b>בתוך הרצועה</b>" : ""}</span></div>
+      <div class="fact" data-x="t:output_gap">${icon("gauge", "sm")}<span class="x">פער: אבטלה טבעית פחות אבטלה: ${bandTxt(g.gap, g.gap_band, "")}${g.gap_in_band ? " · <b>בתוך הרצועה</b>" : ""}</span></div>
+      <div class="fact">${icon("repeat", "sm")}<span>במצב הזה <span class="num">${g.weeks_since_flip}</span> שבועות${g.last_flip ? ` (מאז <span class="num">${esc(g.last_flip)}</span>)` : ""} · צמיחה ועבודה: ${DIR_HE[g.gl_dir]}</span></div>
+      ${g.override ? `<div class="fact">${icon("alert", "sm")}<span><b>עקיפה פעילה:</b> כלל סאם או התביעות העבירו מיד לצד של פער שלילי</span></div>` : ""}
+      ${g.r4_cooling ? `<div class="fact">${icon("alert", "sm")}<span><b>אזהרת R4 מתקרר</b></span></div>` : ""}
+      <div class="fact">${icon(same ? "check" : "info", "sm")}<span>המנוע הקיים: <b>${esc(live || "—")}</b>${same ? " · מסכימים" : " · <b>לא מסכימים</b>"}</span></div>
+    </div></div>`;
+
+  const W = c.weights || {};
+  const CN = { boundary: "מרחק מהגבול", pillar_agreement: "הסכמת עמודי התווך", persistence: "התמדה", market_confirmation: "אישור השוק", freshness: "עדכניות הנתונים" };
+  const conf = `<div class="panel"><div class="row between"><h2><span class="x" data-x="t:confidence">ציון ביטחון</span></h2><span class="pill ${c.tier === "full" ? "ok" : c.tier === "half" ? "warn" : "bad"}">${TIER_HE[c.tier] || ""}</span></div>
+    <div class="score-big num ${c.tier === "full" ? "ok" : c.tier === "abstain" ? "bad" : ""}">${c.total ?? "—"}</div>
+    ${Object.keys(W).map((k) => { const f = c.components[k] ?? 0;
+      return `<div class="srow"><div class="lbl"><span>${CN[k] || k}</span></div><div class="rbar ${f >= 0.65 ? "ok" : f >= 0.45 ? "mid" : "bad"}"><i style="width:${Math.round(f * 100)}%"></i></div><div class="n"><b class="num">${Math.round(f * W[k])}</b><small class="num">מתוך ${W[k]}</small></div></div>`; }).join("")}
+    <p class="meta" style="margin-top:8px"><span class="num">65</span> ומעלה = פעולה מלאה · <span class="num">45–65</span> = חצי גודל · מתחת ל-<span class="num">45</span> = הימנעות</p></div>`;
+
+  const pills = `<div class="panel"><h2><span class="x" data-x="t:pillar">שמונה עמודי התווך</span></h2><p class="meta" style="margin:-4px 0 6px">ימינה מהקו = חם, הדוק או מתוח מהרגיל · לחיצה על עמוד מציגה את הנתונים שלו</p>
+    ${V.pillars.map((p) => `<div class="srow" data-v5p="${esc(p.code)}" role="button" tabindex="0"><div class="lbl"><span class="x">${esc(p.label)}</span><span class="meta">${DIR_HE[p.dir]}${p.coverage < 1 ? ` · כיסוי <span class="num">${Math.round(p.coverage * 100)}%</span>` : ""}</span></div>${zbar(p.level)}<div class="n"><b class="num">${p.level ?? "—"}</b><small>z</small></div></div>`).join("")}</div>`;
+
+  const ovl = `<div class="panel"><h2><span class="x" data-x="t:overlay">שכבות סיכון</span></h2>
+    ${V.overlays.map((o) => { const [he, cls] = OV_STATE[o.state] || OV_STATE.off;
+      const eff = Object.entries(o.effects || {}).map(([k, v]) => { const row = V.sectors.find((x) => x.id === k); return `${v > 0 ? "+" : "−"}${row ? row.label : k}`; }).join(", ");
+      return `<div class="vrow"><div><b>${esc(o.code)}</b> ${esc(o.label)}<span class="meta">ציון <span class="num">${o.score ?? "—"}</span>${eff ? ` · משפיעה על: ${esc(eff)}` : ""}${o.on_share !== null ? ` · דלוקה <span class="num">${Math.round(o.on_share * 100)}%</span> מהזמן` : ""}</span></div><span class="st ${cls}">${he}</span></div>`; }).join("")}
+    <p class="meta" style="margin-top:8px">אנרגיה נקבעת לפי O3 ולא לפי מצב הכלכלה (המחקר: אנרגיה לא מגיבה למחזור הכלכלי בארה״ב).</p></div>`;
+
+  const secs = [...V.sectors].sort((a, b) => b.score - a.score);
+  const sec = `<div class="panel"><h2>מטריצת הסקטורים</h2><p class="meta" style="margin:-4px 0 6px">ציון מ-<span class="num">2−</span> עד <span class="num">2+</span> · <span class="x" data-x="t:evidence">דרגת ראיות</span> · <span class="x" data-x="t:price_gate">תנאי מחיר</span></p>
+    ${secs.map((x) => `<div class="vrow"><div><span>${esc(x.label)}</span> <span class="tk" data-chart="${esc(x.etf)}" data-label="${esc(x.label)}">${esc(x.etf)}</span>
+      <span class="meta">${esc(x.action_he)}${x.overlay_push ? ` · שכבות: <span class="num">${x.overlay_push > 0 ? "+" : ""}${x.overlay_push}</span>` : ""}${x.note ? ` · ${esc(x.note)}` : ""}${x.structural ? " · מבני" : ""}</span></div>
+      <div class="row" style="gap:6px"><span class="grade" data-x="t:evidence">${GRADE_HE[x.grade] || ""}</span>${spill(x.score)}</div></div>`).join("")}</div>`;
+
+  let bt = "";
+  if (B && B.variants) {
+    const keys = Object.keys(B.variants);
+    const best = keys.reduce((a, k) => ((B.variants[k].basket_63d.holdout.rate ?? 0) > (B.variants[a].basket_63d.holdout.rate ?? 0) ? k : a), keys[0]);
+    const cell = (b) => `<td class="num">${b.rate === null ? "—" : pct1(b.rate)}<br><small class="meta num">${b.n}</small></td>`;
+    const ov = B.overlays || {};
+    bt = `<div class="panel"><h2><span class="x" data-x="t:ablation">הבדיקה ההיסטורית, שכבה אחרי שכבה</span></h2>
+      <p class="meta" style="margin:-4px 0 8px"><span class="num">${ym(B.window[0])}–${ym(B.window[1])}</span> · נתונים כפי שפורסמו באותו יום · "לא נראה" = <span class="num">2019</span> והלאה, נפתח פעם אחת</p>
+      <table class="vt"><tr><th>גרסה</th><th class="num">שורות 20 יום</th><th class="num">סל 63 יום</th><th class="num">סל 63, לא נראה</th></tr>
+      ${keys.map((k) => { const v = B.variants[k]; return `<tr class="${k === best ? "best" : ""}"><td>${esc(v.label_he)}</td>${cell(v.rows_20d.all)}${cell(v.basket_63d.all)}${cell(v.basket_63d.holdout)}</tr>`; }).join("")}</table>
+      <div class="todo" style="margin-top:12px"><b>מה יצא:</b> ${(() => {
+        const A = B.variants.A_plain, last = B.variants[keys[keys.length - 1]];
+        const a63 = A.basket_63d.all.rate ?? 0, h63 = A.basket_63d.holdout.rate ?? 0;
+        const better = keys.slice(1).filter((k) => (B.variants[k].basket_63d.holdout.rate ?? 0) > h63);
+        const base = a63 >= 58 && h63 >= 55
+          ? `המטריצה החדשה עצמה עובדת: הסל שהיא ממליצה להגדיל עקף את הסל שהיא ממליצה להקטין ב-<b class="num">${pct1(a63)}</b> מהמקרים ב-63 יום, וגם בתקופה שלא נראתה (<span class="num">${pct1(h63)}</span>). יעד המפרט: <span class="num">58%–60%</span>.`
+          : `המטריצה החדשה לבדה: <b class="num">${pct1(a63)}</b> ב-63 יום, <span class="num">${pct1(h63)}</span> בתקופה שלא נראתה. עוד לא ביעד המפרט (<span class="num">58%–60%</span>).`;
+        const layers = better.length
+          ? ` שכבות ששיפרו בתקופה שלא נראתה: ${better.map((k) => esc(B.variants[k].label_he)).join(", ")}.`
+          : " השכבות הנוספות, כפי שהן כתובות במפרט, <b>לא שיפרו</b> בתקופה שלא נראתה, ולכן הן נשארות בבדיקה.";
+        return base + layers; })()}</div>
+      <h3 style="margin-top:14px">בדיקות שפיות</h3>
+      ${Object.entries(ov).map(([k, o]) => { const ok = o.on_share >= o.target[0] && o.on_share <= o.target[1];
+        return `<div class="vrow"><div>${esc(k)}: דלוקה <span class="num">${Math.round(o.on_share * 100)}%</span> מהזמן<span class="meta">יעד <span class="num">${o.target[0] * 100}%–${o.target[1] * 100}%</span>${o.on_share > 0.4 ? " · מעל 40%: זה מצב קבוע ולא חריגה" : ""}</span></div><span class="verdict ${ok ? "ok" : "bad"}">${icon(ok ? "check" : "x", "sm")}${ok ? "תקין" : "לא בטווח"}</span></div>`; }).join("")}
+      ${B.regime ? `<div class="vrow"><div>מעברי משטר: <span class="num">${B.regime.flips}</span><span class="meta">התהפכו תוך פחות מ-3 חודשים: <span class="num">${B.regime.flips_reversed_within_3m}</span></span></div><span class="verdict ${B.regime.flips_reversed_within_3m === 0 ? "ok" : "bad"}">${icon(B.regime.flips_reversed_within_3m === 0 ? "check" : "x", "sm")}${B.regime.flips_reversed_within_3m === 0 ? "יציב" : "קפיצות"}</span></div>` : ""}
+      ${B.confidence_tiers_20d ? `<div class="vrow"><div>ביטחון מלא מול חצי<span class="meta">אחוז הצלחה של שורות: <span class="num">${pct1(B.confidence_tiers_20d.full.rate)}</span> מול <span class="num">${pct1(B.confidence_tiers_20d.half.rate)}</span> · הימנעות לא הופעלה אף פעם</span></div><span class="verdict ${(B.confidence_tiers_20d.full.rate ?? 0) > (B.confidence_tiers_20d.half.rate ?? 0) ? "ok" : "bad"}">${icon("dot", "sm")}חלש</span></div>` : ""}
+      ${(B.not_done_he || []).length ? `<p class="meta" style="margin-top:10px">עוד לא נבדק: ${B.not_done_he.map(esc).join(" · ")}</p>` : ""}
+      <p class="meta" style="margin-top:6px">${esc(B.method_he || "")}</p></div>`;
+  }
+  return header("מנוע מומחה v5") + intro + reg + conf + pills + ovl + sec + bt +
+    `<p class="foot">מנוע בבדיקה. פלט של מסגרת ניתוח, לא ייעוץ השקעות.</p>`;
 }
 
 function exec() {
