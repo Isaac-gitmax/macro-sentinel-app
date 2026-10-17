@@ -225,7 +225,7 @@ td.v { text-align: left; white-space: nowrap; font-weight: 600; padding-inline-s
 .sheet .why { margin-top: 12px; padding: 12px 14px; border-radius: 14px; background: var(--wash); font-size: 14.5px; }
 .sheet .close { position: absolute; top: 10px; inset-inline-end: 12px; width: 32px; height: 32px; border-radius: 50%;
   display: grid; place-items: center; background: var(--wash); color: var(--muted); cursor: pointer; border: 0; }
-.chart-box { height: 320px; margin: 10px -6px 4px; }
+.chart-box { height: 380px; margin: 10px -6px 4px; border-radius: 12px; overflow: hidden; }
 .heat { height: 430px; margin: 8px -8px -6px; border-radius: 12px; overflow: hidden; }
 .heat-ph { height: 100%; display: grid; place-items: center; color: var(--muted); font-size: 13px; }
 .tk[data-chart] { cursor: pointer; transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out); }
@@ -378,7 +378,13 @@ function flashChanged() {
 }
 
 /* ---------- explain-on-tap, charts, heatmap ---------- */
-const isDark = () => (tg && tg.initData ? tg.colorScheme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches);
+// theme is read from the colour actually painted, so embedded charts always match the page
+function surfaceRGB() {
+  const probe = $("#sheet") || document.body;
+  const m = getComputedStyle(probe).backgroundColor.match(/\d+(\.\d+)?/g) || [255, 255, 255];
+  return m.slice(0, 3).map(Number);
+}
+const isDark = () => { const [r, g, b] = surfaceRGB(); return 0.2126 * r + 0.7152 * g + 0.0722 * b < 128; };
 let sheetOpen = false;
 function openSheet(html) {
   $("#sheet-body").innerHTML = html;
@@ -422,7 +428,15 @@ function explain(ref) {
     ${concept.why ? `<div class="why"><b>למה זה חשוב:</b> ${esc(concept.why)}</div>` : ""}`);
 }
 // TradingView symbols for the non-ETF items in the matrix
-const TV = { DXY: "TVC:DXY", US10Y: "TVC:US10Y", BTC: "BITSTAMP:BTCUSD", ETH: "BITSTAMP:ETHUSD" };
+// every ticker the app can show, pinned to its US listing (a bare ticker can resolve to a foreign namesake)
+const TV = {
+  DXY: "TVC:DXY", US10Y: "TVC:US10Y", BTC: "BITSTAMP:BTCUSD", ETH: "BITSTAMP:ETHUSD",
+  ...Object.fromEntries("ARKG ARKQ COWZ HUMN IGV ITA ITB IYT MAGS PAVE".split(" ").map((t) => [t, "CBOE:" + t])),
+  ...Object.fromEntries("BLOK COPX DIA FITE GDX HAIL IHE IHI IWM JETS KIE KRE LIT MSOS NASA NLR OIH PEJ POWR PPA ROBO ROKT SPY TAN URA URNM VNQ XAR XBI XHB XLB XLC XLE XLF XLI XLK XLP XLRE XLU XLV XLY XME XOP XRT".split(" ").map((t) => [t, "AMEX:" + t])),
+  ...Object.fromEntries("BOTZ BUG CHPX CIBR CLOU DRIV FINX GRID IBB ICLN KBWB KOID OZEM QCLN QQQ RING SKYY SMH SOCL SOXX UFO WCLD".split(" ").map((t) => [t, "NASDAQ:" + t])),
+};
+// listed in the matrix but no longer trading in the US: never chart a foreign fund with the same ticker
+const NO_CHART = new Set(["BTEC", "BTEK"]);
 function tvWidget(type, config, height) {
   const box = document.createElement("div");
   box.className = "tradingview-widget-container";
@@ -437,15 +451,23 @@ function tvWidget(type, config, height) {
 }
 function openChart(ticker, label) {
   if (ticker === "Cash") return explain("t:stance");
+  lastChart = [ticker, label];
+  if (NO_CHART.has(ticker) || !TV[ticker]) {
+    return openSheet(`<h2 id="sheet-title"><span class="num">${esc(ticker)}</span></h2><div class="meta">${esc(label || "")}</div>
+      <p class="why">אין גרף אמין לטיקר הזה: נראה שתעודת הסל כבר לא נסחרת בארה״ב, ובבורסות אחרות יש קרן אחרת עם אותו שם. מוצג במסגרת לצורך שלמות בלבד.</p>`);
+  }
   openSheet(`<h2 id="sheet-title"><span class="num">${esc(ticker)}</span></h2><div class="meta">${esc(label || "")}</div>
     <div class="chart-box" id="chart-box"></div>
-    <p class="meta">גרף: TradingView, אותם רכיבים ש-OpenStock משתמשת בהם. ייתכנו עיכובים במחירים.</p>
+    <p class="meta">קו = מחיר סגירה יומי · קו נוסף = ממוצע נע 150 ימים (מחיר מעליו = מגמה עולה). גרף: TradingView, ייתכנו עיכובים במחירים.</p>
     <div class="why" data-x="t:etf"><b>מה זה ${esc(ticker)}?</b> לחיצה כאן מסבירה מה זו תעודת סל.</div>`);
-  $("#chart-box").appendChild(tvWidget("symbol-overview", {
-    symbols: [[ticker, (TV[ticker] || ticker) + "|12M"]], chartOnly: false, width: "100%", height: "100%",
-    locale: "he_IL", colorTheme: isDark() ? "dark" : "light", isTransparent: true, autosize: true,
-    showVolume: false, hideDateRanges: false, scalePosition: "right", scaleMode: "Normal",
-    dateRanges: ["1m|1D", "3m|1D", "12m|1W", "60m|1W"], chartType: "area", lineWidth: 2,
+  const [r, g, b] = surfaceRGB(), dark = isDark();
+  $("#chart-box").appendChild(tvWidget("advanced-chart", {
+    symbol: TV[ticker] || ticker, interval: "D", range: "12M", style: "2", // daily closes drawn as a line
+    theme: dark ? "dark" : "light", locale: "he_IL", timezone: "America/New_York", autosize: true,
+    backgroundColor: `rgb(${r},${g},${b})`, gridColor: dark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)",
+    hide_top_toolbar: true, hide_side_toolbar: true, allow_symbol_change: false, save_image: false,
+    calendar: false, hide_volume: true, withdateranges: true, support_host: "https://www.tradingview.com",
+    studies: [{ id: "MASimple@tv-basicstudies", inputs: { length: 150 } }],
   }, "100%"));
 }
 function mountHeatmap() {
@@ -475,6 +497,14 @@ document.addEventListener("click", (e) => {
   if (c) openChart(c.dataset.chart, c.dataset.label); else explain(x.dataset.x);
 }, true);
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && sheetOpen) closeSheet(); });
+let lastChart = null;
+function retheme() {
+  const h = $("#heat");
+  if (h && h.childElementCount) { h.innerHTML = ""; mountHeatmap(); }
+  if (sheetOpen && lastChart) openChart(...lastChart);
+}
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", () => setTimeout(retheme, 50));
+if (tg && tg.onEvent) tg.onEvent("themeChanged", () => setTimeout(retheme, 50));
 
 /* ---------- shared pieces ---------- */
 const PHASE = { pre: ["טרום מסחר", "live"], open: ["מסחר פתוח", "live"], post: ["אחרי סגירה", ""], closed: ["שוק סגור", ""] };
