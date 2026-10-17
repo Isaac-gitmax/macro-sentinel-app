@@ -209,6 +209,9 @@ td.v { text-align: left; white-space: nowrap; font-weight: 600; padding-inline-s
 .duo .v { font-size: 22px; font-weight: 700; }
 /* v5 expert engine */
 .v5-card { border: 1px dashed var(--warn); }
+.now { margin-top: 10px; padding: 9px 12px; border-radius: 10px; background: var(--info-wash); font-size: 14px; }
+.why.use { background: var(--up-wash); }
+.hint { display: flex; gap: 6px; align-items: center; color: var(--muted); font-size: 12px; margin: -4px 0 6px; }
 .shadow-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; padding: 2px 8px;
   border-radius: 999px; background: var(--warn-wash); color: var(--warn); }
 .zbar { position: relative; height: 8px; background: var(--wash); border-radius: 4px; min-width: 80px; direction: ltr; }
@@ -444,7 +447,7 @@ function unitOf(id) {
   for (const g of R.market_groups || []) { const it = g.items.find((x) => x.signal === id); if (it) return it.unit; }
   return "";
 }
-function explain(ref) {
+function explain(ref, ctx) {
   const [kind, id] = ref.split(":");
   let concept, sigHtml = "";
   if (kind === "sig") {
@@ -461,8 +464,10 @@ function explain(ref) {
   }
   if (!concept) return;
   openSheet(`<h2 id="sheet-title">${esc(concept.title)}</h2>${sigHtml}
+    ${ctx ? `<div class="now"><b>היום:</b> ${esc(ctx)}</div>` : ""}
     <p style="margin-top:10px">${esc(concept.text)}</p>
-    ${concept.why ? `<div class="why"><b>למה זה חשוב:</b> ${esc(concept.why)}</div>` : ""}`);
+    ${concept.why ? `<div class="why"><b>למה זה חשוב:</b> ${esc(concept.why)}</div>` : ""}
+    ${concept.use ? `<div class="why use"><b>איך זה עוזר לנו כמשקיעים:</b> ${esc(concept.use)}</div>` : ""}`);
 }
 // TradingView symbols for the non-ETF items in the matrix
 // every ticker the app can show, pinned to its US listing (a bare ticker can resolve to a foreign namesake)
@@ -531,7 +536,7 @@ document.addEventListener("click", (e) => {
   const x = e.target.closest("[data-x]");
   if (!c && !x) return;
   e.stopPropagation(); e.preventDefault();
-  if (c) openChart(c.dataset.chart, c.dataset.label); else explain(x.dataset.x);
+  if (c) openChart(c.dataset.chart, c.dataset.label); else explain(x.dataset.x, x.dataset.xc);
 }, true);
 document.addEventListener("click", (e) => {
   const p = e.target.closest("[data-v5p]");
@@ -856,7 +861,9 @@ function v5Pillar(code) {
   if (!p) return;
   openSheet(`<h2 id="sheet-title">${esc(p.label)} <span class="meta num">(${esc(p.code)})</span></h2>
     <div class="meta">רמה <b class="num">${p.level ?? "—"}</b> · כיוון ${DIR_HE[p.dir]} (<span class="num">${p.direction ?? "—"}</span>) · כיסוי <span class="num">${Math.round(p.coverage * 100)}%</span></div>
-    <p class="why" data-x="t:pillar">ערך חיובי = חם יותר, הדוק יותר או מתוח יותר מהרגיל ב-10 השנים האחרונות. לחיצה כאן מסבירה מה זה עמוד תווך.</p>
+    ${(() => { const pc = G().concepts["pillar_" + p.code]; return pc ? `<p style="margin-top:10px">${esc(pc.text)}</p><div class="why"><b>למה זה חשוב:</b> ${esc(pc.why)}</div><div class="why use"><b>איך זה עוזר לנו כמשקיעים:</b> ${esc(pc.use)}</div>` : ""; })()}
+    <p class="meta x" data-x="t:zscore" style="margin-top:10px">ערך חיובי = חם, הדוק או מתוח מהרגיל ב-10 השנים האחרונות. מה זה ציון z?</p>
+    <h3 style="margin-top:12px">הנתונים שבונים את העמוד</h3>
     ${p.inputs.map((i) => `<div class="srow"><div class="lbl"><span>${esc(i.label)}</span><span class="meta"><span class="num">${i.value ?? "—"}</span>${i.date ? ` · ${esc(i.date)}` : " · אין נתון"}</span></div>${zbar(i.z)}<div class="n"><b class="num">${i.z ?? "—"}</b><small>z</small></div></div>`).join("")}`);
 }
 function v5() {
@@ -869,7 +876,7 @@ function v5() {
     <p class="meta" style="margin-top:6px">נכון לשבוע של <span class="num">${esc(V.as_of)}</span> · גרסה <bdi dir="ltr">${esc(V.version)}</bdi></p></div>`;
 
   const bandTxt = (v, b, unit) => `<span class="num">${v ?? "—"}${unit}</span> <span class="meta">(רצועה <span class="num">${b.down}–${b.up}${unit}</span>)</span>`;
-  const reg = `<div class="panel"><div class="regime-head"><span class="badge ${esc(g.code || "")}" data-x="t:${esc(g.code || "regime")}">${esc(g.code || "—")}</span><h2>${esc(g.sub_state || "")}</h2></div>
+  const reg = `<div class="panel"><div class="regime-head"><span class="badge ${esc(g.code || "")}" data-x="t:${esc(g.code || "regime")}">${esc(g.code || "—")}</span><h2 class="x" data-x="t:sub_state" data-xc="${esc(`${g.code} · ${g.sub_state} · צמיחה ועבודה: ${DIR_HE[g.gl_dir]}`)}">${esc(g.sub_state || "")}</h2></div>
     <div class="facts" style="margin-top:8px">
       <div class="fact" data-x="t:band">${icon("gauge", "sm")}<span class="x">אינפלציית ליבה, ממוצע 3 חודשים: ${bandTxt(g.infl, g.infl_band, "%")}${g.infl_in_band ? " · <b>בתוך הרצועה</b>" : ""}</span></div>
       <div class="fact" data-x="t:output_gap">${icon("gauge", "sm")}<span class="x">פער: אבטלה טבעית פחות אבטלה: ${bandTxt(g.gap, g.gap_band, "")}${g.gap_in_band ? " · <b>בתוך הרצועה</b>" : ""}</span></div>
@@ -884,22 +891,30 @@ function v5() {
   const conf = `<div class="panel"><div class="row between"><h2><span class="x" data-x="t:confidence">ציון ביטחון</span></h2><span class="pill ${c.tier === "full" ? "ok" : c.tier === "half" ? "warn" : "bad"}">${TIER_HE[c.tier] || ""}</span></div>
     <div class="score-big num ${c.tier === "full" ? "ok" : c.tier === "abstain" ? "bad" : ""}">${c.total ?? "—"}</div>
     ${Object.keys(W).map((k) => { const f = c.components[k] ?? 0;
-      return `<div class="srow"><div class="lbl"><span>${CN[k] || k}</span></div><div class="rbar ${f >= 0.65 ? "ok" : f >= 0.45 ? "mid" : "bad"}"><i style="width:${Math.round(f * 100)}%"></i></div><div class="n"><b class="num">${Math.round(f * W[k])}</b><small class="num">מתוך ${W[k]}</small></div></div>`; }).join("")}
+      const CK = { boundary: "conf_boundary", pillar_agreement: "conf_agreement", persistence: "conf_persistence", market_confirmation: "conf_market", freshness: "conf_freshness" }[k];
+      return `<div class="srow" data-x="t:${CK}" data-xc="${esc(`${Math.round(f * W[k])} נקודות מתוך ${W[k]}${k === "boundary" ? ` · אינפלציה ${g.infl}% מול גבול 2%, פער ${g.gap} מול גבול 0` : k === "persistence" ? ` · ${g.weeks_since_flip} שבועות במצב הנוכחי` : ""}`)}" role="button" tabindex="0"><div class="lbl"><span class="x">${CN[k] || k}</span></div><div class="rbar ${f >= 0.65 ? "ok" : f >= 0.45 ? "mid" : "bad"}"><i style="width:${Math.round(f * 100)}%"></i></div><div class="n"><b class="num">${Math.round(f * W[k])}</b><small class="num">מתוך ${W[k]}</small></div></div>`; }).join("")}
+    <p class="hint">${icon("q", "sm")}לחיצה על כל רכיב מסבירה מה הוא בודק ומה זה אומר לנו</p>
     <p class="meta" style="margin-top:8px"><span class="num">65</span> ומעלה = פעולה מלאה · <span class="num">45–65</span> = חצי גודל · מתחת ל-<span class="num">45</span> = הימנעות</p></div>`;
 
-  const pills = `<div class="panel"><h2><span class="x" data-x="t:pillar">שמונה עמודי התווך</span></h2><p class="meta" style="margin:-4px 0 6px">ימינה מהקו = חם, הדוק או מתוח מהרגיל · לחיצה על עמוד מציגה את הנתונים שלו</p>
+  const pills = `<div class="panel"><h2><span class="x" data-x="t:pillar">שמונה עמודי התווך</span></h2><p class="hint">${icon("q", "sm")}ימינה מהקו = חם, הדוק או מתוח מהרגיל · לחיצה על עמוד מסבירה אותו ומציגה את הנתונים שלו</p>
     ${V.pillars.map((p) => `<div class="srow" data-v5p="${esc(p.code)}" role="button" tabindex="0"><div class="lbl"><span class="x">${esc(p.label)}</span><span class="meta">${DIR_HE[p.dir]}${p.coverage < 1 ? ` · כיסוי <span class="num">${Math.round(p.coverage * 100)}%</span>` : ""}</span></div>${zbar(p.level)}<div class="n"><b class="num">${p.level ?? "—"}</b><small>z</small></div></div>`).join("")}</div>`;
 
-  const ovl = `<div class="panel"><h2><span class="x" data-x="t:overlay">שכבות סיכון</span></h2>
+  const ovl = `<div class="panel"><h2><span class="x" data-x="t:overlay">שכבות סיכון</span></h2><p class="meta" style="margin:2px 0 6px">סיכונים ספציפיים שמזיזים ציונים של תחומים, מעבר למצב הכלכלה</p>
     ${V.overlays.map((o) => { const [he, cls] = OV_STATE[o.state] || OV_STATE.off;
       const eff = Object.entries(o.effects || {}).map(([k, v]) => { const row = V.sectors.find((x) => x.id === k); return `${v > 0 ? "+" : "−"}${row ? row.label : k}`; }).join(", ");
-      return `<div class="vrow"><div><b>${esc(o.code)}</b> ${esc(o.label)}<span class="meta">ציון <span class="num">${o.score ?? "—"}</span>${eff ? ` · משפיעה על: ${esc(eff)}` : ""}${o.on_share !== null ? ` · דלוקה <span class="num">${Math.round(o.on_share * 100)}%</span> מהזמן` : ""}</span></div><span class="st ${cls}">${he}</span></div>`; }).join("")}
-    <p class="meta" style="margin-top:8px">אנרגיה נקבעת לפי O3 ולא לפי מצב הכלכלה (המחקר: אנרגיה לא מגיבה למחזור הכלכלי בארה״ב).</p></div>`;
+      return `<div class="vrow" data-x="t:${esc(o.code)}" data-xc="${esc(`${he} · ציון ${o.score ?? "—"}${o.code === "O4" ? " (מעקב מ-1, פעילה מ-2)" : " (נדלקת מ-1.5 לאורך 3 שבועות)"}`)}" role="button" tabindex="0"><div><b>${esc(o.code)}</b> <span class="x">${esc(o.label)}</span><span class="meta">ציון <span class="num">${o.score ?? "—"}</span>${eff ? ` · משפיעה על: ${esc(eff)}` : ""}${o.on_share !== null ? ` · דלוקה <span class="num">${Math.round(o.on_share * 100)}%</span> מהזמן` : ""}</span></div><span class="st ${cls}">${he}</span></div>`; }).join("")}
+    <p class="hint" style="margin-top:8px">${icon("q", "sm")}לחיצה על שכבה מסבירה מה מדליק אותה ואיך היא משנה את ההמלצות</p>
+    <p class="meta">אנרגיה נקבעת לפי O3 ולא לפי מצב הכלכלה (המחקר: אנרגיה לא מגיבה למחזור הכלכלי בארה״ב).</p></div>`;
 
   const secs = [...V.sectors].sort((a, b) => b.score - a.score);
-  const sec = `<div class="panel"><h2>מטריצת הסקטורים</h2><p class="meta" style="margin:-4px 0 6px">ציון מ-<span class="num">2−</span> עד <span class="num">2+</span> · <span class="x" data-x="t:evidence">דרגת ראיות</span> · <span class="x" data-x="t:price_gate">תנאי מחיר</span></p>
+  const secCtx = (x) => {
+    const gt = x.gate ? ` · מול S&P בחודש: ${x.gate.rel_1m > 0 ? "+" : ""}${x.gate.rel_1m}%, ב-6 חודשים: ${x.gate.rel_6_1 > 0 ? "+" : ""}${x.gate.rel_6_1}% · ${x.gate.above_sma ? "מעל ממוצע 200" : "מתחת לממוצע 200"}` : "";
+    return `${x.label}: ציון ${x.score} (בסיס ${x.base ?? "—"} לפי המשטר${x.overlay_push ? `, שכבות ${x.overlay_push > 0 ? "+" : ""}${x.overlay_push}` : ""}) · ${x.action_he}${gt}`;
+  };
+  const sec = `<div class="panel"><h2><span class="x" data-x="t:sector_matrix">מטריצת הסקטורים</span></h2><p class="meta" style="margin:2px 0 6px">ציון מ-<span class="num">2−</span> (להקטין) עד <span class="num">2+</span> (להגדיל) · <span class="x" data-x="t:evidence">דרגת ראיות</span> · <span class="x" data-x="t:price_gate">תנאי מחיר</span></p>
+    <p class="hint">${icon("q", "sm")}לחיצה על שורה מסבירה מה עושים עם התחום ולמה · לחיצה על הטיקר פותחת גרף</p>
     ${secs.map((x) => `<div class="vrow"><div><span>${esc(x.label)}</span> <span class="tk" data-chart="${esc(x.etf)}" data-label="${esc(x.label)}">${esc(x.etf)}</span>
-      <span class="meta">${esc(x.action_he)}${x.overlay_push ? ` · שכבות: <span class="num">${x.overlay_push > 0 ? "+" : ""}${x.overlay_push}</span>` : ""}${x.note ? ` · ${esc(x.note)}` : ""}${x.structural ? " · מבני" : ""}</span></div>
+      <span class="meta x" data-x="t:sector_action" data-xc="${esc(secCtx(x))}">${esc(x.action_he)}${x.overlay_push ? ` · שכבות: <span class="num">${x.overlay_push > 0 ? "+" : ""}${x.overlay_push}</span>` : ""}${x.note ? ` · ${esc(x.note)}` : ""}${x.structural ? " · מבני" : ""}</span></div>
       <div class="row" style="gap:6px"><span class="grade" data-x="t:evidence">${GRADE_HE[x.grade] || ""}</span>${spill(x.score)}</div></div>`).join("")}</div>`;
 
   let bt = "";
