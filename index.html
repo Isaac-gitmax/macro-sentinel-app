@@ -208,6 +208,30 @@ td.v { text-align: left; white-space: nowrap; font-weight: 600; padding-inline-s
 .st.mute { background: var(--wash); color: var(--muted); }
 .st.bad { background: var(--down-wash); color: var(--down); }
 .bad-txt { color: var(--down); }
+/* explain-on-tap affordance + bottom sheet (Emil: drawer curve, origin bottom, interruptible transition) */
+.x { cursor: help; text-decoration: underline dotted color-mix(in srgb, var(--muted) 70%, transparent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.xi { color: var(--muted); display: inline-flex; vertical-align: -2px; margin-inline-start: 3px; }
+.backdrop { position: fixed; inset: 0; background: rgba(8, 10, 14, .42); opacity: 0; pointer-events: none;
+  transition: opacity 260ms var(--ease-out); z-index: 20; }
+.backdrop.on { opacity: 1; pointer-events: auto; }
+.sheet { position: fixed; inset-inline: 0; bottom: 0; margin: 0 auto; max-width: 680px; max-height: 84vh; overflow-y: auto;
+  background: var(--surface); border-radius: 20px 20px 0 0; padding: 8px 18px calc(22px + env(safe-area-inset-bottom));
+  transform: translateY(100%); transition: transform 320ms cubic-bezier(0.32, 0.72, 0, 1); z-index: 21;
+  box-shadow: 0 -8px 30px rgba(16, 24, 40, .18); overscroll-behavior: contain; }
+.sheet.on { transform: translateY(0); }
+.grab { width: 38px; height: 5px; border-radius: 99px; background: var(--wash-2); margin: 2px auto 12px; }
+.sheet h2 { font-size: 20px; margin-bottom: 6px; }
+.sheet .big { font-size: 28px; font-weight: 700; letter-spacing: -0.01em; margin: 6px 0 2px; }
+.sheet .why { margin-top: 12px; padding: 12px 14px; border-radius: 14px; background: var(--wash); font-size: 14.5px; }
+.sheet .close { position: absolute; top: 10px; inset-inline-end: 12px; width: 32px; height: 32px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--wash); color: var(--muted); cursor: pointer; border: 0; }
+.chart-box { height: 320px; margin: 10px -6px 4px; }
+.heat { height: 430px; margin: 8px -8px -6px; border-radius: 12px; overflow: hidden; }
+.heat-ph { height: 100%; display: grid; place-items: center; color: var(--muted); font-size: 13px; }
+.tk[data-chart] { cursor: pointer; transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out); }
+.tk[data-chart]:active { transform: scale(0.95); }
+@media (hover: hover) and (pointer: fine) { .tk[data-chart]:hover { background: var(--wash-2); } }
+@media (prefers-reduced-motion: reduce) { .sheet, .backdrop { transition: none; } }
 .foot { text-align: center; font-size: 12px; color: var(--muted); margin-top: 20px; line-height: 1.7; }
 .err { text-align: center; padding: 36px 16px; }
 .sk { height: 120px; border-radius: var(--radius); background: var(--surface); margin-bottom: 12px; opacity: .6; }
@@ -239,9 +263,13 @@ td.v { text-align: left; white-space: nowrap; font-weight: 600; padding-inline-s
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
   <symbol id="i-dot" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5"/></symbol>
+  <symbol id="i-q" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 0 1 4.8 1c0 1.6-2.4 2-2.4 3.4M12 17h.01"/></symbol>
   <symbol id="i-mark" viewBox="0 0 24 24"><path d="M3 17l5-6 4 3 4-7 5 6"/><path d="M3 21h18"/></symbol>
 </svg>
 <div id="app"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+<div class="backdrop" id="backdrop"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title"><div class="grab"></div>
+  <button class="close" id="sheet-close" aria-label="סגירה">✕</button><div id="sheet-body"></div></div>
 
 <script>
 "use strict";
@@ -280,6 +308,7 @@ function fmt(v, unit, signed) {
   const s = a >= 1000 ? Math.round(a).toLocaleString("en-US") : a.toFixed(2);
   const sign = v < 0 ? "−" : (signed && v > 0 ? "+" : "");
   if (unit === "$") return `${sign}$${s}`;
+  if (unit === "T") return `${sign}$${s}T`;
   const suf = { "%": "%", bp: "bp", pp: "pp", K: "K" }[unit] || "";
   return `${sign}${s}${suf}`;
 }
@@ -317,6 +346,7 @@ function render(keepScroll) {
   }
   lastRoute = route;
   flashChanged();
+  if (!route) mountHeatmap();
 }
 function bind() {
   document.querySelectorAll("[data-go]").forEach((el) => el.addEventListener("click", () => go(el.dataset.go)));
@@ -325,8 +355,13 @@ function bind() {
   }));
   const b = $(".back"); if (b) b.addEventListener("click", () => history.back());
 }
-if (tg) tg.BackButton.onClick(() => history.back());
-window.addEventListener("hashchange", () => render(false));
+if (tg) tg.BackButton.onClick(() => (sheetOpen ? closeSheet() : history.back()));
+document.addEventListener("DOMContentLoaded", () => {});
+window.addEventListener("load", () => {
+  $("#backdrop").addEventListener("click", closeSheet);
+  $("#sheet-close").addEventListener("click", closeSheet);
+});
+window.addEventListener("hashchange", () => { if (sheetOpen) closeSheet(); render(false); });
 
 // After an auto-refresh, briefly tint the values that actually changed: state, not decoration.
 function flashChanged() {
@@ -341,6 +376,105 @@ function flashChanged() {
   });
   PREV = null;
 }
+
+/* ---------- explain-on-tap, charts, heatmap ---------- */
+const isDark = () => (tg && tg.initData ? tg.colorScheme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches);
+let sheetOpen = false;
+function openSheet(html) {
+  $("#sheet-body").innerHTML = html;
+  $("#sheet").scrollTop = 0;
+  $("#backdrop").classList.add("on"); $("#sheet").classList.add("on");
+  sheetOpen = true; haptic();
+  if (tg) tg.BackButton.show();
+}
+function closeSheet() {
+  $("#backdrop").classList.remove("on"); $("#sheet").classList.remove("on");
+  sheetOpen = false;
+  if (tg && !currentRoute()) tg.BackButton.hide();
+  setTimeout(() => { if (!sheetOpen) $("#sheet-body").innerHTML = ""; }, 340);   // drop heavy widgets after exit
+}
+const G = () => (R && R.glossary) || { concepts: {}, signals: {} };
+// the unit a signal is shown with elsewhere in the app (KPI tiles / market tables)
+function unitOf(id) {
+  const k = (R.kpis || []).find((x) => x.signal === id);
+  if (k) return k.unit;
+  for (const g of R.market_groups || []) { const it = g.items.find((x) => x.signal === id); if (it) return it.unit; }
+  return "";
+}
+function explain(ref) {
+  const [kind, id] = ref.split(":");
+  let concept, sigHtml = "";
+  if (kind === "sig") {
+    concept = G().concepts[G().signals[id]];
+    const s = sig(id);
+    if (s && s.label) {
+      const [stHe, cls, ic] = STATUS[s.status] || STATUS.unverified;
+      sigHtml = `<div class="big num">${s.status === "missing" ? "—" : esc(fmt(s.value, unitOf(id), s.signed))}</div>
+        <div class="meta">${esc(s.label)}${s.date ? ` · נכון ל-<span class="num">${esc(s.date)}</span>` : ""} · ${esc(s.publisher || s.source)}</div>
+        <div class="chips" style="margin-top:8px"><span class="st ${cls}" data-x="t:${s.status === "validated" ? "validated" : s.status === "official" ? "official" : s.status === "commercial" ? "commercial" : s.status === "estimate" ? "estimate" : "unverified"}">${icon(ic, "sm")}${stHe}</span></div>`;
+    }
+  } else {
+    concept = G().concepts[id];
+  }
+  if (!concept) return;
+  openSheet(`<h2 id="sheet-title">${esc(concept.title)}</h2>${sigHtml}
+    <p style="margin-top:10px">${esc(concept.text)}</p>
+    ${concept.why ? `<div class="why"><b>למה זה חשוב:</b> ${esc(concept.why)}</div>` : ""}`);
+}
+// TradingView symbols for the non-ETF items in the matrix
+const TV = { DXY: "TVC:DXY", US10Y: "TVC:US10Y", BTC: "BITSTAMP:BTCUSD", ETH: "BITSTAMP:ETHUSD" };
+function tvWidget(type, config, height) {
+  const box = document.createElement("div");
+  box.className = "tradingview-widget-container";
+  box.style.height = height;
+  box.innerHTML = '<div class="tradingview-widget-container__widget" style="height:100%"></div>';
+  const sc = document.createElement("script");
+  sc.async = true;
+  sc.src = `https://s3.tradingview.com/external-embedding/embed-widget-${type}.js`;
+  sc.textContent = JSON.stringify(config);
+  box.appendChild(sc);
+  return box;
+}
+function openChart(ticker, label) {
+  if (ticker === "Cash") return explain("t:stance");
+  openSheet(`<h2 id="sheet-title"><span class="num">${esc(ticker)}</span></h2><div class="meta">${esc(label || "")}</div>
+    <div class="chart-box" id="chart-box"></div>
+    <p class="meta">גרף: TradingView, אותם רכיבים ש-OpenStock משתמשת בהם. ייתכנו עיכובים במחירים.</p>
+    <div class="why" data-x="t:etf"><b>מה זה ${esc(ticker)}?</b> לחיצה כאן מסבירה מה זו תעודת סל.</div>`);
+  $("#chart-box").appendChild(tvWidget("symbol-overview", {
+    symbols: [[ticker, (TV[ticker] || ticker) + "|12M"]], chartOnly: false, width: "100%", height: "100%",
+    locale: "he_IL", colorTheme: isDark() ? "dark" : "light", isTransparent: true, autosize: true,
+    showVolume: false, hideDateRanges: false, scalePosition: "right", scaleMode: "Normal",
+    dateRanges: ["1m|1D", "3m|1D", "12m|1W", "60m|1W"], chartType: "area", lineWidth: 2,
+  }, "100%"));
+}
+function mountHeatmap() {
+  const host = $("#heat");
+  if (!host) return;
+  const load = () => {
+    host.innerHTML = "";
+    host.appendChild(tvWidget("stock-heatmap", {
+      exchanges: [], dataSource: "SPX500", grouping: "sector", blockSize: "market_cap_basic", blockColor: "change",
+      locale: "he_IL", symbolUrl: "", colorTheme: isDark() ? "dark" : "light", hasTopBar: false,
+      isDataSetEnabled: false, isZoomEnabled: true, hasSymbolTooltip: true, isMonoSize: false,
+      width: "100%", height: "100%",
+    }, "100%"));
+  };
+  // load only when it scrolls into view: keeps the first paint fast
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); load(); } }, { rootMargin: "200px" });
+    io.observe(host);
+  } else load();
+}
+// one delegated, capture-phase handler: a term inside a tappable card explains instead of navigating
+document.addEventListener("click", (e) => {
+  const c = e.target.closest("[data-chart]");
+  const x = e.target.closest("[data-x]");
+  if (!c && !x) return;
+  e.stopPropagation(); e.preventDefault();
+  if (c) openChart(c.dataset.chart, c.dataset.label); else explain(x.dataset.x);
+}, true);
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && sheetOpen) closeSheet(); });
 
 /* ---------- shared pieces ---------- */
 const PHASE = { pre: ["טרום מסחר", "live"], open: ["מסחר פתוח", "live"], post: ["אחרי סגירה", ""], closed: ["שוק סגור", ""] };
@@ -410,22 +544,22 @@ function home() {
   if (g) {
     const sahm = sig("sahm_level").value;
     regimePanel = `<div class="panel tap" data-go="regime" role="button" tabindex="0">
-      <div class="row between"><div class="regime-head"><span class="badge ${esc(g.code)}">${esc(g.code)}</span><span class="meta">מצב הכלכלה</span></div><span class="chev">${icon("chev")}</span></div>
-      <div class="regime-title">${esc(g.short_he)}</div>
+      <div class="row between"><div class="regime-head"><span class="badge ${esc(g.code)}" data-x="t:${esc(g.code)}">${esc(g.code)}</span><span class="meta x" data-x="t:regime">מצב הכלכלה</span></div><span class="chev">${icon("chev")}</span></div>
+      <div class="regime-title"><span class="x" data-x="t:${esc(g.code)}">${esc(g.short_he)}</span></div>
       <p>${esc(g.summary_he)}</p>
       ${regimeMap(g, false)}
       <div class="facts">
-        <div class="fact">${icon("gauge", "sm")}<span>${html(s.fragility)}</span></div>
-        ${sahm !== undefined ? `<div class="fact">${icon("flask", "sm")}<span>בדיקה נמדדת: כלל סאם ${num(sahm, "", false)}, סף מיתון <span class="num">0.50</span></span></div>` : ""}
+        <div class="fact" data-x="t:fragility">${icon("gauge", "sm")}<span class="x">${html(s.fragility)}</span></div>
+        ${sahm !== undefined ? `<div class="fact" data-x="sig:sahm_level">${icon("flask", "sm")}<span class="x">בדיקה נמדדת: כלל סאם ${num(sahm, "", false)}, סף מיתון <span class="num">0.50</span></span></div>` : ""}
       </div></div>`;
   }
 
   const alertRows = R.alerts.length
     ? R.alerts.map((a) => `<div class="alert-row"><span class="sev ${a.severity}">${icon(SEV_ICON[a.severity])}</span>
-        <div class="grow"><b>${esc(a.short_he)}</b></div>${a.edge ? `<span class="pill edge">על הסף</span>` : ""}<span class="pill ${a.severity}">${SEV[a.severity]}</span></div>`).join("")
+        <div class="grow"><b>${esc(a.short_he)}</b></div>${a.edge ? `<span class="pill edge">על הסף</span>` : ""}<span class="pill ${a.severity}" data-x="t:alert">${SEV[a.severity]}</span></div>`).join("")
     : `<div class="alert-row"><span class="sev info">${icon("check")}</span><div class="grow">אין התראות פעילות</div></div>`;
   const stateRows = R.states.map((a) => `<div class="alert-row"><span class="sev state">${icon("repeat")}</span>
-      <div class="grow">${esc(a.short_he)}</div><span class="pill state">מצב מתמשך</span></div>`).join("");
+      <div class="grow">${esc(a.short_he)}</div><span class="pill state" data-x="t:state">מצב מתמשך</span></div>`).join("");
 
   const tape = R.kpis.map((k) => {
     let c = "";
@@ -433,7 +567,7 @@ function home() {
       const dir = k.change_value > 0 ? "up" : k.change_value < 0 ? "down" : "flat";
       c = `<div class="c"><span class="${dir}">${icon(dir, "sm")}</span>${num(k.change_value, k.change_unit, true)}<span>${esc(k.change_label || "")}</span></div>`;
     } else if (k.note_he) c = `<div class="c">${esc(k.note_he)}</div>`;
-    return `<div class="cell" data-sig="${esc(k.signal)}"><div class="k">${esc(k.label_he)}${k.estimate ? '<span class="est">≈</span>' : ""}</div><div class="v">${num(k.value, k.unit, k.signed)}</div>${c}</div>`;
+    return `<div class="cell" data-sig="${esc(k.signal)}" data-x="sig:${esc(k.signal)}" role="button" tabindex="0"><div class="k x">${esc(k.label_he)}${k.estimate ? '<span class="est">≈</span>' : ""}</div><div class="v">${num(k.value, k.unit, k.signed)}</div>${c}</div>`;
   }).join("");
 
   const split = (txt) => (txt && txt !== "—" ? txt.split(", ") : []);
@@ -457,7 +591,11 @@ function home() {
      <div class="panel tap" data-go="alloc" role="button" tabindex="0"><div class="row between"><h2>מה עושים</h2><span class="chev">${icon("chev")}</span></div>
        <div class="group-label up" style="margin-top:12px">${icon("up", "sm")}להגדיל</div><div class="chips">${split(s.overweight).map((l) => `<span class="chip ow">${esc(l)}</span>`).join("") || "—"}</div>
        <div class="group-label down">${icon("down", "sm")}להקטין</div><div class="chips">${split(s.underweight).map((l) => `<span class="chip uw">${esc(l)}</span>`).join("") || "—"}</div></div>
+     <div class="panel"><div class="row between"><h2>מפת החום של השוק</h2><span class="xi" data-x="t:etf">${icon("q", "sm")}</span></div>
+       <p class="meta" style="margin-top:2px">S&amp;P 500 לפי סקטורים · גודל = שווי שוק · צבע = שינוי יומי · לחיצה על סקטור מגדילה אותו</p>
+       <div class="heat" id="heat"><div class="heat-ph">טוען מפת חום…</div></div></div>
      <div class="panel">${nav}</div>
+     <p class="meta" style="text-align:center;margin:-2px 0 0">טיפ: לחיצה על מונח עם קו מקווקו או על טיקר מציגה הסבר או גרף</p>
      <div class="foot"><bdi dir="ltr">Macro Sentinel v${esc(R.meta.version)}</bdi><br>≈ הערכה או מודל · פלט של מסגרת ניתוח, לא ייעוץ השקעות</div>`;
 }
 
@@ -466,19 +604,19 @@ function market() {
     || `<p class="muted">אין תנועה חריגה בשוק.</p>`;
   const groups = R.market_groups.map((gg) => `<div class="panel"><h2>${esc(gg.title_he)}</h2><table>${gg.items.map((it) => {
     const s = sig(it.signal);
-    return `<tr><td>${esc(it.label)}${it.estimate ? '<span class="est">≈</span>' : ""}<span class="src">${esc(s.source || "")}${s.date ? " · " + esc(s.date) : ""}</span></td><td class="v" data-sig="${esc(it.signal)}">${num(it.value, it.unit, it.signed)}</td></tr>`;
+    return `<tr data-x="sig:${esc(it.signal)}"><td><span class="x">${esc(it.label)}</span>${it.estimate ? '<span class="est">≈</span>' : ""}<span class="src">${esc(s.source || "")}${s.date ? " · " + esc(s.date) : ""}</span></td><td class="v" data-sig="${esc(it.signal)}">${num(it.value, it.unit, it.signed)}</td></tr>`;
   }).join("")}</table></div>`).join("");
   return header("שוק") + `<div class="panel"><h2>מה בולט היום</h2>${notes}</div>` + groups;
 }
 
 function evidence(list) {
-  return `<div class="ev">${list.map((e) => `<span>${esc(cleanLabel(e.label))}: <b class="num">${esc(fmt(e.value, "", false))}</b> · סף: ${OPS_HE[e.op] || ""}<span class="num">${esc(e.threshold)}</span></span>`).join("")}</div>`;
+  return `<div class="ev">${list.map((e) => `<span data-x="sig:${esc(e.signal)}" class="x">${esc(cleanLabel(e.label))}: <b class="num">${esc(fmt(e.value, "", false))}</b> · סף: ${OPS_HE[e.op] || ""}<span class="num">${esc(e.threshold)}</span></span>`).join("")}</div>`;
 }
 function ruleBlock(a) {
   const isState = a.kind === "state";
   return `<div class="panel rule">
     <div class="row"><span class="sev ${isState ? "state" : a.severity}">${icon(isState ? "repeat" : SEV_ICON[a.severity])}</span>
-      <h3 class="grow">${esc(a.short_he)}</h3>${a.edge ? `<span class="pill edge">על הסף</span>` : ""}<span class="pill ${isState ? "state" : a.severity}">${isState ? "מצב מתמשך" : SEV[a.severity]}</span></div>
+      <h3 class="grow">${esc(a.short_he)}</h3>${a.edge ? `<span class="pill edge">על הסף</span>` : ""}<span class="pill ${isState ? "state" : a.severity}" data-x="t:${isState ? "state" : "alert"}">${isState ? "מצב מתמשך" : SEV[a.severity]}</span></div>
     ${evidence(a.evidence)}<p>${html(a.synthesis_he)}</p>
     ${a.risk_he ? `<div class="todo"><b>מה לעשות:</b> ${html(a.risk_he)}</div>` : ""}</div>`;
 }
@@ -486,10 +624,10 @@ function regime() {
   const g = R.regime;
   let top = `<div class="panel"><p>רג'ים לא נקבע.</p></div>`;
   if (g) {
-    top = `<div class="panel"><div class="regime-head"><span class="badge ${esc(g.code)}">${esc(g.code)}</span><h2>${esc(g.short_he)}</h2></div>
+    top = `<div class="panel"><div class="regime-head"><span class="badge ${esc(g.code)}" data-x="t:${esc(g.code)}">${esc(g.code)}</span><h2 class="x" data-x="t:${esc(g.code)}">${esc(g.short_he)}</h2></div>
       ${regimeMap(g, true)}
       <p>${html(g.synthesis_he)}</p>
-      <table style="margin-top:12px">${g.inputs.map((i) => `<tr><td>${esc(cleanLabel(i.label))}${i.signal === "output_gap_proxy" ? '<span class="est">≈</span>' : ""}<span class="src">סף: ${OPS_HE[i.op] || ""}<span class="num">${esc(i.threshold)}</span></span></td><td class="v" data-sig="${esc(i.signal)}">${num(i.value, "", true)}</td></tr>`).join("")}</table>
+      <table style="margin-top:12px">${g.inputs.map((i) => `<tr data-x="sig:${esc(i.signal)}"><td><span class="x">${esc(cleanLabel(i.label))}</span>${i.signal === "output_gap_proxy" ? '<span class="est">≈</span>' : ""}<span class="src">סף: ${OPS_HE[i.op] || ""}<span class="num">${esc(i.threshold)}</span></span></td><td class="v" data-sig="${esc(i.signal)}">${num(i.value, "", true)}</td></tr>`).join("")}</table>
       <div class="facts"><div class="fact">${icon("gauge", "sm")}<span>${html(R.summary.fragility)}</span></div></div></div>`;
   }
   const alerts = R.alerts.length ? R.alerts.map(ruleBlock).join("")
@@ -507,11 +645,11 @@ function alloc() {
     .map(([k, l]) => `<div class="tab ${allocFilter === k ? "on" : ""}" data-tab="${k}" role="tab" aria-selected="${allocFilter === k}" tabindex="0">${l}</div>`).join("");
   const itemHtml = (i) => {
     const hist = i.history === null ? "" :
-      `<div class="hist"><span class="muted">היסטוריה ב-${esc(code)}:</span><b>${num(i.history, "%", true)}</b><span class="muted">לחודש מול</span><span class="num muted">S&amp;P 500</span>
+      `<div class="hist" data-x="t:history"><span class="muted x">היסטוריה ב-${esc(code)}:</span><b>${num(i.history, "%", true)}</b><span class="muted">לחודש מול</span><span class="num muted">S&amp;P 500</span>
         <span class="verdict ${i.agrees ? "ok" : "bad"}">${icon(i.agrees ? "check" : "x", "sm")}${i.agrees ? "תמכה" : "לא תמכה"}</span>
         <span class="meta">· לפי <span class="num">${esc(i.history_ticker)}</span></span></div>`;
-    return `<div class="item"><div class="head"><h3>${esc(i.label)}</h3><span class="pill ${stanceCls(i.stance)}">${STANCE[i.stance]}</span></div>
-      <div class="tickers">${i.all_tickers.map((t) => `<span class="tk">${esc(t)}</span>`).join("")}</div>
+    return `<div class="item"><div class="head"><h3>${esc(i.label)}</h3><span class="pill ${stanceCls(i.stance)}" data-x="t:stance">${STANCE[i.stance]}</span></div>
+      <div class="tickers">${i.all_tickers.map((t) => `<span class="tk" data-chart="${esc(t)}" data-label="${esc(i.label)}" role="button" tabindex="0">${esc(t)}</span>`).join("")}</div>
       <p class="why">${esc(i.why)}</p>${hist}</div>`;
   };
   const groups = [["OW", "להגדיל", "up"], ["N+", "סלקטיבי", "dot"], ["N-", "ניטרלי-שלילי", "dot"], ["UW", "להקטין", "down"]]
@@ -525,13 +663,13 @@ function alloc() {
   const neutral = R.allocation.neutral.length && allocFilter === "all"
     ? `<div class="panel"><div class="group-label" style="margin-top:0">${icon("flat", "sm")}ניטרלי</div><div class="chips">${R.allocation.neutral.map((n) => `<span class="chip">${esc(n.label)}</span>`).join("")}</div></div>` : "";
   const adj = R.allocation.adjustments.map((a) => `<div class="adj"><div class="moves">
-      ${a.overweight.length ? `<span class="mv up">${icon("up", "sm")}<span class="tk">${esc(a.overweight.join("/"))}</span></span>` : ""}
-      ${a.underweight.length ? `<span class="mv down">${icon("down", "sm")}<span class="tk">${esc(a.underweight.join("/"))}</span></span>` : ""}
+      ${a.overweight.length ? `<span class="mv up">${icon("up", "sm")}${a.overweight.map((t) => `<span class="tk" data-chart="${esc(t)}">${esc(t)}</span>`).join("")}</span>` : ""}
+      ${a.underweight.length ? `<span class="mv down">${icon("down", "sm")}${a.underweight.map((t) => `<span class="tk" data-chart="${esc(t)}">${esc(t)}</span>`).join("")}</span>` : ""}
     </div><div class="grow">${html(a.text_he)}</div></div>`).join("");
   return header("הקצאה ונימוקים") +
     `<p class="meta" style="margin:0 4px 8px">היסטוריה: תשואה עודפת ממוצעת לחודש מול <span class="num">S&amp;P 500</span> בימי הרג'ים הנוכחי, <span class="num">2016–2026</span>, לפי תעודת סל מייצגת.</p>
      <div class="tabs" role="tablist">${tabs}</div>${groups || `<div class="panel"><p class="muted">אין פריטים בסינון הזה.</p></div>`}${neutral}
-     ${adj && allocFilter === "all" ? `<div class="panel"><h2>התאמות פעילות <span class="meta">${R.allocation.adjustments.length}</span></h2>
+     ${adj && allocFilter === "all" ? `<div class="panel"><h2><span class="x" data-x="t:adjustment">התאמות פעילות</span> <span class="meta">${R.allocation.adjustments.length}</span></h2>
        <p class="meta" style="margin:-6px 0 10px">חוקי "אם-אז" שמגיבים לרמות השוק עכשיו, מעל ההקצאה הבסיסית.</p>${adj}</div>` : ""}`;
 }
 
@@ -592,9 +730,9 @@ function data() {
       const val = s.status === "missing" ? `<span class="muted">—</span>` : num(s.value, "", s.signed);
       const detail = s.status === "missing" ? `<span class="src bad-txt">${esc(s.reason)}</span>` :
         `<span class="src">${esc(s.publisher || s.source)}${s.date ? ` · <span class="num">${esc(s.date)}</span> (${ageHe(s.age_days)})` : ""} · <span class="tk">${esc(s.id)}</span></span>`;
-      return `<div class="drow"><div class="grow"><div>${esc(s.label)}</div>${detail}</div>
-        <div class="dval"><div class="v" data-sig="${esc(k)}">${val}</div><span class="st ${cls}">${icon(ic, "sm")}${stHe}</span>${
-          RED[(s.redundancy || {}).status] ? `<span class="st ${RED[s.redundancy.status][1]}">${icon(RED[s.redundancy.status][2], "sm")}${RED[s.redundancy.status][0]}</span>` : ""}</div></div>`;
+      return `<div class="drow" data-x="sig:${esc(k)}"><div class="grow"><div class="x">${esc(s.label)}</div>${detail}</div>
+        <div class="dval"><div class="v" data-sig="${esc(k)}">${val}</div><span class="st ${cls}" data-x="t:${["official","validated","commercial","estimate"].includes(s.status) ? s.status : "unverified"}">${icon(ic, "sm")}${stHe}</span>${
+          RED[(s.redundancy || {}).status] ? `<span class="st ${RED[s.redundancy.status][1]}" data-x="t:redundancy">${icon(RED[s.redundancy.status][2], "sm")}${RED[s.redundancy.status][0]}</span>` : ""}</div></div>`;
     }).join("")}</div>`;
   }).join("");
   const red = q.redundancy || [];
@@ -612,7 +750,7 @@ function data() {
   return header("איכות ומקורות") +
     `<div class="panel"><h2>${all.length} נתונים במערכת</h2><div class="chips" style="margin-top:4px">${summary}</div>
        <p class="meta" style="margin-top:10px">מקור רשמי: הגוף שמפרסם את הנתון (BLS, BEA, הפד, משרד האוצר). אומת: מחיר בזמן אמת שהושווה למקור הרשמי בהרצה הזו. לא אומת: אין מקור רשמי חינמי להשוואה. תאריך = תאריך התצפית האחרונה.</p></div>
-     ${red.length ? `<div class="panel"><h2>גיבוי והצלבה בין מקורות <span class="meta">${redOk}/${red.length} תואמים</span></h2>
+     ${red.length ? `<div class="panel"><h2><span class="x" data-x="t:redundancy">גיבוי והצלבה בין מקורות</span> <span class="meta">${redOk}/${red.length} תואמים</span></h2>
        <p class="meta" style="margin:-6px 0 6px">כל נתון כאן נמשך משני מפרסמים ומושווה על אותה תצפית. סטייה פוסלת את הנתון ושולחת התראה. אם המקור הראשי נופל, הגיבוי נכנס ומסומן.</p>${redRows}</div>` : ""}
      <div class="panel"><h2>אימות מחירי שוק מול מקור רשמי</h2>${val}</div>
      ${groups}
