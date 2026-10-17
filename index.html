@@ -208,6 +208,7 @@ td.v { text-align: left; white-space: nowrap; font-weight: 600; padding-inline-s
 .duo > div { background: var(--wash); border-radius: 12px; padding: 10px 12px; }
 .duo .v { font-size: 22px; font-weight: 700; }
 /* v5 expert engine */
+.v5-card { border: 1px dashed var(--warn); }
 .shadow-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; padding: 2px 8px;
   border-radius: 999px; background: var(--warn-wash); color: var(--warn); }
 .zbar { position: relative; height: 8px; background: var(--wash); border-radius: 4px; min-width: 80px; direction: ltr; }
@@ -657,7 +658,13 @@ function home() {
   ].map(([r, ic, t, step, d]) => `<div class="nav-item tap" data-go="${r}" role="button" tabindex="0"><span class="nav-ic">${icon(ic)}</span>
       <div class="grow"><div class="t">${step ? `<span class="step">שלב ${step}</span>` : ""}${t}</div><div class="d">${esc(d)}</div></div><span class="chev">${icon("chev")}</span></div>`).join("");
 
-  return header("דוח מאקרו", true) + regimePanel +
+  const V = R.v5;
+  const v5Card = `<div class="panel tap v5-card" data-go="v5" role="button" tabindex="0" aria-label="מעבר למנוע מומחה v5">
+    <div class="row between"><div class="row" style="gap:10px"><span class="nav-ic">${icon("flask")}</span>
+      <div><div class="t"><b>מנוע מומחה v5</b> <span class="shadow-badge">בבדיקה</span></div>
+      <div class="meta">${V && !V.error ? `${esc(V.regime.code || "—")} · ${esc(V.regime.sub_state || "")} · ביטחון <span class="num">${V.confidence.total ?? "—"}</span>${R.regime && V.regime.code === R.regime.code ? " · מסכים עם המנוע הקיים" : R.regime ? " · <b>לא מסכים</b> עם המנוע הקיים" : ""}` : "עמודי תווך, שכבות סיכון, ציון ביטחון ומטריצת סקטורים"}</div></div></div>
+      <span class="chev">${icon("chev")}</span></div></div>`;
+  return header("דוח מאקרו", true) + regimePanel + v5Card +
     `<div class="panel tap" data-go="regime" role="button" tabindex="0"><div class="row between" style="margin-bottom:10px"><h2>התראות</h2><span class="chev">${icon("chev")}</span></div>${alertRows}${stateRows}</div>
      <div class="tape">${tape}</div>
      <div class="panel tap" data-go="alloc" role="button" tabindex="0"><div class="row between"><h2>מה עושים</h2><span class="chev">${icon("chev")}</span></div>
