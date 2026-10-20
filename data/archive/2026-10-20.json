@@ -1,12 +1,12 @@
 {
  "meta": {
   "version": "4.14.0",
-  "generated_at": "2026-10-20T05:29:04+00:00",
+  "generated_at": "2026-10-20T13:40:49+00:00",
   "market_date": "19/10/2026",
-  "market_open": false,
-  "market_phase": "closed",
-  "slot": "morning",
-  "ny_time": "20/10 01:29"
+  "market_open": true,
+  "market_phase": "open",
+  "slot": "premarket",
+  "ny_time": "20/10 09:40"
  },
  "regime": {
   "code": "R4",
@@ -75,7 +75,7 @@
    "change_unit": "bp",
    "change_label": "חודש",
    "value": 3.88,
-   "change_value": 25.0,
+   "change_value": 0.0,
    "signed": false,
    "estimate": false
   },
@@ -678,7 +678,7 @@
      "signal": "houst_chg_3m",
      "unit": "%",
      "label": "התחלות בנייה — 3 חודשים",
-     "value": 7.868,
+     "value": -15.1494,
      "estimate": false,
      "signed": true
     }
@@ -709,6 +709,34 @@
      "value": 109.55,
      "op": ">",
      "threshold": 100.0,
+     "passed": true
+    }
+   ]
+  },
+  {
+   "name": "anomaly_e_housing_cascade",
+   "short_he": "לחץ נדל\"ן ובנקים",
+   "header_he": "⚠️ <b>[אזהרה] Anomaly E: קסקדת נדל\"ן-בנקאות — סכנת שחיקת MBS</b>",
+   "severity": "warning",
+   "kind": "alert",
+   "edge": false,
+   "synthesis_he": "ריבית המשכנתאות מזנקת בעוד התחלות הבנייה צונחות — ערוץ האשראי נסגר. שרשרת התמסורת: הקפאת שוק הדיור שוחקת את שווי אגרות ה-<code>MBS</code> במאזני הבנקים, הפגיעה בהון העצמי מקרבת את מגבלות ה-<code>VaR</code> לנקודת הכפייה, והתהליך עלול להתגלגל להידוק אשראי רחב גם מחוץ לנדל\"ן.",
+   "risk_he": "מומלץ להיזהר מחשיפה לסקטור הבנייה, הבנקים האזוריים וחברות הנדל\"ן הממונפות, ולעקוב אחרי נתוני עסקאות הנדל\"ן ותיקי המשכנתאות בדוחות הבנקים הקרובים.",
+   "evidence": [
+    {
+     "signal": "mortgage_chg_3m_bp",
+     "label": "שינוי ריבית משכנתא — 3 חודשים",
+     "value": 82.0,
+     "op": ">",
+     "threshold": 25,
+     "passed": true
+    },
+    {
+     "signal": "houst_chg_3m",
+     "label": "התחלות בנייה — 3 חודשים",
+     "value": -15.1494,
+     "op": "<",
+     "threshold": -8,
      "passed": true
     }
    ]
@@ -1156,14 +1184,6 @@
     ]
    },
    {
-    "text_he": "תשואה מעל <code>4.8%</code> והפד מהדק: ענן במשקל חסר.",
-    "overweight": [],
-    "underweight": [
-     "WCLD",
-     "CLOU"
-    ]
-   },
-   {
     "text_he": "רג'ים אינפלציוני עם חנק מרווחים: סייבר כגידור טכנולוגי.",
     "overweight": [
      "CIBR",
@@ -1242,13 +1262,13 @@
  "execution": {
   "actions": [
    "↑ אנרגיה וביטחון <code>XLE/ITA</code> · ↓ צריכה מחזורית <code>XLY</code> ומייבאי אנרגיה ב-<code>EM</code>.",
-   "להימנע מאג״ח <code>EM</code> לא מגודר (<code>EMB/EMLC</code>) · להעדיף <code>MAGS/XLK</code> עם מאזן נזיל.",
-   "↓ קמעונאות וצריכה מחזורית <code>XRT/XLY</code> · ↑ <code>XLE/XLB</code> · לבדוק <code>Pass-Through &gt; 0.85</code>."
+   "↓ בנקים אזוריים <code>KRE</code> ובנייה <code>XHB/ITB</code>.",
+   "להימנע מאג״ח <code>EM</code> לא מגודר (<code>EMB/EMLC</code>) · להעדיף <code>MAGS/XLK</code> עם מאזן נזיל."
   ],
   "conclusions": [
    "<b>הלם אנרגיה:</b> <code>Brent</code> מעל <code>$100</code> דוחף את מייבאי האנרגיה לכיוון <code>R2</code> (רפיון אינפלציוני). משקל יתר לאנרגיה אמריקאית, לתעופה ולביטחון; משקל חסר לצריכה מחזורית ולשווקים מתעוררים מייבאי אנרגיה.",
-   "<b>מחנק סטגפלציוני גלובלי:</b> השווקים מחוץ לארה\"ב וה-<code>EME</code> תחת לחץ מאזני — הרעבת הון (<code>Capital Starvation</code>) תגביל נפחי סחר. הימנעות מוחלטת מאג\"ח קונצרני שווקים מתעוררים לא-מגודר (<code>Unhedged EM Corporate Bonds</code>); להעדיף <code>Big Tech</code> אמריקאי עם מאזן נזיל.",
-   "<b>חנק מרווחים במעלה הזרם:</b> עלויות התשומות עולות מהר מהמחיר לצרכן. משקל חסר לצריכה מחזורית ולקמעונאות; משקל יתר לאנרגיה, לחומרי גלם ולטכנולוגיה איכותית (<code>Offensively Defensive</code>). לבדוק <code>Pass-Through &gt; 0.85</code> בכל מניה."
+   "<b>שחיקת הון בסקטור הבנקאי:</b> הידרדרות המשכנתאות/<code>MBS</code> מפעילה מגבלות <code>VaR</code> כובלות אצל הדילרים — היצע האשראי יתהדק. להפחית חשיפה לבנקים אזוריים (<code>Regional Banks</code>) ולסקטורי נדל\"ן ממונפים.",
+   "<b>מחנק סטגפלציוני גלובלי:</b> השווקים מחוץ לארה\"ב וה-<code>EME</code> תחת לחץ מאזני — הרעבת הון (<code>Capital Starvation</code>) תגביל נפחי סחר. הימנעות מוחלטת מאג\"ח קונצרני שווקים מתעוררים לא-מגודר (<code>Unhedged EM Corporate Bonds</code>); להעדיף <code>Big Tech</code> אמריקאי עם מאזן נזיל."
   ],
   "factors_he": "<code>Deep Value</code> ועתירי משאבים; משני: <code>Quality Momentum</code>. להימנע: צמיחה בעלת מח\"מ ארוך.",
   "screening_he": "<code>Net Debt/EBITDA ≤ 1.5x</code> | <code>Coverage &gt; 8x</code> | <code>Pass-Through &gt; 0.85</code> | אפס מחזור חוב ב-<code>24M</code> | <code>FCF Yield &gt; US10Y+2.5%</code>"
@@ -1267,7 +1287,7 @@
    {
     "label": "VIX",
     "ok": true,
-    "detail": "16/10: 19.99 מול 19.99 (סטייה 0.00%)"
+    "detail": "19/10: 18.44 מול 18.44 (סטייה 0.00%)"
    },
    {
     "label": "10Y",
@@ -1476,42 +1496,6 @@
     "status": "consensus",
     "used": "fred:CES0500000003",
     "detail": "01/09/2026: fred:CES0500000003 37.81 מול bls:CES0500000003 37.81 (סטייה 0%)",
-    "errors": {}
-   },
-   {
-    "label": "בנזין",
-    "primary": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "detail": "12/10/2026: fred:GASREGW 4.331 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.331 (סטייה 0%)",
-    "errors": {}
-   },
-   {
-    "label": "ברנט פיזי",
-    "primary": "fred:DCOILBRENTEU",
-    "sources": [
-     "fred:DCOILBRENTEU",
-     "eia:petroleum/pri/spt:RBRTE:daily"
-    ],
-    "status": "consensus",
-    "used": "fred:DCOILBRENTEU",
-    "detail": "14/10/2026: fred:DCOILBRENTEU 126.55 מול eia:petroleum/pri/spt:RBRTE:daily 126.55 (סטייה 0%)",
-    "errors": {}
-   },
-   {
-    "label": "WTI פיזי",
-    "primary": "fred:DCOILWTICO",
-    "sources": [
-     "fred:DCOILWTICO",
-     "eia:petroleum/pri/spt:RWTC:daily"
-    ],
-    "status": "consensus",
-    "used": "fred:DCOILWTICO",
-    "detail": "14/10/2026: fred:DCOILWTICO 101.91 מול eia:petroleum/pri/spt:RWTC:daily 101.91 (סטייה 0%)",
     "errors": {}
    }
   ]
@@ -1770,8 +1754,8 @@
    "publisher": "הפד של ניו יורק",
    "group": "ריבית ואג״ח",
    "id": "EFFR",
-   "date": "16/10/2026",
-   "age_days": 4,
+   "date": "19/10/2026",
+   "age_days": 1,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1894,7 +1878,7 @@
    }
   },
   "houst_chg_3m": {
-   "value": 7.868,
+   "value": -15.1494,
    "label": "התחלות בנייה — 3 חודשים",
    "estimate": false,
    "signed": true,
@@ -1902,8 +1886,8 @@
    "publisher": "Census",
    "group": "צמיחה וצריכה",
    "id": "HOUST",
-   "date": "01/08/2026",
-   "age_days": 80,
+   "date": "01/09/2026",
+   "age_days": 49,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2036,7 +2020,7 @@
    }
   },
   "dff_chg_1m_bp": {
-   "value": 25.0,
+   "value": 0.0,
    "label": "ריבית הפד האפקטיבית — חודש",
    "estimate": false,
    "signed": true,
@@ -2044,8 +2028,8 @@
    "publisher": "הפד של ניו יורק",
    "group": "ריבית ואג״ח",
    "id": "EFFR",
-   "date": "16/10/2026",
-   "age_days": 4,
+   "date": "19/10/2026",
+   "age_days": 1,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2636,13 +2620,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "detail": "12/10/2026: fred:GASREGW 4.331 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.331 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "gasoline_yoy": {
@@ -2659,13 +2637,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "detail": "12/10/2026: fred:GASREGW 4.331 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.331 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "us30y_level": {
@@ -2750,13 +2722,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:DCOILBRENTEU",
-    "sources": [
-     "fred:DCOILBRENTEU",
-     "eia:petroleum/pri/spt:RBRTE:daily"
-    ],
-    "detail": "14/10/2026: fred:DCOILBRENTEU 126.55 מול eia:petroleum/pri/spt:RBRTE:daily 126.55 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "wti_spot": {
@@ -2773,13 +2739,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:DCOILWTICO",
-    "sources": [
-     "fred:DCOILWTICO",
-     "eia:petroleum/pri/spt:RWTC:daily"
-    ],
-    "detail": "14/10/2026: fred:DCOILWTICO 101.91 מול eia:petroleum/pri/spt:RWTC:daily 101.91 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "ppi_pce_spread": {
@@ -3655,14 +3615,14 @@
    "r4_cooling": false
   },
   "confidence": {
-   "total": 74.5,
+   "total": 74.7,
    "tier": "full",
    "components": {
     "boundary": 0.65,
     "pillar_agreement": 0.75,
     "persistence": 1.0,
     "market_confirmation": 0.5,
-    "freshness": 0.96
+    "freshness": 0.98
    },
    "weights": {
     "boundary": 25,
@@ -3680,8 +3640,8 @@
    {
     "code": "G",
     "label": "צמיחה",
-    "level": 0.14,
-    "direction": 0.22,
+    "level": 0.09,
+    "direction": 0.23,
     "dir": "flat",
     "inputs": [
      {
@@ -3701,9 +3661,9 @@
      {
       "id": "housing",
       "label": "התחלות בנייה",
-      "value": 1275.0,
-      "z": -0.54,
-      "date": "01/08/2026"
+      "value": 1221.0,
+      "z": -0.87,
+      "date": "01/09/2026"
      },
      {
       "id": "retail_yoy",
