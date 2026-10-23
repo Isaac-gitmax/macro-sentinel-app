@@ -1,12 +1,12 @@
 {
  "meta": {
   "version": "4.14.0",
-  "generated_at": "2026-10-23T05:28:29+00:00",
+  "generated_at": "2026-10-23T13:38:45+00:00",
   "market_date": "22/10/2026",
-  "market_open": false,
-  "market_phase": "closed",
-  "slot": "morning",
-  "ny_time": "23/10 01:28"
+  "market_open": true,
+  "market_phase": "open",
+  "slot": "premarket",
+  "ny_time": "23/10 09:38"
  },
  "regime": {
   "code": "R4",
@@ -423,7 +423,7 @@
      "signal": "hy_oas_level",
      "unit": "%",
      "label": "מרווח אג\"ח High Yield (OAS)",
-     "value": 3.27,
+     "value": 3.4,
      "estimate": false,
      "signed": false
     },
@@ -431,7 +431,7 @@
      "signal": "ig_oas_level",
      "unit": "%",
      "label": "מרווח אג״ח בדירוג השקעה (IG OAS)",
-     "value": 0.88,
+     "value": 0.89,
      "estimate": false,
      "signed": false
     },
@@ -516,7 +516,7 @@
      "signal": "hy_oas_chg_1m_bp",
      "unit": "bp",
      "label": "שינוי מרווח High Yield — חודש",
-     "value": 59.0,
+     "value": 67.0,
      "estimate": false,
      "signed": true
     }
@@ -687,7 +687,7 @@
  ],
  "market_notes": [
   "ברנט <code>$113.17</code>, מעל <code>$100</code>: לחץ עלויות על הצרכן והיצרן.",
-  "מרווחי <code>HY</code> התרחבו <code>+59.00bp</code> בחודש (<code>3.27%</code>).",
+  "מרווחי <code>HY</code> התרחבו <code>+67.00bp</code> בחודש (<code>3.40%</code>).",
   "האבטלה עלתה ל-<code>4.20%</code> (<code>+0.10</code>): הקלט הרגיש ביותר לרג'ים."
  ],
  "alerts": [
@@ -1274,7 +1274,7 @@
    {
     "label": "VIX",
     "ok": true,
-    "detail": "21/10: 16.68 מול 16.68 (סטייה 0.00%)"
+    "detail": "22/10: 19.03 מול 19.03 (סטייה 0.00%)"
    },
    {
     "label": "10Y",
@@ -1483,42 +1483,6 @@
     "status": "consensus",
     "used": "fred:CES0500000003",
     "detail": "01/09/2026: fred:CES0500000003 37.81 מול bls:CES0500000003 37.81 (סטייה 0%)",
-    "errors": {}
-   },
-   {
-    "label": "בנזין",
-    "primary": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "detail": "19/10/2026: fred:GASREGW 4.284 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.284 (סטייה 0%)",
-    "errors": {}
-   },
-   {
-    "label": "ברנט פיזי",
-    "primary": "fred:DCOILBRENTEU",
-    "sources": [
-     "fred:DCOILBRENTEU",
-     "eia:petroleum/pri/spt:RBRTE:daily"
-    ],
-    "status": "consensus",
-    "used": "fred:DCOILBRENTEU",
-    "detail": "20/10/2026: fred:DCOILBRENTEU 115.22 מול eia:petroleum/pri/spt:RBRTE:daily 115.22 (סטייה 0%)",
-    "errors": {}
-   },
-   {
-    "label": "WTI פיזי",
-    "primary": "fred:DCOILWTICO",
-    "sources": [
-     "fred:DCOILWTICO",
-     "eia:petroleum/pri/spt:RWTC:daily"
-    ],
-    "status": "consensus",
-    "used": "fred:DCOILWTICO",
-    "detail": "20/10/2026: fred:DCOILWTICO 107.89 מול eia:petroleum/pri/spt:RWTC:daily 107.89 (סטייה 0%)",
     "errors": {}
    }
   ]
@@ -1777,8 +1741,8 @@
    "publisher": "הפד של ניו יורק",
    "group": "ריבית ואג״ח",
    "id": "EFFR",
-   "date": "21/10/2026",
-   "age_days": 2,
+   "date": "22/10/2026",
+   "age_days": 1,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2051,8 +2015,8 @@
    "publisher": "הפד של ניו יורק",
    "group": "ריבית ואג״ח",
    "id": "EFFR",
-   "date": "21/10/2026",
-   "age_days": 2,
+   "date": "22/10/2026",
+   "age_days": 1,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2197,7 +2161,7 @@
    }
   },
   "hy_oas_level": {
-   "value": 3.27,
+   "value": 3.4,
    "label": "מרווח אג\"ח High Yield (OAS)",
    "estimate": false,
    "signed": false,
@@ -2205,8 +2169,8 @@
    "publisher": "ICE BofA",
    "group": "אשראי ונזילות",
    "id": "BAMLH0A0HYM2",
-   "date": "21/10/2026",
-   "age_days": 2,
+   "date": "22/10/2026",
+   "age_days": 1,
    "status": "commercial",
    "reason": "",
    "redundancy": {
@@ -2214,7 +2178,7 @@
    }
   },
   "hy_oas_chg_1m_bp": {
-   "value": 59.0,
+   "value": 67.0,
    "label": "שינוי מרווח High Yield — חודש",
    "estimate": false,
    "signed": true,
@@ -2222,8 +2186,8 @@
    "publisher": "ICE BofA",
    "group": "אשראי ונזילות",
    "id": "BAMLH0A0HYM2",
-   "date": "21/10/2026",
-   "age_days": 2,
+   "date": "22/10/2026",
+   "age_days": 1,
    "status": "commercial",
    "reason": "",
    "redundancy": {
@@ -2528,7 +2492,7 @@
    }
   },
   "ig_oas_level": {
-   "value": 0.88,
+   "value": 0.89,
    "label": "מרווח אג״ח בדירוג השקעה (IG OAS)",
    "estimate": false,
    "signed": false,
@@ -2536,8 +2500,8 @@
    "publisher": "ICE BofA",
    "group": "אשראי ונזילות",
    "id": "BAMLC0A0CM",
-   "date": "21/10/2026",
-   "age_days": 2,
+   "date": "22/10/2026",
+   "age_days": 1,
    "status": "commercial",
    "reason": "",
    "redundancy": {
@@ -2643,13 +2607,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "detail": "19/10/2026: fred:GASREGW 4.284 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.284 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "gasoline_yoy": {
@@ -2666,13 +2624,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "detail": "19/10/2026: fred:GASREGW 4.284 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.284 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "us30y_level": {
@@ -2757,13 +2709,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:DCOILBRENTEU",
-    "sources": [
-     "fred:DCOILBRENTEU",
-     "eia:petroleum/pri/spt:RBRTE:daily"
-    ],
-    "detail": "20/10/2026: fred:DCOILBRENTEU 115.22 מול eia:petroleum/pri/spt:RBRTE:daily 115.22 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "wti_spot": {
@@ -2780,13 +2726,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:DCOILWTICO",
-    "sources": [
-     "fred:DCOILWTICO",
-     "eia:petroleum/pri/spt:RWTC:daily"
-    ],
-    "detail": "20/10/2026: fred:DCOILWTICO 107.89 מול eia:petroleum/pri/spt:RWTC:daily 107.89 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "ppi_pce_spread": {
@@ -3968,8 +3908,8 @@
    {
     "code": "Q",
     "label": "נזילות",
-    "level": 0.06,
-    "direction": 0.34,
+    "level": 0.23,
+    "direction": 0.35,
     "dir": "up",
     "inputs": [
      {
@@ -3982,9 +3922,9 @@
      {
       "id": "sofr_effr",
       "label": "SOFR פחות EFFR",
-      "value": 0.0,
-      "z": 0.34,
-      "date": "21/10/2026"
+      "value": 0.02,
+      "z": 1.01,
+      "date": "22/10/2026"
      },
      {
       "id": "net_liquidity",
@@ -4006,7 +3946,7 @@
    {
     "code": "F",
     "label": "תנאים פיננסיים",
-    "level": 0.49,
+    "level": 0.56,
     "direction": 0.02,
     "dir": "flat",
     "inputs": [
@@ -4020,9 +3960,9 @@
      {
       "id": "vix",
       "label": "VIX",
-      "value": 16.68,
-      "z": -0.03,
-      "date": "21/10/2026"
+      "value": 19.03,
+      "z": 0.41,
+      "date": "22/10/2026"
      },
      {
       "id": "move",
@@ -4246,10 +4186,10 @@
     "structural": false,
     "note": "",
     "gate": {
-     "rel_1m": -0.99,
+     "rel_1m": -4.17,
      "rel_6_1": 32.35,
      "above_sma": true,
-     "rank": 0.74,
+     "rank": 0.67,
      "top_half": true,
      "veto_long": false,
      "veto_short": false
@@ -4399,7 +4339,7 @@
      "rel_1m": -1.71,
      "rel_6_1": -15.41,
      "above_sma": false,
-     "rank": 0.28,
+     "rank": 0.3,
      "top_half": false,
      "veto_long": false,
      "veto_short": false
@@ -4499,7 +4439,7 @@
      "rel_1m": -1.13,
      "rel_6_1": -8.87,
      "above_sma": false,
-     "rank": 0.43,
+     "rank": 0.44,
      "top_half": false,
      "veto_long": false,
      "veto_short": false
@@ -4649,7 +4589,7 @@
      "rel_1m": -3.99,
      "rel_6_1": -31.47,
      "above_sma": false,
-     "rank": 0.19,
+     "rank": 0.2,
      "top_half": false,
      "veto_long": false,
      "veto_short": false
@@ -4749,7 +4689,7 @@
      "rel_1m": -1.85,
      "rel_6_1": 7.34,
      "above_sma": true,
-     "rank": 0.57,
+     "rank": 0.59,
      "top_half": true,
      "veto_long": false,
      "veto_short": false
@@ -4850,7 +4790,7 @@
      "rel_6_1": -12.69,
      "above_sma": false,
      "rank": 0.57,
-     "top_half": true,
+     "top_half": false,
      "veto_long": true,
      "veto_short": false
     },
