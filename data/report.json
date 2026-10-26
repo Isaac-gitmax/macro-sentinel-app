@@ -1,12 +1,12 @@
 {
  "meta": {
   "version": "4.14.0",
-  "generated_at": "2026-10-25T06:25:13+00:00",
+  "generated_at": "2026-10-26T06:31:16+00:00",
   "market_date": "23/10/2026",
   "market_open": false,
   "market_phase": "closed",
   "slot": "morning",
-  "ny_time": "25/10 02:25"
+  "ny_time": "26/10 02:31"
  },
  "regime": {
   "code": "R4",
@@ -107,7 +107,7 @@
    "signal": "brent_level",
    "label_he": "נפט ברנט",
    "unit": "$",
-   "value": 111.7,
+   "value": 116.72,
    "change_value": null,
    "signed": false,
    "estimate": false
@@ -309,7 +309,7 @@
      "signal": "usdjpy_level",
      "unit": "",
      "label": "שער דולר/ין",
-     "value": 156.814,
+     "value": 156.494,
      "estimate": false,
      "signed": false
     },
@@ -317,7 +317,7 @@
      "signal": "usdjpy_ret_1d",
      "unit": "%",
      "label": "זירה יפנית (דולר/ין)",
-     "value": -0.8335,
+     "value": -1.0358,
      "estimate": false,
      "signed": true
     }
@@ -330,7 +330,7 @@
      "signal": "brent_level",
      "unit": "$",
      "label": "נפט ברנט — רמה",
-     "value": 111.7,
+     "value": 116.72,
      "estimate": false,
      "signed": false
     },
@@ -362,7 +362,7 @@
      "signal": "brent_basis",
      "unit": "$",
      "label": "פער ברנט: חוזה עתידי פחות פיזי",
-     "value": -3.52,
+     "value": 1.5,
      "estimate": false,
      "signed": true
     },
@@ -394,7 +394,7 @@
      "signal": "copper_ton",
      "unit": "$",
      "label": "נחושת (COMEX, לטון)",
-     "value": 14346.565,
+     "value": 14277.1187,
      "estimate": false,
      "signed": false
     },
@@ -686,7 +686,7 @@
   }
  ],
  "market_notes": [
-  "ברנט <code>$111.70</code>, מעל <code>$100</code>: לחץ עלויות על הצרכן והיצרן.",
+  "ברנט <code>$116.72</code>, מעל <code>$100</code>: לחץ עלויות על הצרכן והיצרן.",
   "מרווחי <code>HY</code> התרחבו <code>+67.00bp</code> בחודש (<code>3.40%</code>).",
   "האבטלה עלתה ל-<code>4.20%</code> (<code>+0.10</code>): הקלט הרגיש ביותר לרג'ים."
  ],
@@ -704,7 +704,7 @@
     {
      "signal": "brent_level",
      "label": "נפט ברנט — רמה",
-     "value": 111.7,
+     "value": 116.72,
      "op": ">",
      "threshold": 100.0,
      "passed": true
@@ -1328,12 +1328,10 @@
      "fred:PPIFIS",
      "bls:WPSFD4"
     ],
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:PPIFIS",
-    "detail": "",
-    "errors": {
-     "bls:WPSFD4": "bls:WPSFD4 failed after 3 attempts: BLS HTTP 503"
-    }
+    "detail": "01/09/2026: fred:PPIFIS 159.78 מול bls:WPSFD4 159.78 (סטייה 0%)",
+    "errors": {}
    },
    {
     "label": "אבטלה",
@@ -1342,12 +1340,10 @@
      "fred:UNRATE",
      "bls:LNS14000000"
     ],
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:UNRATE",
-    "detail": "",
-    "errors": {
-     "bls:LNS14000000": "bls:LNS14000000 failed after 3 attempts: BLS HTTP 503"
-    }
+    "detail": "01/09/2026: fred:UNRATE 4.2 מול bls:LNS14000000 4.2 (סטייה 0)",
+    "errors": {}
    },
    {
     "label": "NFP",
@@ -1356,12 +1352,10 @@
      "fred:PAYEMS",
      "bls:CES0000000001"
     ],
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:PAYEMS",
-    "detail": "",
-    "errors": {
-     "bls:CES0000000001": "bls:CES0000000001 failed after 3 attempts: BLS HTTP 503"
-    }
+    "detail": "01/09/2026: fred:PAYEMS 159044 מול bls:CES0000000001 159044 (סטייה 0%)",
+    "errors": {}
    },
    {
     "label": "ציפיות מישיגן",
@@ -1418,12 +1412,10 @@
      "fred:CPIAUCNS",
      "bls:CUUR0000SA0"
     ],
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:CPIAUCNS",
-    "detail": "",
-    "errors": {
-     "bls:CUUR0000SA0": "bls:CUUR0000SA0 failed after 3 attempts: BLS HTTP 503"
-    }
+    "detail": "01/09/2026: fred:CPIAUCNS 336.94 מול bls:CUUR0000SA0 336.94 (סטייה 0%)",
+    "errors": {}
    },
    {
     "label": "CPI (SA)",
@@ -1432,12 +1424,10 @@
      "fred:CPIAUCSL",
      "bls:CUSR0000SA0"
     ],
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:CPIAUCSL",
-    "detail": "",
-    "errors": {
-     "bls:CUSR0000SA0": "bls:CUSR0000SA0 failed after 3 attempts: BLS HTTP 503"
-    }
+    "detail": "01/09/2026: fred:CPIAUCSL 336.298 מול bls:CUSR0000SA0 336.298 (סטייה 0%)",
+    "errors": {}
    },
    {
     "label": "CPI ליבה (NSA)",
@@ -1446,12 +1436,10 @@
      "fred:CPILFENS",
      "bls:CUUR0000SA0L1E"
     ],
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:CPILFENS",
-    "detail": "",
-    "errors": {
-     "bls:CUUR0000SA0L1E": "bls:CUUR0000SA0L1E failed after 3 attempts: BLS HTTP 503"
-    }
+    "detail": "01/09/2026: fred:CPILFENS 339.287 מול bls:CUUR0000SA0L1E 339.287 (סטייה 0%)",
+    "errors": {}
    },
    {
     "label": "CPI ליבה (SA)",
@@ -1460,12 +1448,10 @@
      "fred:CPILFESL",
      "bls:CUSR0000SA0L1E"
     ],
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:CPILFESL",
-    "detail": "",
-    "errors": {
-     "bls:CUSR0000SA0L1E": "bls:CUSR0000SA0L1E failed after 3 attempts: BLS HTTP 503"
-    }
+    "detail": "01/09/2026: fred:CPILFESL 338.896 מול bls:CUSR0000SA0L1E 338.896 (סטייה 0%)",
+    "errors": {}
    },
    {
     "label": "PPI ליבה",
@@ -1474,12 +1460,10 @@
      "fred:WPSFD49116",
      "bls:WPSFD49116"
     ],
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:WPSFD49116",
-    "detail": "",
-    "errors": {
-     "bls:WPSFD49116": "bls:WPSFD49116 failed after 3 attempts: BLS HTTP 503"
-    }
+    "detail": "01/09/2026: fred:WPSFD49116 144.255 מול bls:WPSFD49116 144.255 (סטייה 0%)",
+    "errors": {}
    },
    {
     "label": "שכר שעתי",
@@ -1488,12 +1472,10 @@
      "fred:CES0500000003",
      "bls:CES0500000003"
     ],
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:CES0500000003",
-    "detail": "",
-    "errors": {
-     "bls:CES0500000003": "bls:CES0500000003 failed after 3 attempts: BLS HTTP 503"
-    }
+    "detail": "01/09/2026: fred:CES0500000003 37.81 מול bls:CES0500000003 37.81 (סטייה 0%)",
+    "errors": {}
    },
    {
     "label": "בנזין",
@@ -1535,7 +1517,7 @@
  },
  "signals": {
   "usdjpy_ret_1d": {
-   "value": -0.8335,
+   "value": -1.0358,
    "label": "זירה יפנית (דולר/ין)",
    "estimate": false,
    "signed": true,
@@ -1544,7 +1526,7 @@
    "group": "דולר ומט״ח",
    "id": "JPY=X",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1561,7 +1543,7 @@
    "group": "דולר ומט״ח",
    "id": "DX-Y.NYB",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1578,7 +1560,7 @@
    "group": "דולר ומט״ח",
    "id": "DX-Y.NYB",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1595,7 +1577,7 @@
    "group": "מניות ותנודתיות",
    "id": "^SPX",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1612,7 +1594,7 @@
    "group": "מניות ותנודתיות",
    "id": "QQQ",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1629,7 +1611,7 @@
    "group": "מניות ותנודתיות",
    "id": "^VIX",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1646,7 +1628,7 @@
    "group": "סחורות",
    "id": "CL=F",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1663,7 +1645,7 @@
    "group": "סחורות",
    "id": "CL=F",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1680,7 +1662,7 @@
    "group": "סחורות",
    "id": "CL=F",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1697,7 +1679,7 @@
    "group": "סחורות",
    "id": "GC=F",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1714,7 +1696,7 @@
    "group": "ריבית ואג״ח",
    "id": "^TNX",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1731,7 +1713,7 @@
    "group": "ריבית ואג״ח",
    "id": "^TNX",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1748,7 +1730,7 @@
    "group": "ריבית ואג״ח",
    "id": "^TYX",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1765,7 +1747,7 @@
    "group": "אינפלציה",
    "id": "PCEPILFE",
    "date": "01/08/2026",
-   "age_days": 85,
+   "age_days": 86,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1788,7 +1770,7 @@
    "group": "ריבית ואג״ח",
    "id": "EFFR",
    "date": "22/10/2026",
-   "age_days": 3,
+   "age_days": 4,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1811,17 +1793,17 @@
    "group": "אינפלציה",
    "id": "PPIFIS",
    "date": "01/09/2026",
-   "age_days": 54,
+   "age_days": 55,
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:PPIFIS",
     "sources": [
      "fred:PPIFIS",
      "bls:WPSFD4"
     ],
-    "detail": ""
+    "detail": "01/09/2026: fred:PPIFIS 159.78 מול bls:WPSFD4 159.78 (סטייה 0%)"
    }
   },
   "unrate_level": {
@@ -1834,17 +1816,17 @@
    "group": "תעסוקה",
    "id": "UNRATE",
    "date": "01/09/2026",
-   "age_days": 54,
+   "age_days": 55,
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:UNRATE",
     "sources": [
      "fred:UNRATE",
      "bls:LNS14000000"
     ],
-    "detail": ""
+    "detail": "01/09/2026: fred:UNRATE 4.2 מול bls:LNS14000000 4.2 (סטייה 0)"
    }
   },
   "unrate_chg_1m": {
@@ -1857,17 +1839,17 @@
    "group": "תעסוקה",
    "id": "UNRATE",
    "date": "01/09/2026",
-   "age_days": 54,
+   "age_days": 55,
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:UNRATE",
     "sources": [
      "fred:UNRATE",
      "bls:LNS14000000"
     ],
-    "detail": ""
+    "detail": "01/09/2026: fred:UNRATE 4.2 מול bls:LNS14000000 4.2 (סטייה 0)"
    }
   },
   "payems_chg_1m": {
@@ -1880,17 +1862,17 @@
    "group": "תעסוקה",
    "id": "PAYEMS",
    "date": "01/09/2026",
-   "age_days": 54,
+   "age_days": 55,
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:PAYEMS",
     "sources": [
      "fred:PAYEMS",
      "bls:CES0000000001"
     ],
-    "detail": ""
+    "detail": "01/09/2026: fred:PAYEMS 159044 מול bls:CES0000000001 159044 (סטייה 0%)"
    }
   },
   "retail_yoy": {
@@ -1903,7 +1885,7 @@
    "group": "צמיחה וצריכה",
    "id": "RSXFS",
    "date": "01/09/2026",
-   "age_days": 54,
+   "age_days": 55,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1920,7 +1902,7 @@
    "group": "צמיחה וצריכה",
    "id": "HOUST",
    "date": "01/09/2026",
-   "age_days": 54,
+   "age_days": 55,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1937,7 +1919,7 @@
    "group": "אינפלציה",
    "id": "tbmpx1px5:PX_MD",
    "date": "01/10/2026",
-   "age_days": 24,
+   "age_days": 25,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1960,7 +1942,7 @@
    "group": "ריבית ואג״ח",
    "id": "MORTGAGE30US",
    "date": "22/10/2026",
-   "age_days": 3,
+   "age_days": 4,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1977,7 +1959,7 @@
    "group": "ריבית ואג״ח",
    "id": "MORTGAGE30US",
    "date": "22/10/2026",
-   "age_days": 3,
+   "age_days": 4,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1994,7 +1976,7 @@
    "group": "דולר ומט״ח",
    "id": "DX-Y.NYB",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2011,7 +1993,7 @@
    "group": "אשראי ונזילות",
    "id": "EMLC",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2028,7 +2010,7 @@
    "group": "מניות ותנודתיות",
    "id": "XLU",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2045,7 +2027,7 @@
    "group": "ריבית ואג״ח",
    "id": "^TYX",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2062,7 +2044,7 @@
    "group": "ריבית ואג״ח",
    "id": "EFFR",
    "date": "22/10/2026",
-   "age_days": 3,
+   "age_days": 4,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2085,7 +2067,7 @@
    "group": "צמיחה וצריכה",
    "id": "NROU",
    "date": "01/10/2026",
-   "age_days": 24,
+   "age_days": 25,
    "status": "estimate",
    "reason": "",
    "redundancy": {
@@ -2102,7 +2084,7 @@
    "group": "ריבית ואג״ח",
    "id": "10 Yr",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2125,7 +2107,7 @@
    "group": "ריבית ואג״ח",
    "id": "2 Yr",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2139,7 +2121,7 @@
    }
   },
   "usdjpy_level": {
-   "value": 156.814,
+   "value": 156.494,
    "label": "שער דולר/ין",
    "estimate": false,
    "signed": false,
@@ -2148,7 +2130,7 @@
    "group": "דולר ומט״ח",
    "id": "JPY=X",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2165,7 +2147,7 @@
    "group": "דולר ומט״ח",
    "id": "DX-Y.NYB",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2173,7 +2155,7 @@
    }
   },
   "brent_level": {
-   "value": 111.7,
+   "value": 116.72,
    "label": "נפט ברנט — רמה",
    "estimate": false,
    "signed": false,
@@ -2182,7 +2164,7 @@
    "group": "סחורות",
    "id": "BZ=F",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2199,7 +2181,7 @@
    "group": "מניות ותנודתיות",
    "id": "^SPX",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2216,7 +2198,7 @@
    "group": "אשראי ונזילות",
    "id": "BAMLH0A0HYM2",
    "date": "22/10/2026",
-   "age_days": 3,
+   "age_days": 4,
    "status": "commercial",
    "reason": "",
    "redundancy": {
@@ -2233,7 +2215,7 @@
    "group": "אשראי ונזילות",
    "id": "BAMLH0A0HYM2",
    "date": "22/10/2026",
-   "age_days": 3,
+   "age_days": 4,
    "status": "commercial",
    "reason": "",
    "redundancy": {
@@ -2250,7 +2232,7 @@
    "group": "ריבית ואג״ח",
    "id": "^TNX",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2267,7 +2249,7 @@
    "group": "סחורות",
    "id": "CL=F",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2284,7 +2266,7 @@
    "group": "סחורות",
    "id": "GC=F",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2301,7 +2283,7 @@
    "group": "אשראי ונזילות",
    "id": "M2SL",
    "date": "01/08/2026",
-   "age_days": 85,
+   "age_days": 86,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2318,7 +2300,7 @@
    "group": "צמיחה וצריכה",
    "id": "tbmics:ICS_ALL",
    "date": "01/10/2026",
-   "age_days": 24,
+   "age_days": 25,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2341,7 +2323,7 @@
    "group": "תעסוקה",
    "id": "SAHMREALTIME",
    "date": "01/09/2026",
-   "age_days": 54,
+   "age_days": 55,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2358,17 +2340,17 @@
    "group": "אינפלציה",
    "id": "CPIAUCNS",
    "date": "01/09/2026",
-   "age_days": 54,
+   "age_days": 55,
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:CPIAUCNS",
     "sources": [
      "fred:CPIAUCNS",
      "bls:CUUR0000SA0"
     ],
-    "detail": ""
+    "detail": "01/09/2026: fred:CPIAUCNS 336.94 מול bls:CUUR0000SA0 336.94 (סטייה 0%)"
    }
   },
   "cpi_mom": {
@@ -2381,17 +2363,17 @@
    "group": "אינפלציה",
    "id": "CPIAUCSL",
    "date": "01/09/2026",
-   "age_days": 54,
+   "age_days": 55,
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:CPIAUCSL",
     "sources": [
      "fred:CPIAUCSL",
      "bls:CUSR0000SA0"
     ],
-    "detail": ""
+    "detail": "01/09/2026: fred:CPIAUCSL 336.298 מול bls:CUSR0000SA0 336.298 (סטייה 0%)"
    }
   },
   "core_cpi_yoy": {
@@ -2404,17 +2386,17 @@
    "group": "אינפלציה",
    "id": "CPILFENS",
    "date": "01/09/2026",
-   "age_days": 54,
+   "age_days": 55,
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:CPILFENS",
     "sources": [
      "fred:CPILFENS",
      "bls:CUUR0000SA0L1E"
     ],
-    "detail": ""
+    "detail": "01/09/2026: fred:CPILFENS 339.287 מול bls:CUUR0000SA0L1E 339.287 (סטייה 0%)"
    }
   },
   "core_cpi_mom": {
@@ -2427,17 +2409,17 @@
    "group": "אינפלציה",
    "id": "CPILFESL",
    "date": "01/09/2026",
-   "age_days": 54,
+   "age_days": 55,
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:CPILFESL",
     "sources": [
      "fred:CPILFESL",
      "bls:CUSR0000SA0L1E"
     ],
-    "detail": ""
+    "detail": "01/09/2026: fred:CPILFESL 338.896 מול bls:CUSR0000SA0L1E 338.896 (סטייה 0%)"
    }
   },
   "core_ppi_yoy": {
@@ -2450,17 +2432,17 @@
    "group": "אינפלציה",
    "id": "WPSFD49116",
    "date": "01/09/2026",
-   "age_days": 54,
+   "age_days": 55,
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:WPSFD49116",
     "sources": [
      "fred:WPSFD49116",
      "bls:WPSFD49116"
     ],
-    "detail": ""
+    "detail": "01/09/2026: fred:WPSFD49116 144.255 מול bls:WPSFD49116 144.255 (סטייה 0%)"
    }
   },
   "ahe_yoy": {
@@ -2473,17 +2455,17 @@
    "group": "תעסוקה",
    "id": "CES0500000003",
    "date": "01/09/2026",
-   "age_days": 54,
+   "age_days": 55,
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "backup_unavailable",
+    "status": "consensus",
     "used": "fred:CES0500000003",
     "sources": [
      "fred:CES0500000003",
      "bls:CES0500000003"
     ],
-    "detail": ""
+    "detail": "01/09/2026: fred:CES0500000003 37.81 מול bls:CES0500000003 37.81 (סטייה 0%)"
    }
   },
   "claims_k": {
@@ -2496,7 +2478,7 @@
    "group": "תעסוקה",
    "id": "ICSA",
    "date": "17/10/2026",
-   "age_days": 8,
+   "age_days": 9,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2513,7 +2495,7 @@
    "group": "ריבית ואג״ח",
    "id": "DFII10",
    "date": "22/10/2026",
-   "age_days": 3,
+   "age_days": 4,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2530,7 +2512,7 @@
    "group": "ריבית ואג״ח",
    "id": "THREEFYTP10",
    "date": "16/10/2026",
-   "age_days": 9,
+   "age_days": 10,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2547,7 +2529,7 @@
    "group": "אשראי ונזילות",
    "id": "BAMLC0A0CM",
    "date": "22/10/2026",
-   "age_days": 3,
+   "age_days": 4,
    "status": "commercial",
    "reason": "",
    "redundancy": {
@@ -2564,7 +2546,7 @@
    "group": "אשראי ונזילות",
    "id": "WALCL",
    "date": "21/10/2026",
-   "age_days": 4,
+   "age_days": 5,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2581,7 +2563,7 @@
    "group": "אשראי ונזילות",
    "id": "WTREGEN",
    "date": "21/10/2026",
-   "age_days": 4,
+   "age_days": 5,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2598,7 +2580,7 @@
    "group": "אשראי ונזילות",
    "id": "RRPONTSYD",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2615,7 +2597,7 @@
    "group": "אשראי ונזילות",
    "id": "NFCI",
    "date": "16/10/2026",
-   "age_days": 9,
+   "age_days": 10,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2632,7 +2614,7 @@
    "group": "צמיחה וצריכה",
    "id": "GDPNOW",
    "date": "01/07/2026",
-   "age_days": 116,
+   "age_days": 117,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2649,7 +2631,7 @@
    "group": "אינפלציה",
    "id": "GASREGW",
    "date": "19/10/2026",
-   "age_days": 6,
+   "age_days": 7,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2672,7 +2654,7 @@
    "group": "אינפלציה",
    "id": "GASREGW",
    "date": "19/10/2026",
-   "age_days": 6,
+   "age_days": 7,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2695,7 +2677,7 @@
    "group": "ריבית ואג״ח",
    "id": "^TYX",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2712,7 +2694,7 @@
    "group": "מניות ותנודתיות",
    "id": "^SPX",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2729,7 +2711,7 @@
    "group": "מניות ותנודתיות",
    "id": "^MOVE",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2737,7 +2719,7 @@
    }
   },
   "copper_ton": {
-   "value": 14346.565,
+   "value": 14277.1187,
    "label": "נחושת (COMEX, לטון)",
    "estimate": false,
    "signed": false,
@@ -2746,7 +2728,7 @@
    "group": "סחורות",
    "id": "HG=F",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2763,7 +2745,7 @@
    "group": "סחורות",
    "id": "DCOILBRENTEU",
    "date": "20/10/2026",
-   "age_days": 5,
+   "age_days": 6,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2786,7 +2768,7 @@
    "group": "סחורות",
    "id": "DCOILWTICO",
    "date": "20/10/2026",
-   "age_days": 5,
+   "age_days": 6,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2809,7 +2791,7 @@
    "group": "אינפלציה",
    "id": "ppi_yoy+pce_yoy",
    "date": "01/08/2026",
-   "age_days": 85,
+   "age_days": 86,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2826,7 +2808,7 @@
    "group": "מודלים ונגזרים",
    "id": "nrou_level+unrate_level",
    "date": "01/09/2026",
-   "age_days": 54,
+   "age_days": 55,
    "status": "estimate",
    "reason": "",
    "redundancy": {
@@ -2843,7 +2825,7 @@
    "group": "ריבית ואג״ח",
    "id": "dgs10_level+dgs2_level",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2860,7 +2842,7 @@
    "group": "מודלים ונגזרים",
    "id": "pce_yoy+output_gap_proxy",
    "date": "01/08/2026",
-   "age_days": 85,
+   "age_days": 86,
    "status": "estimate",
    "reason": "",
    "redundancy": {
@@ -2877,7 +2859,7 @@
    "group": "מודלים ונגזרים",
    "id": "fed_funds_level+taylor_rate",
    "date": "01/08/2026",
-   "age_days": 85,
+   "age_days": 86,
    "status": "estimate",
    "reason": "",
    "redundancy": {
@@ -2894,7 +2876,7 @@
    "group": "אשראי ונזילות",
    "id": "fed_assets_mn+tga_mn+rrp_bn",
    "date": "21/10/2026",
-   "age_days": 4,
+   "age_days": 5,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2902,7 +2884,7 @@
    }
   },
   "brent_basis": {
-   "value": -3.52,
+   "value": 1.5,
    "label": "פער ברנט: חוזה עתידי פחות פיזי",
    "estimate": false,
    "signed": true,
@@ -2911,7 +2893,7 @@
    "group": "סחורות",
    "id": "brent_level+brent_spot",
    "date": "20/10/2026",
-   "age_days": 5,
+   "age_days": 6,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2928,7 +2910,7 @@
    "group": "מודלים ונגזרים",
    "id": "dxy_ret_1d+oil_ret_1d",
    "date": "23/10/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -6366,7 +6348,7 @@
   "live": {
    "since": "2026-10-15",
    "scored": 0,
-   "pending": 105,
+   "pending": 120,
    "next_due": "2026-10-15",
    "overall": null,
    "by_regime": {},

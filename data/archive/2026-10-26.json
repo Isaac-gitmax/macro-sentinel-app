@@ -1,0 +1,6617 @@
+{
+ "meta": {
+  "version": "4.14.0",
+  "generated_at": "2026-10-26T06:31:16+00:00",
+  "market_date": "23/10/2026",
+  "market_open": false,
+  "market_phase": "closed",
+  "slot": "morning",
+  "ny_time": "26/10 02:31"
+ },
+ "regime": {
+  "code": "R4",
+  "short_he": "גאות אינפלציונית — כלכלה חמה",
+  "label_he": "<b>R4 — גאות אינפלציונית</b> (<code>Inflationary Boom</code>)",
+  "summary_he": "הכלכלה מעל הפוטנציאל והאינפלציה מעל היעד. הפד צפוי להישאר נוקשה, ואג\"ח ארוך ומניות צמיחה בלחץ.",
+  "synthesis_he": "אינפלציה מעל היעד והכלכלה מעל הפוטנציאל. עקומת פיליפס תלולה (<code>κ≈4.0</code>): כל זעזוע ביקוש מתורגם מהר לאינפלציה, והפד מגיב בחריפות (<code>ψπ=1.52</code>) ותלוי בנתונים. לצפות לתנודות חדות סביב פרסומי <code>NFP/CPI</code>; גידור <code>Straddle</code> לפני פרסומים.",
+  "factors_he": "<code>Deep Value</code> ועתירי משאבים; משני: <code>Quality Momentum</code>. להימנע: צמיחה בעלת מח\"מ ארוך.",
+  "screening_he": "<code>Net Debt/EBITDA ≤ 1.5x</code> | <code>Coverage &gt; 8x</code> | <code>Pass-Through &gt; 0.85</code> | אפס מחזור חוב ב-<code>24M</code> | <code>FCF Yield &gt; US10Y+2.5%</code>",
+  "inputs": [
+   {
+    "signal": "pce_yoy",
+    "label": "אינפלציית ליבה (Core PCE)",
+    "value": 3.0076,
+    "op": ">",
+    "threshold": 2.0,
+    "passed": true
+   },
+   {
+    "signal": "output_gap_proxy",
+    "label": "פרוקסי פער תוצר (NROU-UNRATE)",
+    "value": 0.1884,
+    "op": ">",
+    "threshold": 0.0,
+    "passed": true
+   }
+  ],
+  "margin": 0.1884
+ },
+ "regime_missing": [],
+ "summary": {
+  "regime": "גאות אינפלציונית — כלכלה חמה",
+  "bottom_line": "הכלכלה מעל הפוטנציאל והאינפלציה מעל היעד. הפד צפוי להישאר נוקשה, ואג\"ח ארוך ומניות צמיחה בלחץ.",
+  "overweight": "תעופה וביטחון, רשתות חשמל, אנרגיה, מתכות ואנרגיה נקייה (חלקית), מכרות זהב, בריאות ופארמה",
+  "underweight": "מדדי מניות רחבים (חלקית), בינה מלאכותית ותוכנה, חלל, פינטק וקריפטו, ביוטק (חלקית), צריכה מחזורית, נדל\"ן ותשתיות ציבוריות",
+  "fragility": "פער תוצר <code>+0.19</code>, במרחק <code>0.19</code> בלבד מהסף <code>0</code>. שינוי קטן יחליף את מצב הכלכלה."
+ },
+ "kpis": [
+  {
+   "signal": "pce_yoy",
+   "label_he": "אינפלציית ליבה",
+   "unit": "%",
+   "note_he": "יעד 2%",
+   "value": 3.0076,
+   "change_value": null,
+   "signed": true,
+   "estimate": false
+  },
+  {
+   "signal": "unrate_level",
+   "label_he": "אבטלה",
+   "unit": "%",
+   "change": "unrate_chg_1m",
+   "change_unit": "",
+   "change_label": "חודש",
+   "value": 4.2,
+   "change_value": 0.1,
+   "signed": false,
+   "estimate": false
+  },
+  {
+   "signal": "fed_funds_level",
+   "label_he": "ריבית הפד",
+   "unit": "%",
+   "change": "dff_chg_1m_bp",
+   "change_unit": "bp",
+   "change_label": "חודש",
+   "value": 3.88,
+   "change_value": 0.0,
+   "signed": false,
+   "estimate": false
+  },
+  {
+   "signal": "us10y_level",
+   "label_he": "תשואה 10 שנים",
+   "unit": "%",
+   "change": "us10y_chg_5d_bp",
+   "change_unit": "bp",
+   "change_label": "שבוע",
+   "value": 4.988,
+   "change_value": -11.0,
+   "signed": false,
+   "estimate": false
+  },
+  {
+   "signal": "dxy_level",
+   "label_he": "מדד הדולר",
+   "unit": "",
+   "change": "dxy_ret_1m",
+   "change_unit": "%",
+   "change_label": "חודש",
+   "value": 101.81,
+   "change_value": 0.5134,
+   "signed": false,
+   "estimate": false
+  },
+  {
+   "signal": "brent_level",
+   "label_he": "נפט ברנט",
+   "unit": "$",
+   "value": 116.72,
+   "change_value": null,
+   "signed": false,
+   "estimate": false
+  },
+  {
+   "signal": "gold_level",
+   "label_he": "זהב",
+   "unit": "$",
+   "change": "gold_ret_1d",
+   "change_unit": "%",
+   "change_label": "יום",
+   "value": 4007.8999,
+   "change_value": -1.293,
+   "signed": false,
+   "estimate": false
+  },
+  {
+   "signal": "spx_ret_1d",
+   "label_he": "מניות ארה״ב (יום)",
+   "unit": "%",
+   "change": "spx_ret_5d",
+   "change_unit": "%",
+   "change_label": "שבוע",
+   "value": -0.5187,
+   "change_value": -0.4669,
+   "signed": true,
+   "estimate": false
+  },
+  {
+   "signal": "vix_level",
+   "label_he": "מדד הפחד",
+   "unit": "",
+   "value": 19.45,
+   "change_value": null,
+   "signed": false,
+   "estimate": false
+  },
+  {
+   "signal": "cpi_yoy",
+   "label_he": "CPI כללי",
+   "unit": "%",
+   "change": "cpi_mom",
+   "change_unit": "%",
+   "change_label": "חודש",
+   "value": 4.0015,
+   "change_value": 0.6485,
+   "signed": true,
+   "estimate": false
+  },
+  {
+   "signal": "claims_k",
+   "label_he": "תביעות אבטלה",
+   "unit": "K",
+   "value": 194.0,
+   "change_value": null,
+   "signed": false,
+   "estimate": false
+  },
+  {
+   "signal": "net_liquidity_tn",
+   "label_he": "נזילות נטו (פד)",
+   "unit": "T",
+   "value": 5.8014,
+   "change_value": null,
+   "signed": false,
+   "estimate": false
+  }
+ ],
+ "market_groups": [
+  {
+   "title_he": "ריבית ואג״ח",
+   "items": [
+    {
+     "signal": "fed_funds_level",
+     "unit": "%",
+     "label": "ריבית הפד האפקטיבית",
+     "value": 3.88,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "us10y_level",
+     "unit": "%",
+     "label": "תשואת 10 שנים — רמה",
+     "value": 4.988,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "us10y_chg_1d_bp",
+     "unit": "bp",
+     "label": "תשואת 10 שנים",
+     "value": 3.5,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "us10y_chg_5d_bp",
+     "unit": "bp",
+     "label": "תשואת 10 שנים — שבוע",
+     "value": -11.0,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "us30y_chg_1d_bp",
+     "unit": "bp",
+     "label": "תשואת 30 שנה",
+     "value": 2.8,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "curve_10y2y",
+     "unit": "pp",
+     "label": "עקומת התשואות 10Y-2Y",
+     "value": 0.31,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "taylor_rate",
+     "unit": "%",
+     "label": "ריבית לפי כלל טיילור",
+     "value": 4.6998,
+     "estimate": true,
+     "signed": false
+    },
+    {
+     "signal": "taylor_gap",
+     "unit": "pp",
+     "label": "פער ריבית הפד מכלל טיילור",
+     "value": -0.8198,
+     "estimate": true,
+     "signed": true
+    },
+    {
+     "signal": "us30y_level",
+     "unit": "%",
+     "label": "תשואת 30 שנה — רמה",
+     "value": 5.315,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "tips10_level",
+     "unit": "%",
+     "label": "תשואה ריאלית 10 שנים (TIPS)",
+     "value": 2.64,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "term_premium_10y",
+     "unit": "pp",
+     "label": "פרמיית סיכון לטווח 10 שנים (Kim-Wright)",
+     "value": 0.9857,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "mortgage_level",
+     "unit": "%",
+     "label": "ריבית משכנתא 30 שנה",
+     "value": 7.32,
+     "estimate": false,
+     "signed": false
+    }
+   ]
+  },
+  {
+   "title_he": "דולר ומט״ח",
+   "items": [
+    {
+     "signal": "dxy_level",
+     "unit": "",
+     "label": "מדד הדולר — רמה",
+     "value": 101.81,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "dxy_ret_1d",
+     "unit": "%",
+     "label": "מדד הדולר",
+     "value": 0.1968,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "dxy_ret_1m",
+     "unit": "%",
+     "label": "מדד הדולר — חודש",
+     "value": 0.5134,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "usdjpy_level",
+     "unit": "",
+     "label": "שער דולר/ין",
+     "value": 156.494,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "usdjpy_ret_1d",
+     "unit": "%",
+     "label": "זירה יפנית (דולר/ין)",
+     "value": -1.0358,
+     "estimate": false,
+     "signed": true
+    }
+   ]
+  },
+  {
+   "title_he": "סחורות",
+   "items": [
+    {
+     "signal": "brent_level",
+     "unit": "$",
+     "label": "נפט ברנט — רמה",
+     "value": 116.72,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "wti_level",
+     "unit": "$",
+     "label": "נפט WTI — רמה",
+     "value": 103.27,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "brent_spot",
+     "unit": "$",
+     "label": "ברנט פיזי (Dated Brent, EIA)",
+     "value": 115.22,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "wti_spot",
+     "unit": "$",
+     "label": "WTI פיזי (Cushing, EIA)",
+     "value": 107.89,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "brent_basis",
+     "unit": "$",
+     "label": "פער ברנט: חוזה עתידי פחות פיזי",
+     "value": 1.5,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "oil_ret_1m",
+     "unit": "%",
+     "label": "נפט גולמי — חודש",
+     "value": 9.1534,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "gold_level",
+     "unit": "$",
+     "label": "זהב — רמה",
+     "value": 4007.8999,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "gold_ret_1d",
+     "unit": "%",
+     "label": "זהב (חוזים)",
+     "value": -1.293,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "copper_ton",
+     "unit": "$",
+     "label": "נחושת (COMEX, לטון)",
+     "value": 14277.1187,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "gasoline_level",
+     "unit": "$",
+     "label": "מחיר בנזין (ממוצע ארצי)",
+     "value": 4.284,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "gasoline_yoy",
+     "unit": "%",
+     "label": "מחיר בנזין — שינוי שנתי",
+     "value": 41.9013,
+     "estimate": false,
+     "signed": true
+    }
+   ]
+  },
+  {
+   "title_he": "אשראי ונזילות",
+   "items": [
+    {
+     "signal": "hy_oas_level",
+     "unit": "%",
+     "label": "מרווח אג\"ח High Yield (OAS)",
+     "value": 3.4,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "ig_oas_level",
+     "unit": "%",
+     "label": "מרווח אג״ח בדירוג השקעה (IG OAS)",
+     "value": 0.89,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "net_liquidity_tn",
+     "unit": "T",
+     "label": "נזילות נטו של הפד",
+     "value": 5.8014,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "nfci_level",
+     "unit": "",
+     "label": "תנאים פיננסיים (NFCI)",
+     "value": -0.496,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "m2_yoy",
+     "unit": "%",
+     "label": "צמיחת כמות הכסף M2",
+     "value": 5.6589,
+     "estimate": false,
+     "signed": true
+    }
+   ]
+  },
+  {
+   "title_he": "מניות וסיכון",
+   "items": [
+    {
+     "signal": "spx_level",
+     "unit": "",
+     "label": "מדד S&P 500 — רמה",
+     "value": 7623.6802,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "spx_ret_1d",
+     "unit": "%",
+     "label": "מדד S&P 500",
+     "value": -0.5187,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "spx_ret_5d",
+     "unit": "%",
+     "label": "מדד S&P 500 — שבוע",
+     "value": -0.4669,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "qqq_ret_1d",
+     "unit": "%",
+     "label": "מניות נאסד\"ק",
+     "value": -0.0099,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "vix_level",
+     "unit": "",
+     "label": "מדד התנודתיות",
+     "value": 19.45,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "move_level",
+     "unit": "",
+     "label": "מדד תנודתיות אג״ח (MOVE)",
+     "value": 103.31,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "hy_oas_chg_1m_bp",
+     "unit": "bp",
+     "label": "שינוי מרווח High Yield — חודש",
+     "value": 67.0,
+     "estimate": false,
+     "signed": true
+    }
+   ]
+  },
+  {
+   "title_he": "אינפלציה ושכר",
+   "items": [
+    {
+     "signal": "pce_yoy",
+     "unit": "%",
+     "label": "אינפלציית ליבה (Core PCE)",
+     "value": 3.0076,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "cpi_yoy",
+     "unit": "%",
+     "label": "מדד המחירים לצרכן (CPI)",
+     "value": 4.0015,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "cpi_mom",
+     "unit": "%",
+     "label": "CPI — שינוי חודשי",
+     "value": 0.6485,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "core_cpi_yoy",
+     "unit": "%",
+     "label": "CPI ליבה",
+     "value": 2.8236,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "core_cpi_mom",
+     "unit": "%",
+     "label": "CPI ליבה — שינוי חודשי",
+     "value": 0.3348,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "ppi_yoy",
+     "unit": "%",
+     "label": "מדד המחירים ליצרן (Final Demand)",
+     "value": 6.3463,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "core_ppi_yoy",
+     "unit": "%",
+     "label": "PPI ליבה (ללא מזון, אנרגיה ומסחר)",
+     "value": 5.0441,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "ppi_pce_spread",
+     "unit": "pp",
+     "label": "פער יצרן-צרכן",
+     "value": 3.3387,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "ahe_yoy",
+     "unit": "%",
+     "label": "שכר שעתי ממוצע",
+     "value": 3.0245,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "mich_level",
+     "unit": "%",
+     "label": "ציפיות אינפלציה (מישיגן)",
+     "value": 4.7,
+     "estimate": false,
+     "signed": false
+    }
+   ]
+  },
+  {
+   "title_he": "כלכלה ריאלית",
+   "items": [
+    {
+     "signal": "gdpnow",
+     "unit": "%",
+     "label": "צמיחה בזמן אמת (GDPNow)",
+     "value": 3.4989,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "claims_k",
+     "unit": "K",
+     "label": "תביעות ראשוניות לדמי אבטלה",
+     "value": 194.0,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "unrate_level",
+     "unit": "%",
+     "label": "שיעור אבטלה",
+     "value": 4.2,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "unrate_chg_1m",
+     "unit": "pp",
+     "label": "שינוי חודשי באבטלה",
+     "value": 0.1,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "payems_chg_1m",
+     "unit": "K",
+     "label": "משרות חדשות (NFP)",
+     "value": 29.0,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "sahm_level",
+     "unit": "",
+     "label": "כלל סאם (נמדד)",
+     "value": 0.0,
+     "estimate": false,
+     "signed": false
+    },
+    {
+     "signal": "output_gap_proxy",
+     "unit": "pp",
+     "label": "פרוקסי פער תוצר (NROU-UNRATE)",
+     "value": 0.1884,
+     "estimate": true,
+     "signed": true
+    },
+    {
+     "signal": "retail_yoy",
+     "unit": "%",
+     "label": "מכירות קמעונאיות",
+     "value": 6.1885,
+     "estimate": false,
+     "signed": true
+    },
+    {
+     "signal": "houst_chg_3m",
+     "unit": "%",
+     "label": "התחלות בנייה — 3 חודשים",
+     "value": -15.1494,
+     "estimate": false,
+     "signed": true
+    }
+   ]
+  }
+ ],
+ "market_notes": [
+  "ברנט <code>$116.72</code>, מעל <code>$100</code>: לחץ עלויות על הצרכן והיצרן.",
+  "מרווחי <code>HY</code> התרחבו <code>+67.00bp</code> בחודש (<code>3.40%</code>).",
+  "האבטלה עלתה ל-<code>4.20%</code> (<code>+0.10</code>): הקלט הרגיש ביותר לרג'ים."
+ ],
+ "alerts": [
+  {
+   "name": "rule_energy_shock",
+   "short_he": "הלם אנרגיה",
+   "header_he": "🚨 <b>[קריטי] הלם אנרגיה — ברנט מעל <code>$100</code></b>",
+   "severity": "critical",
+   "kind": "alert",
+   "edge": false,
+   "synthesis_he": "נפט ברנט מעל <code>$100</code> לחבית. עלויות האנרגיה מחלחלות למחירי היצרן ואחר כך לצרכן, שוחקות את ההכנסה הפנויה ודוחפות את מייבאי האנרגיה לכיוון רפיון אינפלציוני (<code>R2</code>). אם הדולר עולה במקביל, המכה כפולה.",
+   "risk_he": "להעדיף אנרגיה אמריקאית ומניות עם כוח תמחור, ולהקטין צריכה מחזורית, תעופה אזרחית ושווקים מתעוררים מייבאי אנרגיה.",
+   "evidence": [
+    {
+     "signal": "brent_level",
+     "label": "נפט ברנט — רמה",
+     "value": 116.72,
+     "op": ">",
+     "threshold": 100.0,
+     "passed": true
+    }
+   ]
+  },
+  {
+   "name": "anomaly_e_housing_cascade",
+   "short_he": "לחץ נדל\"ן ובנקים",
+   "header_he": "⚠️ <b>[אזהרה] Anomaly E: קסקדת נדל\"ן-בנקאות — סכנת שחיקת MBS</b>",
+   "severity": "warning",
+   "kind": "alert",
+   "edge": false,
+   "synthesis_he": "ריבית המשכנתאות מזנקת בעוד התחלות הבנייה צונחות — ערוץ האשראי נסגר. שרשרת התמסורת: הקפאת שוק הדיור שוחקת את שווי אגרות ה-<code>MBS</code> במאזני הבנקים, הפגיעה בהון העצמי מקרבת את מגבלות ה-<code>VaR</code> לנקודת הכפייה, והתהליך עלול להתגלגל להידוק אשראי רחב גם מחוץ לנדל\"ן.",
+   "risk_he": "מומלץ להיזהר מחשיפה לסקטור הבנייה, הבנקים האזוריים וחברות הנדל\"ן הממונפות, ולעקוב אחרי נתוני עסקאות הנדל\"ן ותיקי המשכנתאות בדוחות הבנקים הקרובים.",
+   "evidence": [
+    {
+     "signal": "mortgage_chg_3m_bp",
+     "label": "שינוי ריבית משכנתא — 3 חודשים",
+     "value": 66.0,
+     "op": ">",
+     "threshold": 25,
+     "passed": true
+    },
+    {
+     "signal": "houst_chg_3m",
+     "label": "התחלות בנייה — 3 חודשים",
+     "value": -15.1494,
+     "op": "<",
+     "threshold": -8,
+     "passed": true
+    }
+   ]
+  }
+ ],
+ "states": [
+  {
+   "name": "upstream_margin_squeeze",
+   "short_he": "חנק מרווחים אצל היצרנים",
+   "header_he": "⚠️ <b>[אזהרה] לחץ מרווחים במעלה הזרם — עלויות יצרן מקדימות את הצרכן</b>",
+   "severity": "warning",
+   "kind": "state",
+   "edge": false,
+   "synthesis_he": "מחירי היצרן עולים מהר ממדד המחירים לצרכן שהפד מסתכל עליו (פער של מעל <code>3pp</code> בין <code>PPI</code> ל-<code>Core PCE</code>), או שהנפט זינק ביותר מ-<code>15%</code> בחודש. הפער הזה נלחץ כרגע במרווחי הרווח של החברות: או שהן יספגו אותו — ואז הרווחיות תיפגע, או שיגלגלו אותו לצרכן — ואז האינפלציה תתחדש והפד יתקשה להוריד ריבית.",
+   "risk_he": "מומלץ לבחון חשיפה לחברות עתירות תשומות אנרגיה וחומרי גלם עם כוח תמחור חלש, ולעקוב אחרי עונת הדוחות הקרובה — הנחיות המרווחים (Margins Guidance) יהיו הסיפור המרכזי.",
+   "evidence": [
+    {
+     "signal": "ppi_pce_spread",
+     "label": "פער יצרן-צרכן",
+     "value": 3.3387,
+     "op": ">",
+     "threshold": 3.0,
+     "passed": true
+    }
+   ]
+  },
+  {
+   "name": "rule_financial_channel_dominance",
+   "short_he": "דולר חזק שמהדק את העולם",
+   "header_he": "ℹ️ <b>[מעקב] דומיננטיות הערוץ הפיננסי — דולר חזק</b>",
+   "severity": "info",
+   "kind": "state",
+   "edge": false,
+   "synthesis_he": "הדולר חזק: עלייה של מעל <code>1%</code> בחודש, או רמה מעל <code>DXY 100.5</code> / <code>USD/JPY 158</code>. לפי מסגרת ה-BIS, התחזקות דולר אינה מיטיבה עם יצואני השווקים המתעוררים כפי שגרסה התיאוריה הקלאסית: ההתחייבויות הדולריות של חברות ה-EME מתנפחות במונחי מטבע מקומי, מגבלות ה-VaR של הדילרים מתהדקות, האשראי הבנקאי חוצה-הגבולות מתכווץ — והיצוא נחנק ממחסור בהון חוזר. הערוץ הפיננסי גובר על ערוץ הסחר.",
+   "risk_he": "מומלץ לעקוב אחרי מרווחי האשראי של שווקים מתעוררים ואחרי היקף הנפקות החוב הדולריות שלהם; התחזקות מתמשכת של הדולר היא הידוק תנאים פיננסיים גלובלי דה-פקטו.",
+   "evidence": [
+    {
+     "signal": "dxy_level",
+     "label": "מדד הדולר — רמה",
+     "value": 101.81,
+     "op": ">",
+     "threshold": 100.5,
+     "passed": true
+    }
+   ]
+  }
+ ],
+ "allocation": {
+  "items": [
+   {
+    "category": "market_indexes",
+    "label": "דולר ומזומן",
+    "stance": "OW",
+    "tickers": [
+     "DXY"
+    ],
+    "all_tickers": [
+     "DXY"
+    ],
+    "why": "ריבית גבוהה לוחצת על מכפילים, והדולר מתחזק",
+    "history": null,
+    "history_ticker": "",
+    "agrees": null
+   },
+   {
+    "category": "aerospace_defense",
+    "label": "תעופה וביטחון",
+    "stance": "OW",
+    "tickers": [
+     "ITA",
+     "XAR",
+     "PPA"
+    ],
+    "all_tickers": [
+     "ITA",
+     "XAR",
+     "PPA"
+    ],
+    "why": "תקציבי ביטחון, מתיחות גיאופוליטית וחוזים צמודי עלויות",
+    "history": 0.4,
+    "history_ticker": "ITA",
+    "agrees": true
+   },
+   {
+    "category": "power_grid",
+    "label": "רשתות חשמל",
+    "stance": "OW",
+    "tickers": [
+     "GRID",
+     "POWR"
+    ],
+    "all_tickers": [
+     "GRID",
+     "POWR"
+    ],
+    "why": "ביקוש חשמל מבני של מרכזי נתונים",
+    "history": -0.09,
+    "history_ticker": "GRID",
+    "agrees": false
+   },
+   {
+    "category": "traditional_energy",
+    "label": "אנרגיה",
+    "stance": "OW",
+    "tickers": [
+     "XLE",
+     "XOP",
+     "OIH"
+    ],
+    "all_tickers": [
+     "XLE",
+     "XOP",
+     "OIH"
+    ],
+    "why": "המנוע של כלכלה חמה, וארה״ב יצואנית נטו",
+    "history": 0.56,
+    "history_ticker": "XLE",
+    "agrees": true
+   },
+   {
+    "category": "metals_clean_energy",
+    "label": "מתכות ואנרגיה נקייה",
+    "stance": "OW",
+    "tickers": [
+     "COPX",
+     "XME",
+     "URNM"
+    ],
+    "all_tickers": [
+     "COPX",
+     "XME",
+     "URNM",
+     "XLB"
+    ],
+    "why": "נכסים ריאליים שמתייקרים עם האינפלציה",
+    "history": 0.72,
+    "history_ticker": "XME",
+    "agrees": true
+   },
+   {
+    "category": "precious_metals",
+    "label": "מכרות זהב",
+    "stance": "OW",
+    "tickers": [
+     "GDX",
+     "RING"
+    ],
+    "all_tickers": [
+     "GDX",
+     "RING"
+    ],
+    "why": "גידור אינפלציה וקניות של בנקים מרכזיים",
+    "history": 1.09,
+    "history_ticker": "GDX",
+    "agrees": true
+   },
+   {
+    "category": "healthcare",
+    "label": "בריאות ופארמה",
+    "stance": "OW",
+    "tickers": [
+     "XLV",
+     "IHE",
+     "IHI"
+    ],
+    "all_tickers": [
+     "XLV",
+     "IHE",
+     "IHI"
+    ],
+    "why": "ביקוש קשיח וכוח תמחור",
+    "history": -0.49,
+    "history_ticker": "XLV",
+    "agrees": false
+   },
+   {
+    "category": "biotech",
+    "label": "ביוטק",
+    "stance": "OW",
+    "tickers": [
+     "OZEM",
+     "IBB"
+    ],
+    "all_tickers": [
+     "OZEM",
+     "IBB"
+    ],
+    "why": "חברות בלי רווחים רגישות לריבית",
+    "history": null,
+    "history_ticker": "",
+    "agrees": null
+   },
+   {
+    "category": "semiconductors",
+    "label": "שבבים",
+    "stance": "N+",
+    "tickers": [
+     "SOXX",
+     "SMH",
+     "CHPX"
+    ],
+    "all_tickers": [
+     "SOXX",
+     "SMH",
+     "CHPX"
+    ],
+    "why": "רק חומרה עם כוח תמחור",
+    "history": 1.07,
+    "history_ticker": "SOXX",
+    "agrees": true
+   },
+   {
+    "category": "cybersecurity",
+    "label": "סייבר",
+    "stance": "N+",
+    "tickers": [
+     "CIBR",
+     "BUG"
+    ],
+    "all_tickers": [
+     "CIBR",
+     "BUG"
+    ],
+    "why": "הוצאה קריטית וחסינה לעלויות",
+    "history": 0.89,
+    "history_ticker": "CIBR",
+    "agrees": true
+   },
+   {
+    "category": "industry_infra",
+    "label": "תעשייה ותשתיות",
+    "stance": "N+",
+    "tickers": [
+     "PAVE"
+    ],
+    "all_tickers": [
+     "PAVE"
+    ],
+    "why": "רק תשתיות לאומיות",
+    "history": null,
+    "history_ticker": "",
+    "agrees": null
+   },
+   {
+    "category": "market_indexes",
+    "label": "מדדי מניות רחבים",
+    "stance": "UW",
+    "tickers": [
+     "IWM",
+     "QQQ",
+     "SPY"
+    ],
+    "all_tickers": [
+     "IWM",
+     "QQQ",
+     "SPY"
+    ],
+    "why": "ריבית גבוהה לוחצת על מכפילים, והדולר מתחזק",
+    "history": -0.5,
+    "history_ticker": "IWM",
+    "agrees": true
+   },
+   {
+    "category": "ai_software",
+    "label": "בינה מלאכותית ותוכנה",
+    "stance": "UW",
+    "tickers": [
+     "IGV",
+     "SKYY",
+     "CLOU"
+    ],
+    "all_tickers": [
+     "IGV",
+     "SKYY",
+     "CLOU",
+     "WCLD",
+     "BTEK",
+     "SOCL"
+    ],
+    "why": "תשואות גבוהות מכווצות מכפילים",
+    "history": 0.47,
+    "history_ticker": "IGV",
+    "agrees": false
+   },
+   {
+    "category": "space",
+    "label": "חלל",
+    "stance": "UW",
+    "tickers": [
+     "UFO",
+     "NASA",
+     "FITE"
+    ],
+    "all_tickers": [
+     "UFO",
+     "NASA",
+     "FITE"
+    ],
+    "why": "תלות במימון חיצוני יקר",
+    "history": -0.35,
+    "history_ticker": "UFO",
+    "agrees": true
+   },
+   {
+    "category": "fintech_crypto",
+    "label": "פינטק וקריפטו",
+    "stance": "UW",
+    "tickers": [
+     "FINX",
+     "BLOK"
+    ],
+    "all_tickers": [
+     "FINX",
+     "BLOK"
+    ],
+    "why": "דולר חזק ונזילות מצטמצמת",
+    "history": -1.0,
+    "history_ticker": "FINX",
+    "agrees": true
+   },
+   {
+    "category": "biotech",
+    "label": "ביוטק",
+    "stance": "UW",
+    "tickers": [
+     "XBI",
+     "ARKG",
+     "BTEC"
+    ],
+    "all_tickers": [
+     "XBI",
+     "ARKG",
+     "BTEC"
+    ],
+    "why": "חברות בלי רווחים רגישות לריבית",
+    "history": -0.04,
+    "history_ticker": "XBI",
+    "agrees": true
+   },
+   {
+    "category": "consumer_discretionary",
+    "label": "צריכה מחזורית",
+    "stance": "UW",
+    "tickers": [
+     "XLY",
+     "XRT",
+     "PEJ"
+    ],
+    "all_tickers": [
+     "XLY",
+     "XRT",
+     "PEJ",
+     "DRIV",
+     "HAIL",
+     "MSOS"
+    ],
+    "why": "אנרגיה ואשראי יקרים שוחקים את ההכנסה",
+    "history": -0.57,
+    "history_ticker": "XLY",
+    "agrees": true
+   },
+   {
+    "category": "real_estate_utilities",
+    "label": "נדל\"ן ותשתיות ציבוריות",
+    "stance": "UW",
+    "tickers": [
+     "XLRE",
+     "VNQ",
+     "XLU"
+    ],
+    "all_tickers": [
+     "XLRE",
+     "VNQ",
+     "XLU"
+    ],
+    "why": "חוב יקר ותשואות גבוהות",
+    "history": -1.22,
+    "history_ticker": "VNQ",
+    "agrees": true
+   }
+  ],
+  "neutral": [
+   {
+    "category": "big_tech",
+    "label": "ענקיות טכנולוגיה",
+    "tickers": [
+     "XLK",
+     "XLC",
+     "MAGS"
+    ]
+   },
+   {
+    "category": "robotics",
+    "label": "רובוטיקה",
+    "tickers": [
+     "BOTZ",
+     "ROBO",
+     "ARKQ"
+    ]
+   },
+   {
+    "category": "traditional_finance",
+    "label": "בנקים ופיננסים",
+    "tickers": [
+     "XLF",
+     "KBWB",
+     "KRE"
+    ]
+   },
+   {
+    "category": "industry_infra",
+    "label": "תעשייה ותשתיות",
+    "tickers": [
+     "XLI",
+     "XHB",
+     "ITB"
+    ]
+   },
+   {
+    "category": "consumer_staples",
+    "label": "צריכה בסיסית",
+    "tickers": [
+     "XLP"
+    ]
+   }
+  ],
+  "adjustments": [
+   {
+    "text_he": "רג'ים אינפלציוני עם חנק מרווחים: סייבר כגידור טכנולוגי.",
+    "overweight": [
+     "CIBR",
+     "BUG"
+    ],
+    "underweight": []
+   },
+   {
+    "text_he": "עקומה הפוכה או מרווחי אשראי מתרחבים: בנקים אזוריים במשקל חסר.",
+    "overweight": [],
+    "underweight": [
+     "KRE",
+     "KBWB"
+    ]
+   },
+   {
+    "text_he": "משכנתא מעל <code>7%</code>: בנייה למגורים במשקל חסר.",
+    "overweight": [],
+    "underweight": [
+     "XHB",
+     "ITB"
+    ]
+   },
+   {
+    "text_he": "<code>WTI</code> מעל <code>$85</code> או היפוך פצלים: אנרגיה.",
+    "overweight": [
+     "XLE",
+     "XOP"
+    ],
+    "underweight": []
+   },
+   {
+    "text_he": "תשואה מעל <code>4.5%</code>: סולארי ואנרגיה נקייה במשקל חסר.",
+    "overweight": [],
+    "underweight": [
+     "TAN",
+     "ICLN"
+    ]
+   },
+   {
+    "text_he": "זהב מעל <code>$2,500</code> ברג'ים אינפלציוני: מכרות זהב.",
+    "overweight": [
+     "GDX",
+     "RING"
+    ],
+    "underweight": []
+   },
+   {
+    "text_he": "סטגפלציה או <code>VIX</code> מעל <code>18</code>: בריאות כעוגן.",
+    "overweight": [
+     "XLV",
+     "IHE"
+    ],
+    "underweight": []
+   },
+   {
+    "text_he": "רג'ים אינפלציוני: מעבר מביוטק ספקולטיבי לפארמה רווחית.",
+    "overweight": [
+     "OZEM",
+     "IBB"
+    ],
+    "underweight": [
+     "XBI"
+    ]
+   },
+   {
+    "text_he": "תשואה מעל <code>4.8%</code>: נדל\"ן מניב במשקל חסר.",
+    "overweight": [],
+    "underweight": [
+     "XLRE",
+     "VNQ"
+    ]
+   }
+  ]
+ },
+ "execution": {
+  "actions": [
+   "↑ אנרגיה וביטחון <code>XLE/ITA</code> · ↓ צריכה מחזורית <code>XLY</code> ומייבאי אנרגיה ב-<code>EM</code>.",
+   "↓ בנקים אזוריים <code>KRE</code> ובנייה <code>XHB/ITB</code>.",
+   "להימנע מאג״ח <code>EM</code> לא מגודר (<code>EMB/EMLC</code>) · להעדיף <code>MAGS/XLK</code> עם מאזן נזיל."
+  ],
+  "conclusions": [
+   "<b>הלם אנרגיה:</b> <code>Brent</code> מעל <code>$100</code> דוחף את מייבאי האנרגיה לכיוון <code>R2</code> (רפיון אינפלציוני). משקל יתר לאנרגיה אמריקאית, לתעופה ולביטחון; משקל חסר לצריכה מחזורית ולשווקים מתעוררים מייבאי אנרגיה.",
+   "<b>שחיקת הון בסקטור הבנקאי:</b> הידרדרות המשכנתאות/<code>MBS</code> מפעילה מגבלות <code>VaR</code> כובלות אצל הדילרים — היצע האשראי יתהדק. להפחית חשיפה לבנקים אזוריים (<code>Regional Banks</code>) ולסקטורי נדל\"ן ממונפים.",
+   "<b>מחנק סטגפלציוני גלובלי:</b> השווקים מחוץ לארה\"ב וה-<code>EME</code> תחת לחץ מאזני — הרעבת הון (<code>Capital Starvation</code>) תגביל נפחי סחר. הימנעות מוחלטת מאג\"ח קונצרני שווקים מתעוררים לא-מגודר (<code>Unhedged EM Corporate Bonds</code>); להעדיף <code>Big Tech</code> אמריקאי עם מאזן נזיל."
+  ],
+  "factors_he": "<code>Deep Value</code> ועתירי משאבים; משני: <code>Quality Momentum</code>. להימנע: צמיחה בעלת מח\"מ ארוך.",
+  "screening_he": "<code>Net Debt/EBITDA ≤ 1.5x</code> | <code>Coverage &gt; 8x</code> | <code>Pass-Through &gt; 0.85</code> | אפס מחזור חוב ב-<code>24M</code> | <code>FCF Yield &gt; US10Y+2.5%</code>"
+ },
+ "news": {
+  "source": "",
+  "items": []
+ },
+ "data_quality": {
+  "validation": [
+   {
+    "label": "SPX",
+    "ok": true,
+    "detail": "21/10: 7757.17 מול 7757.17 (סטייה 0.00%)"
+   },
+   {
+    "label": "VIX",
+    "ok": true,
+    "detail": "22/10: 19.03 מול 19.03 (סטייה 0.00%)"
+   },
+   {
+    "label": "10Y",
+    "ok": true,
+    "detail": "23/10: 4.99 מול 5.00 (סטייה 0.01)"
+   },
+   {
+    "label": "30Y",
+    "ok": true,
+    "detail": "23/10: 5.32 מול 5.33 (סטייה 0.01)"
+   },
+   {
+    "label": "USDJPY",
+    "ok": true,
+    "detail": "16/10: 158.14 מול 158.00 (סטייה 0.09%)"
+   }
+  ],
+  "unverified": [
+   "BZ=F",
+   "CL=F",
+   "DX-Y.NYB",
+   "EMLC",
+   "GC=F",
+   "HG=F",
+   "QQQ",
+   "XLU",
+   "^MOVE"
+  ],
+  "failures": {},
+  "redundancy": [
+   {
+    "label": "Core PCE",
+    "primary": "fred:PCEPILFE",
+    "sources": [
+     "fred:PCEPILFE",
+     "bea:NIPA:T20804:25:M"
+    ],
+    "status": "consensus",
+    "used": "fred:PCEPILFE",
+    "detail": "01/08/2026: fred:PCEPILFE 130.455 מול bea:NIPA:T20804:25:M 130.455 (סטייה 0%)",
+    "errors": {}
+   },
+   {
+    "label": "ריבית הפד",
+    "primary": "nyfed:EFFR",
+    "sources": [
+     "nyfed:EFFR",
+     "fred:DFF"
+    ],
+    "status": "consensus",
+    "used": "nyfed:EFFR",
+    "detail": "22/10/2026: nyfed:EFFR 3.88 מול fred:DFF 3.88 (סטייה 0)",
+    "errors": {}
+   },
+   {
+    "label": "PPI",
+    "primary": "fred:PPIFIS",
+    "sources": [
+     "fred:PPIFIS",
+     "bls:WPSFD4"
+    ],
+    "status": "consensus",
+    "used": "fred:PPIFIS",
+    "detail": "01/09/2026: fred:PPIFIS 159.78 מול bls:WPSFD4 159.78 (סטייה 0%)",
+    "errors": {}
+   },
+   {
+    "label": "אבטלה",
+    "primary": "fred:UNRATE",
+    "sources": [
+     "fred:UNRATE",
+     "bls:LNS14000000"
+    ],
+    "status": "consensus",
+    "used": "fred:UNRATE",
+    "detail": "01/09/2026: fred:UNRATE 4.2 מול bls:LNS14000000 4.2 (סטייה 0)",
+    "errors": {}
+   },
+   {
+    "label": "NFP",
+    "primary": "fred:PAYEMS",
+    "sources": [
+     "fred:PAYEMS",
+     "bls:CES0000000001"
+    ],
+    "status": "consensus",
+    "used": "fred:PAYEMS",
+    "detail": "01/09/2026: fred:PAYEMS 159044 מול bls:CES0000000001 159044 (סטייה 0%)",
+    "errors": {}
+   },
+   {
+    "label": "ציפיות מישיגן",
+    "primary": "umich:tbmpx1px5:PX_MD",
+    "sources": [
+     "umich:tbmpx1px5:PX_MD",
+     "fred:MICH"
+    ],
+    "status": "consensus",
+    "used": "umich:tbmpx1px5:PX_MD",
+    "detail": "01/09/2026: umich:tbmpx1px5:PX_MD 4.6 מול fred:MICH 4.6 (סטייה 0)",
+    "errors": {}
+   },
+   {
+    "label": "תשואה 10 שנים",
+    "primary": "treasury:10 Yr",
+    "sources": [
+     "treasury:10 Yr",
+     "fred:DGS10"
+    ],
+    "status": "consensus",
+    "used": "treasury:10 Yr",
+    "detail": "22/10/2026: treasury:10 Yr 4.96 מול fred:DGS10 4.96 (סטייה 0)",
+    "errors": {}
+   },
+   {
+    "label": "תשואה שנתיים",
+    "primary": "treasury:2 Yr",
+    "sources": [
+     "treasury:2 Yr",
+     "fred:DGS2"
+    ],
+    "status": "consensus",
+    "used": "treasury:2 Yr",
+    "detail": "22/10/2026: treasury:2 Yr 4.65 מול fred:DGS2 4.65 (סטייה 0)",
+    "errors": {}
+   },
+   {
+    "label": "סנטימנט מישיגן",
+    "primary": "umich:tbmics:ICS_ALL",
+    "sources": [
+     "umich:tbmics:ICS_ALL",
+     "fred:UMCSENT"
+    ],
+    "status": "consensus",
+    "used": "umich:tbmics:ICS_ALL",
+    "detail": "01/09/2026: umich:tbmics:ICS_ALL 48.1 מול fred:UMCSENT 48.1 (סטייה 0)",
+    "errors": {}
+   },
+   {
+    "label": "CPI (NSA)",
+    "primary": "fred:CPIAUCNS",
+    "sources": [
+     "fred:CPIAUCNS",
+     "bls:CUUR0000SA0"
+    ],
+    "status": "consensus",
+    "used": "fred:CPIAUCNS",
+    "detail": "01/09/2026: fred:CPIAUCNS 336.94 מול bls:CUUR0000SA0 336.94 (סטייה 0%)",
+    "errors": {}
+   },
+   {
+    "label": "CPI (SA)",
+    "primary": "fred:CPIAUCSL",
+    "sources": [
+     "fred:CPIAUCSL",
+     "bls:CUSR0000SA0"
+    ],
+    "status": "consensus",
+    "used": "fred:CPIAUCSL",
+    "detail": "01/09/2026: fred:CPIAUCSL 336.298 מול bls:CUSR0000SA0 336.298 (סטייה 0%)",
+    "errors": {}
+   },
+   {
+    "label": "CPI ליבה (NSA)",
+    "primary": "fred:CPILFENS",
+    "sources": [
+     "fred:CPILFENS",
+     "bls:CUUR0000SA0L1E"
+    ],
+    "status": "consensus",
+    "used": "fred:CPILFENS",
+    "detail": "01/09/2026: fred:CPILFENS 339.287 מול bls:CUUR0000SA0L1E 339.287 (סטייה 0%)",
+    "errors": {}
+   },
+   {
+    "label": "CPI ליבה (SA)",
+    "primary": "fred:CPILFESL",
+    "sources": [
+     "fred:CPILFESL",
+     "bls:CUSR0000SA0L1E"
+    ],
+    "status": "consensus",
+    "used": "fred:CPILFESL",
+    "detail": "01/09/2026: fred:CPILFESL 338.896 מול bls:CUSR0000SA0L1E 338.896 (סטייה 0%)",
+    "errors": {}
+   },
+   {
+    "label": "PPI ליבה",
+    "primary": "fred:WPSFD49116",
+    "sources": [
+     "fred:WPSFD49116",
+     "bls:WPSFD49116"
+    ],
+    "status": "consensus",
+    "used": "fred:WPSFD49116",
+    "detail": "01/09/2026: fred:WPSFD49116 144.255 מול bls:WPSFD49116 144.255 (סטייה 0%)",
+    "errors": {}
+   },
+   {
+    "label": "שכר שעתי",
+    "primary": "fred:CES0500000003",
+    "sources": [
+     "fred:CES0500000003",
+     "bls:CES0500000003"
+    ],
+    "status": "consensus",
+    "used": "fred:CES0500000003",
+    "detail": "01/09/2026: fred:CES0500000003 37.81 מול bls:CES0500000003 37.81 (סטייה 0%)",
+    "errors": {}
+   },
+   {
+    "label": "בנזין",
+    "primary": "fred:GASREGW",
+    "sources": [
+     "fred:GASREGW",
+     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
+    ],
+    "status": "consensus",
+    "used": "fred:GASREGW",
+    "detail": "19/10/2026: fred:GASREGW 4.284 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.284 (סטייה 0%)",
+    "errors": {}
+   },
+   {
+    "label": "ברנט פיזי",
+    "primary": "fred:DCOILBRENTEU",
+    "sources": [
+     "fred:DCOILBRENTEU",
+     "eia:petroleum/pri/spt:RBRTE:daily"
+    ],
+    "status": "consensus",
+    "used": "fred:DCOILBRENTEU",
+    "detail": "20/10/2026: fred:DCOILBRENTEU 115.22 מול eia:petroleum/pri/spt:RBRTE:daily 115.22 (סטייה 0%)",
+    "errors": {}
+   },
+   {
+    "label": "WTI פיזי",
+    "primary": "fred:DCOILWTICO",
+    "sources": [
+     "fred:DCOILWTICO",
+     "eia:petroleum/pri/spt:RWTC:daily"
+    ],
+    "status": "consensus",
+    "used": "fred:DCOILWTICO",
+    "detail": "20/10/2026: fred:DCOILWTICO 107.89 מול eia:petroleum/pri/spt:RWTC:daily 107.89 (סטייה 0%)",
+    "errors": {}
+   }
+  ]
+ },
+ "signals": {
+  "usdjpy_ret_1d": {
+   "value": -1.0358,
+   "label": "זירה יפנית (דולר/ין)",
+   "estimate": false,
+   "signed": true,
+   "source": "Yahoo Finance",
+   "publisher": "שוק המט״ח (Yahoo)",
+   "group": "דולר ומט״ח",
+   "id": "JPY=X",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "validated",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "dxy_ret_1d": {
+   "value": 0.1968,
+   "label": "מדד הדולר",
+   "estimate": false,
+   "signed": true,
+   "source": "Yahoo Finance",
+   "publisher": "ICE (Yahoo)",
+   "group": "דולר ומט״ח",
+   "id": "DX-Y.NYB",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "dxy_ret_5d": {
+   "value": -0.0295,
+   "label": "מדד הדולר — שבוע",
+   "estimate": false,
+   "signed": true,
+   "source": "Yahoo Finance",
+   "publisher": "ICE (Yahoo)",
+   "group": "דולר ומט״ח",
+   "id": "DX-Y.NYB",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "spx_ret_1d": {
+   "value": -0.5187,
+   "label": "מדד S&P 500",
+   "estimate": false,
+   "signed": true,
+   "source": "Yahoo Finance",
+   "publisher": "S&P DJI (Yahoo)",
+   "group": "מניות ותנודתיות",
+   "id": "^SPX",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "validated",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "qqq_ret_1d": {
+   "value": -0.0099,
+   "label": "מניות נאסד\"ק",
+   "estimate": false,
+   "signed": true,
+   "source": "Yahoo Finance",
+   "publisher": "Nasdaq (Yahoo)",
+   "group": "מניות ותנודתיות",
+   "id": "QQQ",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "vix_level": {
+   "value": 19.45,
+   "label": "מדד התנודתיות",
+   "estimate": false,
+   "signed": false,
+   "source": "Yahoo Finance",
+   "publisher": "Cboe (Yahoo)",
+   "group": "מניות ותנודתיות",
+   "id": "^VIX",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "validated",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "oil_ret_1d": {
+   "value": 3.8202,
+   "label": "נפט גולמי (חוזים)",
+   "estimate": false,
+   "signed": true,
+   "source": "Yahoo Finance",
+   "publisher": "NYMEX (Yahoo)",
+   "group": "סחורות",
+   "id": "CL=F",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "oil_ret_5d": {
+   "value": 1.8341,
+   "label": "נפט גולמי — שבוע",
+   "estimate": false,
+   "signed": true,
+   "source": "Yahoo Finance",
+   "publisher": "NYMEX (Yahoo)",
+   "group": "סחורות",
+   "id": "CL=F",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "oil_ret_1m": {
+   "value": 9.1534,
+   "label": "נפט גולמי — חודש",
+   "estimate": false,
+   "signed": true,
+   "source": "Yahoo Finance",
+   "publisher": "NYMEX (Yahoo)",
+   "group": "סחורות",
+   "id": "CL=F",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "gold_ret_1d": {
+   "value": -1.293,
+   "label": "זהב (חוזים)",
+   "estimate": false,
+   "signed": true,
+   "source": "Yahoo Finance",
+   "publisher": "COMEX (Yahoo)",
+   "group": "סחורות",
+   "id": "GC=F",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "us10y_chg_1d_bp": {
+   "value": 3.5,
+   "label": "תשואת 10 שנים",
+   "estimate": false,
+   "signed": true,
+   "source": "Yahoo Finance",
+   "publisher": "Cboe (Yahoo)",
+   "group": "ריבית ואג״ח",
+   "id": "^TNX",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "validated",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "us10y_chg_5d_bp": {
+   "value": -11.0,
+   "label": "תשואת 10 שנים — שבוע",
+   "estimate": false,
+   "signed": true,
+   "source": "Yahoo Finance",
+   "publisher": "Cboe (Yahoo)",
+   "group": "ריבית ואג״ח",
+   "id": "^TNX",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "validated",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "us30y_chg_1d_bp": {
+   "value": 2.8,
+   "label": "תשואת 30 שנה",
+   "estimate": false,
+   "signed": true,
+   "source": "Yahoo Finance",
+   "publisher": "Cboe (Yahoo)",
+   "group": "ריבית ואג״ח",
+   "id": "^TYX",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "validated",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "pce_yoy": {
+   "value": 3.0076,
+   "label": "אינפלציית ליבה (Core PCE)",
+   "estimate": false,
+   "signed": true,
+   "source": "FRED",
+   "publisher": "BEA",
+   "group": "אינפלציה",
+   "id": "PCEPILFE",
+   "date": "01/08/2026",
+   "age_days": 86,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "fred:PCEPILFE",
+    "sources": [
+     "fred:PCEPILFE",
+     "bea:NIPA:T20804:25:M"
+    ],
+    "detail": "01/08/2026: fred:PCEPILFE 130.455 מול bea:NIPA:T20804:25:M 130.455 (סטייה 0%)"
+   }
+  },
+  "fed_funds_level": {
+   "value": 3.88,
+   "label": "ריבית הפד האפקטיבית",
+   "estimate": false,
+   "signed": false,
+   "source": "NY Fed",
+   "publisher": "הפד של ניו יורק",
+   "group": "ריבית ואג״ח",
+   "id": "EFFR",
+   "date": "22/10/2026",
+   "age_days": 4,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "nyfed:EFFR",
+    "sources": [
+     "nyfed:EFFR",
+     "fred:DFF"
+    ],
+    "detail": "22/10/2026: nyfed:EFFR 3.88 מול fred:DFF 3.88 (סטייה 0)"
+   }
+  },
+  "ppi_yoy": {
+   "value": 6.3463,
+   "label": "מדד המחירים ליצרן (Final Demand)",
+   "estimate": false,
+   "signed": true,
+   "source": "FRED",
+   "publisher": "BLS",
+   "group": "אינפלציה",
+   "id": "PPIFIS",
+   "date": "01/09/2026",
+   "age_days": 55,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "fred:PPIFIS",
+    "sources": [
+     "fred:PPIFIS",
+     "bls:WPSFD4"
+    ],
+    "detail": "01/09/2026: fred:PPIFIS 159.78 מול bls:WPSFD4 159.78 (סטייה 0%)"
+   }
+  },
+  "unrate_level": {
+   "value": 4.2,
+   "label": "שיעור אבטלה",
+   "estimate": false,
+   "signed": false,
+   "source": "FRED",
+   "publisher": "BLS",
+   "group": "תעסוקה",
+   "id": "UNRATE",
+   "date": "01/09/2026",
+   "age_days": 55,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "fred:UNRATE",
+    "sources": [
+     "fred:UNRATE",
+     "bls:LNS14000000"
+    ],
+    "detail": "01/09/2026: fred:UNRATE 4.2 מול bls:LNS14000000 4.2 (סטייה 0)"
+   }
+  },
+  "unrate_chg_1m": {
+   "value": 0.1,
+   "label": "שינוי חודשי באבטלה",
+   "estimate": false,
+   "signed": true,
+   "source": "FRED",
+   "publisher": "BLS",
+   "group": "תעסוקה",
+   "id": "UNRATE",
+   "date": "01/09/2026",
+   "age_days": 55,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "fred:UNRATE",
+    "sources": [
+     "fred:UNRATE",
+     "bls:LNS14000000"
+    ],
+    "detail": "01/09/2026: fred:UNRATE 4.2 מול bls:LNS14000000 4.2 (סטייה 0)"
+   }
+  },
+  "payems_chg_1m": {
+   "value": 29.0,
+   "label": "משרות חדשות (NFP)",
+   "estimate": false,
+   "signed": true,
+   "source": "FRED",
+   "publisher": "BLS",
+   "group": "תעסוקה",
+   "id": "PAYEMS",
+   "date": "01/09/2026",
+   "age_days": 55,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "fred:PAYEMS",
+    "sources": [
+     "fred:PAYEMS",
+     "bls:CES0000000001"
+    ],
+    "detail": "01/09/2026: fred:PAYEMS 159044 מול bls:CES0000000001 159044 (סטייה 0%)"
+   }
+  },
+  "retail_yoy": {
+   "value": 6.1885,
+   "label": "מכירות קמעונאיות",
+   "estimate": false,
+   "signed": true,
+   "source": "FRED",
+   "publisher": "Census",
+   "group": "צמיחה וצריכה",
+   "id": "RSXFS",
+   "date": "01/09/2026",
+   "age_days": 55,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "houst_chg_3m": {
+   "value": -15.1494,
+   "label": "התחלות בנייה — 3 חודשים",
+   "estimate": false,
+   "signed": true,
+   "source": "FRED",
+   "publisher": "Census",
+   "group": "צמיחה וצריכה",
+   "id": "HOUST",
+   "date": "01/09/2026",
+   "age_days": 55,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "mich_level": {
+   "value": 4.7,
+   "label": "ציפיות אינפלציה (מישיגן)",
+   "estimate": false,
+   "signed": false,
+   "source": "U. Michigan",
+   "publisher": "אוניברסיטת מישיגן",
+   "group": "אינפלציה",
+   "id": "tbmpx1px5:PX_MD",
+   "date": "01/10/2026",
+   "age_days": 25,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "umich:tbmpx1px5:PX_MD",
+    "sources": [
+     "umich:tbmpx1px5:PX_MD",
+     "fred:MICH"
+    ],
+    "detail": "01/09/2026: umich:tbmpx1px5:PX_MD 4.6 מול fred:MICH 4.6 (סטייה 0)"
+   }
+  },
+  "mortgage_level": {
+   "value": 7.32,
+   "label": "ריבית משכנתא 30 שנה",
+   "estimate": false,
+   "signed": false,
+   "source": "FRED",
+   "publisher": "Freddie Mac",
+   "group": "ריבית ואג״ח",
+   "id": "MORTGAGE30US",
+   "date": "22/10/2026",
+   "age_days": 4,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "mortgage_chg_3m_bp": {
+   "value": 66.0,
+   "label": "שינוי ריבית משכנתא — 3 חודשים",
+   "estimate": false,
+   "signed": true,
+   "source": "FRED",
+   "publisher": "Freddie Mac",
+   "group": "ריבית ואג״ח",
+   "id": "MORTGAGE30US",
+   "date": "22/10/2026",
+   "age_days": 4,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "dxy_ret_1m": {
+   "value": 0.5134,
+   "label": "מדד הדולר — חודש",
+   "estimate": false,
+   "signed": true,
+   "source": "Yahoo Finance",
+   "publisher": "ICE (Yahoo)",
+   "group": "דולר ומט״ח",
+   "id": "DX-Y.NYB",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "emlc_ret_1m": {
+   "value": -0.4416,
+   "label": "אג\"ח EM במטבע מקומי (EMLC)",
+   "estimate": false,
+   "signed": true,
+   "source": "Yahoo Finance",
+   "publisher": "VanEck (Yahoo)",
+   "group": "אשראי ונזילות",
+   "id": "EMLC",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "xlu_sma_ratio": {
+   "value": 0.9452,
+   "label": "יחס ממוצעים XLU 50/200",
+   "estimate": false,
+   "signed": false,
+   "source": "Yahoo Finance",
+   "publisher": "SPDR (Yahoo)",
+   "group": "מניות ותנודתיות",
+   "id": "XLU",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "us30y_chg_1m_bp": {
+   "value": -14.6,
+   "label": "תשואת 30 שנה — חודש",
+   "estimate": false,
+   "signed": true,
+   "source": "Yahoo Finance",
+   "publisher": "Cboe (Yahoo)",
+   "group": "ריבית ואג״ח",
+   "id": "^TYX",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "validated",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "dff_chg_1m_bp": {
+   "value": 0.0,
+   "label": "ריבית הפד האפקטיבית — חודש",
+   "estimate": false,
+   "signed": true,
+   "source": "NY Fed",
+   "publisher": "הפד של ניו יורק",
+   "group": "ריבית ואג״ח",
+   "id": "EFFR",
+   "date": "22/10/2026",
+   "age_days": 4,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "nyfed:EFFR",
+    "sources": [
+     "nyfed:EFFR",
+     "fred:DFF"
+    ],
+    "detail": "22/10/2026: nyfed:EFFR 3.88 מול fred:DFF 3.88 (סטייה 0)"
+   }
+  },
+  "nrou_level": {
+   "value": 4.3884,
+   "label": "אבטלה טבעית ≈ הערכת CBO (NROU)",
+   "estimate": true,
+   "signed": false,
+   "source": "FRED",
+   "publisher": "CBO",
+   "group": "צמיחה וצריכה",
+   "id": "NROU",
+   "date": "01/10/2026",
+   "age_days": 25,
+   "status": "estimate",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "dgs10_level": {
+   "value": 5.0,
+   "label": "תשואת 10 שנים (Treasury)",
+   "estimate": false,
+   "signed": false,
+   "source": "U.S. Treasury",
+   "publisher": "משרד האוצר האמריקאי",
+   "group": "ריבית ואג״ח",
+   "id": "10 Yr",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "treasury:10 Yr",
+    "sources": [
+     "treasury:10 Yr",
+     "fred:DGS10"
+    ],
+    "detail": "22/10/2026: treasury:10 Yr 4.96 מול fred:DGS10 4.96 (סטייה 0)"
+   }
+  },
+  "dgs2_level": {
+   "value": 4.69,
+   "label": "תשואת שנתיים (Treasury)",
+   "estimate": false,
+   "signed": false,
+   "source": "U.S. Treasury",
+   "publisher": "משרד האוצר האמריקאי",
+   "group": "ריבית ואג״ח",
+   "id": "2 Yr",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "treasury:2 Yr",
+    "sources": [
+     "treasury:2 Yr",
+     "fred:DGS2"
+    ],
+    "detail": "22/10/2026: treasury:2 Yr 4.65 מול fred:DGS2 4.65 (סטייה 0)"
+   }
+  },
+  "usdjpy_level": {
+   "value": 156.494,
+   "label": "שער דולר/ין",
+   "estimate": false,
+   "signed": false,
+   "source": "Yahoo Finance",
+   "publisher": "שוק המט״ח (Yahoo)",
+   "group": "דולר ומט״ח",
+   "id": "JPY=X",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "validated",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "dxy_level": {
+   "value": 101.81,
+   "label": "מדד הדולר — רמה",
+   "estimate": false,
+   "signed": false,
+   "source": "Yahoo Finance",
+   "publisher": "ICE (Yahoo)",
+   "group": "דולר ומט״ח",
+   "id": "DX-Y.NYB",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "brent_level": {
+   "value": 116.72,
+   "label": "נפט ברנט — רמה",
+   "estimate": false,
+   "signed": false,
+   "source": "Yahoo Finance",
+   "publisher": "ICE (Yahoo)",
+   "group": "סחורות",
+   "id": "BZ=F",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "spx_ret_5d": {
+   "value": -0.4669,
+   "label": "מדד S&P 500 — שבוע",
+   "estimate": false,
+   "signed": true,
+   "source": "Yahoo Finance",
+   "publisher": "S&P DJI (Yahoo)",
+   "group": "מניות ותנודתיות",
+   "id": "^SPX",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "validated",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "hy_oas_level": {
+   "value": 3.4,
+   "label": "מרווח אג\"ח High Yield (OAS)",
+   "estimate": false,
+   "signed": false,
+   "source": "FRED",
+   "publisher": "ICE BofA",
+   "group": "אשראי ונזילות",
+   "id": "BAMLH0A0HYM2",
+   "date": "22/10/2026",
+   "age_days": 4,
+   "status": "commercial",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "hy_oas_chg_1m_bp": {
+   "value": 67.0,
+   "label": "שינוי מרווח High Yield — חודש",
+   "estimate": false,
+   "signed": true,
+   "source": "FRED",
+   "publisher": "ICE BofA",
+   "group": "אשראי ונזילות",
+   "id": "BAMLH0A0HYM2",
+   "date": "22/10/2026",
+   "age_days": 4,
+   "status": "commercial",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "us10y_level": {
+   "value": 4.988,
+   "label": "תשואת 10 שנים — רמה",
+   "estimate": false,
+   "signed": false,
+   "source": "Yahoo Finance",
+   "publisher": "Cboe (Yahoo)",
+   "group": "ריבית ואג״ח",
+   "id": "^TNX",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "validated",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "wti_level": {
+   "value": 103.27,
+   "label": "נפט WTI — רמה",
+   "estimate": false,
+   "signed": false,
+   "source": "Yahoo Finance",
+   "publisher": "NYMEX (Yahoo)",
+   "group": "סחורות",
+   "id": "CL=F",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "gold_level": {
+   "value": 4007.8999,
+   "label": "זהב — רמה",
+   "estimate": false,
+   "signed": false,
+   "source": "Yahoo Finance",
+   "publisher": "COMEX (Yahoo)",
+   "group": "סחורות",
+   "id": "GC=F",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "m2_yoy": {
+   "value": 5.6589,
+   "label": "צמיחת כמות הכסף M2",
+   "estimate": false,
+   "signed": true,
+   "source": "FRED",
+   "publisher": "הפדרל ריזרב",
+   "group": "אשראי ונזילות",
+   "id": "M2SL",
+   "date": "01/08/2026",
+   "age_days": 86,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "umcsent_chg_1m": {
+   "value": -0.1,
+   "label": "שינוי בסנטימנט הצרכנים (מישיגן)",
+   "estimate": false,
+   "signed": true,
+   "source": "U. Michigan",
+   "publisher": "אוניברסיטת מישיגן",
+   "group": "צמיחה וצריכה",
+   "id": "tbmics:ICS_ALL",
+   "date": "01/10/2026",
+   "age_days": 25,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "umich:tbmics:ICS_ALL",
+    "sources": [
+     "umich:tbmics:ICS_ALL",
+     "fred:UMCSENT"
+    ],
+    "detail": "01/09/2026: umich:tbmics:ICS_ALL 48.1 מול fred:UMCSENT 48.1 (סטייה 0)"
+   }
+  },
+  "sahm_level": {
+   "value": 0.0,
+   "label": "כלל סאם (נמדד)",
+   "estimate": false,
+   "signed": false,
+   "source": "FRED",
+   "publisher": "הפד של סנט לואיס",
+   "group": "תעסוקה",
+   "id": "SAHMREALTIME",
+   "date": "01/09/2026",
+   "age_days": 55,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "cpi_yoy": {
+   "value": 4.0015,
+   "label": "מדד המחירים לצרכן (CPI)",
+   "estimate": false,
+   "signed": true,
+   "source": "FRED",
+   "publisher": "BLS",
+   "group": "אינפלציה",
+   "id": "CPIAUCNS",
+   "date": "01/09/2026",
+   "age_days": 55,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "fred:CPIAUCNS",
+    "sources": [
+     "fred:CPIAUCNS",
+     "bls:CUUR0000SA0"
+    ],
+    "detail": "01/09/2026: fred:CPIAUCNS 336.94 מול bls:CUUR0000SA0 336.94 (סטייה 0%)"
+   }
+  },
+  "cpi_mom": {
+   "value": 0.6485,
+   "label": "CPI — שינוי חודשי",
+   "estimate": false,
+   "signed": true,
+   "source": "FRED",
+   "publisher": "BLS",
+   "group": "אינפלציה",
+   "id": "CPIAUCSL",
+   "date": "01/09/2026",
+   "age_days": 55,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "fred:CPIAUCSL",
+    "sources": [
+     "fred:CPIAUCSL",
+     "bls:CUSR0000SA0"
+    ],
+    "detail": "01/09/2026: fred:CPIAUCSL 336.298 מול bls:CUSR0000SA0 336.298 (סטייה 0%)"
+   }
+  },
+  "core_cpi_yoy": {
+   "value": 2.8236,
+   "label": "CPI ליבה",
+   "estimate": false,
+   "signed": true,
+   "source": "FRED",
+   "publisher": "BLS",
+   "group": "אינפלציה",
+   "id": "CPILFENS",
+   "date": "01/09/2026",
+   "age_days": 55,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "fred:CPILFENS",
+    "sources": [
+     "fred:CPILFENS",
+     "bls:CUUR0000SA0L1E"
+    ],
+    "detail": "01/09/2026: fred:CPILFENS 339.287 מול bls:CUUR0000SA0L1E 339.287 (סטייה 0%)"
+   }
+  },
+  "core_cpi_mom": {
+   "value": 0.3348,
+   "label": "CPI ליבה — שינוי חודשי",
+   "estimate": false,
+   "signed": true,
+   "source": "FRED",
+   "publisher": "BLS",
+   "group": "אינפלציה",
+   "id": "CPILFESL",
+   "date": "01/09/2026",
+   "age_days": 55,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "fred:CPILFESL",
+    "sources": [
+     "fred:CPILFESL",
+     "bls:CUSR0000SA0L1E"
+    ],
+    "detail": "01/09/2026: fred:CPILFESL 338.896 מול bls:CUSR0000SA0L1E 338.896 (סטייה 0%)"
+   }
+  },
+  "core_ppi_yoy": {
+   "value": 5.0441,
+   "label": "PPI ליבה (ללא מזון, אנרגיה ומסחר)",
+   "estimate": false,
+   "signed": true,
+   "source": "FRED",
+   "publisher": "BLS",
+   "group": "אינפלציה",
+   "id": "WPSFD49116",
+   "date": "01/09/2026",
+   "age_days": 55,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "fred:WPSFD49116",
+    "sources": [
+     "fred:WPSFD49116",
+     "bls:WPSFD49116"
+    ],
+    "detail": "01/09/2026: fred:WPSFD49116 144.255 מול bls:WPSFD49116 144.255 (סטייה 0%)"
+   }
+  },
+  "ahe_yoy": {
+   "value": 3.0245,
+   "label": "שכר שעתי ממוצע",
+   "estimate": false,
+   "signed": true,
+   "source": "FRED",
+   "publisher": "BLS",
+   "group": "תעסוקה",
+   "id": "CES0500000003",
+   "date": "01/09/2026",
+   "age_days": 55,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "fred:CES0500000003",
+    "sources": [
+     "fred:CES0500000003",
+     "bls:CES0500000003"
+    ],
+    "detail": "01/09/2026: fred:CES0500000003 37.81 מול bls:CES0500000003 37.81 (סטייה 0%)"
+   }
+  },
+  "claims_k": {
+   "value": 194.0,
+   "label": "תביעות ראשוניות לדמי אבטלה",
+   "estimate": false,
+   "signed": false,
+   "source": "FRED",
+   "publisher": "משרד העבודה האמריקאי",
+   "group": "תעסוקה",
+   "id": "ICSA",
+   "date": "17/10/2026",
+   "age_days": 9,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "tips10_level": {
+   "value": 2.64,
+   "label": "תשואה ריאלית 10 שנים (TIPS)",
+   "estimate": false,
+   "signed": false,
+   "source": "FRED",
+   "publisher": "הפדרל ריזרב (H.15)",
+   "group": "ריבית ואג״ח",
+   "id": "DFII10",
+   "date": "22/10/2026",
+   "age_days": 4,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "term_premium_10y": {
+   "value": 0.9857,
+   "label": "פרמיית סיכון לטווח 10 שנים (Kim-Wright)",
+   "estimate": false,
+   "signed": false,
+   "source": "FRED",
+   "publisher": "הפדרל ריזרב (Kim-Wright)",
+   "group": "ריבית ואג״ח",
+   "id": "THREEFYTP10",
+   "date": "16/10/2026",
+   "age_days": 10,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "ig_oas_level": {
+   "value": 0.89,
+   "label": "מרווח אג״ח בדירוג השקעה (IG OAS)",
+   "estimate": false,
+   "signed": false,
+   "source": "FRED",
+   "publisher": "ICE BofA",
+   "group": "אשראי ונזילות",
+   "id": "BAMLC0A0CM",
+   "date": "22/10/2026",
+   "age_days": 4,
+   "status": "commercial",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "fed_assets_mn": {
+   "value": 6753604.0,
+   "label": "מאזן הפד (H.4.1)",
+   "estimate": false,
+   "signed": false,
+   "source": "FRED",
+   "publisher": "הפדרל ריזרב (H.4.1)",
+   "group": "אשראי ונזילות",
+   "id": "WALCL",
+   "date": "21/10/2026",
+   "age_days": 5,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "tga_mn": {
+   "value": 952002.0,
+   "label": "חשבון האוצר בפד (TGA)",
+   "estimate": false,
+   "signed": false,
+   "source": "FRED",
+   "publisher": "הפדרל ריזרב (H.4.1)",
+   "group": "אשראי ונזילות",
+   "id": "WTREGEN",
+   "date": "21/10/2026",
+   "age_days": 5,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "rrp_bn": {
+   "value": 0.2,
+   "label": "ריפו הפוך (ON RRP)",
+   "estimate": false,
+   "signed": false,
+   "source": "FRED",
+   "publisher": "הפד של ניו יורק",
+   "group": "אשראי ונזילות",
+   "id": "RRPONTSYD",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "nfci_level": {
+   "value": -0.496,
+   "label": "תנאים פיננסיים (NFCI)",
+   "estimate": false,
+   "signed": false,
+   "source": "FRED",
+   "publisher": "הפד של שיקגו",
+   "group": "אשראי ונזילות",
+   "id": "NFCI",
+   "date": "16/10/2026",
+   "age_days": 10,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "gdpnow": {
+   "value": 3.4989,
+   "label": "צמיחה בזמן אמת (GDPNow)",
+   "estimate": false,
+   "signed": false,
+   "source": "FRED",
+   "publisher": "הפד של אטלנטה",
+   "group": "צמיחה וצריכה",
+   "id": "GDPNOW",
+   "date": "01/07/2026",
+   "age_days": 117,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "gasoline_level": {
+   "value": 4.284,
+   "label": "מחיר בנזין (ממוצע ארצי)",
+   "estimate": false,
+   "signed": false,
+   "source": "FRED",
+   "publisher": "EIA",
+   "group": "אינפלציה",
+   "id": "GASREGW",
+   "date": "19/10/2026",
+   "age_days": 7,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "fred:GASREGW",
+    "sources": [
+     "fred:GASREGW",
+     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
+    ],
+    "detail": "19/10/2026: fred:GASREGW 4.284 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.284 (סטייה 0%)"
+   }
+  },
+  "gasoline_yoy": {
+   "value": 41.9013,
+   "label": "מחיר בנזין — שינוי שנתי",
+   "estimate": false,
+   "signed": true,
+   "source": "FRED",
+   "publisher": "EIA",
+   "group": "אינפלציה",
+   "id": "GASREGW",
+   "date": "19/10/2026",
+   "age_days": 7,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "fred:GASREGW",
+    "sources": [
+     "fred:GASREGW",
+     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
+    ],
+    "detail": "19/10/2026: fred:GASREGW 4.284 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.284 (סטייה 0%)"
+   }
+  },
+  "us30y_level": {
+   "value": 5.315,
+   "label": "תשואת 30 שנה — רמה",
+   "estimate": false,
+   "signed": false,
+   "source": "Yahoo Finance",
+   "publisher": "Cboe (Yahoo)",
+   "group": "ריבית ואג״ח",
+   "id": "^TYX",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "validated",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "spx_level": {
+   "value": 7623.6802,
+   "label": "מדד S&P 500 — רמה",
+   "estimate": false,
+   "signed": false,
+   "source": "Yahoo Finance",
+   "publisher": "S&P DJI (Yahoo)",
+   "group": "מניות ותנודתיות",
+   "id": "^SPX",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "validated",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "move_level": {
+   "value": 103.31,
+   "label": "מדד תנודתיות אג״ח (MOVE)",
+   "estimate": false,
+   "signed": false,
+   "source": "Yahoo Finance",
+   "publisher": "ICE BofA (Yahoo)",
+   "group": "מניות ותנודתיות",
+   "id": "^MOVE",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "copper_ton": {
+   "value": 14277.1187,
+   "label": "נחושת (COMEX, לטון)",
+   "estimate": false,
+   "signed": false,
+   "source": "Yahoo Finance",
+   "publisher": "COMEX (Yahoo)",
+   "group": "סחורות",
+   "id": "HG=F",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "single"
+   }
+  },
+  "brent_spot": {
+   "value": 115.22,
+   "label": "ברנט פיזי (Dated Brent, EIA)",
+   "estimate": false,
+   "signed": false,
+   "source": "FRED",
+   "publisher": "EIA",
+   "group": "סחורות",
+   "id": "DCOILBRENTEU",
+   "date": "20/10/2026",
+   "age_days": 6,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "fred:DCOILBRENTEU",
+    "sources": [
+     "fred:DCOILBRENTEU",
+     "eia:petroleum/pri/spt:RBRTE:daily"
+    ],
+    "detail": "20/10/2026: fred:DCOILBRENTEU 115.22 מול eia:petroleum/pri/spt:RBRTE:daily 115.22 (סטייה 0%)"
+   }
+  },
+  "wti_spot": {
+   "value": 107.89,
+   "label": "WTI פיזי (Cushing, EIA)",
+   "estimate": false,
+   "signed": false,
+   "source": "FRED",
+   "publisher": "EIA",
+   "group": "סחורות",
+   "id": "DCOILWTICO",
+   "date": "20/10/2026",
+   "age_days": 6,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "consensus",
+    "used": "fred:DCOILWTICO",
+    "sources": [
+     "fred:DCOILWTICO",
+     "eia:petroleum/pri/spt:RWTC:daily"
+    ],
+    "detail": "20/10/2026: fred:DCOILWTICO 107.89 מול eia:petroleum/pri/spt:RWTC:daily 107.89 (סטייה 0%)"
+   }
+  },
+  "ppi_pce_spread": {
+   "value": 3.3387,
+   "label": "פער יצרן-צרכן",
+   "estimate": false,
+   "signed": true,
+   "source": "נגזר",
+   "publisher": "נגזר",
+   "group": "אינפלציה",
+   "id": "ppi_yoy+pce_yoy",
+   "date": "01/08/2026",
+   "age_days": 86,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "derived"
+   }
+  },
+  "output_gap_proxy": {
+   "value": 0.1884,
+   "label": "פרוקסי פער תוצר (NROU-UNRATE)",
+   "estimate": true,
+   "signed": true,
+   "source": "נגזר",
+   "publisher": "נגזר",
+   "group": "מודלים ונגזרים",
+   "id": "nrou_level+unrate_level",
+   "date": "01/09/2026",
+   "age_days": 55,
+   "status": "estimate",
+   "reason": "",
+   "redundancy": {
+    "status": "derived"
+   }
+  },
+  "curve_10y2y": {
+   "value": 0.31,
+   "label": "עקומת התשואות 10Y-2Y",
+   "estimate": false,
+   "signed": true,
+   "source": "נגזר",
+   "publisher": "נגזר",
+   "group": "ריבית ואג״ח",
+   "id": "dgs10_level+dgs2_level",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "derived"
+   }
+  },
+  "taylor_rate": {
+   "value": 4.6998,
+   "label": "ריבית לפי כלל טיילור",
+   "estimate": true,
+   "signed": false,
+   "source": "נגזר",
+   "publisher": "נגזר",
+   "group": "מודלים ונגזרים",
+   "id": "pce_yoy+output_gap_proxy",
+   "date": "01/08/2026",
+   "age_days": 86,
+   "status": "estimate",
+   "reason": "",
+   "redundancy": {
+    "status": "derived"
+   }
+  },
+  "taylor_gap": {
+   "value": -0.8198,
+   "label": "פער ריבית הפד מכלל טיילור",
+   "estimate": true,
+   "signed": true,
+   "source": "נגזר",
+   "publisher": "נגזר",
+   "group": "מודלים ונגזרים",
+   "id": "fed_funds_level+taylor_rate",
+   "date": "01/08/2026",
+   "age_days": 86,
+   "status": "estimate",
+   "reason": "",
+   "redundancy": {
+    "status": "derived"
+   }
+  },
+  "net_liquidity_tn": {
+   "value": 5.8014,
+   "label": "נזילות נטו של הפד",
+   "estimate": false,
+   "signed": false,
+   "source": "נגזר",
+   "publisher": "נגזר",
+   "group": "אשראי ונזילות",
+   "id": "fed_assets_mn+tga_mn+rrp_bn",
+   "date": "21/10/2026",
+   "age_days": 5,
+   "status": "official",
+   "reason": "",
+   "redundancy": {
+    "status": "derived"
+   }
+  },
+  "brent_basis": {
+   "value": 1.5,
+   "label": "פער ברנט: חוזה עתידי פחות פיזי",
+   "estimate": false,
+   "signed": true,
+   "source": "נגזר",
+   "publisher": "נגזר",
+   "group": "סחורות",
+   "id": "brent_level+brent_spot",
+   "date": "20/10/2026",
+   "age_days": 6,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "derived"
+   }
+  },
+  "corr_dxy_oil_90d": {
+   "value": -0.0639,
+   "label": "קורלציית דולר-נפט 90 יום",
+   "estimate": false,
+   "signed": true,
+   "source": "נגזר",
+   "publisher": "נגזר",
+   "group": "מודלים ונגזרים",
+   "id": "dxy_ret_1d+oil_ret_1d",
+   "date": "23/10/2026",
+   "age_days": 3,
+   "status": "unverified",
+   "reason": "",
+   "redundancy": {
+    "status": "derived"
+   }
+  }
+ },
+ "data_groups": [
+  "אינפלציה",
+  "תעסוקה",
+  "צמיחה וצריכה",
+  "ריבית ואג״ח",
+  "אשראי ונזילות",
+  "דולר ומט״ח",
+  "סחורות",
+  "מניות ותנודתיות",
+  "מודלים ונגזרים"
+ ],
+ "glossary": {
+  "concepts": {
+   "regime": {
+    "title": "מצב הכלכלה (רג'ים)",
+    "text": "המערכת מסווגת את הכלכלה האמריקאית לאחד מארבעה מצבים, לפי שתי שאלות: האם המחירים עולים מהר מדי (אינפלציה מעל 2%), והאם הכלכלה עובדת מעל היכולת הרגילה שלה. כל מצב מתאים לסוג אחר של השקעות.",
+    "why": "מצב הכלכלה הוא נקודת הפתיחה של כל ההמלצות: הוא קובע אילו תחומים להגדיל ואילו להקטין."
+   },
+   "R1": {
+    "title": "R1 · התאוששות",
+    "text": "מחירים עולים לאט והכלכלה עדיין חלשה. בדרך כלל הבנק המרכזי מוריד ריבית כדי לעזור, וזה עובד טוב.",
+    "why": "בתקופה כזו מניות של חברות קטנות, בנקים וצריכה נוטות להוביל."
+   },
+   "R2": {
+    "title": "R2 · רפיון אינפלציוני (סטגפלציה חלקית)",
+    "text": "המחירים עולים מהר, אבל הכלכלה כבר נחלשת. המצב הקשה ביותר לבנק המרכזי: הורדת ריבית תלבה מחירים, והעלאה תפגע בכלכלה.",
+    "why": "בתקופה כזו נוטים להעדיף תחומים יציבים: בריאות, מוצרי יסוד, תשתיות וזהב."
+   },
+   "R3": {
+    "title": "R3 · צמיחה בלי אינפלציה",
+    "text": "הכלכלה חזקה והמחירים יציבים. המצב הנוח ביותר, ולכן גם הנדיר ביותר.",
+    "why": "בתקופה כזו מניות צמיחה וטכנולוגיה בדרך כלל מובילות."
+   },
+   "R4": {
+    "title": "R4 · גאות אינפלציונית (כלכלה חמה)",
+    "text": "הכלכלה חזקה, אבל המחירים עולים מהר מהיעד. הבנק המרכזי שומר על ריבית גבוהה כדי לקרר אותה.",
+    "why": "בתקופה כזו נכסים 'אמיתיים' כמו אנרגיה, מתכות וזהב נוטים להחזיק, ואג״ח ארוך ומניות צמיחה נלחצים."
+   },
+   "core_pce": {
+    "title": "אינפלציית ליבה (Core PCE)",
+    "text": "כמה עלו המחירים שאמריקאים משלמים בשנה האחרונה, בלי מזון ואנרגיה שקופצים הרבה. זה המדד שהבנק המרכזי של ארה״ב (הפד) מכוון אליו: היעד הוא 2%.",
+    "why": "זה אחד משני הצירים שקובעים את מצב הכלכלה. מעל 2% = אינפלציה גבוהה מהיעד."
+   },
+   "cpi": {
+    "title": "מדד המחירים לצרכן (CPI)",
+    "text": "המדד המוכר ביותר לעליית מחירים: כמה עלה סל קניות טיפוסי של משפחה. מתפרסם פעם בחודש, והשווקים מגיבים אליו חזק.",
+    "why": "בודק אם האינפלציה מואצת. מלווה את מדד הליבה של הפד כבדיקה נגדית."
+   },
+   "core_cpi": {
+    "title": "CPI ליבה",
+    "text": "מדד המחירים לצרכן בלי מזון ואנרגיה. מראה את מגמת המחירים 'העמוקה', בלי רעש של דלק וירקות.",
+    "why": "אם גם הוא עולה, האינפלציה לא נובעת רק מהנפט, והפד יתקשה להוריד ריבית."
+   },
+   "ppi": {
+    "title": "מדד המחירים ליצרן (PPI)",
+    "text": "כמה עלו המחירים שחברות משלמות על חומרי גלם, אנרגיה ושירותים. זה 'המחיר בסיטונאות', לפני שמגיע לצרכן.",
+    "why": "עלייה כאן מגיעה בדרך כלל אחרי כמה חודשים לצרכן, או שוחקת את הרווחים של החברות."
+   },
+   "core_ppi": {
+    "title": "PPI ליבה",
+    "text": "מדד המחירים ליצרן בלי מזון, אנרגיה ועמלות מסחר. מראה אם עליית העלויות מתפשטת מעבר לדלק.",
+    "why": "עלייה רחבה כאן מעידה שהלחץ על החברות לא זמני."
+   },
+   "ppi_pce_spread": {
+    "title": "פער יצרן-צרכן",
+    "text": "ההפרש בין קצב עליית המחירים אצל היצרנים לקצב העלייה אצל הצרכנים. כשהעלויות של החברות עולות מהר יותר ממה שהן מצליחות לגבות מהלקוח, הן 'נלחצות באמצע'.",
+    "why": "פער מעל 3 נקודות מסמן 'חנק מרווחים': רווחי החברות יישחקו, או שהמחירים לצרכן יקפצו בהמשך."
+   },
+   "wages": {
+    "title": "שכר שעתי ממוצע",
+    "text": "בכמה עלה בשנה האחרונה השכר לשעה של עובד אמריקאי ממוצע.",
+    "why": "שכר שעולה מהר דוחף מחירים למעלה. שכר מתון מרגיע את הפד."
+   },
+   "mich": {
+    "title": "ציפיות אינפלציה של הציבור (מישיגן)",
+    "text": "סקר חודשי של אוניברסיטת מישיגן: בכמה אנשים חושבים שהמחירים יעלו בשנה הקרובה.",
+    "why": "כשהציבור מצפה למחירים גבוהים, הוא מתנהג בהתאם, והאינפלציה נוטה להתממש. הפד עוקב אחרי זה מקרוב."
+   },
+   "gasoline": {
+    "title": "מחיר בנזין",
+    "text": "המחיר הממוצע לגלון בנזין בתחנות בארה״ב, לפי מינהל האנרגיה האמריקאי.",
+    "why": "הבנזין נכנס ישר לכיס של הצרכן ולמדד המחירים. קפיצה בו שוחקת את כוח הקנייה."
+   },
+   "unemployment": {
+    "title": "שיעור אבטלה",
+    "text": "איזה אחוז מהאנשים שרוצים לעבוד לא מוצאים עבודה.",
+    "why": "האבטלה היא הקלט הרגיש ביותר למצב הכלכלה במערכת: עלייה קטנה בה יכולה להעביר אותנו ממצב למצב."
+   },
+   "nfp": {
+    "title": "משרות חדשות (NFP)",
+    "text": "כמה משרות נוספו (או נעלמו) בכלכלה האמריקאית בחודש האחרון. אחד הנתונים החשובים בעולם, מתפרסם ביום שישי הראשון בחודש.",
+    "why": "מעט משרות חדשות = כלכלה שמאטה. הרבה משרות = כלכלה חמה."
+   },
+   "claims": {
+    "title": "תביעות אבטלה שבועיות",
+    "text": "כמה אנשים הגישו בשבוע האחרון בקשה לדמי אבטלה בפעם הראשונה.",
+    "why": "זה הנתון המהיר ביותר על שוק העבודה: מתפרסם כל שבוע, ולכן מזהה פיטורים לפני כולם. מעל 250 אלף נחשב סימן להידרדרות."
+   },
+   "sahm": {
+    "title": "כלל סאם",
+    "text": "כלל פשוט שפיתחה הכלכלנית קלאודיה סאם: אם האבטלה עלתה בחצי נקודת אחוז מעל השפל של השנה האחרונה, בדרך כלל התחיל מיתון.",
+    "why": "זו בדיקה נמדדת שהמערכת מציבה מול פער התוצר, שהוא הערכה. אם השניים סותרים, המערכת מתריעה."
+   },
+   "output_gap": {
+    "title": "פער תוצר",
+    "text": "ההפרש בין מה שהכלכלה מייצרת בפועל לבין מה שהיא יכולה לייצר בלי להתחמם. חיובי = הכלכלה רצה מהר מהרגיל. שלילי = יש בה 'חלל' לא מנוצל.",
+    "why": "זה הציר השני שקובע את מצב הכלכלה. זה לא נתון שנמדד ישירות אלא הערכה (≈), ולכן המערכת בודקת אותו מול כלל סאם."
+   },
+   "nrou": {
+    "title": "אבטלה טבעית",
+    "text": "רמת האבטלה ש'נורמלית' לכלכלה בריאה, לפי הערכת משרד התקציב של הקונגרס (CBO). זה לא נתון שנמדד, אלא תחזית של מודל.",
+    "why": "ממנה מחושב פער התוצר: אם האבטלה בפועל נמוכה ממנה, הכלכלה חמה."
+   },
+   "gdpnow": {
+    "title": "צמיחה בזמן אמת (GDPNow)",
+    "text": "הערכה של הפד של אטלנטה לקצב הצמיחה של הכלכלה ברבעון הנוכחי, שמתעדכנת עם כל נתון חדש.",
+    "why": "נותן תמונת צמיחה עדכנית, הרבה לפני שהנתון הרשמי מתפרסם."
+   },
+   "retail": {
+    "title": "מכירות קמעונאיות",
+    "text": "כמה כסף אמריקאים הוציאו בחנויות ובאתרים לעומת שנה קודמת.",
+    "why": "הצריכה הפרטית היא כשני שלישים מהכלכלה האמריקאית."
+   },
+   "housing": {
+    "title": "התחלות בנייה",
+    "text": "כמה בתים חדשים התחילו לבנות, לעומת שלושה חודשים קודם.",
+    "why": "הנדל״ן רגיש מאוד לריבית. ירידה חדה כאן היא סימן מוקדם להאטה."
+   },
+   "sentiment": {
+    "title": "סנטימנט צרכנים (מישיגן)",
+    "text": "סקר שבודק כמה אמריקאים אופטימיים לגבי המצב הכלכלי שלהם.",
+    "why": "צרכנים פסימיים מוציאים פחות, וזה פוגע בעיקר בחברות של צריכה."
+   },
+   "fed_funds": {
+    "title": "ריבית הפד",
+    "text": "הריבית שבה בנקים מלווים זה לזה ללילה אחד. הבנק המרכזי של ארה״ב (הפד) קובע אותה, והיא משפיעה על כל ריבית אחרת במשק.",
+    "why": "ריבית גבוהה מקררת את הכלכלה ואת השווקים. ריבית נמוכה מלבה אותם."
+   },
+   "taylor": {
+    "title": "כלל טיילור",
+    "text": "נוסחה מקובלת שמחשבת מה הריבית 'צריכה' להיות לפי האינפלציה ומצב הכלכלה. זו הערכה (≈) של מודל.",
+    "why": "אם הריבית בפועל נמוכה בהרבה מהנוסחה, הפד אולי מקל מדי, והאינפלציה עלולה להימשך."
+   },
+   "us10y": {
+    "title": "תשואת אג״ח ל-10 שנים",
+    "text": "הריבית שממשלת ארה״ב משלמת על הלוואה ל-10 שנים. זו 'הריבית של העולם': ממנה נגזרות משכנתאות, הלוואות לחברות ושווי מניות.",
+    "why": "כשהיא עולה, מניות (בעיקר של צמיחה) נלחצות, כי כסף בטוח מניב יותר. מעל 5% נחשב לחץ חזק."
+   },
+   "us2y": {
+    "title": "תשואת אג״ח לשנתיים",
+    "text": "הריבית שממשלת ארה״ב משלמת על הלוואה לשנתיים. היא משקפת בעיקר מה השוק מצפה שהפד יעשה בריבית בקרוב.",
+    "why": "משמשת לחישוב עקומת התשואות."
+   },
+   "us30y": {
+    "title": "תשואת אג״ח ל-30 שנה",
+    "text": "הריבית על הלוואה של ממשלת ארה״ב ל-30 שנה. משקפת ציפיות לטווח ארוך מאוד, וגם את החשש מהחוב הממשלתי.",
+    "why": "עלייה חדה בה יחד עם ירידה במניות היא סימן ללחץ בשוק האג״ח."
+   },
+   "curve": {
+    "title": "עקומת התשואות",
+    "text": "ההפרש בין הריבית ל-10 שנים לריבית לשנתיים. בדרך כלל הלוואה ארוכה יקרה יותר. כשהעקומה 'הפוכה' (שלילית), השוק מצפה להאטה והורדות ריבית.",
+    "why": "עקומה הפוכה היא אחד מסימני האזהרה הוותיקים למיתון, בדרך כלל שנה-שנתיים מראש."
+   },
+   "tips": {
+    "title": "ריבית ריאלית (TIPS)",
+    "text": "הריבית ל-10 שנים אחרי שמנכים את האינפלציה הצפויה. כלומר כמה באמת מרוויחים על כסף 'בטוח'.",
+    "why": "ריבית ריאלית גבוהה מקשה על זהב, נדל״ן ומניות צמיחה, כי האלטרנטיבה הבטוחה אטרקטיבית."
+   },
+   "term_premium": {
+    "title": "פרמיית סיכון לטווח",
+    "text": "התוספת שמשקיעים דורשים כדי להלוות לממשלה לטווח ארוך במקום לגלגל הלוואות קצרות. זו הערכה של מודל של הפד.",
+    "why": "פרמיה גבוהה מעידה על דאגה מהגירעון ומהאינפלציה לטווח ארוך."
+   },
+   "mortgage": {
+    "title": "ריבית משכנתא ל-30 שנה",
+    "text": "הריבית הממוצעת על משכנתא קבועה ל-30 שנה בארה״ב, לפי Freddie Mac.",
+    "why": "מעל 7% שוק הדיור כמעט קופא: פחות קונים, פחות בנייה."
+   },
+   "hy_oas": {
+    "title": "מרווח אשראי High Yield",
+    "text": "כמה ריבית נוספת משלמות חברות 'מסוכנות' (דירוג נמוך) מעבר לממשלה. כשמשקיעים חוששים, הם דורשים יותר, והמרווח נפתח.",
+    "why": "התרחבות מהירה של המרווח מקדימה לעתים קרובות משברים בשוק המניות."
+   },
+   "ig_oas": {
+    "title": "מרווח אשראי בדירוג השקעה",
+    "text": "כמה ריבית נוספת משלמות חברות חזקות (דירוג גבוה) מעבר לממשלה.",
+    "why": "מרווח צר מאוד מעיד על שאננות. התרחבות מעידה על דאגה גם לגבי חברות טובות."
+   },
+   "net_liquidity": {
+    "title": "נזילות נטו של הפד",
+    "text": "כמה כסף הבנק המרכזי 'מזרים' בפועל למערכת: המאזן שלו, פחות הכסף שהממשלה מחזיקה בצד, פחות כסף שחונה בפד ללילה.",
+    "why": "כשהנזילות יורדת, יש פחות כסף שמחפש השקעות, ומניות ונכסי סיכון נוטים להיחלש."
+   },
+   "fed_balance": {
+    "title": "מאזן הפד",
+    "text": "סך הנכסים שהבנק המרכזי מחזיק, בעיקר אג״ח. כשהוא קונה אג״ח הוא מזרים כסף לשוק, וכשהוא מקטין את המאזן הוא שואב כסף.",
+    "why": "רכיב בחישוב הנזילות נטו."
+   },
+   "tga": {
+    "title": "חשבון האוצר בפד (TGA)",
+    "text": "חשבון הבנק של ממשלת ארה״ב. כסף שנמצא בו 'יושב בצד' ולא מסתובב בשוק.",
+    "why": "כשהממשלה ממלאת את החשבון, נשאב כסף מהשוק. רכיב בחישוב הנזילות נטו."
+   },
+   "rrp": {
+    "title": "ריפו הפוך (RRP)",
+    "text": "כסף שקרנות ובנקים מפקידים בפד ללילה, כי אין להם שימוש טוב יותר בו.",
+    "why": "רכיב בחישוב הנזילות נטו: כסף שחונה כאן לא נמצא בשוק."
+   },
+   "nfci": {
+    "title": "מדד התנאים הפיננסיים (NFCI)",
+    "text": "מדד של הפד של שיקגו שמסכם בנתון אחד כמה קל או קשה לגייס כסף: ריביות, אשראי ותנודתיות. מתחת לאפס = קל מהממוצע.",
+    "why": "תנאים קלים מדי מעודדים את הפד להמשיך להדק."
+   },
+   "m2": {
+    "title": "כמות הכסף (M2)",
+    "text": "סך הכסף במזומן ובחשבונות בנק בארה״ב, לעומת שנה קודמת.",
+    "why": "גידול בכמות הכסף תומך בנזילות ובנכסי סיכון."
+   },
+   "emlc": {
+    "title": "אג״ח שווקים מתעוררים (EMLC)",
+    "text": "קרן סל של אג״ח ממשלתיות של מדינות מתפתחות, במטבע המקומי שלהן.",
+    "why": "ירידה חדה בה מעידה על לחץ על המדינות האלה, למשל בגלל דולר חזק."
+   },
+   "dxy": {
+    "title": "מדד הדולר (DXY)",
+    "text": "כמה הדולר האמריקאי חזק מול סל של מטבעות מרכזיים (אירו, ין, פאונד ועוד).",
+    "why": "דולר חזק 'מהדק' את העולם: מייקר חובות דולריים של מדינות וחברות, ומצמצם אשראי. מעל 100.5 נחשב הידוק."
+   },
+   "usdjpy": {
+    "title": "דולר/ין",
+    "text": "כמה ינים יפניים עולה דולר אחד.",
+    "why": "משקיעים רבים לוו ביפן בריבית נמוכה והשקיעו בעולם. תנועה חדה בין יכולה לאלץ אותם למכור הכל בבת אחת. 160 נחשב קו אדום."
+   },
+   "brent": {
+    "title": "נפט ברנט",
+    "text": "מחיר חבית נפט מסוג ברנט, מחיר הייחוס העולמי. במערכת זה מחיר החוזה לחודש הבא, שנסחר בבורסה.",
+    "why": "נפט יקר מייקר כמעט הכל: תחבורה, ייצור וחשמל. מעל 100 דולר נחשב הלם אנרגיה."
+   },
+   "wti": {
+    "title": "נפט WTI",
+    "text": "מחיר חבית נפט אמריקאי (טקסס). מחיר הייחוס בארה״ב.",
+    "why": "מעל 85 דולר חברות האנרגיה מרוויחות במיוחד."
+   },
+   "oil_spot": {
+    "title": "נפט פיזי (Spot)",
+    "text": "המחיר של חבית נפט שנמסרת עכשיו, לעומת חוזה לחודש הבא. מתפרסם על ידי מינהל האנרגיה האמריקאי, באיחור של כמה ימים.",
+    "why": "כשהמחיר הפיזי גבוה מהחוזה, יש מחסור בנפט 'כאן ועכשיו'."
+   },
+   "brent_basis": {
+    "title": "פער ברנט: חוזה פחות פיזי",
+    "text": "ההפרש בין מחיר הנפט בחוזה לחודש הבא לבין המחיר לנפט שנמסר מיד.",
+    "why": "פער שלילי גדול = מחסור פיזי חריף. כך זה נראה בזמן משבר אספקה."
+   },
+   "gold": {
+    "title": "זהב",
+    "text": "מחיר אונקיית זהב. נכס 'מקלט' שמשקיעים ובנקים מרכזיים קונים בזמנים לא יציבים.",
+    "why": "שומר ערך מול אינפלציה ומשברים, ולכן מועדף במצבי אינפלציה."
+   },
+   "copper": {
+    "title": "נחושת",
+    "text": "מחיר טון נחושת. מתכת שנמצאת כמעט בכל דבר שנבנה: חשמל, בנייה, רכב ומרכזי נתונים.",
+    "why": "נחושת יקרה מעידה על ביקוש תעשייתי חזק. אצלנו מחיר הבורסה בניו יורק, כקירוב למחיר בלונדון."
+   },
+   "spx": {
+    "title": "מדד S&P 500",
+    "text": "מדד של 500 החברות הגדולות בארה״ב. הדרך הנפוצה ביותר למדוד 'מה עשה השוק'.",
+    "why": "מראה את מצב שוק המניות הכללי."
+   },
+   "qqq": {
+    "title": "נאסד״ק 100 (QQQ)",
+    "text": "קרן סל על 100 החברות הגדולות בבורסת נאסד״ק, רובן חברות טכנולוגיה.",
+    "why": "רגישה במיוחד לריבית, ולכן נלחצת כשהתשואות עולות."
+   },
+   "vix": {
+    "title": "מדד הפחד (VIX)",
+    "text": "מדד שמשקף כמה משקיעים מצפים לתנודות חדות במניות בחודש הקרוב. נמוך = רוגע, גבוה = פחד.",
+    "why": "מעל 20 נחשב לחץ, ומעל 30 פאניקה. מתחת ל-16 השוק שאנן."
+   },
+   "move": {
+    "title": "מדד תנודתיות האג״ח (MOVE)",
+    "text": "כמו מדד הפחד, אבל לשוק האג״ח: כמה משקיעים מצפים לתנודות חדות בריביות.",
+    "why": "תנודתיות גבוהה באג״ח גולשת בדרך כלל גם למניות."
+   },
+   "xlu": {
+    "title": "יחס ממוצעים של תשתיות (XLU)",
+    "text": "משווה את המחיר הממוצע של מניות תשתיות (חשמל, מים) ב-50 הימים האחרונים לממוצע של 200 ימים. מתחת ל-1 = מגמת ירידה.",
+    "why": "מניות תשתיות מתנהגות כמו אג״ח, ולכן הן נותנות רמז מוקדם על כיוון הריבית."
+   },
+   "corr": {
+    "title": "מתאם דולר-נפט",
+    "text": "האם הדולר והנפט זזים יחד או הפוך ב-90 הימים האחרונים. בעבר הם זזו הפוך. מאז שארה״ב הפכה ליצואנית נפט, לפעמים הם עולים יחד.",
+    "why": "כשהם עולים יחד, מדינות שמייבאות נפט נפגעות פעמיים: נפט יקר ומטבע חלש."
+   },
+   "alert": {
+    "title": "התראה",
+    "text": "אירוע חריג שהמערכת זיהתה עכשיו לפי אחד החוקים, למשל קפיצה בנפט או זעזוע בשווקים.",
+    "why": "התראה חדשה נשלחת גם לטלגרם."
+   },
+   "state": {
+    "title": "מצב מתמשך",
+    "text": "תנאי שקיים כבר שבועות או חודשים, כמו דולר חזק. הוא חשוב להבנת התמונה, אבל זה לא אירוע חדש.",
+    "why": "מוצג בדוח, אבל לא שולח התראה בכל יום מחדש."
+   },
+   "etf": {
+    "title": "תעודת סל (ETF)",
+    "text": "קרן שנסחרת בבורסה כמו מניה, ומחזיקה סל של הרבה מניות מאותו תחום. למשל XLE מחזיקה את חברות האנרגיה הגדולות. הקיצור באותיות לטיניות הוא 'הטיקר' שלה.",
+    "why": "הדרך הפשוטה להשקיע בתחום שלם בבת אחת. לחיצה על טיקר מציגה את הגרף שלו."
+   },
+   "stance": {
+    "title": "משקל יתר / משקל חסר",
+    "text": "משקל יתר = להחזיק יותר מהרגיל מהתחום הזה. משקל חסר = פחות מהרגיל. ניטרלי = כרגיל. סלקטיבי = רק חלק מהתחום.",
+    "why": "זו ההמלצה של המסגרת לפי מצב הכלכלה. זה לא ייעוץ אישי."
+   },
+   "history": {
+    "title": "היסטוריה (✓ / ✗)",
+    "text": "בדקנו מה קרה בפועל בעשר השנים האחרונות בתקופות שבהן הכלכלה הייתה באותו מצב: האם התחום עשה יותר או פחות משוק המניות הכללי בחודש ממוצע.",
+    "why": "✓ = העבר תמך בהמלצה. ✗ = העבר לא תמך. ככה אפשר לדעת עד כמה לסמוך עליה."
+   },
+   "adjustment": {
+    "title": "התאמה פעילה",
+    "text": "חוק 'אם-אז' שמגיב לרמות בשוק עכשיו, מעבר להמלצה הבסיסית. למשל: אם ריבית המשכנתא מעל 7%, להקטין חברות בנייה.",
+    "why": "מכוונן את ההמלצה הכללית לפי מה שקורה כרגע."
+   },
+   "fragility": {
+    "title": "המרחק להיפוך",
+    "text": "כמה קרוב אחד הנתונים לגבול שיעביר את הכלכלה למצב אחר.",
+    "why": "מרחק קטן = המצב שביר, וההמלצות עלולות להשתנות בקרוב."
+   },
+   "official": {
+    "title": "מקור רשמי",
+    "text": "הנתון מגיע מהגוף הממשלתי או הציבורי שמפרסם אותו בעצמו: הלשכה לסטטיסטיקה של העבודה (BLS), הבנק המרכזי, משרד האוצר ועוד.",
+    "why": "זו רמת האמינות הגבוהה ביותר."
+   },
+   "validated": {
+    "title": "אומת מול מקור רשמי",
+    "text": "מחיר שמגיע מספק מסחרי בזמן אמת, והושווה בהרצה הזו למחיר הרשמי של יום המסחר האחרון. אם הייתה סטייה, הוא היה נפסל.",
+    "why": "נותן מחיר עדכני וגם בטוח."
+   },
+   "unverified": {
+    "title": "לא אומת",
+    "text": "מחיר מספק מסחרי (Yahoo) שאין לו מקור רשמי חינמי להשוואה, כמו חוזי נפט, זהב ומדד הדולר.",
+    "why": "הנתון אמיתי, אבל לא נבדק מול גורם שני. כדאי לדעת את זה."
+   },
+   "commercial": {
+    "title": "ספק מסחרי",
+    "text": "מדד של חברה פרטית (למשל ICE BofA) שמתפרסם דרך הפד של סנט לואיס.",
+    "why": "אמין ומקובל בשוק, אבל לא ממשלתי."
+   },
+   "estimate": {
+    "title": "הערכה / מודל (≈)",
+    "text": "נתון שאין לו מדידה ישירה בשום מקום בעולם, ולכן הוא מחושב במודל. למשל פער התוצר.",
+    "why": "מסומן ב-≈ כדי שתדע שזו הערכה ולא מדידה."
+   },
+   "redundancy": {
+    "title": "הצלבת מקורות",
+    "text": "נתונים קריטיים נמשכים משני מפרסמים שונים ומושווים זה לזה. למשל מדד המחירים: גם מ-FRED וגם ישירות מהלשכה לסטטיסטיקה.",
+    "why": "אם יש סטייה, הנתון נפסל ונשלחת התראה. אם מקור אחד נופל, השני מחליף אותו. כך המערכת לא עובדת עם נתון שגוי."
+   },
+   "bp": {
+    "title": "נקודות בסיס (bp)",
+    "text": "יחידת מידה לריביות: נקודת בסיס אחת = 0.01%. עלייה של 25bp = עלייה של רבע אחוז.",
+    "why": "ככה מודדים שינויים קטנים בריביות."
+   },
+   "hit_rate": {
+    "title": "אחוז הצלחה",
+    "text": "מתוך כל ההמלצות שנבדקו, כמה צדקו. המלצת 'להגדיל' צודקת אם התחום עשה יותר מ-S&P 500 בחודש המסחר הבא (21 ימים). המלצת 'להקטין' צודקת אם הוא עשה פחות.",
+    "why": "50% זה כמו הטלת מטבע. כל אחוז מעל 50 על אלפי המלצות הוא יתרון אמיתי, אבל קטן: גם מסגרת טובה טועה הרבה פעמים."
+   },
+   "ci95": {
+    "title": "טווח ביטחון 95%",
+    "text": "הטווח שבו כנראה נמצא אחוז ההצלחה האמיתי, בהתחשב בכמות הבדיקות. מעט בדיקות = טווח רחב, הרבה בדיקות = טווח צר.",
+    "why": "אם כל הטווח מעל 50%, היתרון כנראה לא מקרי. אם הטווח כולל את 50%, עוד אי אפשר לדעת."
+   },
+   "edge": {
+    "title": "יתרון ממוצע",
+    "text": "בכמה אחוזים בממוצע ההמלצה 'הרוויחה' מול S&P 500 בחודש: בהגדלה זה כמה התחום עשה יותר מהמדד, ובהקטנה כמה פחות.",
+    "why": "אחוז הצלחה לבד לא מספיק: חשוב גם בכמה צודקים כשצודקים ובכמה טועים כשטועים."
+   },
+   "long_short": {
+    "title": "תיק 'להגדיל מול להקטין'",
+    "text": "תיק דמיוני שבכל חודש מחזיק את התחומים שהומלץ להגדיל, ומוכר בחסר את התחומים שהומלץ להקטין. הרווח שלו הוא ההפרש ביניהם.",
+    "why": "זו הדרך הנקייה ביותר למדוד אם ההמלצות מפרידות בין תחומים טובים לחלשים, בלי קשר לכיוון של השוק."
+   },
+   "permutation": {
+    "title": "בדיקת מקריות",
+    "text": "ערבבנו אלפי פעמים את מצבי הכלכלה בין החודשים, כאילו המערכת מנחשת, ובדקנו באיזה אחוז מהפעמים הניחוש הצליח לפחות כמו המערכת האמיתית.",
+    "why": "אם רק בכ-2% מהפעמים ניחוש מקרי עשה כמוה, סביר שזיהוי המצב באמת מוסיף ערך ולא היה מזל."
+   },
+   "live_track": {
+    "title": "מעקב חי",
+    "text": "מהיום כל המלצה נרשמת עם תאריך, וכעבור 21 ימי מסחר מקבלת ציון אוטומטי מול S&P 500. הרשומות נשמרות באתר ואפשר לבדוק אותן.",
+    "why": "זו הבדיקה הכי אמינה: המערכת לא יכולה 'לראות' את העתיד. הבדיקה ההיסטורית נעשתה על עבר שכבר ידוע."
+   },
+   "v5": {
+    "title": "מנוע המומחה (v5, בבדיקה)",
+    "text": "גרסה מתקדמת של המערכת לפי המפרט החדש. היא מוסיפה עמודי תווך, רצועות מעבר בין מצבים, שכבות סיכון, ציון ביטחון ומטריצת סקטורים עם ציון ודרגת ראיות. היא רצה במקביל למנוע הקיים ולא מחליפה אותו.",
+    "why": "לפי המפרט, שום כלל לא נכנס לשימוש לפני שהוכח בבדיקה היסטורית. עד אז ההמלצות בפועל נשארות של המנוע הקיים."
+   },
+   "pillar": {
+    "title": "עמוד תווך",
+    "text": "ציון אחד שמסכם תחום שלם בכלכלה, למשל צמיחה, אינפלציה או אשראי. כל עמוד הוא ממוצע של כמה נתונים, וכל נתון מושווה ל-10 השנים האחרונות שלו: 0 = רגיל, 1+ = גבוה בבירור, 2+ = גבוה מאוד.",
+    "why": "כך רואים במבט אחד איפה הכלכלה חמה, איפה קרה, ואיפה המתח.",
+    "use": "מבט אחד על 8 העמודים מראה איפה הלחץ בכלכלה. עמוד שזז מהר (כיוון עולה או יורד) חשוב יותר מעמוד שגבוה אבל יציב."
+   },
+   "zscore": {
+    "title": "ציון תקן (z)",
+    "text": "כמה הנתון רחוק מהרגיל שלו ב-10 השנים האחרונות, ביחידות של 'סטייה טיפוסית'. 0 = בדיוק רגיל. 2 = חריג מאוד. החישוב חסין לקפיצות קיצוניות.",
+    "why": "מאפשר להשוות נתונים שונים לגמרי (ריבית, משרות, נפט) באותה סקאלה."
+   },
+   "band": {
+    "title": "רצועת מעבר",
+    "text": "טווח ביטחון סביב הגבול בין מצבים. למשל אינפלציה בין 1.85% ל-2.15%. המערכת עוברת למצב חדש רק כשהנתון יוצא מהרצועה בשני פרסומים רצופים.",
+    "why": "מונע קפיצות הלוך-חזור בין מצבים בגלל רעש קטן בנתון."
+   },
+   "overlay": {
+    "title": "שכבת סיכון",
+    "text": "מצב חריג שמשפיע על סקטורים מעבר למצב הכלכלה. למשל עלייה חדה בריביות (O1) או הלם עלויות (O3). שכבה נדלקת רק אחרי 3 שבועות מעל הסף, ונכבית בהדרגה.",
+    "why": "מוסיפה או מורידה עד נקודה אחת לציון של סקטורים מושפעים.",
+    "use": "שכבה דלוקה אומרת: יש סיכון ספציפי עכשיו, מעבר למצב הכלכלה הכללי. היא מזיזה את הציון של התחומים שהסיכון פוגע בהם (או מועיל להם)."
+   },
+   "confidence": {
+    "title": "ציון ביטחון",
+    "text": "ציון 0 עד 100 שמסכם כמה המערכת בטוחה במצב הנוכחי: מרחק מהגבול, הסכמה בין עמודי התווך, כמה זמן המצב נמשך, אם השוק מאשר, וכמה הנתונים טריים.",
+    "why": "65 ומעלה = פעולה מלאה. 45 עד 65 = חצי גודל. מתחת ל-45 = הימנעות. כשלא בטוחים, לא פועלים.",
+    "use": "ציון גבוה = לפעול לפי ההמלצות בגודל מלא. בינוני = בחצי גודל ורק בתחומים מבוססי מחקר. נמוך = לא לשנות כלום ולהישאר קרוב למדד."
+   },
+   "evidence": {
+    "title": "דרגת ראיות",
+    "text": "מאיפה הגיע הציון בתא: מ = מחקר, ש = שונה בגלל מחקר, ס = מקורות סותרים, ע = עקיף דרך סקטור האם, ד = עמדה בלי מחקר, ב = מבני (לא אות של מצב הכלכלה).",
+    "why": "תאים בדרגה ד ו-ע מוגבלים לנקודה אחת, ובביטחון בינוני רק תאים מבוססי מחקר נשארים."
+   },
+   "price_gate": {
+    "title": "תנאי מחיר",
+    "text": "גם אם המאקרו אומר 'להגדיל', נכנסים רק אם המחיר מסכים: הסקטור בחצי העליון בחוזק יחסי מול S&P 500, ומעל הממוצע של 200 יום. אחרי קפיצה של יותר מ-8% בחודש מחכים לתיקון.",
+    "why": "מסנן מצבים שבהם המאקרו צודק בתיאוריה אבל השוק עוד לא שם."
+   },
+   "ablation": {
+    "title": "בדיקה שכבה אחרי שכבה",
+    "text": "הרצנו את המנוע ההיסטורי חמש פעמים, וכל פעם הוספנו שכבה אחת: משטר פשוט, רצועות, שכבות סיכון, ביטחון ותנאי מחיר. כך רואים בדיוק מה כל שכבה מוסיפה או גורעת.",
+    "why": "שכבה שלא משפרת את התוצאה, ובעיקר בתקופה שהמערכת לא ראתה (2019 והלאה), לא נכנסת לשימוש."
+   },
+   "conf_boundary": {
+    "title": "מרחק מהגבול",
+    "text": "כמה רחוק המצב הנוכחי מהקו שמפריד בינו לבין מצב אחר. לדוגמה: אינפלציה של 3% רחוקה מגבול ה-2%, אבל פער תוצר של 0.26 קרוב מאוד לגבול ה-0. ככל שאחד הנתונים קרוב יותר לגבול, הציון כאן נמוך יותר.",
+    "why": "מצב שנמצא על הקצה יכול להתהפך בפרסום הבא. אז ההמלצות שנגזרות ממנו פחות יציבות.",
+    "use": "ציון נמוך כאן אומר: לא להמר בגדול על המצב הנוכחי, ולהיות מוכנים לשינוי. ציון גבוה אומר שהתמונה ברורה ויציבה."
+   },
+   "conf_agreement": {
+    "title": "הסכמת עמודי התווך",
+    "text": "בודק אם התחומים בכלכלה מספרים את אותו סיפור כמו המצב שנקבע. לדוגמה: במצב 'כלכלה חמה' מצפים שעמוד האינפלציה יהיה חם, ושעמודי הצמיחה והעבודה יהיו חזקים. כל עמוד שמסכים מוסיף לציון.",
+    "why": "המצב נקבע לפי שני נתונים בלבד (אינפלציה ואבטלה). ההסכמה מוודאת שגם שאר הכלכלה מאשרת אותו.",
+    "use": "כשיש הסכמה רחבה, הסיכוי שההמלצות יעבדו גבוה יותר. כשאין, זה סימן ששני הנתונים 'מספרים סיפור' שהכלכלה לא מאשרת."
+   },
+   "conf_persistence": {
+    "title": "התמדה",
+    "text": "כמה זמן אנחנו כבר במצב הנוכחי. מצב חדש לגמרי מקבל ציון נמוך, ומצב שנמשך חצי שנה ויותר מקבל ציון מלא.",
+    "why": "מעבר טרי בין מצבים עלול להיות רעש או טעות, ולפעמים הוא מתהפך חזרה.",
+    "use": "מיד אחרי מעבר כדאי להגדיל ולהקטין חשיפות בהדרגה ולא בבת אחת. אחרי כמה חודשים אפשר לפעול בביטחון."
+   },
+   "conf_market": {
+    "title": "אישור השוק",
+    "text": "בודק אם המחירים בשוק מתנהגים כמו שהמצב הכלכלי מצפה. ארבעה מדדים: S&P 500 מעל הממוצע של 200 יום, מניות מחזוריות מול דפנסיביות, צריכה מחזורית מול בסיסית (XLY/XLP), ואג״ח מסוכנות מול בטוחות (HYG/TLT).",
+    "why": "השוק מקדים את הכלכלה בחצי שנה בערך. אם הנתונים אומרים 'צמיחה' והשוק מתנהג כמו לפני מיתון, משהו לא מסתדר.",
+    "use": "אישור נמוך הוא אזהרה: השוק אולי רואה משהו שהנתונים עוד לא הראו. כדאי להיזהר עם המלצות שהולכות נגד השוק."
+   },
+   "conf_freshness": {
+    "title": "עדכניות הנתונים",
+    "text": "כמה מהנתונים שהמערכת משתמשת בהם עדכניים, לעומת נתונים שהפרסום שלהם מתעכב, למשל בגלל השבתה ממשלתית.",
+    "why": "החלטה על בסיס נתונים ישנים היא בעצם החלטה על העבר.",
+    "use": "ציון נמוך אומר שהתמונה אולי לא מעודכנת. כדאי לחכות לפרסומים הבאים לפני שינויים גדולים."
+   },
+   "O1": {
+    "title": "O1 · ריבית ופרמיית טווח",
+    "text": "נדלקת כשהריביות לטווח ארוך עולות חזק: עלייה בתשואה ל-10 שנים, פרמיית סיכון גבוהה על הלוואות ארוכות, ריבית ריאלית ומשכנתאות גבוהות ותנודתיות באג״ח.",
+    "why": "ריבית גבוהה מורידה את השווי של חברות שהרווחים שלהן רחוקים בעתיד, ומקפיאה את שוק הדיור.",
+    "use": "כשהיא דלוקה, המערכת מורידה נקודה לתוכנה, ביוטק קטן, נדל״ן ובוני בתים. אלה התחומים שהכי נפגעים מריבית גבוהה."
+   },
+   "O2": {
+    "title": "O2 · דולר ומימון",
+    "text": "נדלקת כשהדולר מתחזק במהירות, כשהין נחלש חזק, וכשהתשואות ביפן קופצות. כל אלה מסמנים שהכסף בעולם מתייקר.",
+    "why": "דולר חזק מייבש נזילות בעולם, ופוזיציות שמומנו בכסף זול (למשל בין) נסגרות בבת אחת.",
+    "use": "כשהיא דלוקה, המערכת מורידה נקודה לקריפטו, פינטק ובנקים. אלה הנכסים הרגישים ביותר למחסור בנזילות. כדאי גם להקטין חשיפה כללית."
+   },
+   "O3": {
+    "title": "O3 · הלם עלויות תשומה",
+    "text": "נדלקת כשעלויות הייצור קופצות: נפט שעולה חזק ב-3 חודשים, מחירי יצרן שעולים מהר יותר מהמחירים לצרכן, ומפעלים שמדווחים על עליית מחירים.",
+    "why": "חברות שלא מצליחות לגלגל את העלויות ללקוח מאבדות רווחיות. יצרניות האנרגיה דווקא מרוויחות.",
+    "use": "כשהיא דלוקה, אנרגיה מקבלת ציון חיובי, וצריכה מחזורית, תחבורה ודיור מקבלים מינוס. לפי המחקר אנרגיה מגיבה למחירי הנפט ולא למחזור הכלכלי, ולכן היא נקבעת לפי השכבה הזו."
+   },
+   "O4": {
+    "title": "O4 · לחץ אשראי",
+    "text": "נדלקת כשההלוואות לחברות מתייקרות: המרווח בין אג״ח חברות לאג״ח ממשלה מתרחב, והתנאים הפיננסיים מתהדקים. יש לה שני שלבים: מעקב (ציון 1 ומעלה) ופעילה (ציון 2 ומעלה).",
+    "why": "שוק האשראי מזהה בעיות לפני שוק המניות. התרחבות מרווחים קדמה להרבה משברים.",
+    "use": "כשהיא פעילה, המערכת מורידה נקודה לבנקים ולמדדי המניות הרחבים, ובשכבת המניות מחמירה את סינון החברות הממונפות."
+   },
+   "O5": {
+    "title": "O5 · הידרדרות בשוק העבודה",
+    "text": "נדלקת כשכלל סאם עובר 0.30, או כשתביעות האבטלה עולות 15% מעל השפל של השנה האחרונה. נכבית רק אחרי 6 שבועות רגועים.",
+    "why": "פיטורים הם הסימן הברור ביותר שהכלכלה עוברת ממצב טוב למיתון.",
+    "use": "כשהיא דלוקה, המערכת מוסיפה נקודה לבריאות, צריכה בסיסית ותשתיות חשמל ומים, תחומים שמחזיקים גם במיתון. בבדיקה ההיסטורית היא דלוקה 40% מהזמן, יותר מדי, ולכן היא עוד בבדיקה."
+   },
+   "sector_matrix": {
+    "title": "מטריצת הסקטורים",
+    "text": "טבלה שנותנת לכל תחום ציון מ-2- עד 2+ לפי מצב הכלכלה. 2+ = להגדיל משמעותית, 1+ = להגדיל מעט, 0 = רגיל, 1- = להקטין מעט, 2- = להקטין משמעותית. הציון מתחיל מהמחקר, ואז משתנה לפי שכבות הסיכון וציון הביטחון.",
+    "why": "זו השורה התחתונה של כל המנוע: איפה כדאי להחזיק יותר ואיפה פחות.",
+    "use": "משתמשים בה כמפה: התחומים עם 1+ ו-2+ הם המקום לחפש בו השקעות, והתחומים עם 1- ו-2- הם המקום להקטין או לגדר. בבדיקה ההיסטורית, סל ההגדלה עקף את סל ההקטנה בכ-60% מהמקרים בטווח של 3 חודשים."
+   },
+   "sector_action": {
+    "title": "מה עושים עם התחום",
+    "text": "הציון של המאקרו לבד לא מספיק. המערכת בודקת גם את המחיר: האם התחום חזק יחסית לשוק, והאם הוא מעל הממוצע של 200 יום. 'לונג' = המאקרו והמחיר מסכימים. 'המחיר לא מסכים' = המאקרו אומר כן, אבל השוק עוד לא. 'מחכים לתיקון' = התחום קפץ יותר מ-8% בחודש.",
+    "why": "נכנסים רק כשהסיפור הכלכלי והמחיר מסכימים. כך נמנעים מלקנות מוקדם מדי או לרדוף אחרי קפיצה.",
+    "use": "מספר המניות שליד ה'לונג' (1–5 או 8–10) הוא כמה מניות לבחור מהתחום, לפי חוזק הציון. בחירת המניות עצמן היא השלב הבא (סורק המניות)."
+   },
+   "sub_state": {
+    "title": "תת־משטר",
+    "text": "חלוקה עדינה יותר של מצב הכלכלה, לפי הכיוון של הצמיחה ושוק העבודה ב-3 החודשים האחרונים. לדוגמה, בתוך 'כלכלה חמה' (R4): 'התחממות יתר' כשהצמיחה מאיצה, 'סוף מחזור' כשהיא יציבה, ו'R4 מתקרר' כשהיא נחלשת.",
+    "why": "אותו מצב יכול להיות בתחילתו או בסופו. ההבדל משנה מאוד אילו תחומים יעבדו.",
+    "use": "'מתקרר' או 'מיתון' הם סימני אזהרה מוקדמים לפני שהמצב עצמו מתחלף."
+   },
+   "pillar_G": {
+    "title": "עמוד הצמיחה",
+    "text": "כמה מהר הכלכלה גדלה: תוצר, ייצור תעשייתי, התחלות בנייה, מכירות, סקר המפעלים של פילדלפיה ויחס נחושת לזהב.",
+    "why": "צמיחה חזקה תומכת ברווחי חברות, בעיקר מחזוריות.",
+    "use": "עמוד חיובי ועולה = כדאי להעדיף תחומים מחזוריים (תעשייה, צריכה מחזורית, בנקים)."
+   },
+   "pillar_I": {
+    "title": "עמוד האינפלציה",
+    "text": "כמה מהר עולים המחירים, בשלוש שכבות: מה כבר קרה (CPI, ‏PCE), מה בדרך (מחירי יצרן, נפט, מחירים במפעלים), ומה הציבור והשוק מצפים.",
+    "why": "אינפלציה גבוהה מאלצת את הפד להשאיר ריבית גבוהה.",
+    "use": "עמוד חיובי = להעדיף נכסים 'אמיתיים' (אנרגיה, מתכות, זהב) ולהיזהר ממניות צמיחה יקרות."
+   },
+   "pillar_L": {
+    "title": "עמוד שוק העבודה",
+    "text": "כמה חזק שוק העבודה: משרות חדשות, אבטלה, שכר, תביעות אבטלה, משרות פנויות וכלל סאם.",
+    "why": "שוק עבודה חזק = צרכנים שמוציאים כסף. היחלשות היא בדרך כלל הסימן הראשון למיתון.",
+    "use": "עמוד שיורד מהר = להעביר משקל לתחומים דפנסיביים (בריאות, צריכה בסיסית)."
+   },
+   "pillar_P": {
+    "title": "עמוד המדיניות והריביות",
+    "text": "כמה הדוקה המדיניות: ריבית ריאלית, תשואות ושינויים בהן, שיפוע העקומה, פרמיית טווח ומשכנתאות. חיובי = הדוק.",
+    "why": "ריבית הדוקה מאטה את הכלכלה ומורידה מכפילים.",
+    "use": "עמוד גבוה = להיזהר מתחומים רגישים לריבית (נדל״ן, תוכנה, ביוטק קטן, בוני בתים)."
+   },
+   "pillar_C": {
+    "title": "עמוד האשראי",
+    "text": "כמה יקר לחברות ללוות כסף, לפי המרווח של אג״ח חברות מעל אג״ח ממשלה והשינוי בו. חיובי = לחץ.",
+    "why": "שוק האשראי בדרך כלל מזהה בעיות לפני שוק המניות.",
+    "use": "עמוד שעולה מהר = סימן אזהרה: להקטין חברות ממונפות, מניות קטנות ובנקים."
+   },
+   "pillar_Q": {
+    "title": "עמוד הנזילות",
+    "text": "כמה כסף יש במערכת: מאזן הפד פחות חשבון האוצר והריפו ההפוך, יתרות הבנקים, ופער ריביות המימון. חיובי = מחסור.",
+    "why": "כשיש פחות כסף שמחפש השקעה, נכסי סיכון נחלשים.",
+    "use": "נזילות שמתהדקת = להיזהר מקריפטו ומניות ספקולטיביות."
+   },
+   "pillar_F": {
+    "title": "עמוד התנאים הפיננסיים",
+    "text": "מדד שיקגו, מדדי הפחד במניות ובאג״ח, ומצב המגמה בשוק. חיובי = תנאים הדוקים ושוק לחוץ.",
+    "why": "תנאים פיננסיים הם הדרך שבה ריבית ופחד מגיעים לכלכלה האמיתית.",
+    "use": "עמוד גבוה = להקטין סיכון כללי. עמוד נמוך מאוד = השוק שאנן, וכדאי לשים לב לסיכוני הפתעה."
+   },
+   "pillar_X": {
+    "title": "עמוד הדולר והמימון העולמי",
+    "text": "הדולר, הין, ריביות ביפן, בריטניה ואירופה, ואינפלציה באירופה. חיובי = הכסף בעולם מתייקר.",
+    "why": "דולר חזק וריביות עולמיות גבוהות מהדקים את התנאים לכל העולם, כולל לחברות אמריקאיות שמוכרות בחו״ל.",
+    "use": "עמוד גבוה = להיזהר משווקים מתעוררים, סחורות וחברות שתלויות ביצוא."
+   }
+  },
+  "signals": {
+   "pce_yoy": "core_pce",
+   "cpi_yoy": "cpi",
+   "cpi_mom": "cpi",
+   "core_cpi_yoy": "core_cpi",
+   "core_cpi_mom": "core_cpi",
+   "ppi_yoy": "ppi",
+   "core_ppi_yoy": "core_ppi",
+   "ppi_pce_spread": "ppi_pce_spread",
+   "ahe_yoy": "wages",
+   "mich_level": "mich",
+   "gasoline_level": "gasoline",
+   "gasoline_yoy": "gasoline",
+   "unrate_level": "unemployment",
+   "unrate_chg_1m": "unemployment",
+   "payems_chg_1m": "nfp",
+   "claims_k": "claims",
+   "sahm_level": "sahm",
+   "output_gap_proxy": "output_gap",
+   "nrou_level": "nrou",
+   "gdpnow": "gdpnow",
+   "retail_yoy": "retail",
+   "houst_chg_3m": "housing",
+   "umcsent_chg_1m": "sentiment",
+   "fed_funds_level": "fed_funds",
+   "dff_chg_1m_bp": "fed_funds",
+   "taylor_rate": "taylor",
+   "taylor_gap": "taylor",
+   "us10y_level": "us10y",
+   "us10y_chg_1d_bp": "us10y",
+   "us10y_chg_5d_bp": "us10y",
+   "dgs10_level": "us10y",
+   "dgs2_level": "us2y",
+   "us30y_level": "us30y",
+   "us30y_chg_1d_bp": "us30y",
+   "us30y_chg_1m_bp": "us30y",
+   "curve_10y2y": "curve",
+   "tips10_level": "tips",
+   "term_premium_10y": "term_premium",
+   "mortgage_level": "mortgage",
+   "mortgage_chg_3m_bp": "mortgage",
+   "hy_oas_level": "hy_oas",
+   "hy_oas_chg_1m_bp": "hy_oas",
+   "ig_oas_level": "ig_oas",
+   "net_liquidity_tn": "net_liquidity",
+   "fed_assets_mn": "fed_balance",
+   "tga_mn": "tga",
+   "rrp_bn": "rrp",
+   "nfci_level": "nfci",
+   "m2_yoy": "m2",
+   "emlc_ret_1m": "emlc",
+   "dxy_ret_1d": "dxy",
+   "dxy_ret_5d": "dxy",
+   "dxy_ret_1m": "dxy",
+   "dxy_level": "dxy",
+   "usdjpy_ret_1d": "usdjpy",
+   "usdjpy_level": "usdjpy",
+   "brent_level": "brent",
+   "oil_ret_1d": "wti",
+   "oil_ret_5d": "wti",
+   "oil_ret_1m": "wti",
+   "wti_level": "wti",
+   "brent_spot": "oil_spot",
+   "wti_spot": "oil_spot",
+   "brent_basis": "brent_basis",
+   "gold_ret_1d": "gold",
+   "gold_level": "gold",
+   "copper_ton": "copper",
+   "spx_ret_1d": "spx",
+   "spx_ret_5d": "spx",
+   "spx_level": "spx",
+   "qqq_ret_1d": "qqq",
+   "vix_level": "vix",
+   "move_level": "move",
+   "xlu_sma_ratio": "xlu",
+   "corr_dxy_oil_90d": "corr"
+  }
+ },
+ "missing_data": [
+  {
+   "label_he": "סטיית CIP (3M cross-currency basis)",
+   "spec": "-28bps",
+   "reason_he": "אין מקור חינמי (Bloomberg/BIS). החוק מתועד ולא פעיל"
+  },
+  {
+   "label_he": "פער ETF חוב מול NAV (LQD/HYG)",
+   "spec": "-0.45%",
+   "reason_he": "iShares חוסם גישה אוטומטית. Yahoo מראה פרמיה ולא דיסקאונט — לא מאומת"
+  },
+  {
+   "label_he": "ISM Manufacturing Prices",
+   "spec": "77.9",
+   "reason_he": "נתוני ISM אינם בחינם"
+  },
+  {
+   "label_he": "ציפיות אינפלציה — סקר הפד של ניו יורק (SCE)",
+   "spec": "3.9%",
+   "reason_he": "קובץ אקסל של הפד של ניו יורק, עוד לא חובר"
+  },
+  {
+   "label_he": "תחזיות FOMC (Dot Plot)",
+   "spec": "16/18 צופים העלאה",
+   "reason_he": "מתפרסם רבעונית כמסמך, לא כסדרת נתונים"
+  },
+  {
+   "label_he": "מכפיל רווח עתידי S&P 500",
+   "spec": "19.1x",
+   "reason_he": "נתון של ספקים בתשלום (FactSet/LSEG)"
+  },
+  {
+   "label_he": "אורניום ספוט",
+   "spec": "סף $80/lb",
+   "reason_he": "אין מקור חינמי (UxC/TradeTech)"
+  },
+  {
+   "label_he": "Hyperscaler CapEx",
+   "spec": "סף $700B",
+   "reason_he": "דורש איסוף מדוחות החברות"
+  },
+  {
+   "label_he": "פרמיית מלחמה / מדד סיכון גיאופוליטי",
+   "spec": "> $20/bbl",
+   "reason_he": "לא נמדד ישירות. מדד GPR האקדמי אפשרי — עוד לא חובר"
+  },
+  {
+   "label_he": "BDC Non-Accrual",
+   "spec": "סף 2.5%",
+   "reason_he": "אין מקור מרוכז חינמי"
+  },
+  {
+   "label_he": "מחיר דלק סילוני",
+   "spec": "+20%",
+   "reason_he": "זמין אצל EIA — עוד לא אומת"
+  },
+  {
+   "label_he": "פרמיית סיכון לטווח (מודל ACM)",
+   "spec": "0.98%",
+   "reason_he": "במערכת מודל Kim-Wright של הפד (1.07%). ACM בקובץ של הפד של ניו יורק"
+  }
+ ],
+ "v5": {
+  "version": "5.0.0-shadow",
+  "status": "shadow",
+  "as_of": "23/10/2026",
+  "regime": {
+   "code": "R4",
+   "column": "R4",
+   "sub_state": "סוף מחזור",
+   "infl": 3.01,
+   "gap": 0.26,
+   "infl_band": {
+    "up": 2.15,
+    "down": 1.85
+   },
+   "gap_band": {
+    "up": 0.25,
+    "down": -0.25
+   },
+   "infl_in_band": false,
+   "gap_in_band": false,
+   "override": false,
+   "weeks_since_flip": 102,
+   "last_flip": "08/11/2024",
+   "gl": 0.15,
+   "gl_dir": "flat",
+   "r4_cooling": false
+  },
+  "confidence": {
+   "total": 68.3,
+   "tier": "full",
+   "components": {
+    "boundary": 0.65,
+    "pillar_agreement": 0.5,
+    "persistence": 1.0,
+    "market_confirmation": 0.5,
+    "freshness": 0.96
+   },
+   "weights": {
+    "boundary": 25,
+    "pillar_agreement": 25,
+    "persistence": 20,
+    "market_confirmation": 20,
+    "freshness": 10
+   },
+   "tiers": {
+    "full": 65,
+    "half": 45
+   }
+  },
+  "pillars": [
+   {
+    "code": "G",
+    "label": "צמיחה",
+    "level": -0.06,
+    "direction": 0.17,
+    "dir": "flat",
+    "inputs": [
+     {
+      "id": "gdp_real",
+      "label": "צמיחת תוצר ריאלי",
+      "value": 2.2,
+      "z": -0.46,
+      "date": "01/04/2026"
+     },
+     {
+      "id": "indpro_yoy",
+      "label": "ייצור תעשייתי, שנתי",
+      "value": 2.245,
+      "z": 0.67,
+      "date": "01/09/2026"
+     },
+     {
+      "id": "housing",
+      "label": "התחלות בנייה",
+      "value": 1221.0,
+      "z": -0.86,
+      "date": "01/09/2026"
+     },
+     {
+      "id": "retail_yoy",
+      "label": "מכירות קמעונאיות, שנתי",
+      "value": 6.188,
+      "z": 0.69,
+      "date": "01/09/2026"
+     },
+     {
+      "id": "philly_activity",
+      "label": "סקר פילדלפיה: פעילות (במקום ISM)",
+      "value": 20.9,
+      "z": 0.42,
+      "date": "01/10/2026"
+     },
+     {
+      "id": "copper_gold",
+      "label": "יחס נחושת לזהב",
+      "value": 0.002,
+      "z": -0.84,
+      "date": "22/10/2026"
+     }
+    ],
+    "coverage": 1.0
+   },
+   {
+    "code": "I",
+    "label": "אינפלציה",
+    "level": 0.87,
+    "direction": -0.27,
+    "dir": "down",
+    "inputs": [
+     {
+      "id": "core_pce_yoy",
+      "label": "Core PCE שנתי",
+      "value": 3.008,
+      "z": 0.13,
+      "date": "01/08/2026"
+     },
+     {
+      "id": "core_pce_3m",
+      "label": "Core PCE, קצב שנתי 3 חודשים",
+      "value": 2.046,
+      "z": -0.38,
+      "date": "01/08/2026"
+     },
+     {
+      "id": "cpi_yoy",
+      "label": "CPI שנתי",
+      "value": 4.023,
+      "z": 1.07,
+      "date": "01/09/2026"
+     },
+     {
+      "id": "core_cpi_yoy",
+      "label": "CPI ליבה שנתי",
+      "value": 2.789,
+      "z": 0.0,
+      "date": "01/09/2026"
+     },
+     {
+      "id": "core_cpi_3m",
+      "label": "CPI ליבה, קצב 3 חודשים",
+      "value": 3.412,
+      "z": 0.4,
+      "date": "01/09/2026"
+     },
+     {
+      "id": "supercore_3m",
+      "label": "Supercore, קצב 3 חודשים",
+      "value": 3.255,
+      "z": 0.17,
+      "date": "01/09/2026"
+     },
+     {
+      "id": "ppi_yoy",
+      "label": "PPI שנתי",
+      "value": 6.346,
+      "z": 2.55,
+      "date": "01/09/2026"
+     },
+     {
+      "id": "core_ppi_yoy",
+      "label": "PPI ליבה שנתי",
+      "value": 5.044,
+      "z": 1.88,
+      "date": "01/09/2026"
+     },
+     {
+      "id": "philly_prices",
+      "label": "פילדלפיה: מחירים משולמים (במקום ISM)",
+      "value": 43.2,
+      "z": 0.31,
+      "date": "01/10/2026"
+     },
+     {
+      "id": "brent_3m",
+      "label": "ברנט, שינוי 3 חודשים",
+      "value": 37.177,
+      "z": 2.19,
+      "date": "16/10/2026"
+     },
+     {
+      "id": "mich",
+      "label": "ציפיות מישיגן",
+      "value": 4.6,
+      "z": 1.69,
+      "date": "01/09/2026"
+     },
+     {
+      "id": "breakeven10",
+      "label": "אינפלציה גלומה 10 שנים",
+      "value": 2.32,
+      "z": 0.4,
+      "date": "22/10/2026"
+     }
+    ],
+    "coverage": 1.0
+   },
+   {
+    "code": "L",
+    "label": "שוק העבודה",
+    "level": -0.11,
+    "direction": 0.13,
+    "dir": "flat",
+    "inputs": [
+     {
+      "id": "nfp_3m",
+      "label": "משרות חדשות, ממוצע 3 חודשים",
+      "value": 50.667,
+      "z": -1.14,
+      "date": "01/09/2026"
+     },
+     {
+      "id": "unrate_3m",
+      "label": "אבטלה, ממוצע 3 חודשים (הפוך)",
+      "value": 4.133,
+      "z": -0.03,
+      "date": "01/09/2026"
+     },
+     {
+      "id": "ahe_yoy",
+      "label": "שכר שעתי שנתי",
+      "value": 3.025,
+      "z": -0.82,
+      "date": "01/09/2026"
+     },
+     {
+      "id": "claims_4w",
+      "label": "תביעות, ממוצע 4 שבועות (הפוך)",
+      "value": 197750.0,
+      "z": 1.41,
+      "date": "17/10/2026"
+     },
+     {
+      "id": "jolts_ratio",
+      "label": "משרות פנויות למובטל",
+      "value": 1.007,
+      "z": -0.28,
+      "date": "01/08/2026"
+     },
+     {
+      "id": "sahm",
+      "label": "כלל סאם (הפוך)",
+      "value": 0.0,
+      "z": 0.2,
+      "date": "01/09/2026"
+     }
+    ],
+    "coverage": 1.0
+   },
+   {
+    "code": "P",
+    "label": "מדיניות וריביות",
+    "level": 0.84,
+    "direction": 0.11,
+    "dir": "flat",
+    "inputs": [
+     {
+      "id": "tips10",
+      "label": "ריבית ריאלית 10 שנים",
+      "value": 2.64,
+      "z": 1.27,
+      "date": "22/10/2026"
+     },
+     {
+      "id": "us2y_3m",
+      "label": "שנתיים, שינוי 3 חודשים",
+      "value": 0.28,
+      "z": 0.55,
+      "date": "22/10/2026"
+     },
+     {
+      "id": "us10y_3m",
+      "label": "10 שנים, שינוי 3 חודשים",
+      "value": 0.25,
+      "z": 0.42,
+      "date": "22/10/2026"
+     },
+     {
+      "id": "curve_10y3m",
+      "label": "עקומה 10Y-3M (הפוך: היפוך = הידוק)",
+      "value": 0.74,
+      "z": -0.25,
+      "date": "22/10/2026"
+     },
+     {
+      "id": "term_premium",
+      "label": "פרמיית טווח (Kim-Wright)",
+      "value": 0.986,
+      "z": 2.14,
+      "date": "16/10/2026"
+     },
+     {
+      "id": "mortgage",
+      "label": "משכנתא 30 שנה",
+      "value": 7.32,
+      "z": 1.19,
+      "date": "22/10/2026"
+     },
+     {
+      "id": "real_policy",
+      "label": "ריבית ריאלית: EFFR פחות Core PCE",
+      "value": 0.872,
+      "z": 0.55,
+      "date": "01/08/2026"
+     }
+    ],
+    "coverage": 1.0
+   },
+   {
+    "code": "C",
+    "label": "אשראי",
+    "level": -0.38,
+    "direction": -0.03,
+    "dir": "flat",
+    "inputs": [
+     {
+      "id": "baa_spread",
+      "label": "מרווח אשראי Baa",
+      "value": 1.46,
+      "z": -1.27,
+      "date": "22/10/2026"
+     },
+     {
+      "id": "baa_30d",
+      "label": "מרווח Baa, שינוי 30 יום",
+      "value": 0.04,
+      "z": 0.51,
+      "date": "22/10/2026"
+     }
+    ],
+    "coverage": 1.0
+   },
+   {
+    "code": "Q",
+    "label": "נזילות",
+    "level": 0.23,
+    "direction": 0.35,
+    "dir": "up",
+    "inputs": [
+     {
+      "id": "reserves",
+      "label": "יתרות בנקים (הפוך)",
+      "value": 2962607.0,
+      "z": 0.13,
+      "date": "21/10/2026"
+     },
+     {
+      "id": "sofr_effr",
+      "label": "SOFR פחות EFFR",
+      "value": 0.02,
+      "z": 1.01,
+      "date": "22/10/2026"
+     },
+     {
+      "id": "net_liquidity",
+      "label": "נזילות נטו ($T): WALCL−TGA−RRP (הפוך)",
+      "value": 5.801,
+      "z": 0.01,
+      "date": "21/10/2026"
+     },
+     {
+      "id": "net_liq_4w",
+      "label": "נזילות נטו, שינוי 4 שבועות (הפוך)",
+      "value": 0.542,
+      "z": -0.23,
+      "date": "21/10/2026"
+     }
+    ],
+    "coverage": 1.0
+   },
+   {
+    "code": "F",
+    "label": "תנאים פיננסיים",
+    "level": 0.56,
+    "direction": 0.02,
+    "dir": "flat",
+    "inputs": [
+     {
+      "id": "nfci",
+      "label": "NFCI",
+      "value": -0.496,
+      "z": 0.1,
+      "date": "16/10/2026"
+     },
+     {
+      "id": "vix",
+      "label": "VIX",
+      "value": 19.03,
+      "z": 0.41,
+      "date": "22/10/2026"
+     },
+     {
+      "id": "move",
+      "label": "MOVE",
+      "value": 106.84,
+      "z": 1.17,
+      "date": "22/10/2026"
+     },
+     {
+      "id": "spx_200",
+      "label": "S&P מול ממוצע 200 (הפוך)",
+      "value": 1.052,
+      "z": 0.22,
+      "date": "22/10/2026"
+     },
+     {
+      "id": "xly_xlp_200",
+      "label": "XLY/XLP מול ממוצע 200 (הפוך)",
+      "value": 0.922,
+      "z": 1.14,
+      "date": "22/10/2026"
+     },
+     {
+      "id": "hyg_tlt_200",
+      "label": "HYG/TLT מול ממוצע 200 (הפוך)",
+      "value": 1.008,
+      "z": 0.34,
+      "date": "22/10/2026"
+     }
+    ],
+    "coverage": 1.0
+   },
+   {
+    "code": "X",
+    "label": "דולר ומימון עולמי",
+    "level": 1.93,
+    "direction": 0.11,
+    "dir": "flat",
+    "inputs": [
+     {
+      "id": "dxy",
+      "label": "מדד הדולר",
+      "value": 101.61,
+      "z": 0.59,
+      "date": "22/10/2026"
+     },
+     {
+      "id": "dxy_3m",
+      "label": "דולר, שינוי 3 חודשים",
+      "value": 0.138,
+      "z": -0.06,
+      "date": "22/10/2026"
+     },
+     {
+      "id": "usdjpy",
+      "label": "דולר/ין",
+      "value": 158.132,
+      "z": 3.0,
+      "date": "22/10/2026"
+     },
+     {
+      "id": "jgb10",
+      "label": "אג״ח יפן 10 שנים",
+      "value": 3.05,
+      "z": 3.0,
+      "date": "01/09/2026"
+     },
+     {
+      "id": "gilt10",
+      "label": "אג״ח בריטניה 10 שנים",
+      "value": 5.242,
+      "z": 2.57,
+      "date": "01/09/2026"
+     },
+     {
+      "id": "fr_de",
+      "label": "מרווח צרפת-גרמניה",
+      "value": 1.008,
+      "z": 2.8,
+      "date": "01/09/2026"
+     },
+     {
+      "id": "ez_hicp",
+      "label": "אינפלציה באירופה",
+      "value": 3.75,
+      "z": 1.63,
+      "date": "01/09/2026"
+     }
+    ],
+    "coverage": 1.0
+   }
+  ],
+  "overlays": [
+   {
+    "code": "O1",
+    "label": "ריבית ופרמיית טווח",
+    "score": 1.24,
+    "state": "on",
+    "weight": 1.0,
+    "on_share": 0.294,
+    "effects": {
+     "ai_software": -1,
+     "biotech_small": -1,
+     "real_estate": -1,
+     "housing_transport": -1
+    }
+   },
+   {
+    "code": "O2",
+    "label": "דולר ומימון",
+    "score": 0.48,
+    "state": "off",
+    "weight": 0.0,
+    "on_share": 0.053,
+    "effects": {
+     "crypto": -1,
+     "fintech": -1,
+     "banks": -1
+    }
+   },
+   {
+    "code": "O3",
+    "label": "הלם עלויות תשומה",
+    "score": 1.38,
+    "state": "on",
+    "weight": 1.0,
+    "on_share": 0.139,
+    "effects": {
+     "discretionary": -1,
+     "housing_transport": -1
+    }
+   },
+   {
+    "code": "O4",
+    "label": "לחץ אשראי",
+    "score": -0.22,
+    "state": "off",
+    "weight": 0.0,
+    "on_share": 0.022,
+    "effects": {
+     "banks": -1,
+     "broad_index": -1
+    }
+   },
+   {
+    "code": "O5",
+    "label": "הידרדרות בעבודה",
+    "score": 0.16,
+    "state": "off",
+    "weight": 0.0,
+    "on_share": 0.396,
+    "effects": {
+     "healthcare": 1,
+     "staples": 1,
+     "utilities": 1
+    }
+   }
+  ],
+  "sectors": [
+   {
+    "id": "broad_index",
+    "label": "מדד מניות רחב",
+    "etf": "SPY",
+    "score": -1.0,
+    "base": -1,
+    "regime_score": -1.0,
+    "grade": "x",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": 0.0,
+     "rel_6_1": 0.0,
+     "above_sma": true,
+     "rank": 0.63,
+     "top_half": true,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "none",
+    "action_he": "המחיר לא מסכים: אין פוזיציה"
+   },
+   {
+    "id": "dollar",
+    "label": "דולר",
+    "etf": "DX-Y.NYB",
+    "score": 1,
+    "base": 1,
+    "regime_score": 1.0,
+    "grade": "d",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": -0.48,
+     "rel_6_1": -1.32,
+     "above_sma": true,
+     "rank": 0.59,
+     "top_half": true,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "long",
+    "action_he": "לונג על הנכס עצמו"
+   },
+   {
+    "id": "crypto",
+    "label": "קריפטו",
+    "etf": "BTC-USD",
+    "score": -1,
+    "base": -1,
+    "regime_score": -1.0,
+    "grade": "d",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": -4.17,
+     "rel_6_1": 32.35,
+     "above_sma": true,
+     "rank": 0.67,
+     "top_half": true,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "none",
+    "action_he": "המחיר לא מסכים: אין פוזיציה"
+   },
+   {
+    "id": "big_tech",
+    "label": "ענקיות טכנולוגיה ותקשורת",
+    "etf": "XLK",
+    "score": -1.0,
+    "base": -1,
+    "regime_score": -1.0,
+    "grade": "s",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": -7.82,
+     "rel_6_1": 1.01,
+     "above_sma": true,
+     "rank": 0.44,
+     "top_half": false,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "none",
+    "action_he": "המחיר לא מסכים: אין פוזיציה"
+   },
+   {
+    "id": "ai_software",
+    "label": "בינה מלאכותית ותוכנה",
+    "etf": "IGV",
+    "score": -2.0,
+    "base": -1,
+    "regime_score": -1.0,
+    "grade": "m",
+    "overlay_push": -1,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": 0.46,
+     "rel_6_1": 18.92,
+     "above_sma": true,
+     "rank": 0.78,
+     "top_half": true,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "none",
+    "action_he": "המחיר לא מסכים: אין פוזיציה"
+   },
+   {
+    "id": "semis",
+    "label": "שבבים",
+    "etf": "SOXX",
+    "score": 0.0,
+    "base": 0,
+    "regime_score": 0.0,
+    "grade": "x",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": -17.46,
+     "rel_6_1": -12.38,
+     "above_sma": false,
+     "rank": 0.15,
+     "top_half": false,
+     "veto_long": false,
+     "veto_short": true
+    },
+    "action": "neutral",
+    "action_he": "ניטרלי"
+   },
+   {
+    "id": "robotics",
+    "label": "רובוטיקה",
+    "etf": "BOTZ",
+    "score": -1,
+    "base": -1,
+    "regime_score": -1.0,
+    "grade": "a",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": -7.76,
+     "rel_6_1": -10.18,
+     "above_sma": false,
+     "rank": 0.26,
+     "top_half": false,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "short",
+    "action_he": "שורט: 1–5 מניות"
+   },
+   {
+    "id": "cyber",
+    "label": "סייבר",
+    "etf": "CIBR",
+    "score": 0.0,
+    "base": 0,
+    "regime_score": 0.0,
+    "grade": "b",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": true,
+    "note": "",
+    "gate": {
+     "rel_1m": -0.93,
+     "rel_6_1": 20.3,
+     "above_sma": true,
+     "rank": 0.74,
+     "top_half": true,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "neutral",
+    "action_he": "ניטרלי"
+   },
+   {
+    "id": "defense",
+    "label": "תעופה וביטחון",
+    "etf": "ITA",
+    "score": 1.0,
+    "base": 1,
+    "regime_score": 1.0,
+    "grade": "b",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": true,
+    "note": "",
+    "gate": {
+     "rel_1m": -1.71,
+     "rel_6_1": -15.41,
+     "above_sma": false,
+     "rank": 0.3,
+     "top_half": false,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "none",
+    "action_he": "המחיר לא מסכים: אין פוזיציה"
+   },
+   {
+    "id": "space",
+    "label": "חלל",
+    "etf": "UFO",
+    "score": -1,
+    "base": -1,
+    "regime_score": -1.0,
+    "grade": "d",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": -6.03,
+     "rel_6_1": -19.0,
+     "above_sma": false,
+     "rank": 0.19,
+     "top_half": false,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "short",
+    "action_he": "שורט: 1–5 מניות"
+   },
+   {
+    "id": "banks",
+    "label": "בנקים ופיננסים",
+    "etf": "XLF",
+    "score": -1.0,
+    "base": -1,
+    "regime_score": -1.0,
+    "grade": "s",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": 5.97,
+     "rel_6_1": -2.07,
+     "above_sma": true,
+     "rank": 0.72,
+     "top_half": true,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "none",
+    "action_he": "המחיר לא מסכים: אין פוזיציה"
+   },
+   {
+    "id": "fintech",
+    "label": "פינטק",
+    "etf": "FINX",
+    "score": -1,
+    "base": -1,
+    "regime_score": -1.0,
+    "grade": "a",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": 2.33,
+     "rel_6_1": -4.79,
+     "above_sma": false,
+     "rank": 0.61,
+     "top_half": true,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "none",
+    "action_he": "המחיר לא מסכים: אין פוזיציה"
+   },
+   {
+    "id": "industrials",
+    "label": "תעשייה ותשתיות ציבוריות",
+    "etf": "XLI",
+    "score": 0.0,
+    "base": 0,
+    "regime_score": 0.0,
+    "grade": "d",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": -1.13,
+     "rel_6_1": -8.87,
+     "above_sma": false,
+     "rank": 0.44,
+     "top_half": false,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "neutral",
+    "action_he": "ניטרלי"
+   },
+   {
+    "id": "housing_transport",
+    "label": "דיור ותחבורה",
+    "etf": "ITB",
+    "score": -1,
+    "base": -1,
+    "regime_score": -1.0,
+    "grade": "d",
+    "overlay_push": -1,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": 4.43,
+     "rel_6_1": -13.79,
+     "above_sma": false,
+     "rank": 0.46,
+     "top_half": false,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "short",
+    "action_he": "שורט: 1–5 מניות"
+   },
+   {
+    "id": "grid",
+    "label": "רשתות חשמל",
+    "etf": "GRID",
+    "score": 1.0,
+    "base": 1,
+    "regime_score": 1.0,
+    "grade": "b",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": true,
+    "note": "",
+    "gate": {
+     "rel_1m": -8.73,
+     "rel_6_1": -10.17,
+     "above_sma": false,
+     "rank": 0.24,
+     "top_half": false,
+     "veto_long": false,
+     "veto_short": true
+    },
+    "action": "none",
+    "action_he": "המחיר לא מסכים: אין פוזיציה"
+   },
+   {
+    "id": "energy",
+    "label": "אנרגיה",
+    "etf": "XLE",
+    "score": 1.0,
+    "base": 1,
+    "regime_score": 1.0,
+    "grade": "x",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "נקבע לפי O3 ולא לפי המשטר",
+    "gate": {
+     "rel_1m": 7.77,
+     "rel_6_1": 15.58,
+     "above_sma": true,
+     "rank": 0.87,
+     "top_half": true,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "long",
+    "action_he": "לונג: 1–5 מניות"
+   },
+   {
+    "id": "copper_metals",
+    "label": "נחושת ומתכות",
+    "etf": "COPX",
+    "score": 1.0,
+    "base": 1,
+    "regime_score": 1.0,
+    "grade": "m",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": -12.31,
+     "rel_6_1": -4.67,
+     "above_sma": false,
+     "rank": 0.33,
+     "top_half": false,
+     "veto_long": false,
+     "veto_short": true
+    },
+    "action": "none",
+    "action_he": "המחיר לא מסכים: אין פוזיציה"
+   },
+   {
+    "id": "nuclear",
+    "label": "גרעין ואורניום",
+    "etf": "URA",
+    "score": 1.0,
+    "base": 1,
+    "regime_score": 1.0,
+    "grade": "b",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": true,
+    "note": "",
+    "gate": {
+     "rel_1m": -13.89,
+     "rel_6_1": -19.71,
+     "above_sma": false,
+     "rank": 0.07,
+     "top_half": false,
+     "veto_long": false,
+     "veto_short": true
+    },
+    "action": "none",
+    "action_he": "המחיר לא מסכים: אין פוזיציה"
+   },
+   {
+    "id": "solar",
+    "label": "סולאר ואנרגיה נקייה",
+    "etf": "TAN",
+    "score": -1,
+    "base": -1,
+    "regime_score": -1.0,
+    "grade": "d",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": -3.99,
+     "rel_6_1": -31.47,
+     "above_sma": false,
+     "rank": 0.2,
+     "top_half": false,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "short",
+    "action_he": "שורט: 1–5 מניות"
+   },
+   {
+    "id": "gold_miners",
+    "label": "מכרות זהב",
+    "etf": "GDX",
+    "score": 1,
+    "base": 1,
+    "regime_score": 1.0,
+    "grade": "d",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": -5.82,
+     "rel_6_1": 2.56,
+     "above_sma": false,
+     "rank": 0.52,
+     "top_half": false,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "none",
+    "action_he": "המחיר לא מסכים: אין פוזיציה"
+   },
+   {
+    "id": "healthcare",
+    "label": "בריאות",
+    "etf": "XLV",
+    "score": 1.0,
+    "base": 1,
+    "regime_score": 1.0,
+    "grade": "m",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": 9.09,
+     "rel_6_1": 9.6,
+     "above_sma": true,
+     "rank": 0.89,
+     "top_half": true,
+     "veto_long": true,
+     "veto_short": false
+    },
+    "action": "wait",
+    "action_he": "מחכים לתיקון (תנועה של יותר מ-8% בחודש)"
+   },
+   {
+    "id": "biotech_large",
+    "label": "ביוטק גדול",
+    "etf": "IBB",
+    "score": 1,
+    "base": 1,
+    "regime_score": 1.0,
+    "grade": "a",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": 1.74,
+     "rel_6_1": 16.06,
+     "above_sma": true,
+     "rank": 0.78,
+     "top_half": true,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "long",
+    "action_he": "לונג: 1–5 מניות"
+   },
+   {
+    "id": "biotech_small",
+    "label": "ביוטק קטן",
+    "etf": "XBI",
+    "score": -1,
+    "base": -1,
+    "regime_score": -1.0,
+    "grade": "d",
+    "overlay_push": -1,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": -1.85,
+     "rel_6_1": 7.34,
+     "above_sma": true,
+     "rank": 0.59,
+     "top_half": true,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "none",
+    "action_he": "המחיר לא מסכים: אין פוזיציה"
+   },
+   {
+    "id": "staples",
+    "label": "צריכה בסיסית",
+    "etf": "XLP",
+    "score": 1.0,
+    "base": 1,
+    "regime_score": 1.0,
+    "grade": "s",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": 12.03,
+     "rel_6_1": -4.82,
+     "above_sma": true,
+     "rank": 0.74,
+     "top_half": true,
+     "veto_long": true,
+     "veto_short": false
+    },
+    "action": "wait",
+    "action_he": "מחכים לתיקון (תנועה של יותר מ-8% בחודש)"
+   },
+   {
+    "id": "discretionary",
+    "label": "צריכה מחזורית",
+    "etf": "XLY",
+    "score": -2.0,
+    "base": -2,
+    "regime_score": -2.0,
+    "grade": "m",
+    "overlay_push": -1,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": 5.7,
+     "rel_6_1": -9.3,
+     "above_sma": false,
+     "rank": 0.59,
+     "top_half": true,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "none",
+    "action_he": "המחיר לא מסכים: אין פוזיציה"
+   },
+   {
+    "id": "real_estate",
+    "label": "נדל\"ן",
+    "etf": "XLRE",
+    "score": -1.0,
+    "base": 0,
+    "regime_score": 0.0,
+    "grade": "x",
+    "overlay_push": -1,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": 4.53,
+     "rel_6_1": -8.21,
+     "above_sma": false,
+     "rank": 0.61,
+     "top_half": true,
+     "veto_long": false,
+     "veto_short": false
+    },
+    "action": "none",
+    "action_he": "המחיר לא מסכים: אין פוזיציה"
+   },
+   {
+    "id": "utilities",
+    "label": "תשתיות חשמל ומים",
+    "etf": "XLU",
+    "score": 0.0,
+    "base": 0,
+    "regime_score": 0.0,
+    "grade": "d",
+    "overlay_push": 0.0,
+    "conflict": false,
+    "size": 1.0,
+    "structural": false,
+    "note": "",
+    "gate": {
+     "rel_1m": 8.04,
+     "rel_6_1": -12.69,
+     "above_sma": false,
+     "rank": 0.57,
+     "top_half": false,
+     "veto_long": true,
+     "veto_short": false
+    },
+    "action": "neutral",
+    "action_he": "ניטרלי"
+   }
+  ],
+  "failures": {},
+  "backtest": {
+   "generated": "2026-10-17T19:27:19",
+   "window": [
+    "2003-01",
+    "2026-10"
+   ],
+   "split": "2019-01",
+   "method_he": "בכל תחילת חודש מ-2003: המנוע רץ רק על נתונים שפורסמו עד אותו יום (גרסאות ALFRED לנתונים שמתעדכנים בדיעבד). כל שורה בציון 1+ ומעלה היא קריאת 'יעקוף', ובציון 1- ומטה 'יפגר'. התוצאה נמדדת מול סל שווה משקל של שורות המניות, ב-20 וב-63 ימי מסחר. כל שכבה נבדקה פעם אחת עם ספי ברירת המחדל של המפרט, בלי כיוונון.",
+   "trials": 5,
+   "variants": {
+    "A_plain": {
+     "rows_20d": {
+      "all": {
+       "n": 3683,
+       "hits": 1955,
+       "rate": 53.1,
+       "ci95": [
+        51.5,
+        54.7
+       ],
+       "edge": 0.2
+      },
+      "dev": {
+       "n": 1802,
+       "hits": 959,
+       "rate": 53.2,
+       "ci95": [
+        50.9,
+        55.5
+       ],
+       "edge": 0.23
+      },
+      "holdout": {
+       "n": 1881,
+       "hits": 996,
+       "rate": 53.0,
+       "ci95": [
+        50.7,
+        55.2
+       ],
+       "edge": 0.17
+      }
+     },
+     "basket_20d": {
+      "all": {
+       "n": 188,
+       "hits": 101,
+       "rate": 53.7,
+       "ci95": [
+        46.6,
+        60.7
+       ],
+       "edge": 0.31
+      },
+      "dev": {
+       "n": 95,
+       "hits": 49,
+       "rate": 51.6,
+       "ci95": [
+        41.7,
+        61.4
+       ],
+       "edge": 0.26
+      },
+      "holdout": {
+       "n": 93,
+       "hits": 52,
+       "rate": 55.9,
+       "ci95": [
+        45.8,
+        65.6
+       ],
+       "edge": 0.36
+      }
+     },
+     "basket_63d": {
+      "all": {
+       "n": 187,
+       "hits": 112,
+       "rate": 59.9,
+       "ci95": [
+        52.7,
+        66.7
+       ],
+       "edge": 1.27
+      },
+      "dev": {
+       "n": 95,
+       "hits": 58,
+       "rate": 61.1,
+       "ci95": [
+        51.0,
+        70.2
+       ],
+       "edge": 0.91
+      },
+      "holdout": {
+       "n": 92,
+       "hits": 54,
+       "rate": 58.7,
+       "ci95": [
+        48.5,
+        68.2
+       ],
+       "edge": 1.65
+      }
+     },
+     "by_regime_20d": {
+      "R1": {
+       "n": 1544,
+       "hits": 818,
+       "rate": 53.0,
+       "ci95": [
+        50.5,
+        55.5
+       ],
+       "edge": 0.24
+      },
+      "R2": {
+       "n": 207,
+       "hits": 114,
+       "rate": 55.1,
+       "ci95": [
+        48.3,
+        61.7
+       ],
+       "edge": 0.14
+      },
+      "R3": {
+       "n": 887,
+       "hits": 481,
+       "rate": 54.2,
+       "ci95": [
+        50.9,
+        57.5
+       ],
+       "edge": 0.35
+      },
+      "R4": {
+       "n": 1045,
+       "hits": 542,
+       "rate": 51.9,
+       "ci95": [
+        48.8,
+        54.9
+       ],
+       "edge": 0.03
+      }
+     },
+     "label_he": "משטר פשוט + מטריצה"
+    },
+    "B_bands": {
+     "rows_20d": {
+      "all": {
+       "n": 3193,
+       "hits": 1659,
+       "rate": 52.0,
+       "ci95": [
+        50.2,
+        53.7
+       ],
+       "edge": 0.12
+      },
+      "dev": {
+       "n": 1475,
+       "hits": 785,
+       "rate": 53.2,
+       "ci95": [
+        50.7,
+        55.8
+       ],
+       "edge": 0.33
+      },
+      "holdout": {
+       "n": 1718,
+       "hits": 874,
+       "rate": 50.9,
+       "ci95": [
+        48.5,
+        53.2
+       ],
+       "edge": -0.06
+      }
+     },
+     "basket_20d": {
+      "all": {
+       "n": 182,
+       "hits": 96,
+       "rate": 52.7,
+       "ci95": [
+        45.5,
+        59.9
+       ],
+       "edge": 0.12
+      },
+      "dev": {
+       "n": 90,
+       "hits": 49,
+       "rate": 54.4,
+       "ci95": [
+        44.2,
+        64.3
+       ],
+       "edge": 0.44
+      },
+      "holdout": {
+       "n": 92,
+       "hits": 47,
+       "rate": 51.1,
+       "ci95": [
+        41.0,
+        61.1
+       ],
+       "edge": -0.2
+      }
+     },
+     "basket_63d": {
+      "all": {
+       "n": 181,
+       "hits": 102,
+       "rate": 56.4,
+       "ci95": [
+        49.1,
+        63.4
+       ],
+       "edge": 0.5
+      },
+      "dev": {
+       "n": 90,
+       "hits": 57,
+       "rate": 63.3,
+       "ci95": [
+        53.0,
+        72.6
+       ],
+       "edge": 1.52
+      },
+      "holdout": {
+       "n": 91,
+       "hits": 45,
+       "rate": 49.5,
+       "ci95": [
+        39.4,
+        59.5
+       ],
+       "edge": -0.51
+      }
+     },
+     "by_regime_20d": {
+      "R1": {
+       "n": 1536,
+       "hits": 780,
+       "rate": 50.8,
+       "ci95": [
+        48.3,
+        53.3
+       ],
+       "edge": 0.09
+      },
+      "R2": {
+       "n": 233,
+       "hits": 124,
+       "rate": 53.2,
+       "ci95": [
+        46.8,
+        59.5
+       ],
+       "edge": -0.01
+      },
+      "R3": {
+       "n": 491,
+       "hits": 264,
+       "rate": 53.8,
+       "ci95": [
+        49.3,
+        58.1
+       ],
+       "edge": 0.31
+      },
+      "R4": {
+       "n": 933,
+       "hits": 491,
+       "rate": 52.6,
+       "ci95": [
+        49.4,
+        55.8
+       ],
+       "edge": 0.1
+      }
+     },
+     "label_he": "+ רצועות, התמדה ותת־משטר"
+    },
+    "C_overlays": {
+     "rows_20d": {
+      "all": {
+       "n": 3122,
+       "hits": 1628,
+       "rate": 52.1,
+       "ci95": [
+        50.4,
+        53.9
+       ],
+       "edge": 0.14
+      },
+      "dev": {
+       "n": 1379,
+       "hits": 737,
+       "rate": 53.4,
+       "ci95": [
+        50.8,
+        56.1
+       ],
+       "edge": 0.38
+      },
+      "holdout": {
+       "n": 1743,
+       "hits": 891,
+       "rate": 51.1,
+       "ci95": [
+        48.8,
+        53.5
+       ],
+       "edge": -0.05
+      }
+     },
+     "basket_20d": {
+      "all": {
+       "n": 183,
+       "hits": 97,
+       "rate": 53.0,
+       "ci95": [
+        45.8,
+        60.1
+       ],
+       "edge": 0.16
+      },
+      "dev": {
+       "n": 90,
+       "hits": 49,
+       "rate": 54.4,
+       "ci95": [
+        44.2,
+        64.3
+       ],
+       "edge": 0.44
+      },
+      "holdout": {
+       "n": 93,
+       "hits": 48,
+       "rate": 51.6,
+       "ci95": [
+        41.6,
+        61.5
+       ],
+       "edge": -0.12
+      }
+     },
+     "basket_63d": {
+      "all": {
+       "n": 182,
+       "hits": 102,
+       "rate": 56.0,
+       "ci95": [
+        48.8,
+        63.1
+       ],
+       "edge": 0.5
+      },
+      "dev": {
+       "n": 90,
+       "hits": 54,
+       "rate": 60.0,
+       "ci95": [
+        49.7,
+        69.5
+       ],
+       "edge": 1.24
+      },
+      "holdout": {
+       "n": 92,
+       "hits": 48,
+       "rate": 52.2,
+       "ci95": [
+        42.1,
+        62.1
+       ],
+       "edge": -0.23
+      }
+     },
+     "by_regime_20d": {
+      "R1": {
+       "n": 1455,
+       "hits": 741,
+       "rate": 50.9,
+       "ci95": [
+        48.4,
+        53.5
+       ],
+       "edge": 0.12
+      },
+      "R2": {
+       "n": 233,
+       "hits": 125,
+       "rate": 53.6,
+       "ci95": [
+        47.2,
+        59.9
+       ],
+       "edge": 0.03
+      },
+      "R3": {
+       "n": 473,
+       "hits": 253,
+       "rate": 53.5,
+       "ci95": [
+        49.0,
+        57.9
+       ],
+       "edge": 0.31
+      },
+      "R4": {
+       "n": 961,
+       "hits": 509,
+       "rate": 53.0,
+       "ci95": [
+        49.8,
+        56.1
+       ],
+       "edge": 0.11
+      }
+     },
+     "label_he": "+ שכבות סיכון"
+    },
+    "D_confidence": {
+     "rows_20d": {
+      "all": {
+       "n": 2630,
+       "hits": 1370,
+       "rate": 52.1,
+       "ci95": [
+        50.2,
+        54.0
+       ],
+       "edge": 0.15
+      },
+      "dev": {
+       "n": 1240,
+       "hits": 660,
+       "rate": 53.2,
+       "ci95": [
+        50.4,
+        56.0
+       ],
+       "edge": 0.36
+      },
+      "holdout": {
+       "n": 1390,
+       "hits": 710,
+       "rate": 51.1,
+       "ci95": [
+        48.5,
+        53.7
+       ],
+       "edge": -0.04
+      }
+     },
+     "basket_20d": {
+      "all": {
+       "n": 176,
+       "hits": 92,
+       "rate": 52.3,
+       "ci95": [
+        44.9,
+        59.5
+       ],
+       "edge": 0.2
+      },
+      "dev": {
+       "n": 87,
+       "hits": 49,
+       "rate": 56.3,
+       "ci95": [
+        45.9,
+        66.3
+       ],
+       "edge": 0.63
+      },
+      "holdout": {
+       "n": 89,
+       "hits": 43,
+       "rate": 48.3,
+       "ci95": [
+        38.2,
+        58.5
+       ],
+       "edge": -0.23
+      }
+     },
+     "basket_63d": {
+      "all": {
+       "n": 175,
+       "hits": 91,
+       "rate": 52.0,
+       "ci95": [
+        44.6,
+        59.3
+       ],
+       "edge": 0.34
+      },
+      "dev": {
+       "n": 87,
+       "hits": 50,
+       "rate": 57.5,
+       "ci95": [
+        47.0,
+        67.3
+       ],
+       "edge": 1.26
+      },
+      "holdout": {
+       "n": 88,
+       "hits": 41,
+       "rate": 46.6,
+       "ci95": [
+        36.5,
+        56.9
+       ],
+       "edge": -0.57
+      }
+     },
+     "by_regime_20d": {
+      "R1": {
+       "n": 1267,
+       "hits": 635,
+       "rate": 50.1,
+       "ci95": [
+        47.4,
+        52.9
+       ],
+       "edge": 0.07
+      },
+      "R2": {
+       "n": 119,
+       "hits": 64,
+       "rate": 53.8,
+       "ci95": [
+        44.8,
+        62.5
+       ],
+       "edge": 0.19
+      },
+      "R3": {
+       "n": 466,
+       "hits": 250,
+       "rate": 53.6,
+       "ci95": [
+        49.1,
+        58.1
+       ],
+       "edge": 0.32
+      },
+      "R4": {
+       "n": 778,
+       "hits": 421,
+       "rate": 54.1,
+       "ci95": [
+        50.6,
+        57.6
+       ],
+       "edge": 0.17
+      }
+     },
+     "label_he": "+ ציון ביטחון"
+    },
+    "E_price_gate": {
+     "rows_20d": {
+      "all": {
+       "n": 990,
+       "hits": 522,
+       "rate": 52.7,
+       "ci95": [
+        49.6,
+        55.8
+       ],
+       "edge": 0.13
+      },
+      "dev": {
+       "n": 558,
+       "hits": 303,
+       "rate": 54.3,
+       "ci95": [
+        50.2,
+        58.4
+       ],
+       "edge": 0.26
+      },
+      "holdout": {
+       "n": 432,
+       "hits": 219,
+       "rate": 50.7,
+       "ci95": [
+        46.0,
+        55.4
+       ],
+       "edge": -0.04
+      }
+     },
+     "basket_20d": {
+      "all": {
+       "n": 102,
+       "hits": 53,
+       "rate": 52.0,
+       "ci95": [
+        42.4,
+        61.4
+       ],
+       "edge": -0.05
+      },
+      "dev": {
+       "n": 47,
+       "hits": 27,
+       "rate": 57.4,
+       "ci95": [
+        43.3,
+        70.5
+       ],
+       "edge": 0.25
+      },
+      "holdout": {
+       "n": 55,
+       "hits": 26,
+       "rate": 47.3,
+       "ci95": [
+        34.7,
+        60.2
+       ],
+       "edge": -0.3
+      }
+     },
+     "basket_63d": {
+      "all": {
+       "n": 101,
+       "hits": 52,
+       "rate": 51.5,
+       "ci95": [
+        41.9,
+        61.0
+       ],
+       "edge": -0.27
+      },
+      "dev": {
+       "n": 47,
+       "hits": 28,
+       "rate": 59.6,
+       "ci95": [
+        45.3,
+        72.4
+       ],
+       "edge": 0.06
+      },
+      "holdout": {
+       "n": 54,
+       "hits": 24,
+       "rate": 44.4,
+       "ci95": [
+        32.0,
+        57.6
+       ],
+       "edge": -0.55
+      }
+     },
+     "by_regime_20d": {
+      "R1": {
+       "n": 472,
+       "hits": 247,
+       "rate": 52.3,
+       "ci95": [
+        47.8,
+        56.8
+       ],
+       "edge": 0.12
+      },
+      "R2": {
+       "n": 40,
+       "hits": 18,
+       "rate": 45.0,
+       "ci95": [
+        30.7,
+        60.2
+       ],
+       "edge": -0.61
+      },
+      "R3": {
+       "n": 236,
+       "hits": 130,
+       "rate": 55.1,
+       "ci95": [
+        48.7,
+        61.3
+       ],
+       "edge": 0.35
+      },
+      "R4": {
+       "n": 242,
+       "hits": 127,
+       "rate": 52.5,
+       "ci95": [
+        46.2,
+        58.7
+       ],
+       "edge": 0.05
+      }
+     },
+     "label_he": "+ תנאי מחיר"
+    }
+   },
+   "by_row_20d": [
+    {
+     "row": "fintech",
+     "label": "פינטק",
+     "n": 75,
+     "hits": 50,
+     "rate": 66.7,
+     "ci95": [
+      55.4,
+      76.3
+     ],
+     "edge": 0.82
+    },
+    {
+     "row": "real_estate",
+     "label": "נדל\"ן",
+     "n": 110,
+     "hits": 69,
+     "rate": 62.7,
+     "ci95": [
+      53.4,
+      71.2
+     ],
+     "edge": 0.83
+    },
+    {
+     "row": "biotech_small",
+     "label": "ביוטק קטן",
+     "n": 121,
+     "hits": 75,
+     "rate": 62.0,
+     "ci95": [
+      53.1,
+      70.1
+     ],
+     "edge": 0.72
+    },
+    {
+     "row": "big_tech",
+     "label": "ענקיות טכנולוגיה ותקשורת",
+     "n": 146,
+     "hits": 87,
+     "rate": 59.6,
+     "ci95": [
+      51.5,
+      67.2
+     ],
+     "edge": 0.07
+    },
+    {
+     "row": "space",
+     "label": "חלל",
+     "n": 59,
+     "hits": 35,
+     "rate": 59.3,
+     "ci95": [
+      46.6,
+      70.9
+     ],
+     "edge": 0.59
+    },
+    {
+     "row": "biotech_large",
+     "label": "ביוטק גדול",
+     "n": 81,
+     "hits": 48,
+     "rate": 59.3,
+     "ci95": [
+      48.4,
+      69.3
+     ],
+     "edge": 1.05
+    },
+    {
+     "row": "ai_software",
+     "label": "בינה מלאכותית ותוכנה",
+     "n": 138,
+     "hits": 79,
+     "rate": 57.2,
+     "ci95": [
+      48.9,
+      65.2
+     ],
+     "edge": 0.29
+    },
+    {
+     "row": "defense",
+     "label": "תעופה וביטחון",
+     "n": 29,
+     "hits": 16,
+     "rate": 55.2,
+     "ci95": [
+      37.5,
+      71.6
+     ],
+     "edge": 0.04
+    },
+    {
+     "row": "discretionary",
+     "label": "צריכה מחזורית",
+     "n": 159,
+     "hits": 86,
+     "rate": 54.1,
+     "ci95": [
+      46.3,
+      61.6
+     ],
+     "edge": 0.31
+    },
+    {
+     "row": "solar",
+     "label": "סולאר ואנרגיה נקייה",
+     "n": 121,
+     "hits": 64,
+     "rate": 52.9,
+     "ci95": [
+      44.0,
+      61.6
+     ],
+     "edge": 0.82
+    },
+    {
+     "row": "semis",
+     "label": "שבבים",
+     "n": 86,
+     "hits": 45,
+     "rate": 52.3,
+     "ci95": [
+      41.9,
+      62.6
+     ],
+     "edge": 0.3
+    },
+    {
+     "row": "cyber",
+     "label": "סייבר",
+     "n": 41,
+     "hits": 21,
+     "rate": 51.2,
+     "ci95": [
+      36.5,
+      65.7
+     ],
+     "edge": 0.53
+    },
+    {
+     "row": "industrials",
+     "label": "תעשייה ותשתיות ציבוריות",
+     "n": 113,
+     "hits": 57,
+     "rate": 50.4,
+     "ci95": [
+      41.4,
+      59.5
+     ],
+     "edge": 0.0
+    },
+    {
+     "row": "broad_index",
+     "label": "מדד מניות רחב",
+     "n": 169,
+     "hits": 85,
+     "rate": 50.3,
+     "ci95": [
+      42.8,
+      57.7
+     ],
+     "edge": 0.05
+    },
+    {
+     "row": "grid",
+     "label": "רשתות חשמל",
+     "n": 14,
+     "hits": 7,
+     "rate": 50.0,
+     "ci95": [
+      26.8,
+      73.2
+     ],
+     "edge": 0.15
+    },
+    {
+     "row": "gold_miners",
+     "label": "מכרות זהב",
+     "n": 60,
+     "hits": 30,
+     "rate": 50.0,
+     "ci95": [
+      37.7,
+      62.3
+     ],
+     "edge": 0.28
+    },
+    {
+     "row": "housing_transport",
+     "label": "דיור ותחבורה",
+     "n": 119,
+     "hits": 59,
+     "rate": 49.6,
+     "ci95": [
+      40.8,
+      58.4
+     ],
+     "edge": -0.53
+    },
+    {
+     "row": "dollar",
+     "label": "דולר",
+     "n": 93,
+     "hits": 46,
+     "rate": 49.5,
+     "ci95": [
+      39.5,
+      59.4
+     ],
+     "edge": -0.06
+    },
+    {
+     "row": "copper_metals",
+     "label": "נחושת ומתכות",
+     "n": 105,
+     "hits": 50,
+     "rate": 47.6,
+     "ci95": [
+      38.3,
+      57.1
+     ],
+     "edge": -0.92
+    },
+    {
+     "row": "staples",
+     "label": "צריכה בסיסית",
+     "n": 160,
+     "hits": 76,
+     "rate": 47.5,
+     "ci95": [
+      39.9,
+      55.2
+     ],
+     "edge": -0.21
+    },
+    {
+     "row": "crypto",
+     "label": "קריפטו",
+     "n": 78,
+     "hits": 37,
+     "rate": 47.4,
+     "ci95": [
+      36.7,
+      58.4
+     ],
+     "edge": 0.48
+    },
+    {
+     "row": "banks",
+     "label": "בנקים ופיננסים",
+     "n": 152,
+     "hits": 71,
+     "rate": 46.7,
+     "ci95": [
+      39.0,
+      54.6
+     ],
+     "edge": 0.09
+    },
+    {
+     "row": "utilities",
+     "label": "תשתיות חשמל ומים",
+     "n": 144,
+     "hits": 66,
+     "rate": 45.8,
+     "ci95": [
+      37.9,
+      54.0
+     ],
+     "edge": -0.25
+    },
+    {
+     "row": "robotics",
+     "label": "רובוטיקה",
+     "n": 76,
+     "hits": 34,
+     "rate": 44.7,
+     "ci95": [
+      34.1,
+      55.9
+     ],
+     "edge": -0.15
+    },
+    {
+     "row": "energy",
+     "label": "אנרגיה",
+     "n": 23,
+     "hits": 10,
+     "rate": 43.5,
+     "ci95": [
+      25.6,
+      63.2
+     ],
+     "edge": 0.84
+    },
+    {
+     "row": "healthcare",
+     "label": "בריאות",
+     "n": 158,
+     "hits": 67,
+     "rate": 42.4,
+     "ci95": [
+      35.0,
+      50.2
+     ],
+     "edge": -0.42
+    },
+    {
+     "row": "nuclear",
+     "label": "גרעין ואורניום",
+     "n": 0,
+     "hits": 0,
+     "rate": null,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "edge": null
+    }
+   ],
+   "confidence_tiers_20d": {
+    "full": {
+     "n": 2247,
+     "hits": 1177,
+     "rate": 52.4,
+     "ci95": [
+      50.3,
+      54.4
+     ],
+     "edge": 0.17
+    },
+    "half": {
+     "n": 875,
+     "hits": 451,
+     "rate": 51.5,
+     "ci95": [
+      48.2,
+      54.8
+     ],
+     "edge": 0.07
+    },
+    "abstain": {
+     "n": 0,
+     "hits": 0,
+     "rate": null,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "edge": null
+    }
+   },
+   "regime": {
+    "months": {
+     "R1": 93,
+     "R4": 52,
+     "R3": 33,
+     "R2": 11
+    },
+    "flips": 8,
+    "flips_reversed_within_3m": 0
+   },
+   "overlays": {
+    "O1": {
+     "on_share": 0.148,
+     "target": [
+      0.1,
+      0.25
+     ]
+    },
+    "O2": {
+     "on_share": 0.049,
+     "target": [
+      0.1,
+      0.25
+     ]
+    },
+    "O3": {
+     "on_share": 0.136,
+     "target": [
+      0.1,
+      0.25
+     ]
+    },
+    "O4": {
+     "on_share": 0.052,
+     "target": [
+      0.1,
+      0.25
+     ]
+    },
+    "O5": {
+     "on_share": 0.403,
+     "target": [
+      0.1,
+      0.25
+     ]
+    }
+   },
+   "not_done_he": [
+    "PBO / CPCV ו-DSR (סעיף 6.6) עוד לא מחושבים",
+    "ETF NAV discount, ISM, LEI, China PMI: אין מקור חינמי",
+    "מרווחי ICE BofA: רק 3 שנים ב-FRED, הוחלפו במרווח Baa"
+   ]
+  }
+ },
+ "scorecard": {
+  "horizon_days": 21,
+  "regime": "R4",
+  "history": {
+   "generated": "2026-10-17T17:35:26",
+   "window": [
+    "2016-10",
+    "2026-10"
+   ],
+   "horizon_days": 21,
+   "method_he": "בכל תחילת חודש: מצב הכלכלה נקבע רק מנתונים שכבר פורסמו באותו יום, ההמלצה נלקחת מהמטריצה, ונבדק אם תעודת הסל המייצגת עשתה יותר (הגדלה) או פחות (הקטנה) מ-SPY ב-21 ימי המסחר הבאים, כולל דיבידנדים.",
+   "regime_months": {
+    "R4": 58,
+    "R3": 34,
+    "R1": 18,
+    "R2": 11
+   },
+   "overall": {
+    "n": 1968,
+    "hits": 1049,
+    "rate": 53.3,
+    "ci95": [
+     51.1,
+     55.5
+    ],
+    "edge": 0.39
+   },
+   "by_side": {
+    "down": {
+     "n": 639,
+     "hits": 374,
+     "rate": 58.5,
+     "ci95": [
+      54.7,
+      62.3
+     ],
+     "edge": 0.48
+    },
+    "up": {
+     "n": 1329,
+     "hits": 675,
+     "rate": 50.8,
+     "ci95": [
+      48.1,
+      53.5
+     ],
+     "edge": 0.34
+    }
+   },
+   "by_regime": {
+    "R1": {
+     "n": 317,
+     "hits": 175,
+     "rate": 55.2,
+     "ci95": [
+      49.7,
+      60.6
+     ],
+     "edge": 0.6
+    },
+    "R2": {
+     "n": 209,
+     "hits": 109,
+     "rate": 52.2,
+     "ci95": [
+      45.4,
+      58.8
+     ],
+     "edge": 0.41
+    },
+    "R3": {
+     "n": 590,
+     "hits": 299,
+     "rate": 50.7,
+     "ci95": [
+      46.7,
+      54.7
+     ],
+     "edge": -0.05
+    },
+    "R4": {
+     "n": 852,
+     "hits": 466,
+     "rate": 54.7,
+     "ci95": [
+      51.3,
+      58.0
+     ],
+     "edge": 0.6
+    }
+   },
+   "by_category": [
+    {
+     "category": "big_tech",
+     "label": "ענקיות טכנולוגיה",
+     "n": 63,
+     "hits": 40,
+     "rate": 63.5,
+     "ci95": [
+      51.1,
+      74.3
+     ],
+     "edge": 0.66
+    },
+    {
+     "category": "market_indexes",
+     "label": "מדדי מניות רחבים",
+     "n": 86,
+     "hits": 53,
+     "rate": 61.6,
+     "ci95": [
+      51.1,
+      71.2
+     ],
+     "edge": 0.72
+    },
+    {
+     "category": "fintech_crypto",
+     "label": "פינטק וקריפטו",
+     "n": 120,
+     "hits": 73,
+     "rate": 60.8,
+     "ci95": [
+      51.9,
+      69.1
+     ],
+     "edge": 1.1
+    },
+    {
+     "category": "consumer_staples",
+     "label": "צריכה בסיסית",
+     "n": 63,
+     "hits": 37,
+     "rate": 58.7,
+     "ci95": [
+      46.4,
+      70.0
+     ],
+     "edge": 0.69
+    },
+    {
+     "category": "biotech",
+     "label": "ביוטק",
+     "n": 120,
+     "hits": 68,
+     "rate": 56.7,
+     "ci95": [
+      47.7,
+      65.2
+     ],
+     "edge": 0.62
+    },
+    {
+     "category": "power_grid",
+     "label": "רשתות חשמל",
+     "n": 120,
+     "hits": 67,
+     "rate": 55.8,
+     "ci95": [
+      46.9,
+      64.4
+     ],
+     "edge": 0.23
+    },
+    {
+     "category": "consumer_discretionary",
+     "label": "צריכה מחזורית",
+     "n": 120,
+     "hits": 67,
+     "rate": 55.8,
+     "ci95": [
+      46.9,
+      64.4
+     ],
+     "edge": 0.43
+    },
+    {
+     "category": "ai_software",
+     "label": "בינה מלאכותית ותוכנה",
+     "n": 120,
+     "hits": 64,
+     "rate": 53.3,
+     "ci95": [
+      44.4,
+      62.0
+     ],
+     "edge": 0.29
+    },
+    {
+     "category": "semiconductors",
+     "label": "שבבים",
+     "n": 120,
+     "hits": 64,
+     "rate": 53.3,
+     "ci95": [
+      44.4,
+      62.0
+     ],
+     "edge": 0.74
+    },
+    {
+     "category": "metals_clean_energy",
+     "label": "מתכות ואנרגיה נקייה",
+     "n": 109,
+     "hits": 58,
+     "rate": 53.2,
+     "ci95": [
+      43.9,
+      62.3
+     ],
+     "edge": 0.65
+    },
+    {
+     "category": "aerospace_defense",
+     "label": "תעופה וביטחון",
+     "n": 102,
+     "hits": 54,
+     "rate": 52.9,
+     "ci95": [
+      43.3,
+      62.3
+     ],
+     "edge": -0.17
+    },
+    {
+     "category": "industry_infra",
+     "label": "תעשייה ותשתיות",
+     "n": 63,
+     "hits": 33,
+     "rate": 52.4,
+     "ci95": [
+      40.3,
+      64.2
+     ],
+     "edge": 0.06
+    },
+    {
+     "category": "traditional_finance",
+     "label": "בנקים ופיננסים",
+     "n": 63,
+     "hits": 32,
+     "rate": 50.8,
+     "ci95": [
+      38.8,
+      62.7
+     ],
+     "edge": 0.61
+    },
+    {
+     "category": "real_estate_utilities",
+     "label": "נדל\"ן ותשתיות ציבוריות",
+     "n": 120,
+     "hits": 61,
+     "rate": 50.8,
+     "ci95": [
+      42.0,
+      59.6
+     ],
+     "edge": 0.05
+    },
+    {
+     "category": "space",
+     "label": "חלל",
+     "n": 88,
+     "hits": 44,
+     "rate": 50.0,
+     "ci95": [
+      39.8,
+      60.2
+     ],
+     "edge": -0.19
+    },
+    {
+     "category": "cybersecurity",
+     "label": "סייבר",
+     "n": 120,
+     "hits": 59,
+     "rate": 49.2,
+     "ci95": [
+      40.4,
+      58.0
+     ],
+     "edge": 0.37
+    },
+    {
+     "category": "traditional_energy",
+     "label": "אנרגיה",
+     "n": 86,
+     "hits": 42,
+     "rate": 48.8,
+     "ci95": [
+      38.6,
+      59.2
+     ],
+     "edge": 0.77
+    },
+    {
+     "category": "precious_metals",
+     "label": "מכרות זהב",
+     "n": 102,
+     "hits": 49,
+     "rate": 48.0,
+     "ci95": [
+      38.6,
+      57.6
+     ],
+     "edge": 0.29
+    },
+    {
+     "category": "robotics",
+     "label": "רובוטיקה",
+     "n": 63,
+     "hits": 30,
+     "rate": 47.6,
+     "ci95": [
+      35.8,
+      59.7
+     ],
+     "edge": 0.04
+    },
+    {
+     "category": "healthcare",
+     "label": "בריאות ופארמה",
+     "n": 120,
+     "hits": 54,
+     "rate": 45.0,
+     "ci95": [
+      36.4,
+      53.9
+     ],
+     "edge": -0.19
+    }
+   ],
+   "long_short": {
+    "periods": 120,
+    "mean": 0.74,
+    "positive": 56.7
+   },
+   "halves": {
+    "first": {
+     "from": "2016-10",
+     "to": "2021-09",
+     "n": 1044,
+     "hits": 535,
+     "rate": 51.2,
+     "ci95": [
+      48.2,
+      54.3
+     ],
+     "edge": 0.13
+    },
+    "second": {
+     "from": "2021-10",
+     "to": "2026-09",
+     "n": 924,
+     "hits": 514,
+     "rate": 55.6,
+     "ci95": [
+      52.4,
+      58.8
+     ],
+     "edge": 0.68
+    }
+   },
+   "permutation_p": 0.022
+  },
+  "live": {
+   "since": "2026-10-15",
+   "scored": 0,
+   "pending": 120,
+   "next_due": "2026-10-15",
+   "overall": null,
+   "by_regime": {},
+   "by_category": [],
+   "long_short": null,
+   "recent": []
+  },
+  "current": [
+   {
+    "category": "market_indexes",
+    "label": "מדדי מניות רחבים",
+    "ticker": "IWM",
+    "stance": "UW",
+    "direction": -1,
+    "history": {
+     "n": 57,
+     "hits": 36,
+     "rate": 63.2,
+     "ci95": [
+      50.2,
+      74.5
+     ],
+     "edge": 0.54
+    }
+   },
+   {
+    "category": "ai_software",
+    "label": "בינה מלאכותית ותוכנה",
+    "ticker": "IGV",
+    "stance": "UW",
+    "direction": -1,
+    "history": {
+     "n": 57,
+     "hits": 28,
+     "rate": 49.1,
+     "ci95": [
+      36.6,
+      61.7
+     ],
+     "edge": -0.32
+    }
+   },
+   {
+    "category": "semiconductors",
+    "label": "שבבים",
+    "ticker": "SOXX",
+    "stance": "N+",
+    "direction": 1,
+    "history": {
+     "n": 57,
+     "hits": 29,
+     "rate": 50.9,
+     "ci95": [
+      38.3,
+      63.4
+     ],
+     "edge": 1.6
+    }
+   },
+   {
+    "category": "cybersecurity",
+    "label": "סייבר",
+    "ticker": "CIBR",
+    "stance": "N+",
+    "direction": 1,
+    "history": {
+     "n": 57,
+     "hits": 31,
+     "rate": 54.4,
+     "ci95": [
+      41.6,
+      66.6
+     ],
+     "edge": 0.87
+    }
+   },
+   {
+    "category": "aerospace_defense",
+    "label": "תעופה וביטחון",
+    "ticker": "ITA",
+    "stance": "OW",
+    "direction": 1,
+    "history": {
+     "n": 57,
+     "hits": 32,
+     "rate": 56.1,
+     "ci95": [
+      43.3,
+      68.2
+     ],
+     "edge": 0.28
+    }
+   },
+   {
+    "category": "space",
+    "label": "חלל",
+    "ticker": "UFO",
+    "stance": "UW",
+    "direction": -1,
+    "history": {
+     "n": 54,
+     "hits": 30,
+     "rate": 55.6,
+     "ci95": [
+      42.4,
+      68.0
+     ],
+     "edge": 0.04
+    }
+   },
+   {
+    "category": "fintech_crypto",
+    "label": "פינטק וקריפטו",
+    "ticker": "FINX",
+    "stance": "UW",
+    "direction": -1,
+    "history": {
+     "n": 57,
+     "hits": 37,
+     "rate": 64.9,
+     "ci95": [
+      51.9,
+      76.0
+     ],
+     "edge": 1.22
+    }
+   },
+   {
+    "category": "power_grid",
+    "label": "רשתות חשמל",
+    "ticker": "GRID",
+    "stance": "OW",
+    "direction": 1,
+    "history": {
+     "n": 57,
+     "hits": 29,
+     "rate": 50.9,
+     "ci95": [
+      38.3,
+      63.4
+     ],
+     "edge": -0.09
+    }
+   },
+   {
+    "category": "traditional_energy",
+    "label": "אנרגיה",
+    "ticker": "XLE",
+    "stance": "OW",
+    "direction": 1,
+    "history": {
+     "n": 57,
+     "hits": 26,
+     "rate": 45.6,
+     "ci95": [
+      33.4,
+      58.4
+     ],
+     "edge": 0.85
+    }
+   },
+   {
+    "category": "metals_clean_energy",
+    "label": "מתכות ואנרגיה נקייה",
+    "ticker": "XME",
+    "stance": "OW",
+    "direction": 1,
+    "history": {
+     "n": 57,
+     "hits": 33,
+     "rate": 57.9,
+     "ci95": [
+      45.0,
+      69.8
+     ],
+     "edge": 1.18
+    }
+   },
+   {
+    "category": "precious_metals",
+    "label": "מכרות זהב",
+    "ticker": "GDX",
+    "stance": "OW",
+    "direction": 1,
+    "history": {
+     "n": 57,
+     "hits": 26,
+     "rate": 45.6,
+     "ci95": [
+      33.4,
+      58.4
+     ],
+     "edge": 1.27
+    }
+   },
+   {
+    "category": "healthcare",
+    "label": "בריאות ופארמה",
+    "ticker": "XLV",
+    "stance": "OW",
+    "direction": 1,
+    "history": {
+     "n": 57,
+     "hits": 23,
+     "rate": 40.4,
+     "ci95": [
+      28.6,
+      53.3
+     ],
+     "edge": -0.69
+    }
+   },
+   {
+    "category": "biotech",
+    "label": "ביוטק",
+    "ticker": "XBI",
+    "stance": "UW",
+    "direction": -1,
+    "history": {
+     "n": 57,
+     "hits": 34,
+     "rate": 59.6,
+     "ci95": [
+      46.7,
+      71.4
+     ],
+     "edge": 0.48
+    }
+   },
+   {
+    "category": "consumer_discretionary",
+    "label": "צריכה מחזורית",
+    "ticker": "XLY",
+    "stance": "UW",
+    "direction": -1,
+    "history": {
+     "n": 57,
+     "hits": 35,
+     "rate": 61.4,
+     "ci95": [
+      48.4,
+      72.9
+     ],
+     "edge": 0.71
+    }
+   },
+   {
+    "category": "real_estate_utilities",
+    "label": "נדל\"ן ותשתיות ציבוריות",
+    "ticker": "VNQ",
+    "stance": "UW",
+    "direction": -1,
+    "history": {
+     "n": 57,
+     "hits": 37,
+     "rate": 64.9,
+     "ci95": [
+      51.9,
+      76.0
+     ],
+     "edge": 1.06
+    }
+   }
+  ]
+ }
+}
