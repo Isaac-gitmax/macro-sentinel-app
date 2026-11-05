@@ -1,12 +1,12 @@
 {
  "meta": {
   "version": "4.14.0",
-  "generated_at": "2026-11-05T06:58:09+00:00",
+  "generated_at": "2026-11-05T14:18:32+00:00",
   "market_date": "04/11/2026",
   "market_open": false,
-  "market_phase": "closed",
-  "slot": "morning",
-  "ny_time": "05/11 01:58"
+  "market_phase": "pre",
+  "slot": "premarket",
+  "ny_time": "05/11 09:18"
  },
  "regime": {
   "code": "R4",
@@ -161,7 +161,7 @@
    "signal": "claims_k",
    "label_he": "תביעות אבטלה",
    "unit": "K",
-   "value": 194.0,
+   "value": 189.0,
    "change_value": null,
    "signed": false,
    "estimate": false
@@ -622,7 +622,7 @@
      "signal": "claims_k",
      "unit": "K",
      "label": "תביעות ראשוניות לדמי אבטלה",
-     "value": 194.0,
+     "value": 189.0,
      "estimate": false,
      "signed": false
     },
@@ -1541,42 +1541,6 @@
     "used": "fred:CES0500000003",
     "detail": "01/09/2026: fred:CES0500000003 37.81 מול bls:CES0500000003 37.81 (סטייה 0%)",
     "errors": {}
-   },
-   {
-    "label": "בנזין",
-    "primary": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "detail": "02/11/2026: fred:GASREGW 4.153 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.153 (סטייה 0%)",
-    "errors": {}
-   },
-   {
-    "label": "ברנט פיזי",
-    "primary": "fred:DCOILBRENTEU",
-    "sources": [
-     "fred:DCOILBRENTEU",
-     "eia:petroleum/pri/spt:RBRTE:daily"
-    ],
-    "status": "consensus",
-    "used": "fred:DCOILBRENTEU",
-    "detail": "03/11/2026: fred:DCOILBRENTEU 107.03 מול eia:petroleum/pri/spt:RBRTE:daily 107.03 (סטייה 0%)",
-    "errors": {}
-   },
-   {
-    "label": "WTI פיזי",
-    "primary": "fred:DCOILWTICO",
-    "sources": [
-     "fred:DCOILWTICO",
-     "eia:petroleum/pri/spt:RWTC:daily"
-    ],
-    "status": "consensus",
-    "used": "fred:DCOILWTICO",
-    "detail": "03/11/2026: fred:DCOILWTICO 99.64 מול eia:petroleum/pri/spt:RWTC:daily 99.64 (סטייה 0%)",
-    "errors": {}
    }
   ]
  },
@@ -1834,8 +1798,8 @@
    "publisher": "הפד של ניו יורק",
    "group": "ריבית ואג״ח",
    "id": "EFFR",
-   "date": "03/11/2026",
-   "age_days": 2,
+   "date": "04/11/2026",
+   "age_days": 1,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2108,8 +2072,8 @@
    "publisher": "הפד של ניו יורק",
    "group": "ריבית ואג״ח",
    "id": "EFFR",
-   "date": "03/11/2026",
-   "age_days": 2,
+   "date": "04/11/2026",
+   "age_days": 1,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2534,7 +2498,7 @@
    }
   },
   "claims_k": {
-   "value": 194.0,
+   "value": 189.0,
    "label": "תביעות ראשוניות לדמי אבטלה",
    "estimate": false,
    "signed": false,
@@ -2542,8 +2506,8 @@
    "publisher": "משרד העבודה האמריקאי",
    "group": "תעסוקה",
    "id": "ICSA",
-   "date": "24/10/2026",
-   "age_days": 12,
+   "date": "31/10/2026",
+   "age_days": 5,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2700,13 +2664,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "detail": "02/11/2026: fred:GASREGW 4.153 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.153 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "gasoline_yoy": {
@@ -2723,13 +2681,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "detail": "02/11/2026: fred:GASREGW 4.153 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.153 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "us30y_level": {
@@ -2814,13 +2766,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:DCOILBRENTEU",
-    "sources": [
-     "fred:DCOILBRENTEU",
-     "eia:petroleum/pri/spt:RBRTE:daily"
-    ],
-    "detail": "03/11/2026: fred:DCOILBRENTEU 107.03 מול eia:petroleum/pri/spt:RBRTE:daily 107.03 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "wti_spot": {
@@ -2837,13 +2783,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:DCOILWTICO",
-    "sources": [
-     "fred:DCOILWTICO",
-     "eia:petroleum/pri/spt:RWTC:daily"
-    ],
-    "detail": "03/11/2026: fred:DCOILWTICO 99.64 מול eia:petroleum/pri/spt:RWTC:daily 99.64 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "ppi_pce_spread": {
@@ -3918,8 +3858,8 @@
      {
       "id": "claims_4w",
       "label": "תביעות, ממוצע 4 שבועות (הפוך)",
-      "value": 196750.0,
-      "z": 1.47,
+      "value": 197000.0,
+      "z": 1.46,
       "date": "24/10/2026"
      },
      {
@@ -4227,7 +4167,7 @@
    {
     "code": "O5",
     "label": "הידרדרות בעבודה",
-    "score": 0.18,
+    "score": 0.17,
     "state": "off",
     "weight": 0.0,
     "on_share": 0.396,
