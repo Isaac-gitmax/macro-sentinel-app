@@ -1,12 +1,12 @@
 {
  "meta": {
   "version": "4.14.0",
-  "generated_at": "2026-11-06T06:57:32+00:00",
+  "generated_at": "2026-11-06T14:10:42+00:00",
   "market_date": "05/11/2026",
   "market_open": false,
-  "market_phase": "closed",
-  "slot": "morning",
-  "ny_time": "06/11 01:57"
+  "market_phase": "pre",
+  "slot": "premarket",
+  "ny_time": "06/11 09:10"
  },
  "regime": {
   "code": "R4",
@@ -28,13 +28,13 @@
    {
     "signal": "output_gap_proxy",
     "label": "פרוקסי פער תוצר (NROU-UNRATE)",
-    "value": 0.1884,
+    "value": 0.2884,
     "op": ">",
     "threshold": 0.0,
     "passed": true
    }
   ],
-  "margin": 0.1884
+  "margin": 0.2884
  },
  "regime_missing": [],
  "summary": {
@@ -42,7 +42,7 @@
   "bottom_line": "הכלכלה מעל הפוטנציאל והאינפלציה מעל היעד. הפד צפוי להישאר נוקשה, ואג\"ח ארוך ומניות צמיחה בלחץ.",
   "overweight": "תעופה וביטחון, רשתות חשמל, אנרגיה, מתכות ואנרגיה נקייה (חלקית), מכרות זהב, בריאות ופארמה",
   "underweight": "מדדי מניות רחבים (חלקית), בינה מלאכותית ותוכנה, חלל, פינטק וקריפטו, ביוטק (חלקית), צריכה מחזורית, נדל\"ן ותשתיות ציבוריות",
-  "fragility": "פער תוצר <code>+0.19</code>, במרחק <code>0.19</code> בלבד מהסף <code>0</code>. שינוי קטן יחליף את מצב הכלכלה."
+  "fragility": "פער תוצר <code>+0.29</code>, במרחק <code>0.29</code> בלבד מהסף <code>0</code>. שינוי קטן יחליף את מצב הכלכלה."
  },
  "kpis": [
   {
@@ -62,8 +62,8 @@
    "change": "unrate_chg_1m",
    "change_unit": "",
    "change_label": "חודש",
-   "value": 4.2,
-   "change_value": 0.1,
+   "value": 4.1,
+   "change_value": -0.1,
    "signed": false,
    "estimate": false
   },
@@ -232,7 +232,7 @@
      "signal": "taylor_rate",
      "unit": "%",
      "label": "ריבית לפי כלל טיילור",
-     "value": 4.8702,
+     "value": 4.9702,
      "estimate": true,
      "signed": false
     },
@@ -240,7 +240,7 @@
      "signal": "taylor_gap",
      "unit": "pp",
      "label": "פער ריבית הפד מכלל טיילור",
-     "value": -0.9902,
+     "value": -1.0902,
      "estimate": true,
      "signed": true
     },
@@ -593,7 +593,7 @@
      "signal": "ahe_yoy",
      "unit": "%",
      "label": "שכר שעתי ממוצע",
-     "value": 3.0245,
+     "value": null,
      "estimate": false,
      "signed": true
     },
@@ -630,7 +630,7 @@
      "signal": "unrate_level",
      "unit": "%",
      "label": "שיעור אבטלה",
-     "value": 4.2,
+     "value": 4.1,
      "estimate": false,
      "signed": false
     },
@@ -638,7 +638,7 @@
      "signal": "unrate_chg_1m",
      "unit": "pp",
      "label": "שינוי חודשי באבטלה",
-     "value": 0.1,
+     "value": -0.1,
      "estimate": false,
      "signed": true
     },
@@ -646,7 +646,7 @@
      "signal": "payems_chg_1m",
      "unit": "K",
      "label": "משרות חדשות (NFP)",
-     "value": 29.0,
+     "value": null,
      "estimate": false,
      "signed": true
     },
@@ -662,7 +662,7 @@
      "signal": "output_gap_proxy",
      "unit": "pp",
      "label": "פרוקסי פער תוצר (NROU-UNRATE)",
-     "value": 0.1884,
+     "value": 0.2884,
      "estimate": true,
      "signed": true
     },
@@ -689,8 +689,8 @@
   "התשואות ירדו <code>-15.20bp</code> בשבוע: בריחה לאיכות או ציפייה להורדות.",
   "ברנט <code>$98.29</code>, בטווח <code>$80-100</code>: לחץ מתון על המרווחים.",
   "מרווחי <code>HY</code> התרחבו <code>+29.00bp</code> בחודש (<code>3.32%</code>).",
-  "האבטלה עלתה ל-<code>4.20%</code> (<code>+0.10</code>): הקלט הרגיש ביותר לרג'ים.",
-  "<code>SPX</code> <code>-4.75%</code> בשבוע: לחץ מכירות."
+  "<code>SPX</code> <code>-4.75%</code> בשבוע: לחץ מכירות.",
+  "מדד הפחד <code>28.18</code>: לחץ חריף בשוק."
  ],
  "alerts": [
   {
@@ -851,6 +851,26 @@
      "value": 158.357,
      "op": ">",
      "threshold": 158.0,
+     "passed": true
+    }
+   ]
+  },
+  {
+   "name": "rule_policy_behind_curve",
+   "short_he": "הפד מקל מדי ביחס לכלל טיילור",
+   "header_he": "ℹ️ <b>[מעקב] הפד מאחורי העקומה — ריבית נמוכה מכלל טיילור</b>",
+   "severity": "info",
+   "kind": "state",
+   "edge": false,
+   "synthesis_he": "ריבית הפד האפקטיבית נמוכה ביותר מ-<code>1pp</code> מהריבית שכלל טיילור מחייב לפי אינפלציית הליבה ופער התוצר. המדיניות מקילה מדי ביחס לכלל, והסיכון הוא אינפלציה עיקשת או תמחור מחדש ניצי בשוק האג\"ח.",
+   "risk_he": "להיזהר מאג\"ח ארוך ומצמיחה בעלת מח\"מ ארוך. החישוב מניח ריבית טבעית <code>r*=1%</code> — שינוי בהנחה משנה את התוצאה.",
+   "evidence": [
+    {
+     "signal": "taylor_gap",
+     "label": "פער ריבית הפד מכלל טיילור",
+     "value": -1.0902,
+     "op": "<",
+     "threshold": -1.0,
      "passed": true
     }
    ]
@@ -1361,7 +1381,10 @@
    "XLU",
    "^MOVE"
   ],
-  "failures": {},
+  "failures": {
+   "payems_chg_1m": "sources disagree — 01/09/2026: fred:PAYEMS 159044 מול bls:CES0000000001 159128 (סטייה 0.0528%)",
+   "ahe_yoy": "sources disagree — 01/09/2026: fred:CES0500000003 37.81 מול bls:CES0500000003 37.86 (סטייה 0.132%)"
+  },
   "redundancy": [
    {
     "label": "Core PCE",
@@ -1407,7 +1430,7 @@
      "bls:LNS14000000"
     ],
     "status": "consensus",
-    "used": "fred:UNRATE",
+    "used": "bls:LNS14000000",
     "detail": "01/09/2026: fred:UNRATE 4.2 מול bls:LNS14000000 4.2 (סטייה 0)",
     "errors": {}
    },
@@ -1418,9 +1441,9 @@
      "fred:PAYEMS",
      "bls:CES0000000001"
     ],
-    "status": "consensus",
-    "used": "fred:PAYEMS",
-    "detail": "01/09/2026: fred:PAYEMS 159044 מול bls:CES0000000001 159044 (סטייה 0%)",
+    "status": "diverged",
+    "used": "",
+    "detail": "01/09/2026: fred:PAYEMS 159044 מול bls:CES0000000001 159128 (סטייה 0.0528%)",
     "errors": {}
    },
    {
@@ -1538,45 +1561,9 @@
      "fred:CES0500000003",
      "bls:CES0500000003"
     ],
-    "status": "consensus",
-    "used": "fred:CES0500000003",
-    "detail": "01/09/2026: fred:CES0500000003 37.81 מול bls:CES0500000003 37.81 (סטייה 0%)",
-    "errors": {}
-   },
-   {
-    "label": "בנזין",
-    "primary": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "detail": "02/11/2026: fred:GASREGW 4.153 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.153 (סטייה 0%)",
-    "errors": {}
-   },
-   {
-    "label": "ברנט פיזי",
-    "primary": "fred:DCOILBRENTEU",
-    "sources": [
-     "fred:DCOILBRENTEU",
-     "eia:petroleum/pri/spt:RBRTE:daily"
-    ],
-    "status": "consensus",
-    "used": "fred:DCOILBRENTEU",
-    "detail": "03/11/2026: fred:DCOILBRENTEU 107.03 מול eia:petroleum/pri/spt:RBRTE:daily 107.03 (סטייה 0%)",
-    "errors": {}
-   },
-   {
-    "label": "WTI פיזי",
-    "primary": "fred:DCOILWTICO",
-    "sources": [
-     "fred:DCOILWTICO",
-     "eia:petroleum/pri/spt:RWTC:daily"
-    ],
-    "status": "consensus",
-    "used": "fred:DCOILWTICO",
-    "detail": "03/11/2026: fred:DCOILWTICO 99.64 מול eia:petroleum/pri/spt:RWTC:daily 99.64 (סטייה 0%)",
+    "status": "diverged",
+    "used": "",
+    "detail": "01/09/2026: fred:CES0500000003 37.81 מול bls:CES0500000003 37.86 (סטייה 0.132%)",
     "errors": {}
    }
   ]
@@ -1835,8 +1822,8 @@
    "publisher": "הפד של ניו יורק",
    "group": "ריבית ואג״ח",
    "id": "EFFR",
-   "date": "04/11/2026",
-   "age_days": 2,
+   "date": "05/11/2026",
+   "age_days": 1,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1873,7 +1860,7 @@
    }
   },
   "unrate_level": {
-   "value": 4.2,
+   "value": 4.1,
    "label": "שיעור אבטלה",
    "estimate": false,
    "signed": false,
@@ -1881,13 +1868,13 @@
    "publisher": "BLS",
    "group": "תעסוקה",
    "id": "UNRATE",
-   "date": "01/09/2026",
-   "age_days": 66,
+   "date": "01/10/2026",
+   "age_days": 36,
    "status": "official",
    "reason": "",
    "redundancy": {
     "status": "consensus",
-    "used": "fred:UNRATE",
+    "used": "bls:LNS14000000",
     "sources": [
      "fred:UNRATE",
      "bls:LNS14000000"
@@ -1896,7 +1883,7 @@
    }
   },
   "unrate_chg_1m": {
-   "value": 0.1,
+   "value": -0.1,
    "label": "שינוי חודשי באבטלה",
    "estimate": false,
    "signed": true,
@@ -1904,13 +1891,13 @@
    "publisher": "BLS",
    "group": "תעסוקה",
    "id": "UNRATE",
-   "date": "01/09/2026",
-   "age_days": 66,
+   "date": "01/10/2026",
+   "age_days": 36,
    "status": "official",
    "reason": "",
    "redundancy": {
     "status": "consensus",
-    "used": "fred:UNRATE",
+    "used": "bls:LNS14000000",
     "sources": [
      "fred:UNRATE",
      "bls:LNS14000000"
@@ -1919,26 +1906,26 @@
    }
   },
   "payems_chg_1m": {
-   "value": 29.0,
+   "value": null,
    "label": "משרות חדשות (NFP)",
    "estimate": false,
    "signed": true,
-   "source": "FRED",
+   "source": "fred",
    "publisher": "BLS",
    "group": "תעסוקה",
    "id": "PAYEMS",
-   "date": "01/09/2026",
-   "age_days": 66,
-   "status": "official",
-   "reason": "",
+   "date": "",
+   "age_days": null,
+   "status": "missing",
+   "reason": "sources disagree — 01/09/2026: fred:PAYEMS 159044 מול bls:CES0000000001 159128 (סטייה 0.0528%)",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:PAYEMS",
+    "status": "diverged",
+    "used": "",
     "sources": [
      "fred:PAYEMS",
      "bls:CES0000000001"
     ],
-    "detail": "01/09/2026: fred:PAYEMS 159044 מול bls:CES0000000001 159044 (סטייה 0%)"
+    "detail": "01/09/2026: fred:PAYEMS 159044 מול bls:CES0000000001 159128 (סטייה 0.0528%)"
    }
   },
   "retail_yoy": {
@@ -2109,8 +2096,8 @@
    "publisher": "הפד של ניו יורק",
    "group": "ריבית ואג״ח",
    "id": "EFFR",
-   "date": "04/11/2026",
-   "age_days": 2,
+   "date": "05/11/2026",
+   "age_days": 1,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2512,26 +2499,26 @@
    }
   },
   "ahe_yoy": {
-   "value": 3.0245,
+   "value": null,
    "label": "שכר שעתי ממוצע",
    "estimate": false,
    "signed": true,
-   "source": "FRED",
+   "source": "fred",
    "publisher": "BLS",
    "group": "תעסוקה",
    "id": "CES0500000003",
-   "date": "01/09/2026",
-   "age_days": 66,
-   "status": "official",
-   "reason": "",
+   "date": "",
+   "age_days": null,
+   "status": "missing",
+   "reason": "sources disagree — 01/09/2026: fred:CES0500000003 37.81 מול bls:CES0500000003 37.86 (סטייה 0.132%)",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:CES0500000003",
+    "status": "diverged",
+    "used": "",
     "sources": [
      "fred:CES0500000003",
      "bls:CES0500000003"
     ],
-    "detail": "01/09/2026: fred:CES0500000003 37.81 מול bls:CES0500000003 37.81 (סטייה 0%)"
+    "detail": "01/09/2026: fred:CES0500000003 37.81 מול bls:CES0500000003 37.86 (סטייה 0.132%)"
    }
   },
   "claims_k": {
@@ -2701,13 +2688,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "detail": "02/11/2026: fred:GASREGW 4.153 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.153 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "gasoline_yoy": {
@@ -2724,13 +2705,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "detail": "02/11/2026: fred:GASREGW 4.153 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.153 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "us30y_level": {
@@ -2815,13 +2790,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:DCOILBRENTEU",
-    "sources": [
-     "fred:DCOILBRENTEU",
-     "eia:petroleum/pri/spt:RBRTE:daily"
-    ],
-    "detail": "03/11/2026: fred:DCOILBRENTEU 107.03 מול eia:petroleum/pri/spt:RBRTE:daily 107.03 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "wti_spot": {
@@ -2838,13 +2807,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:DCOILWTICO",
-    "sources": [
-     "fred:DCOILWTICO",
-     "eia:petroleum/pri/spt:RWTC:daily"
-    ],
-    "detail": "03/11/2026: fred:DCOILWTICO 99.64 מול eia:petroleum/pri/spt:RWTC:daily 99.64 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "ppi_pce_spread": {
@@ -2865,7 +2828,7 @@
    }
   },
   "output_gap_proxy": {
-   "value": 0.1884,
+   "value": 0.2884,
    "label": "פרוקסי פער תוצר (NROU-UNRATE)",
    "estimate": true,
    "signed": true,
@@ -2873,8 +2836,8 @@
    "publisher": "נגזר",
    "group": "מודלים ונגזרים",
    "id": "nrou_level+unrate_level",
-   "date": "01/09/2026",
-   "age_days": 66,
+   "date": "01/10/2026",
+   "age_days": 36,
    "status": "estimate",
    "reason": "",
    "redundancy": {
@@ -2899,7 +2862,7 @@
    }
   },
   "taylor_rate": {
-   "value": 4.8702,
+   "value": 4.9702,
    "label": "ריבית לפי כלל טיילור",
    "estimate": true,
    "signed": false,
@@ -2916,7 +2879,7 @@
    }
   },
   "taylor_gap": {
-   "value": -0.9902,
+   "value": -1.0902,
    "label": "פער ריבית הפד מכלל טיילור",
    "estimate": true,
    "signed": true,
@@ -4026,8 +3989,8 @@
    {
     "code": "Q",
     "label": "נזילות",
-    "level": 0.78,
-    "direction": 0.39,
+    "level": 0.61,
+    "direction": 0.38,
     "dir": "up",
     "inputs": [
      {
@@ -4040,9 +4003,9 @@
      {
       "id": "sofr_effr",
       "label": "SOFR פחות EFFR",
-      "value": 0.06,
-      "z": 2.36,
-      "date": "04/11/2026"
+      "value": 0.04,
+      "z": 1.69,
+      "date": "05/11/2026"
      },
      {
       "id": "net_liquidity",
@@ -4257,7 +4220,7 @@
      "rel_1m": 0.0,
      "rel_6_1": 0.0,
      "above_sma": false,
-     "rank": 0.54,
+     "rank": 0.56,
      "top_half": true,
      "veto_long": false,
      "veto_short": false
@@ -4304,10 +4267,10 @@
     "structural": false,
     "note": "",
     "gate": {
-     "rel_1m": 2.91,
+     "rel_1m": -2.52,
      "rel_6_1": 29.71,
      "above_sma": true,
-     "rank": 0.76,
+     "rank": 0.67,
      "top_half": true,
      "veto_long": false,
      "veto_short": false
@@ -4433,7 +4396,7 @@
      "rel_6_1": 10.3,
      "above_sma": false,
      "rank": 0.54,
-     "top_half": true,
+     "top_half": false,
      "veto_long": false,
      "veto_short": false
     },
@@ -4482,7 +4445,7 @@
      "rel_1m": -1.97,
      "rel_6_1": -24.91,
      "above_sma": false,
-     "rank": 0.22,
+     "rank": 0.24,
      "top_half": false,
      "veto_long": false,
      "veto_short": false
@@ -4532,7 +4495,7 @@
      "rel_1m": 1.73,
      "rel_6_1": -6.07,
      "above_sma": false,
-     "rank": 0.48,
+     "rank": 0.5,
      "top_half": false,
      "veto_long": false,
      "veto_short": false
@@ -4557,7 +4520,7 @@
      "rel_1m": 1.8,
      "rel_6_1": -12.35,
      "above_sma": false,
-     "rank": 0.39,
+     "rank": 0.41,
      "top_half": false,
      "veto_long": false,
      "veto_short": false
@@ -4632,7 +4595,7 @@
      "rel_1m": -2.38,
      "rel_6_1": 21.93,
      "above_sma": true,
-     "rank": 0.65,
+     "rank": 0.67,
      "top_half": true,
      "veto_long": false,
      "veto_short": false
