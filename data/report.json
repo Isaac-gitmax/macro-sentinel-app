@@ -1,12 +1,12 @@
 {
  "meta": {
   "version": "4.14.0",
-  "generated_at": "2026-11-10T06:52:11+00:00",
+  "generated_at": "2026-11-10T14:08:01+00:00",
   "market_date": "09/11/2026",
   "market_open": false,
-  "market_phase": "closed",
-  "slot": "morning",
-  "ny_time": "10/11 01:52"
+  "market_phase": "pre",
+  "slot": "premarket",
+  "ny_time": "10/11 09:08"
  },
  "regime": {
   "code": "R4",
@@ -152,8 +152,8 @@
    "change": "cpi_mom",
    "change_unit": "%",
    "change_label": "חודש",
-   "value": 4.0015,
-   "change_value": 0.6485,
+   "value": 3.9135,
+   "change_value": 0.3503,
    "signed": true,
    "estimate": false
   },
@@ -537,7 +537,7 @@
      "signal": "cpi_yoy",
      "unit": "%",
      "label": "מדד המחירים לצרכן (CPI)",
-     "value": 4.0015,
+     "value": 3.9135,
      "estimate": false,
      "signed": true
     },
@@ -545,7 +545,7 @@
      "signal": "cpi_mom",
      "unit": "%",
      "label": "CPI — שינוי חודשי",
-     "value": 0.6485,
+     "value": 0.3503,
      "estimate": false,
      "signed": true
     },
@@ -553,7 +553,7 @@
      "signal": "core_cpi_yoy",
      "unit": "%",
      "label": "CPI ליבה",
-     "value": 2.8236,
+     "value": 2.756,
      "estimate": false,
      "signed": true
     },
@@ -561,7 +561,7 @@
      "signal": "core_cpi_mom",
      "unit": "%",
      "label": "CPI ליבה — שינוי חודשי",
-     "value": 0.3348,
+     "value": 0.2963,
      "estimate": false,
      "signed": true
     },
@@ -1468,7 +1468,7 @@
      "bls:CUUR0000SA0"
     ],
     "status": "consensus",
-    "used": "fred:CPIAUCNS",
+    "used": "bls:CUUR0000SA0",
     "detail": "01/09/2026: fred:CPIAUCNS 336.94 מול bls:CUUR0000SA0 336.94 (סטייה 0%)",
     "errors": {}
    },
@@ -1480,7 +1480,7 @@
      "bls:CUSR0000SA0"
     ],
     "status": "consensus",
-    "used": "fred:CPIAUCSL",
+    "used": "bls:CUSR0000SA0",
     "detail": "01/09/2026: fred:CPIAUCSL 336.298 מול bls:CUSR0000SA0 336.298 (סטייה 0%)",
     "errors": {}
    },
@@ -1492,7 +1492,7 @@
      "bls:CUUR0000SA0L1E"
     ],
     "status": "consensus",
-    "used": "fred:CPILFENS",
+    "used": "bls:CUUR0000SA0L1E",
     "detail": "01/09/2026: fred:CPILFENS 339.287 מול bls:CUUR0000SA0L1E 339.287 (סטייה 0%)",
     "errors": {}
    },
@@ -1504,7 +1504,7 @@
      "bls:CUSR0000SA0L1E"
     ],
     "status": "consensus",
-    "used": "fred:CPILFESL",
+    "used": "bls:CUSR0000SA0L1E",
     "detail": "01/09/2026: fred:CPILFESL 338.896 מול bls:CUSR0000SA0L1E 338.896 (סטייה 0%)",
     "errors": {}
    },
@@ -1530,42 +1530,6 @@
     "status": "consensus",
     "used": "fred:CES0500000003",
     "detail": "01/10/2026: fred:CES0500000003 38 מול bls:CES0500000003 38 (סטייה 0%)",
-    "errors": {}
-   },
-   {
-    "label": "בנזין",
-    "primary": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "detail": "02/11/2026: fred:GASREGW 4.153 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.153 (סטייה 0%)",
-    "errors": {}
-   },
-   {
-    "label": "ברנט פיזי",
-    "primary": "fred:DCOILBRENTEU",
-    "sources": [
-     "fred:DCOILBRENTEU",
-     "eia:petroleum/pri/spt:RBRTE:daily"
-    ],
-    "status": "consensus",
-    "used": "fred:DCOILBRENTEU",
-    "detail": "03/11/2026: fred:DCOILBRENTEU 107.03 מול eia:petroleum/pri/spt:RBRTE:daily 107.03 (סטייה 0%)",
-    "errors": {}
-   },
-   {
-    "label": "WTI פיזי",
-    "primary": "fred:DCOILWTICO",
-    "sources": [
-     "fred:DCOILWTICO",
-     "eia:petroleum/pri/spt:RWTC:daily"
-    ],
-    "status": "consensus",
-    "used": "fred:DCOILWTICO",
-    "detail": "03/11/2026: fred:DCOILWTICO 99.64 מול eia:petroleum/pri/spt:RWTC:daily 99.64 (סטייה 0%)",
     "errors": {}
    }
   ]
@@ -1824,8 +1788,8 @@
    "publisher": "הפד של ניו יורק",
    "group": "ריבית ואג״ח",
    "id": "EFFR",
-   "date": "06/11/2026",
-   "age_days": 4,
+   "date": "09/11/2026",
+   "age_days": 1,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2098,8 +2062,8 @@
    "publisher": "הפד של ניו יורק",
    "group": "ריבית ואג״ח",
    "id": "EFFR",
-   "date": "06/11/2026",
-   "age_days": 4,
+   "date": "09/11/2026",
+   "age_days": 1,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2386,7 +2350,7 @@
    }
   },
   "cpi_yoy": {
-   "value": 4.0015,
+   "value": 3.9135,
    "label": "מדד המחירים לצרכן (CPI)",
    "estimate": false,
    "signed": true,
@@ -2394,13 +2358,13 @@
    "publisher": "BLS",
    "group": "אינפלציה",
    "id": "CPIAUCNS",
-   "date": "01/09/2026",
-   "age_days": 70,
+   "date": "01/10/2026",
+   "age_days": 40,
    "status": "official",
    "reason": "",
    "redundancy": {
     "status": "consensus",
-    "used": "fred:CPIAUCNS",
+    "used": "bls:CUUR0000SA0",
     "sources": [
      "fred:CPIAUCNS",
      "bls:CUUR0000SA0"
@@ -2409,7 +2373,7 @@
    }
   },
   "cpi_mom": {
-   "value": 0.6485,
+   "value": 0.3503,
    "label": "CPI — שינוי חודשי",
    "estimate": false,
    "signed": true,
@@ -2417,13 +2381,13 @@
    "publisher": "BLS",
    "group": "אינפלציה",
    "id": "CPIAUCSL",
-   "date": "01/09/2026",
-   "age_days": 70,
+   "date": "01/10/2026",
+   "age_days": 40,
    "status": "official",
    "reason": "",
    "redundancy": {
     "status": "consensus",
-    "used": "fred:CPIAUCSL",
+    "used": "bls:CUSR0000SA0",
     "sources": [
      "fred:CPIAUCSL",
      "bls:CUSR0000SA0"
@@ -2432,7 +2396,7 @@
    }
   },
   "core_cpi_yoy": {
-   "value": 2.8236,
+   "value": 2.756,
    "label": "CPI ליבה",
    "estimate": false,
    "signed": true,
@@ -2440,13 +2404,13 @@
    "publisher": "BLS",
    "group": "אינפלציה",
    "id": "CPILFENS",
-   "date": "01/09/2026",
-   "age_days": 70,
+   "date": "01/10/2026",
+   "age_days": 40,
    "status": "official",
    "reason": "",
    "redundancy": {
     "status": "consensus",
-    "used": "fred:CPILFENS",
+    "used": "bls:CUUR0000SA0L1E",
     "sources": [
      "fred:CPILFENS",
      "bls:CUUR0000SA0L1E"
@@ -2455,7 +2419,7 @@
    }
   },
   "core_cpi_mom": {
-   "value": 0.3348,
+   "value": 0.2963,
    "label": "CPI ליבה — שינוי חודשי",
    "estimate": false,
    "signed": true,
@@ -2463,13 +2427,13 @@
    "publisher": "BLS",
    "group": "אינפלציה",
    "id": "CPILFESL",
-   "date": "01/09/2026",
-   "age_days": 70,
+   "date": "01/10/2026",
+   "age_days": 40,
    "status": "official",
    "reason": "",
    "redundancy": {
     "status": "consensus",
-    "used": "fred:CPILFESL",
+    "used": "bls:CUSR0000SA0L1E",
     "sources": [
      "fred:CPILFESL",
      "bls:CUSR0000SA0L1E"
@@ -2690,13 +2654,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "detail": "02/11/2026: fred:GASREGW 4.153 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.153 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "gasoline_yoy": {
@@ -2713,13 +2671,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "detail": "02/11/2026: fred:GASREGW 4.153 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 4.153 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "us30y_level": {
@@ -2804,13 +2756,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:DCOILBRENTEU",
-    "sources": [
-     "fred:DCOILBRENTEU",
-     "eia:petroleum/pri/spt:RBRTE:daily"
-    ],
-    "detail": "03/11/2026: fred:DCOILBRENTEU 107.03 מול eia:petroleum/pri/spt:RBRTE:daily 107.03 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "wti_spot": {
@@ -2827,13 +2773,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:DCOILWTICO",
-    "sources": [
-     "fred:DCOILWTICO",
-     "eia:petroleum/pri/spt:RWTC:daily"
-    ],
-    "detail": "03/11/2026: fred:DCOILWTICO 99.64 מול eia:petroleum/pri/spt:RWTC:daily 99.64 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "ppi_pce_spread": {
