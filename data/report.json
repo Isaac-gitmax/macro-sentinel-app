@@ -1,12 +1,12 @@
 {
  "meta": {
   "version": "4.14.0",
-  "generated_at": "2026-11-11T21:42:26+00:00",
+  "generated_at": "2026-11-12T06:58:13+00:00",
   "market_date": "10/11/2026",
   "market_open": false,
-  "market_phase": "post",
-  "slot": "postclose",
-  "ny_time": "11/11 16:42"
+  "market_phase": "closed",
+  "slot": "morning",
+  "ny_time": "12/11 01:58"
  },
  "regime": {
   "code": "R4",
@@ -1522,6 +1522,42 @@
     "used": "fred:CES0500000003",
     "detail": "01/10/2026: fred:CES0500000003 38 מול bls:CES0500000003 38 (סטייה 0%)",
     "errors": {}
+   },
+   {
+    "label": "בנזין",
+    "primary": "fred:GASREGW",
+    "sources": [
+     "fred:GASREGW",
+     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
+    ],
+    "status": "consensus",
+    "used": "fred:GASREGW",
+    "detail": "09/11/2026: fred:GASREGW 3.995 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 3.995 (סטייה 0%)",
+    "errors": {}
+   },
+   {
+    "label": "ברנט פיזי",
+    "primary": "fred:DCOILBRENTEU",
+    "sources": [
+     "fred:DCOILBRENTEU",
+     "eia:petroleum/pri/spt:RBRTE:daily"
+    ],
+    "status": "consensus",
+    "used": "fred:DCOILBRENTEU",
+    "detail": "03/11/2026: fred:DCOILBRENTEU 107.03 מול eia:petroleum/pri/spt:RBRTE:daily 107.03 (סטייה 0%)",
+    "errors": {}
+   },
+   {
+    "label": "WTI פיזי",
+    "primary": "fred:DCOILWTICO",
+    "sources": [
+     "fred:DCOILWTICO",
+     "eia:petroleum/pri/spt:RWTC:daily"
+    ],
+    "status": "consensus",
+    "used": "fred:DCOILWTICO",
+    "detail": "03/11/2026: fred:DCOILWTICO 99.64 מול eia:petroleum/pri/spt:RWTC:daily 99.64 (סטייה 0%)",
+    "errors": {}
    }
   ]
  },
@@ -1536,7 +1572,7 @@
    "group": "דולר ומט״ח",
    "id": "JPY=X",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1553,7 +1589,7 @@
    "group": "דולר ומט״ח",
    "id": "DX-Y.NYB",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1570,7 +1606,7 @@
    "group": "דולר ומט״ח",
    "id": "DX-Y.NYB",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1587,7 +1623,7 @@
    "group": "מניות ותנודתיות",
    "id": "^SPX",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1604,7 +1640,7 @@
    "group": "מניות ותנודתיות",
    "id": "QQQ",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1621,7 +1657,7 @@
    "group": "מניות ותנודתיות",
    "id": "^VIX",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1638,7 +1674,7 @@
    "group": "סחורות",
    "id": "CL=F",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1655,7 +1691,7 @@
    "group": "סחורות",
    "id": "CL=F",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1672,7 +1708,7 @@
    "group": "סחורות",
    "id": "CL=F",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1689,7 +1725,7 @@
    "group": "סחורות",
    "id": "GC=F",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1706,7 +1742,7 @@
    "group": "ריבית ואג״ח",
    "id": "^TNX",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1723,7 +1759,7 @@
    "group": "ריבית ואג״ח",
    "id": "^TNX",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1740,7 +1776,7 @@
    "group": "ריבית ואג״ח",
    "id": "^TYX",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1757,7 +1793,7 @@
    "group": "אינפלציה",
    "id": "PCEPILFE",
    "date": "01/09/2026",
-   "age_days": 71,
+   "age_days": 72,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1780,7 +1816,7 @@
    "group": "ריבית ואג״ח",
    "id": "EFFR",
    "date": "09/11/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1803,7 +1839,7 @@
    "group": "אינפלציה",
    "id": "PPIFIS",
    "date": "01/09/2026",
-   "age_days": 71,
+   "age_days": 72,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1826,7 +1862,7 @@
    "group": "תעסוקה",
    "id": "UNRATE",
    "date": "01/10/2026",
-   "age_days": 41,
+   "age_days": 42,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1849,7 +1885,7 @@
    "group": "תעסוקה",
    "id": "UNRATE",
    "date": "01/10/2026",
-   "age_days": 41,
+   "age_days": 42,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1872,7 +1908,7 @@
    "group": "תעסוקה",
    "id": "PAYEMS",
    "date": "01/10/2026",
-   "age_days": 41,
+   "age_days": 42,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1895,7 +1931,7 @@
    "group": "צמיחה וצריכה",
    "id": "RSXFS",
    "date": "01/09/2026",
-   "age_days": 71,
+   "age_days": 72,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1912,7 +1948,7 @@
    "group": "צמיחה וצריכה",
    "id": "HOUST",
    "date": "01/09/2026",
-   "age_days": 71,
+   "age_days": 72,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1929,7 +1965,7 @@
    "group": "אינפלציה",
    "id": "tbmpx1px5:PX_MD",
    "date": "01/10/2026",
-   "age_days": 41,
+   "age_days": 42,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1952,7 +1988,7 @@
    "group": "ריבית ואג״ח",
    "id": "MORTGAGE30US",
    "date": "05/11/2026",
-   "age_days": 6,
+   "age_days": 7,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1969,7 +2005,7 @@
    "group": "ריבית ואג״ח",
    "id": "MORTGAGE30US",
    "date": "05/11/2026",
-   "age_days": 6,
+   "age_days": 7,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -1986,7 +2022,7 @@
    "group": "דולר ומט״ח",
    "id": "DX-Y.NYB",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2003,7 +2039,7 @@
    "group": "אשראי ונזילות",
    "id": "EMLC",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2020,7 +2056,7 @@
    "group": "מניות ותנודתיות",
    "id": "XLU",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2037,7 +2073,7 @@
    "group": "ריבית ואג״ח",
    "id": "^TYX",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2054,7 +2090,7 @@
    "group": "ריבית ואג״ח",
    "id": "EFFR",
    "date": "09/11/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2077,7 +2113,7 @@
    "group": "צמיחה וצריכה",
    "id": "NROU",
    "date": "01/10/2026",
-   "age_days": 41,
+   "age_days": 42,
    "status": "estimate",
    "reason": "",
    "redundancy": {
@@ -2094,7 +2130,7 @@
    "group": "ריבית ואג״ח",
    "id": "10 Yr",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2117,7 +2153,7 @@
    "group": "ריבית ואג״ח",
    "id": "2 Yr",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2140,7 +2176,7 @@
    "group": "דולר ומט״ח",
    "id": "JPY=X",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2157,7 +2193,7 @@
    "group": "דולר ומט״ח",
    "id": "DX-Y.NYB",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2174,7 +2210,7 @@
    "group": "סחורות",
    "id": "BZ=F",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2191,7 +2227,7 @@
    "group": "מניות ותנודתיות",
    "id": "^SPX",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2208,7 +2244,7 @@
    "group": "אשראי ונזילות",
    "id": "BAMLH0A0HYM2",
    "date": "09/11/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "commercial",
    "reason": "",
    "redundancy": {
@@ -2225,7 +2261,7 @@
    "group": "אשראי ונזילות",
    "id": "BAMLH0A0HYM2",
    "date": "09/11/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "commercial",
    "reason": "",
    "redundancy": {
@@ -2242,7 +2278,7 @@
    "group": "ריבית ואג״ח",
    "id": "^TNX",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2259,7 +2295,7 @@
    "group": "סחורות",
    "id": "CL=F",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2276,7 +2312,7 @@
    "group": "סחורות",
    "id": "GC=F",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2293,7 +2329,7 @@
    "group": "אשראי ונזילות",
    "id": "M2SL",
    "date": "01/09/2026",
-   "age_days": 71,
+   "age_days": 72,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2310,7 +2346,7 @@
    "group": "צמיחה וצריכה",
    "id": "tbmics:ICS_ALL",
    "date": "01/10/2026",
-   "age_days": 41,
+   "age_days": 42,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2333,7 +2369,7 @@
    "group": "תעסוקה",
    "id": "SAHMREALTIME",
    "date": "01/10/2026",
-   "age_days": 41,
+   "age_days": 42,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2350,7 +2386,7 @@
    "group": "אינפלציה",
    "id": "CPIAUCNS",
    "date": "01/10/2026",
-   "age_days": 41,
+   "age_days": 42,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2373,7 +2409,7 @@
    "group": "אינפלציה",
    "id": "CPIAUCSL",
    "date": "01/10/2026",
-   "age_days": 41,
+   "age_days": 42,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2396,7 +2432,7 @@
    "group": "אינפלציה",
    "id": "CPILFENS",
    "date": "01/10/2026",
-   "age_days": 41,
+   "age_days": 42,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2419,7 +2455,7 @@
    "group": "אינפלציה",
    "id": "CPILFESL",
    "date": "01/10/2026",
-   "age_days": 41,
+   "age_days": 42,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2442,7 +2478,7 @@
    "group": "אינפלציה",
    "id": "WPSFD49116",
    "date": "01/09/2026",
-   "age_days": 71,
+   "age_days": 72,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2465,7 +2501,7 @@
    "group": "תעסוקה",
    "id": "CES0500000003",
    "date": "01/10/2026",
-   "age_days": 41,
+   "age_days": 42,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2488,7 +2524,7 @@
    "group": "תעסוקה",
    "id": "ICSA",
    "date": "31/10/2026",
-   "age_days": 11,
+   "age_days": 12,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2505,7 +2541,7 @@
    "group": "ריבית ואג״ח",
    "id": "DFII10",
    "date": "09/11/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2522,7 +2558,7 @@
    "group": "ריבית ואג״ח",
    "id": "THREEFYTP10",
    "date": "06/11/2026",
-   "age_days": 5,
+   "age_days": 6,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2539,7 +2575,7 @@
    "group": "אשראי ונזילות",
    "id": "BAMLC0A0CM",
    "date": "09/11/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "commercial",
    "reason": "",
    "redundancy": {
@@ -2556,7 +2592,7 @@
    "group": "אשראי ונזילות",
    "id": "WALCL",
    "date": "04/11/2026",
-   "age_days": 7,
+   "age_days": 8,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2573,7 +2609,7 @@
    "group": "אשראי ונזילות",
    "id": "WTREGEN",
    "date": "04/11/2026",
-   "age_days": 7,
+   "age_days": 8,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2590,7 +2626,7 @@
    "group": "אשראי ונזילות",
    "id": "RRPONTSYD",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2607,7 +2643,7 @@
    "group": "אשראי ונזילות",
    "id": "NFCI",
    "date": "30/10/2026",
-   "age_days": 12,
+   "age_days": 13,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2624,7 +2660,7 @@
    "group": "צמיחה וצריכה",
    "id": "GDPNOW",
    "date": "01/10/2026",
-   "age_days": 41,
+   "age_days": 42,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2641,11 +2677,17 @@
    "group": "אינפלציה",
    "id": "GASREGW",
    "date": "09/11/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "not_checked"
+    "status": "consensus",
+    "used": "fred:GASREGW",
+    "sources": [
+     "fred:GASREGW",
+     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
+    ],
+    "detail": "09/11/2026: fred:GASREGW 3.995 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 3.995 (סטייה 0%)"
    }
   },
   "gasoline_yoy": {
@@ -2658,11 +2700,17 @@
    "group": "אינפלציה",
    "id": "GASREGW",
    "date": "09/11/2026",
-   "age_days": 2,
+   "age_days": 3,
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "not_checked"
+    "status": "consensus",
+    "used": "fred:GASREGW",
+    "sources": [
+     "fred:GASREGW",
+     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
+    ],
+    "detail": "09/11/2026: fred:GASREGW 3.995 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 3.995 (סטייה 0%)"
    }
   },
   "us30y_level": {
@@ -2675,7 +2723,7 @@
    "group": "ריבית ואג״ח",
    "id": "^TYX",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2692,7 +2740,7 @@
    "group": "מניות ותנודתיות",
    "id": "^SPX",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2709,7 +2757,7 @@
    "group": "מניות ותנודתיות",
    "id": "^MOVE",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2726,7 +2774,7 @@
    "group": "סחורות",
    "id": "HG=F",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2743,11 +2791,17 @@
    "group": "סחורות",
    "id": "DCOILBRENTEU",
    "date": "03/11/2026",
-   "age_days": 8,
+   "age_days": 9,
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "not_checked"
+    "status": "consensus",
+    "used": "fred:DCOILBRENTEU",
+    "sources": [
+     "fred:DCOILBRENTEU",
+     "eia:petroleum/pri/spt:RBRTE:daily"
+    ],
+    "detail": "03/11/2026: fred:DCOILBRENTEU 107.03 מול eia:petroleum/pri/spt:RBRTE:daily 107.03 (סטייה 0%)"
    }
   },
   "wti_spot": {
@@ -2760,11 +2814,17 @@
    "group": "סחורות",
    "id": "DCOILWTICO",
    "date": "03/11/2026",
-   "age_days": 8,
+   "age_days": 9,
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "not_checked"
+    "status": "consensus",
+    "used": "fred:DCOILWTICO",
+    "sources": [
+     "fred:DCOILWTICO",
+     "eia:petroleum/pri/spt:RWTC:daily"
+    ],
+    "detail": "03/11/2026: fred:DCOILWTICO 99.64 מול eia:petroleum/pri/spt:RWTC:daily 99.64 (סטייה 0%)"
    }
   },
   "ppi_pce_spread": {
@@ -2777,7 +2837,7 @@
    "group": "אינפלציה",
    "id": "ppi_yoy+pce_yoy",
    "date": "01/09/2026",
-   "age_days": 71,
+   "age_days": 72,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2794,7 +2854,7 @@
    "group": "מודלים ונגזרים",
    "id": "nrou_level+unrate_level",
    "date": "01/10/2026",
-   "age_days": 41,
+   "age_days": 42,
    "status": "estimate",
    "reason": "",
    "redundancy": {
@@ -2811,7 +2871,7 @@
    "group": "ריבית ואג״ח",
    "id": "dgs10_level+dgs2_level",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2828,7 +2888,7 @@
    "group": "מודלים ונגזרים",
    "id": "pce_yoy+output_gap_proxy",
    "date": "01/09/2026",
-   "age_days": 71,
+   "age_days": 72,
    "status": "estimate",
    "reason": "",
    "redundancy": {
@@ -2845,7 +2905,7 @@
    "group": "מודלים ונגזרים",
    "id": "fed_funds_level+taylor_rate",
    "date": "01/09/2026",
-   "age_days": 71,
+   "age_days": 72,
    "status": "estimate",
    "reason": "",
    "redundancy": {
@@ -2862,7 +2922,7 @@
    "group": "אשראי ונזילות",
    "id": "fed_assets_mn+tga_mn+rrp_bn",
    "date": "04/11/2026",
-   "age_days": 7,
+   "age_days": 8,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2879,7 +2939,7 @@
    "group": "סחורות",
    "id": "brent_level+brent_spot",
    "date": "03/11/2026",
-   "age_days": 8,
+   "age_days": 9,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2896,7 +2956,7 @@
    "group": "מודלים ונגזרים",
    "id": "dxy_ret_1d+oil_ret_1d",
    "date": "10/11/2026",
-   "age_days": 1,
+   "age_days": 2,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -4026,8 +4086,8 @@
      {
       "id": "hyg_tlt_200",
       "label": "HYG/TLT מול ממוצע 200 (הפוך)",
-      "value": 1.006,
-      "z": 0.38,
+      "value": 1.007,
+      "z": 0.36,
       "date": "05/11/2026"
      }
     ],
@@ -6334,7 +6394,7 @@
   "live": {
    "since": "2026-10-15",
    "scored": 0,
-   "pending": 300,
+   "pending": 315,
    "next_due": "2026-10-15",
    "overall": null,
    "by_regime": {},
