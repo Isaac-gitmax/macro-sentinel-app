@@ -1,12 +1,12 @@
 {
  "meta": {
   "version": "4.14.0",
-  "generated_at": "2026-11-12T06:58:13+00:00",
-  "market_date": "10/11/2026",
+  "generated_at": "2026-11-12T14:16:21+00:00",
+  "market_date": "11/11/2026",
   "market_open": false,
-  "market_phase": "closed",
-  "slot": "morning",
-  "ny_time": "12/11 01:58"
+  "market_phase": "pre",
+  "slot": "premarket",
+  "ny_time": "12/11 09:16"
  },
  "regime": {
   "code": "R4",
@@ -86,8 +86,8 @@
    "change": "us10y_chg_5d_bp",
    "change_unit": "bp",
    "change_label": "שבוע",
-   "value": 4.983,
-   "change_value": 3.1,
+   "value": 4.998,
+   "change_value": 10.4,
    "signed": false,
    "estimate": false
   },
@@ -98,8 +98,8 @@
    "change": "dxy_ret_1m",
    "change_unit": "%",
    "change_label": "חודש",
-   "value": 102.23,
-   "change_value": -0.3412,
+   "value": 102.91,
+   "change_value": 0.7144,
    "signed": false,
    "estimate": false
   },
@@ -107,7 +107,7 @@
    "signal": "brent_level",
    "label_he": "נפט ברנט",
    "unit": "$",
-   "value": 91.49,
+   "value": 92.76,
    "change_value": null,
    "signed": false,
    "estimate": false
@@ -119,8 +119,8 @@
    "change": "gold_ret_1d",
    "change_unit": "%",
    "change_label": "יום",
-   "value": 4030.2,
-   "change_value": -2.0489,
+   "value": 4000.5,
+   "change_value": -0.7369,
    "signed": false,
    "estimate": false
   },
@@ -131,8 +131,8 @@
    "change": "spx_ret_5d",
    "change_unit": "%",
    "change_label": "שבוע",
-   "value": -0.3842,
-   "change_value": -0.634,
+   "value": 1.309,
+   "change_value": -0.9006,
    "signed": true,
    "estimate": false
   },
@@ -140,7 +140,7 @@
    "signal": "vix_level",
    "label_he": "מדד הפחד",
    "unit": "",
-   "value": 19.46,
+   "value": 17.49,
    "change_value": null,
    "signed": false,
    "estimate": false
@@ -161,7 +161,7 @@
    "signal": "claims_k",
    "label_he": "תביעות אבטלה",
    "unit": "K",
-   "value": 189.0,
+   "value": 200.0,
    "change_value": null,
    "signed": false,
    "estimate": false
@@ -192,7 +192,7 @@
      "signal": "us10y_level",
      "unit": "%",
      "label": "תשואת 10 שנים — רמה",
-     "value": 4.983,
+     "value": 4.998,
      "estimate": false,
      "signed": false
     },
@@ -200,7 +200,7 @@
      "signal": "us10y_chg_1d_bp",
      "unit": "bp",
      "label": "תשואת 10 שנים",
-     "value": 11.9,
+     "value": 1.5,
      "estimate": false,
      "signed": true
     },
@@ -208,7 +208,7 @@
      "signal": "us10y_chg_5d_bp",
      "unit": "bp",
      "label": "תשואת 10 שנים — שבוע",
-     "value": 3.1,
+     "value": 10.4,
      "estimate": false,
      "signed": true
     },
@@ -216,7 +216,7 @@
      "signal": "us30y_chg_1d_bp",
      "unit": "bp",
      "label": "תשואת 30 שנה",
-     "value": 9.4,
+     "value": 0.6,
      "estimate": false,
      "signed": true
     },
@@ -248,7 +248,7 @@
      "signal": "us30y_level",
      "unit": "%",
      "label": "תשואת 30 שנה — רמה",
-     "value": 5.35,
+     "value": 5.356,
      "estimate": false,
      "signed": false
     },
@@ -285,7 +285,7 @@
      "signal": "dxy_level",
      "unit": "",
      "label": "מדד הדולר — רמה",
-     "value": 102.23,
+     "value": 102.91,
      "estimate": false,
      "signed": false
     },
@@ -293,7 +293,7 @@
      "signal": "dxy_ret_1d",
      "unit": "%",
      "label": "מדד הדולר",
-     "value": 0.5706,
+     "value": 0.6652,
      "estimate": false,
      "signed": true
     },
@@ -301,7 +301,7 @@
      "signal": "dxy_ret_1m",
      "unit": "%",
      "label": "מדד הדולר — חודש",
-     "value": -0.3412,
+     "value": 0.7144,
      "estimate": false,
      "signed": true
     },
@@ -309,7 +309,7 @@
      "signal": "usdjpy_level",
      "unit": "",
      "label": "שער דולר/ין",
-     "value": 157.983,
+     "value": 158.705,
      "estimate": false,
      "signed": false
     },
@@ -317,7 +317,7 @@
      "signal": "usdjpy_ret_1d",
      "unit": "%",
      "label": "זירה יפנית (דולר/ין)",
-     "value": -0.1952,
+     "value": 0.457,
      "estimate": false,
      "signed": true
     }
@@ -330,7 +330,7 @@
      "signal": "brent_level",
      "unit": "$",
      "label": "נפט ברנט — רמה",
-     "value": 91.49,
+     "value": 92.76,
      "estimate": false,
      "signed": false
     },
@@ -338,7 +338,7 @@
      "signal": "wti_level",
      "unit": "$",
      "label": "נפט WTI — רמה",
-     "value": 86.04,
+     "value": 86.53,
      "estimate": false,
      "signed": false
     },
@@ -362,7 +362,7 @@
      "signal": "brent_basis",
      "unit": "$",
      "label": "פער ברנט: חוזה עתידי פחות פיזי",
-     "value": -15.54,
+     "value": -14.27,
      "estimate": false,
      "signed": true
     },
@@ -370,7 +370,7 @@
      "signal": "oil_ret_1m",
      "unit": "%",
      "label": "נפט גולמי — חודש",
-     "value": -8.2142,
+     "value": -8.0837,
      "estimate": false,
      "signed": true
     },
@@ -378,7 +378,7 @@
      "signal": "gold_level",
      "unit": "$",
      "label": "זהב — רמה",
-     "value": 4030.2,
+     "value": 4000.5,
      "estimate": false,
      "signed": false
     },
@@ -386,7 +386,7 @@
      "signal": "gold_ret_1d",
      "unit": "%",
      "label": "זהב (חוזים)",
-     "value": -2.0489,
+     "value": -0.7369,
      "estimate": false,
      "signed": true
     },
@@ -394,7 +394,7 @@
      "signal": "copper_ton",
      "unit": "$",
      "label": "נחושת (COMEX, לטון)",
-     "value": 13711.6342,
+     "value": 13832.888,
      "estimate": false,
      "signed": false
     },
@@ -423,7 +423,7 @@
      "signal": "hy_oas_level",
      "unit": "%",
      "label": "מרווח אג\"ח High Yield (OAS)",
-     "value": 3.34,
+     "value": 3.3,
      "estimate": false,
      "signed": false
     },
@@ -431,7 +431,7 @@
      "signal": "ig_oas_level",
      "unit": "%",
      "label": "מרווח אג״ח בדירוג השקעה (IG OAS)",
-     "value": 0.91,
+     "value": 0.9,
      "estimate": false,
      "signed": false
     },
@@ -447,7 +447,7 @@
      "signal": "nfci_level",
      "unit": "",
      "label": "תנאים פיננסיים (NFCI)",
-     "value": -0.459,
+     "value": -0.462,
      "estimate": false,
      "signed": false
     },
@@ -468,7 +468,7 @@
      "signal": "spx_level",
      "unit": "",
      "label": "מדד S&P 500 — רמה",
-     "value": 7520.9302,
+     "value": 7619.3799,
      "estimate": false,
      "signed": false
     },
@@ -476,7 +476,7 @@
      "signal": "spx_ret_1d",
      "unit": "%",
      "label": "מדד S&P 500",
-     "value": -0.3842,
+     "value": 1.309,
      "estimate": false,
      "signed": true
     },
@@ -484,7 +484,7 @@
      "signal": "spx_ret_5d",
      "unit": "%",
      "label": "מדד S&P 500 — שבוע",
-     "value": -0.634,
+     "value": -0.9006,
      "estimate": false,
      "signed": true
     },
@@ -492,7 +492,7 @@
      "signal": "qqq_ret_1d",
      "unit": "%",
      "label": "מניות נאסד\"ק",
-     "value": -0.6756,
+     "value": 2.3149,
      "estimate": false,
      "signed": true
     },
@@ -500,7 +500,7 @@
      "signal": "vix_level",
      "unit": "",
      "label": "מדד התנודתיות",
-     "value": 19.46,
+     "value": 17.49,
      "estimate": false,
      "signed": false
     },
@@ -516,7 +516,7 @@
      "signal": "hy_oas_chg_1m_bp",
      "unit": "bp",
      "label": "שינוי מרווח High Yield — חודש",
-     "value": 23.0,
+     "value": 19.0,
      "estimate": false,
      "signed": true
     }
@@ -622,7 +622,7 @@
      "signal": "claims_k",
      "unit": "K",
      "label": "תביעות ראשוניות לדמי אבטלה",
-     "value": 189.0,
+     "value": 200.0,
      "estimate": false,
      "signed": false
     },
@@ -686,7 +686,7 @@
   }
  ],
  "market_notes": [
-  "ברנט <code>$91.49</code>, בטווח <code>$80-100</code>: לחץ מתון על המרווחים."
+  "ברנט <code>$92.76</code>, בטווח <code>$80-100</code>: לחץ מתון על המרווחים."
  ],
  "alerts": [
   {
@@ -730,7 +730,7 @@
     {
      "signal": "xlu_sma_ratio",
      "label": "יחס ממוצעים XLU 50/200",
-     "value": 0.9437,
+     "value": 0.9442,
      "op": "<",
      "threshold": 1.0,
      "passed": true
@@ -738,7 +738,7 @@
     {
      "signal": "us30y_chg_1m_bp",
      "label": "תשואת 30 שנה — חודש",
-     "value": -24.8,
+     "value": -20.7,
      "op": "<",
      "threshold": -15,
      "passed": true
@@ -780,7 +780,7 @@
     {
      "signal": "brent_level",
      "label": "נפט ברנט — רמה",
-     "value": 91.49,
+     "value": 92.76,
      "op": ">",
      "threshold": 80.0,
      "passed": true
@@ -788,7 +788,7 @@
     {
      "signal": "brent_level",
      "label": "נפט ברנט — רמה",
-     "value": 91.49,
+     "value": 92.76,
      "op": "<=",
      "threshold": 100.0,
      "passed": true
@@ -808,9 +808,17 @@
     {
      "signal": "dxy_level",
      "label": "מדד הדולר — רמה",
-     "value": 102.23,
+     "value": 102.91,
      "op": ">",
      "threshold": 100.5,
+     "passed": true
+    },
+    {
+     "signal": "usdjpy_level",
+     "label": "שער דולר/ין",
+     "value": 158.705,
+     "op": ">",
+     "threshold": 158.0,
      "passed": true
     }
    ]
@@ -1257,14 +1265,6 @@
     "underweight": []
    },
    {
-    "text_he": "סטגפלציה או <code>VIX</code> מעל <code>18</code>: בריאות כעוגן.",
-    "overweight": [
-     "XLV",
-     "IHE"
-    ],
-    "underweight": []
-   },
-   {
     "text_he": "רג'ים אינפלציוני: מעבר מביוטק ספקולטיבי לפארמה רווחית.",
     "overweight": [
      "OZEM",
@@ -1307,7 +1307,7 @@
    {
     "label": "SPX",
     "ok": true,
-    "detail": "10/11: 7520.93 מול 7520.93 (סטייה 0.00%)"
+    "detail": "11/11: 7619.38 מול 7619.38 (סטייה 0.00%)"
    },
    {
     "label": "VIX",
@@ -1522,48 +1522,12 @@
     "used": "fred:CES0500000003",
     "detail": "01/10/2026: fred:CES0500000003 38 מול bls:CES0500000003 38 (סטייה 0%)",
     "errors": {}
-   },
-   {
-    "label": "בנזין",
-    "primary": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "detail": "09/11/2026: fred:GASREGW 3.995 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 3.995 (סטייה 0%)",
-    "errors": {}
-   },
-   {
-    "label": "ברנט פיזי",
-    "primary": "fred:DCOILBRENTEU",
-    "sources": [
-     "fred:DCOILBRENTEU",
-     "eia:petroleum/pri/spt:RBRTE:daily"
-    ],
-    "status": "consensus",
-    "used": "fred:DCOILBRENTEU",
-    "detail": "03/11/2026: fred:DCOILBRENTEU 107.03 מול eia:petroleum/pri/spt:RBRTE:daily 107.03 (סטייה 0%)",
-    "errors": {}
-   },
-   {
-    "label": "WTI פיזי",
-    "primary": "fred:DCOILWTICO",
-    "sources": [
-     "fred:DCOILWTICO",
-     "eia:petroleum/pri/spt:RWTC:daily"
-    ],
-    "status": "consensus",
-    "used": "fred:DCOILWTICO",
-    "detail": "03/11/2026: fred:DCOILWTICO 99.64 מול eia:petroleum/pri/spt:RWTC:daily 99.64 (סטייה 0%)",
-    "errors": {}
    }
   ]
  },
  "signals": {
   "usdjpy_ret_1d": {
-   "value": -0.1952,
+   "value": 0.457,
    "label": "זירה יפנית (דולר/ין)",
    "estimate": false,
    "signed": true,
@@ -1571,8 +1535,8 @@
    "publisher": "שוק המט״ח (Yahoo)",
    "group": "דולר ומט״ח",
    "id": "JPY=X",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1580,7 +1544,7 @@
    }
   },
   "dxy_ret_1d": {
-   "value": 0.5706,
+   "value": 0.6652,
    "label": "מדד הדולר",
    "estimate": false,
    "signed": true,
@@ -1588,8 +1552,8 @@
    "publisher": "ICE (Yahoo)",
    "group": "דולר ומט״ח",
    "id": "DX-Y.NYB",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1597,7 +1561,7 @@
    }
   },
   "dxy_ret_5d": {
-   "value": 0.3534,
+   "value": 1.3792,
    "label": "מדד הדולר — שבוע",
    "estimate": false,
    "signed": true,
@@ -1605,8 +1569,8 @@
    "publisher": "ICE (Yahoo)",
    "group": "דולר ומט״ח",
    "id": "DX-Y.NYB",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1614,7 +1578,7 @@
    }
   },
   "spx_ret_1d": {
-   "value": -0.3842,
+   "value": 1.309,
    "label": "מדד S&P 500",
    "estimate": false,
    "signed": true,
@@ -1622,8 +1586,8 @@
    "publisher": "S&P DJI (Yahoo)",
    "group": "מניות ותנודתיות",
    "id": "^SPX",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1631,7 +1595,7 @@
    }
   },
   "qqq_ret_1d": {
-   "value": -0.6756,
+   "value": 2.3149,
    "label": "מניות נאסד\"ק",
    "estimate": false,
    "signed": true,
@@ -1639,8 +1603,8 @@
    "publisher": "Nasdaq (Yahoo)",
    "group": "מניות ותנודתיות",
    "id": "QQQ",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1648,7 +1612,7 @@
    }
   },
   "vix_level": {
-   "value": 19.46,
+   "value": 17.49,
    "label": "מדד התנודתיות",
    "estimate": false,
    "signed": false,
@@ -1656,8 +1620,8 @@
    "publisher": "Cboe (Yahoo)",
    "group": "מניות ותנודתיות",
    "id": "^VIX",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1665,7 +1629,7 @@
    }
   },
   "oil_ret_1d": {
-   "value": -0.9326,
+   "value": 0.5695,
    "label": "נפט גולמי (חוזים)",
    "estimate": false,
    "signed": true,
@@ -1673,8 +1637,8 @@
    "publisher": "NYMEX (Yahoo)",
    "group": "סחורות",
    "id": "CL=F",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1682,7 +1646,7 @@
    }
   },
   "oil_ret_5d": {
-   "value": -10.4589,
+   "value": -1.8044,
    "label": "נפט גולמי — שבוע",
    "estimate": false,
    "signed": true,
@@ -1690,8 +1654,8 @@
    "publisher": "NYMEX (Yahoo)",
    "group": "סחורות",
    "id": "CL=F",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1699,7 +1663,7 @@
    }
   },
   "oil_ret_1m": {
-   "value": -8.2142,
+   "value": -8.0837,
    "label": "נפט גולמי — חודש",
    "estimate": false,
    "signed": true,
@@ -1707,8 +1671,8 @@
    "publisher": "NYMEX (Yahoo)",
    "group": "סחורות",
    "id": "CL=F",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1716,7 +1680,7 @@
    }
   },
   "gold_ret_1d": {
-   "value": -2.0489,
+   "value": -0.7369,
    "label": "זהב (חוזים)",
    "estimate": false,
    "signed": true,
@@ -1724,8 +1688,8 @@
    "publisher": "COMEX (Yahoo)",
    "group": "סחורות",
    "id": "GC=F",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -1733,7 +1697,7 @@
    }
   },
   "us10y_chg_1d_bp": {
-   "value": 11.9,
+   "value": 1.5,
    "label": "תשואת 10 שנים",
    "estimate": false,
    "signed": true,
@@ -1741,8 +1705,8 @@
    "publisher": "Cboe (Yahoo)",
    "group": "ריבית ואג״ח",
    "id": "^TNX",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1750,7 +1714,7 @@
    }
   },
   "us10y_chg_5d_bp": {
-   "value": 3.1,
+   "value": 10.4,
    "label": "תשואת 10 שנים — שבוע",
    "estimate": false,
    "signed": true,
@@ -1758,8 +1722,8 @@
    "publisher": "Cboe (Yahoo)",
    "group": "ריבית ואג״ח",
    "id": "^TNX",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1767,7 +1731,7 @@
    }
   },
   "us30y_chg_1d_bp": {
-   "value": 9.4,
+   "value": 0.6,
    "label": "תשואת 30 שנה",
    "estimate": false,
    "signed": true,
@@ -1775,8 +1739,8 @@
    "publisher": "Cboe (Yahoo)",
    "group": "ריבית ואג״ח",
    "id": "^TYX",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -1815,8 +1779,8 @@
    "publisher": "הפד של ניו יורק",
    "group": "ריבית ואג״ח",
    "id": "EFFR",
-   "date": "09/11/2026",
-   "age_days": 3,
+   "date": "10/11/2026",
+   "age_days": 2,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2013,7 +1977,7 @@
    }
   },
   "dxy_ret_1m": {
-   "value": -0.3412,
+   "value": 0.7144,
    "label": "מדד הדולר — חודש",
    "estimate": false,
    "signed": true,
@@ -2021,8 +1985,8 @@
    "publisher": "ICE (Yahoo)",
    "group": "דולר ומט״ח",
    "id": "DX-Y.NYB",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2030,7 +1994,7 @@
    }
   },
   "emlc_ret_1m": {
-   "value": -1.0459,
+   "value": -1.565,
    "label": "אג\"ח EM במטבע מקומי (EMLC)",
    "estimate": false,
    "signed": true,
@@ -2038,8 +2002,8 @@
    "publisher": "VanEck (Yahoo)",
    "group": "אשראי ונזילות",
    "id": "EMLC",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2047,7 +2011,7 @@
    }
   },
   "xlu_sma_ratio": {
-   "value": 0.9437,
+   "value": 0.9442,
    "label": "יחס ממוצעים XLU 50/200",
    "estimate": false,
    "signed": false,
@@ -2055,8 +2019,8 @@
    "publisher": "SPDR (Yahoo)",
    "group": "מניות ותנודתיות",
    "id": "XLU",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2064,7 +2028,7 @@
    }
   },
   "us30y_chg_1m_bp": {
-   "value": -24.8,
+   "value": -20.7,
    "label": "תשואת 30 שנה — חודש",
    "estimate": false,
    "signed": true,
@@ -2072,8 +2036,8 @@
    "publisher": "Cboe (Yahoo)",
    "group": "ריבית ואג״ח",
    "id": "^TYX",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2089,8 +2053,8 @@
    "publisher": "הפד של ניו יורק",
    "group": "ריבית ואג״ח",
    "id": "EFFR",
-   "date": "09/11/2026",
-   "age_days": 3,
+   "date": "10/11/2026",
+   "age_days": 2,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2167,7 +2131,7 @@
    }
   },
   "usdjpy_level": {
-   "value": 157.983,
+   "value": 158.705,
    "label": "שער דולר/ין",
    "estimate": false,
    "signed": false,
@@ -2175,8 +2139,8 @@
    "publisher": "שוק המט״ח (Yahoo)",
    "group": "דולר ומט״ח",
    "id": "JPY=X",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2184,7 +2148,7 @@
    }
   },
   "dxy_level": {
-   "value": 102.23,
+   "value": 102.91,
    "label": "מדד הדולר — רמה",
    "estimate": false,
    "signed": false,
@@ -2192,8 +2156,8 @@
    "publisher": "ICE (Yahoo)",
    "group": "דולר ומט״ח",
    "id": "DX-Y.NYB",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2201,7 +2165,7 @@
    }
   },
   "brent_level": {
-   "value": 91.49,
+   "value": 92.76,
    "label": "נפט ברנט — רמה",
    "estimate": false,
    "signed": false,
@@ -2209,8 +2173,8 @@
    "publisher": "ICE (Yahoo)",
    "group": "סחורות",
    "id": "BZ=F",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2218,7 +2182,7 @@
    }
   },
   "spx_ret_5d": {
-   "value": -0.634,
+   "value": -0.9006,
    "label": "מדד S&P 500 — שבוע",
    "estimate": false,
    "signed": true,
@@ -2226,8 +2190,8 @@
    "publisher": "S&P DJI (Yahoo)",
    "group": "מניות ותנודתיות",
    "id": "^SPX",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2235,7 +2199,7 @@
    }
   },
   "hy_oas_level": {
-   "value": 3.34,
+   "value": 3.3,
    "label": "מרווח אג\"ח High Yield (OAS)",
    "estimate": false,
    "signed": false,
@@ -2243,8 +2207,8 @@
    "publisher": "ICE BofA",
    "group": "אשראי ונזילות",
    "id": "BAMLH0A0HYM2",
-   "date": "09/11/2026",
-   "age_days": 3,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "commercial",
    "reason": "",
    "redundancy": {
@@ -2252,7 +2216,7 @@
    }
   },
   "hy_oas_chg_1m_bp": {
-   "value": 23.0,
+   "value": 19.0,
    "label": "שינוי מרווח High Yield — חודש",
    "estimate": false,
    "signed": true,
@@ -2260,8 +2224,8 @@
    "publisher": "ICE BofA",
    "group": "אשראי ונזילות",
    "id": "BAMLH0A0HYM2",
-   "date": "09/11/2026",
-   "age_days": 3,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "commercial",
    "reason": "",
    "redundancy": {
@@ -2269,7 +2233,7 @@
    }
   },
   "us10y_level": {
-   "value": 4.983,
+   "value": 4.998,
    "label": "תשואת 10 שנים — רמה",
    "estimate": false,
    "signed": false,
@@ -2277,8 +2241,8 @@
    "publisher": "Cboe (Yahoo)",
    "group": "ריבית ואג״ח",
    "id": "^TNX",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2286,7 +2250,7 @@
    }
   },
   "wti_level": {
-   "value": 86.04,
+   "value": 86.53,
    "label": "נפט WTI — רמה",
    "estimate": false,
    "signed": false,
@@ -2294,8 +2258,8 @@
    "publisher": "NYMEX (Yahoo)",
    "group": "סחורות",
    "id": "CL=F",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2303,7 +2267,7 @@
    }
   },
   "gold_level": {
-   "value": 4030.2,
+   "value": 4000.5,
    "label": "זהב — רמה",
    "estimate": false,
    "signed": false,
@@ -2311,8 +2275,8 @@
    "publisher": "COMEX (Yahoo)",
    "group": "סחורות",
    "id": "GC=F",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2515,7 +2479,7 @@
    }
   },
   "claims_k": {
-   "value": 189.0,
+   "value": 200.0,
    "label": "תביעות ראשוניות לדמי אבטלה",
    "estimate": false,
    "signed": false,
@@ -2523,8 +2487,8 @@
    "publisher": "משרד העבודה האמריקאי",
    "group": "תעסוקה",
    "id": "ICSA",
-   "date": "31/10/2026",
-   "age_days": 12,
+   "date": "07/11/2026",
+   "age_days": 5,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2566,7 +2530,7 @@
    }
   },
   "ig_oas_level": {
-   "value": 0.91,
+   "value": 0.9,
    "label": "מרווח אג״ח בדירוג השקעה (IG OAS)",
    "estimate": false,
    "signed": false,
@@ -2574,8 +2538,8 @@
    "publisher": "ICE BofA",
    "group": "אשראי ונזילות",
    "id": "BAMLC0A0CM",
-   "date": "09/11/2026",
-   "age_days": 3,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "commercial",
    "reason": "",
    "redundancy": {
@@ -2634,7 +2598,7 @@
    }
   },
   "nfci_level": {
-   "value": -0.459,
+   "value": -0.462,
    "label": "תנאים פיננסיים (NFCI)",
    "estimate": false,
    "signed": false,
@@ -2642,8 +2606,8 @@
    "publisher": "הפד של שיקגו",
    "group": "אשראי ונזילות",
    "id": "NFCI",
-   "date": "30/10/2026",
-   "age_days": 13,
+   "date": "06/11/2026",
+   "age_days": 6,
    "status": "official",
    "reason": "",
    "redundancy": {
@@ -2681,13 +2645,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "detail": "09/11/2026: fred:GASREGW 3.995 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 3.995 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "gasoline_yoy": {
@@ -2704,17 +2662,11 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:GASREGW",
-    "sources": [
-     "fred:GASREGW",
-     "eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly"
-    ],
-    "detail": "09/11/2026: fred:GASREGW 3.995 מול eia:petroleum/pri/gnd:EMM_EPMR_PTE_NUS_DPG:weekly 3.995 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "us30y_level": {
-   "value": 5.35,
+   "value": 5.356,
    "label": "תשואת 30 שנה — רמה",
    "estimate": false,
    "signed": false,
@@ -2722,8 +2674,8 @@
    "publisher": "Cboe (Yahoo)",
    "group": "ריבית ואג״ח",
    "id": "^TYX",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2731,7 +2683,7 @@
    }
   },
   "spx_level": {
-   "value": 7520.9302,
+   "value": 7619.3799,
    "label": "מדד S&P 500 — רמה",
    "estimate": false,
    "signed": false,
@@ -2739,8 +2691,8 @@
    "publisher": "S&P DJI (Yahoo)",
    "group": "מניות ותנודתיות",
    "id": "^SPX",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "validated",
    "reason": "",
    "redundancy": {
@@ -2765,7 +2717,7 @@
    }
   },
   "copper_ton": {
-   "value": 13711.6342,
+   "value": 13832.888,
    "label": "נחושת (COMEX, לטון)",
    "estimate": false,
    "signed": false,
@@ -2773,8 +2725,8 @@
    "publisher": "COMEX (Yahoo)",
    "group": "סחורות",
    "id": "HG=F",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -2795,13 +2747,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:DCOILBRENTEU",
-    "sources": [
-     "fred:DCOILBRENTEU",
-     "eia:petroleum/pri/spt:RBRTE:daily"
-    ],
-    "detail": "03/11/2026: fred:DCOILBRENTEU 107.03 מול eia:petroleum/pri/spt:RBRTE:daily 107.03 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "wti_spot": {
@@ -2818,13 +2764,7 @@
    "status": "official",
    "reason": "",
    "redundancy": {
-    "status": "consensus",
-    "used": "fred:DCOILWTICO",
-    "sources": [
-     "fred:DCOILWTICO",
-     "eia:petroleum/pri/spt:RWTC:daily"
-    ],
-    "detail": "03/11/2026: fred:DCOILWTICO 99.64 מול eia:petroleum/pri/spt:RWTC:daily 99.64 (סטייה 0%)"
+    "status": "not_checked"
    }
   },
   "ppi_pce_spread": {
@@ -2930,7 +2870,7 @@
    }
   },
   "brent_basis": {
-   "value": -15.54,
+   "value": -14.27,
    "label": "פער ברנט: חוזה עתידי פחות פיזי",
    "estimate": false,
    "signed": true,
@@ -2947,7 +2887,7 @@
    }
   },
   "corr_dxy_oil_90d": {
-   "value": 0.0535,
+   "value": 0.0532,
    "label": "קורלציית דולר-נפט 90 יום",
    "estimate": false,
    "signed": true,
@@ -2955,8 +2895,8 @@
    "publisher": "נגזר",
    "group": "מודלים ונגזרים",
    "id": "dxy_ret_1d+oil_ret_1d",
-   "date": "10/11/2026",
-   "age_days": 2,
+   "date": "11/11/2026",
+   "age_days": 1,
    "status": "unverified",
    "reason": "",
    "redundancy": {
@@ -3899,8 +3839,8 @@
      {
       "id": "claims_4w",
       "label": "תביעות, ממוצע 4 שבועות (הפוך)",
-      "value": 194750.0,
-      "z": 1.58,
+      "value": 195250.0,
+      "z": 1.55,
       "date": "31/10/2026"
      },
      {
@@ -4044,15 +3984,15 @@
    {
     "code": "F",
     "label": "תנאים פיננסיים",
-    "level": 0.98,
+    "level": 0.97,
     "direction": 0.14,
     "dir": "flat",
     "inputs": [
      {
       "id": "nfci",
       "label": "NFCI",
-      "value": -0.459,
-      "z": 0.4,
+      "value": -0.465,
+      "z": 0.37,
       "date": "30/10/2026"
      },
      {
@@ -4196,7 +4136,7 @@
    {
     "code": "O4",
     "label": "לחץ אשראי",
-    "score": 0.17,
+    "score": 0.16,
     "state": "off",
     "weight": 0.0,
     "on_share": 0.022,
@@ -4208,7 +4148,7 @@
    {
     "code": "O5",
     "label": "הידרדרות בעבודה",
-    "score": 0.47,
+    "score": 0.46,
     "state": "off",
     "weight": 0.0,
     "on_share": 0.396,
