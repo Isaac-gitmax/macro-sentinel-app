@@ -8,10 +8,10 @@
 "stance": "OW",
 "direction": 1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-15",
+"exit_date": "2026-11-13",
+"excess": 5.935,
+"hit": true
 },
 {
 "date": "2026-10-15",
@@ -22,10 +22,10 @@
 "stance": "UW",
 "direction": -1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-15",
+"exit_date": "2026-11-13",
+"excess": -5.416,
+"hit": true
 },
 {
 "date": "2026-10-15",
@@ -36,10 +36,10 @@
 "stance": "UW",
 "direction": -1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-15",
+"exit_date": "2026-11-13",
+"excess": 2.771,
+"hit": false
 },
 {
 "date": "2026-10-15",
@@ -50,10 +50,10 @@
 "stance": "UW",
 "direction": -1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-15",
+"exit_date": "2026-11-13",
+"excess": 8.05,
+"hit": false
 },
 {
 "date": "2026-10-15",
@@ -64,10 +64,10 @@
 "stance": "N+",
 "direction": 1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-15",
+"exit_date": "2026-11-13",
+"excess": -5.943,
+"hit": false
 },
 {
 "date": "2026-10-15",
@@ -78,10 +78,10 @@
 "stance": "UW",
 "direction": -1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-15",
+"exit_date": "2026-11-13",
+"excess": -1.425,
+"hit": true
 },
 {
 "date": "2026-10-15",
@@ -92,10 +92,10 @@
 "stance": "OW",
 "direction": 1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-15",
+"exit_date": "2026-11-13",
+"excess": 8.838,
+"hit": true
 },
 {
 "date": "2026-10-15",
@@ -106,10 +106,10 @@
 "stance": "UW",
 "direction": -1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-15",
+"exit_date": "2026-11-13",
+"excess": 3.151,
+"hit": false
 },
 {
 "date": "2026-10-15",
@@ -120,10 +120,10 @@
 "stance": "OW",
 "direction": 1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-15",
+"exit_date": "2026-11-13",
+"excess": -5.242,
+"hit": false
 },
 {
 "date": "2026-10-15",
@@ -134,10 +134,10 @@
 "stance": "OW",
 "direction": 1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-15",
+"exit_date": "2026-11-13",
+"excess": -4.611,
+"hit": false
 },
 {
 "date": "2026-10-15",
@@ -148,10 +148,10 @@
 "stance": "OW",
 "direction": 1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-15",
+"exit_date": "2026-11-13",
+"excess": -3.925,
+"hit": false
 },
 {
 "date": "2026-10-15",
@@ -162,10 +162,10 @@
 "stance": "UW",
 "direction": -1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-15",
+"exit_date": "2026-11-13",
+"excess": 7.758,
+"hit": false
 },
 {
 "date": "2026-10-15",
@@ -176,10 +176,10 @@
 "stance": "N+",
 "direction": 1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-15",
+"exit_date": "2026-11-13",
+"excess": -10.723,
+"hit": false
 },
 {
 "date": "2026-10-15",
@@ -190,10 +190,10 @@
 "stance": "UW",
 "direction": -1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-15",
+"exit_date": "2026-11-13",
+"excess": 3.957,
+"hit": false
 },
 {
 "date": "2026-10-15",
@@ -204,10 +204,10 @@
 "stance": "OW",
 "direction": 1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-15",
+"exit_date": "2026-11-13",
+"excess": -0.147,
+"hit": false
 },
 {
 "date": "2026-10-16",
