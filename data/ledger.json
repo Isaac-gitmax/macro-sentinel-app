@@ -218,10 +218,10 @@
 "stance": "OW",
 "direction": 1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-16",
+"exit_date": "2026-11-16",
+"excess": 3.139,
+"hit": true
 },
 {
 "date": "2026-10-16",
@@ -232,10 +232,10 @@
 "stance": "UW",
 "direction": -1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-16",
+"exit_date": "2026-11-16",
+"excess": -2.065,
+"hit": true
 },
 {
 "date": "2026-10-16",
@@ -246,10 +246,10 @@
 "stance": "UW",
 "direction": -1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-16",
+"exit_date": "2026-11-16",
+"excess": 4.134,
+"hit": false
 },
 {
 "date": "2026-10-16",
@@ -260,10 +260,10 @@
 "stance": "UW",
 "direction": -1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-16",
+"exit_date": "2026-11-16",
+"excess": 8.112,
+"hit": false
 },
 {
 "date": "2026-10-16",
@@ -274,10 +274,10 @@
 "stance": "N+",
 "direction": 1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-16",
+"exit_date": "2026-11-16",
+"excess": -2.604,
+"hit": false
 },
 {
 "date": "2026-10-16",
@@ -288,10 +288,10 @@
 "stance": "UW",
 "direction": -1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-16",
+"exit_date": "2026-11-16",
+"excess": -0.142,
+"hit": true
 },
 {
 "date": "2026-10-16",
@@ -302,10 +302,10 @@
 "stance": "OW",
 "direction": 1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-16",
+"exit_date": "2026-11-16",
+"excess": 9.374,
+"hit": true
 },
 {
 "date": "2026-10-16",
@@ -316,10 +316,10 @@
 "stance": "UW",
 "direction": -1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-16",
+"exit_date": "2026-11-16",
+"excess": 3.977,
+"hit": false
 },
 {
 "date": "2026-10-16",
@@ -330,10 +330,10 @@
 "stance": "OW",
 "direction": 1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-16",
+"exit_date": "2026-11-16",
+"excess": -7.857,
+"hit": false
 },
 {
 "date": "2026-10-16",
@@ -344,10 +344,10 @@
 "stance": "OW",
 "direction": 1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-16",
+"exit_date": "2026-11-16",
+"excess": -5.014,
+"hit": false
 },
 {
 "date": "2026-10-16",
@@ -358,10 +358,10 @@
 "stance": "OW",
 "direction": 1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-16",
+"exit_date": "2026-11-16",
+"excess": -6.935,
+"hit": false
 },
 {
 "date": "2026-10-16",
@@ -372,10 +372,10 @@
 "stance": "UW",
 "direction": -1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-16",
+"exit_date": "2026-11-16",
+"excess": 7.924,
+"hit": false
 },
 {
 "date": "2026-10-16",
@@ -386,10 +386,10 @@
 "stance": "N+",
 "direction": 1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-16",
+"exit_date": "2026-11-16",
+"excess": -11.08,
+"hit": false
 },
 {
 "date": "2026-10-16",
@@ -400,10 +400,10 @@
 "stance": "UW",
 "direction": -1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-16",
+"exit_date": "2026-11-16",
+"excess": 3.715,
+"hit": false
 },
 {
 "date": "2026-10-16",
@@ -414,10 +414,10 @@
 "stance": "OW",
 "direction": 1,
 "source": "archive",
-"entry_date": null,
-"exit_date": null,
-"excess": null,
-"hit": null
+"entry_date": "2026-10-16",
+"exit_date": "2026-11-16",
+"excess": -3.615,
+"hit": false
 },
 {
 "date": "2026-10-19",
@@ -4607,6 +4607,216 @@
 },
 {
 "date": "2026-11-13",
+"regime": "R4",
+"category": "traditional_energy",
+"label": "אנרגיה",
+"ticker": "XLE",
+"stance": "OW",
+"direction": 1,
+"source": "live",
+"entry_date": null,
+"exit_date": null,
+"excess": null,
+"hit": null
+},
+{
+"date": "2026-11-16",
+"regime": "R4",
+"category": "aerospace_defense",
+"label": "תעופה וביטחון",
+"ticker": "ITA",
+"stance": "OW",
+"direction": 1,
+"source": "live",
+"entry_date": null,
+"exit_date": null,
+"excess": null,
+"hit": null
+},
+{
+"date": "2026-11-16",
+"regime": "R4",
+"category": "ai_software",
+"label": "בינה מלאכותית ותוכנה",
+"ticker": "IGV",
+"stance": "UW",
+"direction": -1,
+"source": "live",
+"entry_date": null,
+"exit_date": null,
+"excess": null,
+"hit": null
+},
+{
+"date": "2026-11-16",
+"regime": "R4",
+"category": "biotech",
+"label": "ביוטק",
+"ticker": "XBI",
+"stance": "UW",
+"direction": -1,
+"source": "live",
+"entry_date": null,
+"exit_date": null,
+"excess": null,
+"hit": null
+},
+{
+"date": "2026-11-16",
+"regime": "R4",
+"category": "consumer_discretionary",
+"label": "צריכה מחזורית",
+"ticker": "XLY",
+"stance": "UW",
+"direction": -1,
+"source": "live",
+"entry_date": null,
+"exit_date": null,
+"excess": null,
+"hit": null
+},
+{
+"date": "2026-11-16",
+"regime": "R4",
+"category": "cybersecurity",
+"label": "סייבר",
+"ticker": "CIBR",
+"stance": "N+",
+"direction": 1,
+"source": "live",
+"entry_date": null,
+"exit_date": null,
+"excess": null,
+"hit": null
+},
+{
+"date": "2026-11-16",
+"regime": "R4",
+"category": "fintech_crypto",
+"label": "פינטק וקריפטו",
+"ticker": "FINX",
+"stance": "UW",
+"direction": -1,
+"source": "live",
+"entry_date": null,
+"exit_date": null,
+"excess": null,
+"hit": null
+},
+{
+"date": "2026-11-16",
+"regime": "R4",
+"category": "healthcare",
+"label": "בריאות ופארמה",
+"ticker": "XLV",
+"stance": "OW",
+"direction": 1,
+"source": "live",
+"entry_date": null,
+"exit_date": null,
+"excess": null,
+"hit": null
+},
+{
+"date": "2026-11-16",
+"regime": "R4",
+"category": "market_indexes",
+"label": "מדדי מניות רחבים",
+"ticker": "IWM",
+"stance": "UW",
+"direction": -1,
+"source": "live",
+"entry_date": null,
+"exit_date": null,
+"excess": null,
+"hit": null
+},
+{
+"date": "2026-11-16",
+"regime": "R4",
+"category": "metals_clean_energy",
+"label": "מתכות ואנרגיה נקייה",
+"ticker": "XME",
+"stance": "OW",
+"direction": 1,
+"source": "live",
+"entry_date": null,
+"exit_date": null,
+"excess": null,
+"hit": null
+},
+{
+"date": "2026-11-16",
+"regime": "R4",
+"category": "power_grid",
+"label": "רשתות חשמל",
+"ticker": "GRID",
+"stance": "OW",
+"direction": 1,
+"source": "live",
+"entry_date": null,
+"exit_date": null,
+"excess": null,
+"hit": null
+},
+{
+"date": "2026-11-16",
+"regime": "R4",
+"category": "precious_metals",
+"label": "מכרות זהב",
+"ticker": "GDX",
+"stance": "OW",
+"direction": 1,
+"source": "live",
+"entry_date": null,
+"exit_date": null,
+"excess": null,
+"hit": null
+},
+{
+"date": "2026-11-16",
+"regime": "R4",
+"category": "real_estate_utilities",
+"label": "נדל\"ן ותשתיות ציבוריות",
+"ticker": "VNQ",
+"stance": "UW",
+"direction": -1,
+"source": "live",
+"entry_date": null,
+"exit_date": null,
+"excess": null,
+"hit": null
+},
+{
+"date": "2026-11-16",
+"regime": "R4",
+"category": "semiconductors",
+"label": "שבבים",
+"ticker": "SOXX",
+"stance": "N+",
+"direction": 1,
+"source": "live",
+"entry_date": null,
+"exit_date": null,
+"excess": null,
+"hit": null
+},
+{
+"date": "2026-11-16",
+"regime": "R4",
+"category": "space",
+"label": "חלל",
+"ticker": "UFO",
+"stance": "UW",
+"direction": -1,
+"source": "live",
+"entry_date": null,
+"exit_date": null,
+"excess": null,
+"hit": null
+},
+{
+"date": "2026-11-16",
 "regime": "R4",
 "category": "traditional_energy",
 "label": "אנרגיה",
